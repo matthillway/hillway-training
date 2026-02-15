@@ -1,0 +1,2278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hillway | Property Fundamentals for Apprentice Surveyors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e40af;
+      --accent: #0ea5e9;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-400: #94a3b8;
+      --gray-500: #64748b;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --sidebar-width: 280px;
+      --progress-height: 3px;
+      --green: #16a34a;
+      --red: #dc2626;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 32px; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      line-height: 1.7;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Progress bar */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: var(--progress-height);
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      z-index: 1000;
+      transition: width 0.15s ease-out;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-width);
+      height: 100vh;
+      background: var(--primary);
+      padding: 32px 0;
+      overflow-y: auto;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #sidebar::-webkit-scrollbar { width: 3px; }
+    #sidebar::-webkit-scrollbar-track { background: transparent; }
+    #sidebar::-webkit-scrollbar-thumb { background: var(--gray-600); border-radius: 3px; }
+
+    .sidebar-logo {
+      padding: 0 28px 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 24px;
+    }
+
+    .sidebar-logo img { height: 32px; width: auto; }
+
+    .sidebar-subtitle {
+      font-size: 11px;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 0 28px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .sidebar-nav { flex: 1; }
+
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 28px;
+      color: var(--gray-400);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+      position: relative;
+    }
+
+    .sidebar-nav a:hover {
+      color: var(--gray-200);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .sidebar-nav a.active {
+      color: var(--white);
+      background: rgba(255,255,255,0.06);
+      border-left-color: var(--accent);
+    }
+
+    .sidebar-nav a .nav-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.06);
+      font-size: 11px;
+      font-weight: 600;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-nav a.active .nav-number {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    .sidebar-nav .nav-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 12px 28px;
+    }
+
+    .sidebar-footer {
+      padding: 20px 28px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: auto;
+    }
+
+    .sidebar-footer p {
+      font-size: 11px;
+      color: var(--gray-500);
+      line-height: 1.5;
+    }
+
+    .sidebar-footer img {
+      height: 40px;
+      width: auto;
+      margin-top: 10px;
+      opacity: 0.7;
+    }
+
+    /* Main content */
+    #main {
+      margin-left: var(--sidebar-width);
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a2744 50%, var(--secondary) 100%);
+      padding: 80px 60px 60px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(30,64,175,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-logo img { height: 48px; width: auto; }
+
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 300;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.5px;
+    }
+
+    .hero h1 strong { font-weight: 700; }
+
+    .hero-meta {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-meta .divider {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* Module progress indicator */
+    .module-progress {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .module-progress-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+    }
+
+    .module-progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      transition: background 0.3s ease;
+    }
+
+    .module-progress-dot.complete {
+      background: var(--accent);
+    }
+
+    /* Content area */
+    .content {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 60px 80px;
+    }
+
+    /* Section styling */
+    .section {
+      margin-bottom: 56px;
+      scroll-margin-top: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.3px;
+    }
+
+    .module-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #eff6ff;
+      color: var(--secondary);
+      margin-left: auto;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 20px;
+      border: 1px solid var(--gray-200);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+
+    .card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card p, .card li {
+      color: var(--gray-600);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .card ul, .card ol {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .card li { margin-bottom: 4px; }
+
+    .card-accent { border-left: 4px solid var(--accent); }
+
+    .card-highlight {
+      background: linear-gradient(135deg, #eff6ff, #f0f9ff);
+      border-color: #bfdbfe;
+    }
+
+    .card-warning {
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      border-color: #fcd34d;
+      border-left: 4px solid #f59e0b;
+    }
+
+    /* Blockquote */
+    .quote-block {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--gray-800) 100%);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 24px 0;
+      color: var(--white);
+      position: relative;
+    }
+
+    .quote-block::before {
+      content: '\201C';
+      position: absolute;
+      top: 12px;
+      left: 20px;
+      font-size: 60px;
+      color: var(--accent);
+      opacity: 0.3;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .quote-block p {
+      font-size: 16px;
+      font-style: italic;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .quote-block cite {
+      display: block;
+      margin-top: 12px;
+      font-size: 13px;
+      font-style: normal;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Property type grid */
+    .type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .type-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid var(--gray-200);
+      transition: all 0.2s ease;
+    }
+
+    .type-card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+    }
+
+    .type-card .type-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .type-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .type-card p {
+      font-size: 13px;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+
+    /* Glossary */
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .glossary-item {
+      padding: 16px;
+      background: var(--white);
+      border-radius: 10px;
+      border: 1px solid var(--gray-200);
+    }
+
+    .glossary-term {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 4px;
+    }
+
+    .glossary-def {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.5;
+    }
+
+    /* Comparison table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .comparison-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .comparison-table th:first-child { border-radius: 8px 0 0 0; }
+    .comparison-table th:last-child { border-radius: 0 8px 0 0; }
+
+    .comparison-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--gray-200);
+      color: var(--gray-600);
+    }
+
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:nth-child(even) td { background: var(--gray-50); }
+
+    /* Lifecycle diagram */
+    .lifecycle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 24px 0;
+      padding: 20px;
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+    }
+
+    .lifecycle-stage {
+      text-align: center;
+      flex: 1;
+      position: relative;
+    }
+
+    .lifecycle-stage::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 8px solid var(--accent);
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+    }
+
+    .lifecycle-stage:last-child::after { display: none; }
+
+    .lifecycle-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .lifecycle-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .lifecycle-desc {
+      font-size: 11px;
+      color: var(--gray-500);
+      margin-top: 2px;
+    }
+
+    /* Quiz styles */
+    .quiz-container { margin: 24px 0; }
+
+    .quiz-question {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      border: 1px solid var(--gray-200);
+      transition: border-color 0.3s ease;
+    }
+
+    .quiz-question.answered-correct {
+      border-color: var(--green);
+      background: #f0fdf4;
+    }
+
+    .quiz-question.answered-incorrect {
+      border-color: var(--red);
+      background: #fef2f2;
+    }
+
+    .quiz-q-number {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .quiz-q-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .quiz-option {
+      display: block;
+      padding: 10px 16px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--gray-700);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .quiz-option:hover:not(:disabled) {
+      background: #eff6ff;
+      border-color: var(--secondary);
+    }
+
+    .quiz-option:disabled { cursor: default; }
+
+    .quiz-option.selected-correct {
+      background: #dcfce7;
+      border-color: var(--green);
+      color: #166534;
+      font-weight: 600;
+    }
+
+    .quiz-option.selected-incorrect {
+      background: #fee2e2;
+      border-color: var(--red);
+      color: #991b1b;
+    }
+
+    .quiz-option.show-correct {
+      background: #dcfce7;
+      border-color: var(--green);
+      color: #166534;
+    }
+
+    .quiz-explanation {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 16px;
+      background: #f0f9ff;
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.6;
+      border-left: 3px solid var(--accent);
+    }
+
+    .quiz-explanation.visible { display: block; }
+
+    .quiz-score-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--gray-800) 100%);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+      color: var(--white);
+      margin-top: 24px;
+      display: none;
+    }
+
+    .quiz-score-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    .quiz-score-number {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--accent);
+      margin: 12px 0;
+    }
+
+    .quiz-score-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .quiz-part-header {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 28px 0 8px;
+      padding: 12px 16px;
+      background: var(--gray-100);
+      border-radius: 8px;
+    }
+
+    .quiz-part-header span {
+      font-weight: 400;
+      color: var(--gray-500);
+      font-size: 13px;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* Reset button */
+    .reset-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 12px;
+    }
+
+    .reset-btn:hover {
+      border-color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Summary card */
+    .summary-card {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a2744 100%);
+      border-radius: 16px;
+      padding: 40px;
+      color: var(--white);
+      margin: 32px 0;
+    }
+
+    .summary-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .summary-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+    }
+
+    .summary-card ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 16px;
+    }
+
+    .summary-card li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .summary-card li:last-child { border-bottom: none; }
+
+    .summary-card .bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover { color: rgba(255,255,255,0.8); }
+
+    /* Print styles */
+    @media print {
+      #sidebar, #progress-bar { display: none !important; }
+      #main { margin-left: 0 !important; }
+      .hero { padding: 40px !important; }
+      .content { padding: 24px 40px !important; }
+      .card, .type-card, .glossary-item, .quiz-question {
+        break-inside: avoid;
+        box-shadow: none !important;
+      }
+      body { font-size: 12px; }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      #sidebar { display: none; }
+      #main { margin-left: 0; }
+      .hero { padding: 48px 32px 40px; }
+      .content { padding: 32px 24px 60px; }
+      .type-grid { grid-template-columns: 1fr; }
+      .glossary-grid { grid-template-columns: 1fr; }
+      .lifecycle { flex-direction: column; gap: 16px; }
+      .lifecycle-stage::after { display: none; }
+      .hero h1 { font-size: 28px; }
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- Sidebar -->
+<nav id="sidebar">
+  <div class="sidebar-logo">
+    <img src="https://www.hillwayco.uk/images/logo.png" alt="Hillway" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
+    <span style="display:none;font-weight:800;font-size:18px;letter-spacing:4px;color:#fff;">HILLWAY</span>
+  </div>
+  <div class="sidebar-subtitle">Property Fundamentals</div>
+  <div class="sidebar-nav">
+    <a href="#module-1" data-section="module-1">
+      <span class="nav-number">1</span> What is Commercial Property?
+    </a>
+    <a href="#quiz-1" data-section="quiz-1">
+      <span class="nav-number">Q</span> Module 1 Check
+    </a>
+    <div class="nav-divider"></div>
+    <a href="#module-2" data-section="module-2">
+      <span class="nav-number">2</span> How Commercial Property Works
+    </a>
+    <a href="#quiz-2" data-section="quiz-2">
+      <span class="nav-number">Q</span> Module 2 Check
+    </a>
+    <div class="nav-divider"></div>
+    <a href="#module-3" data-section="module-3">
+      <span class="nav-number">3</span> The Surveying Profession
+    </a>
+    <a href="#quiz-3" data-section="quiz-3">
+      <span class="nav-number">Q</span> Module 3 Check
+    </a>
+    <div class="nav-divider"></div>
+    <a href="#module-4" data-section="module-4">
+      <span class="nav-number">4</span> Property Management in Practice
+    </a>
+    <a href="#quiz-4" data-section="quiz-4">
+      <span class="nav-number">Q</span> Module 4 Check
+    </a>
+    <div class="nav-divider"></div>
+    <a href="#summary" data-section="summary">
+      <span class="nav-number">&#10003;</span> Summary &amp; Next Steps
+    </a>
+  </div>
+  <div class="sidebar-footer">
+    <p>Hillway Holdings Ltd<br>Company No. 14319867<br>RICS Reg. No. 900798</p>
+    <img src="https://www.hillwayco.uk/images/rics-regulated-logo.png" alt="RICS Regulated" onerror="this.style.display='none';">
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div id="main">
+
+  <!-- Hero -->
+  <header class="hero">
+    <a href="../induction.html" class="back-link">&larr; Back to Induction</a>
+    <div class="hero-logo">
+      <img src="https://www.hillwayco.uk/images/logo.png" alt="Hillway" style="height:48px;width:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
+      <span style="display:none;font-weight:800;font-size:28px;letter-spacing:6px;color:#fff;">HILLWAY</span>
+    </div>
+    <h1>Property <strong>Fundamentals</strong></h1>
+    <div class="hero-meta">
+      <span>Apprentice Surveyor Training</span>
+      <span class="divider"></span>
+      <span>4 Modules</span>
+      <span class="divider"></span>
+      <span>Pre-CEM Foundation Course</span>
+    </div>
+    <div class="module-progress">
+      <div class="module-progress-item"><span class="module-progress-dot" id="prog-1"></span> Module 1</div>
+      <div class="module-progress-item"><span class="module-progress-dot" id="prog-2"></span> Module 2</div>
+      <div class="module-progress-item"><span class="module-progress-dot" id="prog-3"></span> Module 3</div>
+      <div class="module-progress-item"><span class="module-progress-dot" id="prog-4"></span> Module 4</div>
+    </div>
+  </header>
+
+  <div class="content">
+
+    <!-- Introduction -->
+    <section class="section fade-in" style="margin-bottom:40px;">
+      <div class="card card-accent">
+        <p>This course covers the core knowledge you need before your apprenticeship starts at CEM Reading on 30 March 2026. It is not a substitute for your degree programme, but it will give you a solid foundation so you can hit the ground running from day one. Work through each module in order, complete the knowledge checks, and your progress will be saved automatically.</p>
+        <p style="margin-top:12px;">You have a business degree, which gives you a head start on understanding commercial logic, investment principles and how organisations make decisions. This course bridges the gap between that knowledge and the world of commercial property.</p>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- MODULE 1: WHAT IS COMMERCIAL PROPERTY?       -->
+    <!-- ============================================ -->
+    <section id="module-1" class="section fade-in">
+      <div class="section-header">
+        <span class="section-number">1</span>
+        <h2>What is Commercial Property?</h2>
+        <span class="module-tag">Module 1</span>
+      </div>
+
+      <div class="card">
+        <h3>The Big Picture</h3>
+        <p>Commercial property (also called commercial real estate or CRE) is any property used primarily for business purposes rather than residential living. In the UK, the commercial property market is worth over &pound;1 trillion and is a major asset class alongside equities (stocks) and bonds. As a surveyor, you will be advising clients on how to buy, sell, lease, manage and value these assets.</p>
+        <p style="margin-top:12px;">The term "property" in surveying always means real property: land and buildings. It is a physical asset you can visit and inspect, which makes it fundamentally different from financial instruments like shares or bonds. This physicality is both its strength (you can see and touch it) and its weakness (it takes time to buy and sell).</p>
+      </div>
+
+      <h3 style="font-size:17px;font-weight:700;margin:28px 0 16px;color:var(--primary);">Types of Commercial Property</h3>
+
+      <div class="type-grid">
+        <div class="type-card">
+          <div class="type-icon">&#127970;</div>
+          <h3>Offices</h3>
+          <p>Spaces where businesses operate. Classified by grade (A, B, C) reflecting quality, age and specification. City centre, out-of-town business parks, serviced offices and co-working spaces all fall under this category.</p>
+        </div>
+        <div class="type-card">
+          <div class="type-icon">&#128722;</div>
+          <h3>Retail</h3>
+          <p>Shops, shopping centres, retail parks and supermarkets. The retail sector has changed dramatically with the rise of e-commerce. High street, out-of-town, convenience and bulky goods retail are distinct sub-markets.</p>
+        </div>
+        <div class="type-card">
+          <div class="type-icon">&#127981;</div>
+          <h3>Industrial &amp; Logistics</h3>
+          <p>Warehouses, distribution centres, manufacturing units and trade counters. This sector has boomed due to online shopping. "Last mile" delivery hubs near cities are especially in demand.</p>
+        </div>
+        <div class="type-card">
+          <div class="type-icon">&#127960;</div>
+          <h3>Mixed-Use</h3>
+          <p>Developments combining two or more uses, typically retail at ground floor with offices or residential above. Common in town centres and increasingly popular with planners and investors.</p>
+        </div>
+        <div class="type-card">
+          <div class="type-icon">&#128200;</div>
+          <h3>Alternatives</h3>
+          <p>A growing category including hotels, student accommodation, healthcare, data centres, self-storage and leisure. Often called "operational real estate" because the property and the business within it are closely linked.</p>
+        </div>
+        <div class="type-card">
+          <div class="type-icon">&#127966;</div>
+          <h3>Land &amp; Development</h3>
+          <p>Undeveloped or under-utilised sites with potential for building. Value depends on planning permission status, location and market demand. Development appraisal is a specialist skill within surveying.</p>
+        </div>
+      </div>
+
+      <div class="card card-highlight" style="margin-top:24px;">
+        <h3>Freehold vs Leasehold</h3>
+        <p>These are the two fundamental ways to hold an interest in property. Understanding the difference is critical for everything you will do as a surveyor.</p>
+        <table class="comparison-table" style="margin-top:16px;">
+          <thead>
+            <tr>
+              <th>Freehold</th>
+              <th>Leasehold</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>You own the building and the land it sits on, forever</td>
+              <td>You have the right to occupy the building for a set period</td>
+            </tr>
+            <tr>
+              <td>Also called "fee simple" or "freehold absolute"</td>
+              <td>Created by a lease (a contract) between landlord and tenant</td>
+            </tr>
+            <tr>
+              <td>Maximum control over the property</td>
+              <td>Subject to terms and restrictions in the lease</td>
+            </tr>
+            <tr>
+              <td>Responsible for all maintenance and insurance</td>
+              <td>Obligations depend on what the lease says</td>
+            </tr>
+            <tr>
+              <td>Can grant leases to tenants</td>
+              <td>Can sometimes sublet (if the lease allows)</td>
+            </tr>
+            <tr>
+              <td>Valued by investment yield / capital value</td>
+              <td>Valued by rent passing vs market rent and unexpired term</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:12px;font-size:13px;color:var(--gray-500);">In practice, most commercial property is held as an investment by a landlord (freeholder) who grants leases to occupying businesses (tenants). The landlord earns rental income; the tenant gets a place to operate.</p>
+      </div>
+
+      <div class="card" style="margin-top:24px;">
+        <h3>The Property Lifecycle</h3>
+        <p style="margin-bottom:16px;">Every property goes through a cycle. Understanding where a property sits in this cycle determines the type of advice a surveyor gives.</p>
+        <div class="lifecycle">
+          <div class="lifecycle-stage">
+            <div class="lifecycle-icon">&#128204;</div>
+            <div class="lifecycle-label">Development</div>
+            <div class="lifecycle-desc">Land purchase, planning, construction</div>
+          </div>
+          <div class="lifecycle-stage">
+            <div class="lifecycle-icon">&#128273;</div>
+            <div class="lifecycle-label">Letting</div>
+            <div class="lifecycle-desc">Marketing, lease negotiation</div>
+          </div>
+          <div class="lifecycle-stage">
+            <div class="lifecycle-icon">&#128188;</div>
+            <div class="lifecycle-label">Occupation</div>
+            <div class="lifecycle-desc">Tenant in place, rent paid</div>
+          </div>
+          <div class="lifecycle-stage">
+            <div class="lifecycle-icon">&#128176;</div>
+            <div class="lifecycle-label">Investment</div>
+            <div class="lifecycle-desc">Traded as income-producing asset</div>
+          </div>
+          <div class="lifecycle-stage">
+            <div class="lifecycle-icon">&#128260;</div>
+            <div class="lifecycle-label">Disposal</div>
+            <div class="lifecycle-desc">Sale, redevelopment, demolition</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>How Property Differs from Other Asset Classes</h3>
+        <p>Your business degree will have covered equities and bonds. Property sits alongside these but has unique characteristics:</p>
+        <ul>
+          <li><strong>Illiquid</strong> &mdash; You cannot sell a building in seconds like you can sell shares. Transactions take weeks or months.</li>
+          <li><strong>Heterogeneous</strong> &mdash; Every property is unique. Two identical-looking buildings on the same street can have very different values because of lease terms, condition or tenant quality.</li>
+          <li><strong>High transaction costs</strong> &mdash; Legal fees, stamp duty land tax (SDLT), agent fees and surveys make buying and selling expensive.</li>
+          <li><strong>Physical asset</strong> &mdash; It needs maintaining. Roofs leak, boilers break, tenants cause damage. This is why surveyors exist.</li>
+          <li><strong>Income-producing</strong> &mdash; Like bonds, property generates regular income (rent). Unlike bonds, you can actively manage and improve the asset to increase returns.</li>
+          <li><strong>Leveraged</strong> &mdash; Most property is bought with a combination of equity and debt (mortgage). This amplifies returns but also risk.</li>
+          <li><strong>Location-dependent</strong> &mdash; A shop on a busy high street is worth more than an identical shop on a quiet side road. Location is the single biggest driver of value.</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size:17px;font-weight:700;margin:28px 0 16px;color:var(--primary);">Key Terminology</h3>
+      <p style="font-size:14px;color:var(--gray-600);margin-bottom:16px;">You will encounter these terms constantly. Learn them now and you will be ahead from day one at CEM.</p>
+
+      <div class="glossary-grid">
+        <div class="glossary-item">
+          <div class="glossary-term">Yield</div>
+          <div class="glossary-def">The annual rental income expressed as a percentage of the property's capital value. A 6% yield means a &pound;1m property produces &pound;60,000 per year rent. Lower yields = higher quality/lower risk assets.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">ERV (Estimated Rental Value)</div>
+          <div class="glossary-def">What a property would let for on the open market today. Used in valuations, rent reviews and investment analysis. Sometimes called Market Rent.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Void</div>
+          <div class="glossary-def">A period when a property is empty and producing no rental income. Void periods cost the landlord money (lost rent, rates liability, security, maintenance).</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Covenant Strength</div>
+          <div class="glossary-def">How financially reliable a tenant is. A blue-chip tenant like Tesco has a strong covenant. A start-up has a weak covenant. Stronger covenant = lower risk = lower yield.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Dilapidations</div>
+          <div class="glossary-def">The disrepair a tenant is liable to remedy under the terms of their lease, usually assessed at lease end. A major area of surveying work.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">WAULT</div>
+          <div class="glossary-def">Weighted Average Unexpired Lease Term. A measure of how long, on average, tenants are committed to staying. Longer WAULT = more secure income = more valuable.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Cap Rate / Capitalisation Rate</div>
+          <div class="glossary-def">Same concept as yield but more commonly used internationally. The rate at which net operating income is capitalised to determine property value.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Prime vs Secondary</div>
+          <div class="glossary-def">Prime properties are the best quality in the best locations with the strongest tenants. Secondary is everything below that. The gap in value between the two is called the "prime-secondary spread."</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Head Lease / Underlease</div>
+          <div class="glossary-def">The head lease is between the freeholder and first tenant. An underlease (sublease) is granted by that tenant to a sub-tenant. Multiple layers of leases can exist on one property.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">FRI Lease</div>
+          <div class="glossary-def">Full Repairing and Insuring lease. The tenant pays for all repairs and insurance. This is the standard for single-let commercial properties. The landlord receives "clean" net income.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 1 KNOWLEDGE CHECK -->
+    <section id="quiz-1" class="section fade-in">
+      <div class="section-header">
+        <span class="section-number">Q</span>
+        <h2>Module 1 Knowledge Check</h2>
+      </div>
+
+      <div class="quiz-container">
+        <div class="quiz-question" data-question="1" data-type="mc" data-answer="c">
+          <div class="quiz-q-number">Question 1 of 5</div>
+          <div class="quiz-q-text">A property investor tells you a warehouse has a yield of 5%. What does this mean?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The property has increased in value by 5% this year</button>
+            <button class="quiz-option" data-value="b">The tenant pays 5% of their turnover as rent</button>
+            <button class="quiz-option" data-value="c">The annual rent is 5% of the property's capital value</button>
+            <button class="quiz-option" data-value="d">The building is 5% vacant</button>
+          </div>
+          <div class="quiz-explanation">Correct. Yield is the relationship between annual rent and capital value. A &pound;2 million warehouse at 5% yield produces &pound;100,000 per annum in rent. As a general rule, lower yields indicate lower risk (prime) assets, and higher yields indicate higher risk (secondary) assets.</div>
+        </div>
+
+        <div class="quiz-question" data-question="2" data-type="mc" data-answer="b">
+          <div class="quiz-q-number">Question 2 of 5</div>
+          <div class="quiz-q-text">What is the key difference between freehold and leasehold ownership?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Freehold is for residential, leasehold is for commercial</button>
+            <button class="quiz-option" data-value="b">Freehold is permanent ownership; leasehold is the right to occupy for a set period</button>
+            <button class="quiz-option" data-value="c">Freehold means you own just the building; leasehold means you own the land</button>
+            <button class="quiz-option" data-value="d">There is no practical difference; the terms are interchangeable</button>
+          </div>
+          <div class="quiz-explanation">Freehold gives you outright ownership of the land and building in perpetuity. A leasehold is a time-limited right to occupy, created by a lease contract between the freeholder (landlord) and the leaseholder (tenant). Both freehold and leasehold exist in residential and commercial property.</div>
+        </div>
+
+        <div class="quiz-question" data-question="3" data-type="mc" data-answer="d">
+          <div class="quiz-q-number">Question 3 of 5</div>
+          <div class="quiz-q-text">Which sector of commercial property has seen the most growth due to online shopping?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">High street retail</button>
+            <button class="quiz-option" data-value="b">City centre offices</button>
+            <button class="quiz-option" data-value="c">Student accommodation</button>
+            <button class="quiz-option" data-value="d">Industrial and logistics</button>
+          </div>
+          <div class="quiz-explanation">E-commerce has driven massive demand for warehouses and distribution centres, especially "last mile" logistics hubs near cities. Meanwhile, high street retail has been negatively affected by the same trend, with many shops closing as spending moves online.</div>
+        </div>
+
+        <div class="quiz-question" data-question="4" data-type="mc" data-answer="a">
+          <div class="quiz-q-number">Question 4 of 5</div>
+          <div class="quiz-q-text">A property has a strong tenant covenant. What impact does this have on yield?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The yield will be lower because the income is more secure</button>
+            <button class="quiz-option" data-value="b">The yield will be higher because the tenant can afford more rent</button>
+            <button class="quiz-option" data-value="c">Tenant covenant has no impact on yield</button>
+            <button class="quiz-option" data-value="d">The yield will be lower because the property is harder to sell</button>
+          </div>
+          <div class="quiz-explanation">Investors pay more for secure income. If a tenant like the Government or a major bank is unlikely to default, investors accept a lower return (yield) because the risk is lower. A weak covenant tenant (say a new start-up) means higher risk, so investors demand a higher yield to compensate. Yield and risk move together.</div>
+        </div>
+
+        <div class="quiz-question" data-question="5" data-type="mc" data-answer="c">
+          <div class="quiz-q-number">Question 5 of 5</div>
+          <div class="quiz-q-text">What does "dilapidations" mean in commercial property?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The process of demolishing a building at the end of its useful life</button>
+            <button class="quiz-option" data-value="b">A government grant for refurbishing old commercial buildings</button>
+            <button class="quiz-option" data-value="c">The disrepair a tenant is liable to remedy under the terms of their lease</button>
+            <button class="quiz-option" data-value="d">Annual depreciation applied to property assets for accounting purposes</button>
+          </div>
+          <div class="quiz-explanation">Dilapidations is a major area of surveying practice. When a lease ends, the landlord assesses what condition the tenant should return the property in (based on the lease covenants) versus its actual condition. The tenant may need to carry out repairs, or more commonly, pay compensation. This process is governed by the Dilapidations Protocol published by the Property Litigation Association.</div>
+        </div>
+
+        <div class="quiz-score-card" id="quiz-score-1">
+          <h3>Module 1 Complete</h3>
+          <div class="quiz-score-number" id="quiz-score-display-1">0/5</div>
+          <p id="quiz-score-message-1"></p>
+          <button class="reset-btn" onclick="resetModuleQuiz(1)">Reset Module 1 Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- MODULE 2: HOW COMMERCIAL PROPERTY WORKS       -->
+    <!-- ============================================ -->
+    <section id="module-2" class="section fade-in">
+      <div class="section-header">
+        <span class="section-number">2</span>
+        <h2>How Commercial Property Works</h2>
+        <span class="module-tag">Module 2</span>
+      </div>
+
+      <div class="card card-accent">
+        <h3>The Landlord and Tenant Relationship</h3>
+        <p>At the heart of commercial property is the relationship between landlord and tenant. The landlord owns the building and wants to maximise rental income while protecting the value of their asset. The tenant needs a space to operate their business and wants flexibility, certainty and reasonable costs. These interests sometimes align and sometimes conflict. As a surveyor, you will often act for one side or the other, and understanding both perspectives is essential.</p>
+        <p style="margin-top:12px;">This relationship is governed by one document above all others: the lease.</p>
+      </div>
+
+      <div class="card">
+        <h3>The Lease: Key Terms You Must Know</h3>
+        <p>A commercial lease is a legally binding contract that defines the relationship between landlord and tenant. Leases can run from a few pages to several hundred. Here are the terms that matter most:</p>
+        <table class="comparison-table" style="margin-top:16px;">
+          <thead>
+            <tr>
+              <th style="width:30%;">Lease Term</th>
+              <th>What It Means</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Term</strong></td>
+              <td>The length of the lease. Typical commercial leases run 5, 10 or 15 years. The trend is towards shorter terms as tenants want more flexibility.</td>
+            </tr>
+            <tr>
+              <td><strong>Rent</strong></td>
+              <td>The annual amount the tenant pays, usually quarterly in advance on standard quarter days (25 March, 24 June, 29 September, 25 December). Increasingly paid monthly.</td>
+            </tr>
+            <tr>
+              <td><strong>Service Charge</strong></td>
+              <td>The tenant's share of the costs of maintaining shared areas and services (cleaning, security, lifts, common repairs). Applies mainly to multi-let buildings.</td>
+            </tr>
+            <tr>
+              <td><strong>Insurance Rent</strong></td>
+              <td>The tenant's contribution to the building insurance premium. The landlord insures the building and recovers the cost from tenants.</td>
+            </tr>
+            <tr>
+              <td><strong>Break Clause</strong></td>
+              <td>An option to end the lease early, usually at a specific date (e.g., year 5 of a 10-year lease). Can be tenant-only, landlord-only, or mutual. Often subject to strict conditions.</td>
+            </tr>
+            <tr>
+              <td><strong>Rent Review</strong></td>
+              <td>A mechanism to adjust the rent during the lease term, typically every 5 years. Ensures rent keeps pace with the market. Several types exist (see below).</td>
+            </tr>
+            <tr>
+              <td><strong>Repairing Obligation</strong></td>
+              <td>Who pays for repairs. FRI (Full Repairing and Insuring) puts it all on the tenant. Internal Repairing only covers the inside. The lease wording is critical.</td>
+            </tr>
+            <tr>
+              <td><strong>Alienation</strong></td>
+              <td>Whether the tenant can transfer the lease (assignment) or sublet part or all of the property. Most leases allow this with the landlord's consent, which cannot be unreasonably withheld.</td>
+            </tr>
+            <tr>
+              <td><strong>User Clause</strong></td>
+              <td>Restricts what the property can be used for. A lease might permit "offices only" or "retail Class E." Changing use usually needs landlord consent and may need planning permission.</td>
+            </tr>
+            <tr>
+              <td><strong>Alterations</strong></td>
+              <td>Whether the tenant can modify the property. Usually split into structural (rarely permitted) and non-structural (usually permitted with consent). A licence to alter is needed.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card card-highlight">
+        <h3>Rent Review Mechanisms</h3>
+        <p>Rent reviews are one of the most common tasks for a commercial surveyor. There are three main types:</p>
+        <div style="margin-top:16px;">
+          <h4 style="font-size:14px;font-weight:700;color:var(--primary);margin-bottom:6px;">Open Market Rent Review</h4>
+          <p>The most common type. The rent is adjusted to whatever the property would let for on the open market at the review date. The surveyor considers comparable evidence (what similar properties have let for nearby). If landlord and tenant cannot agree, the matter goes to an independent expert or arbitrator. These reviews are almost always "upward only," meaning the rent can only stay the same or increase, never decrease.</p>
+        </div>
+        <div style="margin-top:16px;">
+          <h4 style="font-size:14px;font-weight:700;color:var(--primary);margin-bottom:6px;">RPI/CPI Linked (Index-Linked)</h4>
+          <p>The rent increases in line with inflation, measured by the Retail Price Index (RPI) or Consumer Price Index (CPI). Simple and predictable, but the rent can drift away from actual market levels over time. Common in sale-and-leaseback transactions and long leases.</p>
+        </div>
+        <div style="margin-top:16px;">
+          <h4 style="font-size:14px;font-weight:700;color:var(--primary);margin-bottom:6px;">Fixed Uplift</h4>
+          <p>The rent increases by a predetermined amount or percentage at set dates. For example, &pound;50,000 per annum in years 1-5, &pound;55,000 in years 6-10. Provides certainty for both parties but does not reflect market conditions.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Service Charges Explained</h3>
+        <p>When a building has multiple tenants sharing common areas (corridors, car parks, reception, lifts), the landlord provides services and recovers the cost through a service charge. This is a significant cost for tenants and a major source of disputes.</p>
+        <ul>
+          <li><strong>Budget</strong> &mdash; At the start of each service charge year, the landlord prepares a budget of expected costs and collects payments on account from tenants.</li>
+          <li><strong>Apportionment</strong> &mdash; Each tenant pays a proportion, usually based on floor area. A tenant occupying 20% of the building pays 20% of the service charge.</li>
+          <li><strong>Reconciliation</strong> &mdash; At year end, actual costs are compared to the budget. If the landlord spent more, tenants pay a balancing charge. If less, they receive a credit.</li>
+          <li><strong>RICS Code</strong> &mdash; The RICS Professional Statement on Service Charges in Commercial Property sets out best practice. It requires transparency, reasonableness and proper certification of accounts. Surveyors are expected to comply.</li>
+          <li><strong>Common costs</strong> &mdash; Cleaning, security, lift maintenance, building management fees, communal repairs, landscaping, utilities for common areas and building insurance.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Business Rates</h3>
+        <p>Business rates are a tax on commercial property, similar to council tax for homes. They are a major occupational cost that tenants must understand.</p>
+        <ul>
+          <li><strong>Rateable Value (RV)</strong> &mdash; Set by the Valuation Office Agency (VOA), this represents the annual open market rental value of the property at a set valuation date. The current rating list is based on values at 1 April 2023.</li>
+          <li><strong>Multiplier (UBR)</strong> &mdash; The government sets a pence-in-the-pound figure (the Uniform Business Rate) that is applied to the rateable value. For 2025/26, the standard multiplier is approximately 55.5p.</li>
+          <li><strong>Calculation</strong> &mdash; Rates payable = Rateable Value x Multiplier. A property with an RV of &pound;100,000 pays approximately &pound;55,500 per year in rates.</li>
+          <li><strong>Empty rates</strong> &mdash; Landlords are liable for business rates on empty properties after an initial void period (3 months for offices/retail, 6 months for industrial). This is a significant cost of vacancy.</li>
+          <li><strong>Appeals</strong> &mdash; If a ratepayer believes the rateable value is too high, they can challenge it through the VOA's Check, Challenge, Appeal process. Rating surveyors specialise in this.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Insurance</h3>
+        <p>Property insurance is a critical but often overlooked aspect of commercial property. The key distinctions are:</p>
+        <ul>
+          <li><strong>Building insurance</strong> &mdash; Covers the structure of the building against damage (fire, flood, storm, subsidence). The landlord usually arranges this and recovers the cost from tenants as insurance rent. The sum insured should reflect the full reinstatement cost (cost to rebuild), not the market value.</li>
+          <li><strong>Contents insurance</strong> &mdash; Covers the tenant's own fixtures, fittings, stock and equipment. This is the tenant's responsibility and is separate from the building policy.</li>
+          <li><strong>Loss of rent insurance</strong> &mdash; Covers the landlord's rental income if the building is damaged and cannot be occupied. Typically covers 3 years' rent.</li>
+          <li><strong>Public liability</strong> &mdash; Covers claims from third parties injured on the property. Both landlord and tenant need their own policies.</li>
+        </ul>
+        <p style="margin-top:12px;">The lease defines who insures what. Getting this wrong can leave a building uninsured or double-insured, both of which are problems.</p>
+      </div>
+
+      <div class="quote-block">
+        <p>A lease is the DNA of a commercial property. Everything a surveyor does, from rent reviews to dilapidations to service charges, starts with reading and understanding the lease. Get comfortable reading legal documents. It is a skill that will define your career.</p>
+        <cite>Matt Fitzgerald MRICS, Hillway</cite>
+      </div>
+    </section>
+
+    <!-- MODULE 2 KNOWLEDGE CHECK -->
+    <section id="quiz-2" class="section fade-in">
+      <div class="section-header">
+        <span class="section-number">Q</span>
+        <h2>Module 2 Knowledge Check</h2>
+      </div>
+
+      <div class="quiz-container">
+        <div class="quiz-question" data-question="6" data-type="mc" data-answer="b">
+          <div class="quiz-q-number">Question 1 of 5</div>
+          <div class="quiz-q-text">A tenant has a 10-year lease with a break clause at year 5. What does this mean?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The rent automatically reduces by half at year 5</button>
+            <button class="quiz-option" data-value="b">The tenant (or landlord, depending on the clause) has the option to end the lease at year 5</button>
+            <button class="quiz-option" data-value="c">The lease must be renegotiated at year 5</button>
+            <button class="quiz-option" data-value="d">The tenant gets a 5-year rent-free period</button>
+          </div>
+          <div class="quiz-explanation">A break clause gives the right (but not the obligation) to terminate the lease early at a specified date. Whether it is a tenant break, landlord break, or mutual break depends on the lease wording. Break clauses often have strict conditions (e.g., all rent must be paid, the property must be in good repair) that must be met precisely, or the break is invalid.</div>
+        </div>
+
+        <div class="quiz-question" data-question="7" data-type="mc" data-answer="a">
+          <div class="quiz-q-number">Question 2 of 5</div>
+          <div class="quiz-q-text">An open market rent review is "upward only." What does this mean?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The rent can only stay the same or increase at review; it can never decrease</button>
+            <button class="quiz-option" data-value="b">The rent can only increase by a maximum of the inflation rate</button>
+            <button class="quiz-option" data-value="c">The review must result in a higher rent every time</button>
+            <button class="quiz-option" data-value="d">The landlord can only review the rent upwards once during the lease</button>
+          </div>
+          <div class="quiz-explanation">In an upward only rent review, if the market rent has fallen below the current passing rent, the rent stays the same (a "standstill"). The rent can never be reduced below the previous level. This protects the landlord's income and the investment value of the property. Tenants and their advisors have long argued against upward only reviews, but they remain the market standard.</div>
+        </div>
+
+        <div class="quiz-question" data-question="8" data-type="mc" data-answer="d">
+          <div class="quiz-q-number">Question 3 of 5</div>
+          <div class="quiz-q-text">Which document sets out best practice for service charges in commercial property?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The Landlord and Tenant Act 1954</button>
+            <button class="quiz-option" data-value="b">The Building Regulations 2010</button>
+            <button class="quiz-option" data-value="c">The RICS Red Book</button>
+            <button class="quiz-option" data-value="d">The RICS Professional Statement on Service Charges in Commercial Property</button>
+          </div>
+          <div class="quiz-explanation">The RICS Professional Statement on Service Charges in Commercial Property (formerly the RICS Service Charge Code) is mandatory for RICS members. It covers transparency, timeliness of accounts, reasonableness of expenditure, and the rights of tenants to challenge costs. The Red Book covers valuations, not service charges. The 1954 Act covers security of tenure.</div>
+        </div>
+
+        <div class="quiz-question" data-question="9" data-type="mc" data-answer="c">
+          <div class="quiz-q-number">Question 4 of 5</div>
+          <div class="quiz-q-text">A commercial property has a rateable value of &pound;80,000 and the multiplier is 55p. What are the approximate annual business rates?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">&pound;8,000</button>
+            <button class="quiz-option" data-value="b">&pound;14,400</button>
+            <button class="quiz-option" data-value="c">&pound;44,000</button>
+            <button class="quiz-option" data-value="d">&pound;80,000</button>
+          </div>
+          <div class="quiz-explanation">Business rates = Rateable Value x Multiplier. &pound;80,000 x 0.55 = &pound;44,000. This is a significant annual cost for tenants and must be factored into total occupational costs alongside rent, service charge and insurance.</div>
+        </div>
+
+        <div class="quiz-question" data-question="10" data-type="mc" data-answer="b">
+          <div class="quiz-q-number">Question 5 of 5</div>
+          <div class="quiz-q-text">What should building insurance be based on?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The market value of the property</button>
+            <button class="quiz-option" data-value="b">The full reinstatement cost (cost to rebuild)</button>
+            <button class="quiz-option" data-value="c">The rateable value</button>
+            <button class="quiz-option" data-value="d">The annual rent</button>
+          </div>
+          <div class="quiz-explanation">Building insurance should be based on the Declared Value / Day One Reinstatement Cost, which is the cost to completely rebuild the property from scratch, including demolition, site clearance, professional fees and an allowance for inflation during the rebuild period. This is different from (and usually lower than) the market value, which includes land value and other factors.</div>
+        </div>
+
+        <div class="quiz-score-card" id="quiz-score-2">
+          <h3>Module 2 Complete</h3>
+          <div class="quiz-score-number" id="quiz-score-display-2">0/5</div>
+          <p id="quiz-score-message-2"></p>
+          <button class="reset-btn" onclick="resetModuleQuiz(2)">Reset Module 2 Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- MODULE 3: THE SURVEYING PROFESSION            -->
+    <!-- ============================================ -->
+    <section id="module-3" class="section fade-in">
+      <div class="section-header">
+        <span class="section-number">3</span>
+        <h2>The Surveying Profession</h2>
+        <span class="module-tag">Module 3</span>
+      </div>
+
+      <div class="card card-accent">
+        <h3>What is RICS?</h3>
+        <p>The Royal Institution of Chartered Surveyors (RICS) is the global professional body for surveyors. Founded in 1868 and headquartered in London, it sets and enforces standards for the profession worldwide. Being "RICS regulated" means Hillway operates under the highest professional standards in the industry.</p>
+        <p style="margin-top:12px;">RICS is not a trade body or a union. It is a regulatory body with the power to discipline, fine and expel members. When a firm displays the RICS lion logo, clients know they are dealing with a firm that has professional indemnity insurance, complaints procedures, and regulated conduct.</p>
+        <ul style="margin-top:12px;">
+          <li><strong>180,000+ members</strong> worldwide across 146 countries</li>
+          <li><strong>Designation letters:</strong> MRICS (Member), FRICS (Fellow), AssocRICS (Associate)</li>
+          <li><strong>Regulated firms</strong> must follow RICS Rules of Conduct and hold PI insurance</li>
+          <li><strong>Standards:</strong> The RICS publishes professional standards, guidance notes and practice statements that members must follow</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Pathways to Becoming a Chartered Surveyor</h3>
+        <p>There are several routes to becoming a member of RICS. Your apprenticeship route is one of the newest and most practical.</p>
+        <table class="comparison-table" style="margin-top:16px;">
+          <thead>
+            <tr>
+              <th>Route</th>
+              <th>How It Works</th>
+              <th>Timeline</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Graduate APC</strong></td>
+              <td>Complete an RICS-accredited degree, then 2 years of structured work experience (Assessment of Professional Competence), culminating in a final assessment interview</td>
+              <td>3-5 years (degree + APC)</td>
+            </tr>
+            <tr>
+              <td><strong>Apprenticeship</strong></td>
+              <td>Earn while you learn. Combine a degree programme at CEM (or similar) with on-the-job training at a surveying firm. You will sit the APC at the end. <strong>This is your route.</strong></td>
+              <td>5-6 years</td>
+            </tr>
+            <tr>
+              <td><strong>AssocRICS</strong></td>
+              <td>A qualification below full chartered status. Less academic requirement. Some people use it as a stepping stone to MRICS.</td>
+              <td>2-3 years</td>
+            </tr>
+            <tr>
+              <td><strong>Senior Professional Route</strong></td>
+              <td>For experienced professionals (10+ years) who never formally qualified. Assessed on portfolio of work and interview.</td>
+              <td>Variable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card card-highlight">
+        <h3>CEM: College of Estate Management</h3>
+        <p>CEM is part of the University of Reading and is the UK's leading provider of distance and flexible learning for the built environment. It has been training surveyors since 1919. Your apprenticeship programme will be delivered by CEM, which means:</p>
+        <ul>
+          <li><strong>Flexible study</strong> &mdash; Online materials, tutorials and assignments designed for people working full-time</li>
+          <li><strong>RICS-accredited</strong> &mdash; The degree you earn will be accredited by RICS, which is a prerequisite for the APC</li>
+          <li><strong>Industry-focused</strong> &mdash; The curriculum is designed with input from employers, so what you learn is directly relevant to your job</li>
+          <li><strong>Support</strong> &mdash; Dedicated tutors, study groups and an online learning environment</li>
+          <li><strong>Your start date:</strong> 30 March 2026</li>
+        </ul>
+        <p style="margin-top:12px;">The apprenticeship combines your CEM studies with structured workplace learning at Hillway. You will build a portfolio of competencies, keep a log of your experience, and I will act as your APC Counsellor throughout the process.</p>
+      </div>
+
+      <div class="card">
+        <h3>RICS Ethical Standards</h3>
+        <p>RICS members must uphold five professional and ethical standards. These are not optional guidelines; they are rules. Breaching them can lead to formal disciplinary action.</p>
+        <div style="margin-top:16px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--gray-200);">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--secondary),var(--accent));color:white;font-size:12px;font-weight:700;flex-shrink:0;">1</span>
+            <div><strong style="font-size:14px;">Act with integrity</strong><p style="font-size:13px;color:var(--gray-500);margin-top:2px;">Be honest and straightforward in all you do. Never mislead a client or colleague.</p></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--gray-200);">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--secondary),var(--accent));color:white;font-size:12px;font-weight:700;flex-shrink:0;">2</span>
+            <div><strong style="font-size:14px;">Always provide a high standard of service</strong><p style="font-size:13px;color:var(--gray-500);margin-top:2px;">Competent, diligent, timely work. If you are not qualified to do something, say so.</p></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--gray-200);">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--secondary),var(--accent));color:white;font-size:12px;font-weight:700;flex-shrink:0;">3</span>
+            <div><strong style="font-size:14px;">Act in a way that promotes trust in the profession</strong><p style="font-size:13px;color:var(--gray-500);margin-top:2px;">Your behaviour reflects on all surveyors. Maintain professional conduct at all times.</p></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--gray-200);">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--secondary),var(--accent));color:white;font-size:12px;font-weight:700;flex-shrink:0;">4</span>
+            <div><strong style="font-size:14px;">Treat others with respect</strong><p style="font-size:13px;color:var(--gray-500);margin-top:2px;">No discrimination, bullying or harassment. Work collaboratively and respectfully.</p></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 0;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--secondary),var(--accent));color:white;font-size:12px;font-weight:700;flex-shrink:0;">5</span>
+            <div><strong style="font-size:14px;">Take responsibility</strong><p style="font-size:13px;color:var(--gray-500);margin-top:2px;">Be accountable for your actions. If you make a mistake, own it and fix it.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Types of Surveyor</h3>
+        <p>Surveying is a broad profession with many specialisms. Here are the main types you will encounter:</p>
+        <div class="type-grid" style="margin-top:16px;">
+          <div class="type-card">
+            <h3>Commercial Property Surveyor</h3>
+            <p>Advises on the letting, sale, purchase, management and valuation of offices, shops, warehouses and other commercial buildings. <strong>This is what you are training to become.</strong></p>
+          </div>
+          <div class="type-card">
+            <h3>Building Surveyor</h3>
+            <p>Specialises in the physical condition of buildings. Carries out surveys, advises on defects, manages construction projects, handles party wall matters and dilapidations.</p>
+          </div>
+          <div class="type-card">
+            <h3>Residential Surveyor</h3>
+            <p>Deals with houses and flats. Carries out mortgage valuations, homebuyer surveys and building surveys for domestic properties. Often works for lenders.</p>
+          </div>
+          <div class="type-card">
+            <h3>Quantity Surveyor (QS)</h3>
+            <p>Manages costs on construction projects. Prepares budgets, tenders, valuations and final accounts. Works closely with contractors and developers.</p>
+          </div>
+          <div class="type-card">
+            <h3>Planning Consultant</h3>
+            <p>Advises on the planning system, submits planning applications and represents clients at planning inquiries. Understanding what can be built where is key to development value.</p>
+          </div>
+          <div class="type-card">
+            <h3>Valuation Surveyor</h3>
+            <p>Provides formal valuations of property for lending, accounts, taxation, dispute resolution and investment purposes. Must comply with the RICS Valuation Standards ("Red Book").</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-warning">
+        <h3>A Typical Day for a Commercial Property Surveyor</h3>
+        <p>There is no such thing as a truly typical day, which is one of the reasons surveying is a good career. But here is what a working day at Hillway might look like:</p>
+        <ul>
+          <li><strong>08:30</strong> &mdash; Review emails, check lease event diary for upcoming deadlines (rent reviews, break dates, lease expiries)</li>
+          <li><strong>09:00</strong> &mdash; Draft a rent review memorandum for a client, comparing comparable evidence to justify a rental figure</li>
+          <li><strong>10:30</strong> &mdash; Property inspection at a multi-let office building. Check common areas, note any maintenance issues, photograph defects</li>
+          <li><strong>12:00</strong> &mdash; Meeting with a tenant to discuss their service charge query. Explain the apportionment method and provide supporting documentation</li>
+          <li><strong>13:30</strong> &mdash; Desk research. Analyse comparable transactions on EGi (Estates Gazette Interactive) for a valuation instruction</li>
+          <li><strong>14:30</strong> &mdash; Call with a landlord client about a tenant wanting to assign their lease. Discuss the covenant strength of the proposed assignee</li>
+          <li><strong>15:30</strong> &mdash; Review a draft lease for a new letting. Check the terms align with the heads of terms agreed during negotiations</li>
+          <li><strong>16:30</strong> &mdash; Update service charge budgets for year-end reconciliation. Cross-check contractor invoices against budget lines</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- MODULE 3 KNOWLEDGE CHECK -->
+    <section id="quiz-3" class="section fade-in">
+      <div class="section-header">
+        <span class="section-number">Q</span>
+        <h2>Module 3 Knowledge Check</h2>
+      </div>
+
+      <div class="quiz-container">
+        <div class="quiz-question" data-question="11" data-type="mc" data-answer="c">
+          <div class="quiz-q-number">Question 1 of 5</div>
+          <div class="quiz-q-text">What does RICS stand for?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Royal Institute of Construction Surveyors</button>
+            <button class="quiz-option" data-value="b">Registered Institution of Commercial Specialists</button>
+            <button class="quiz-option" data-value="c">Royal Institution of Chartered Surveyors</button>
+            <button class="quiz-option" data-value="d">Regulation and Inspection of Chartered Surveyors</button>
+          </div>
+          <div class="quiz-explanation">The Royal Institution of Chartered Surveyors, founded in 1868. The designation "Chartered Surveyor" is a protected title that can only be used by RICS members. The letters MRICS (Member) or FRICS (Fellow) after someone's name indicate they have passed the APC and maintain their professional standards.</div>
+        </div>
+
+        <div class="quiz-question" data-question="12" data-type="mc" data-answer="b">
+          <div class="quiz-q-number">Question 2 of 5</div>
+          <div class="quiz-q-text">What is the APC?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Annual Property Certification, a yearly audit of a firm's work</button>
+            <button class="quiz-option" data-value="b">Assessment of Professional Competence, the structured training and final assessment to become MRICS</button>
+            <button class="quiz-option" data-value="c">Association of Property Consultants, a trade body for surveyors</button>
+            <button class="quiz-option" data-value="d">Advanced Planning Certificate, a qualification for planning consultants</button>
+          </div>
+          <div class="quiz-explanation">The Assessment of Professional Competence is the process by which graduate surveyors become chartered. It involves a minimum of 2 years' structured work experience, keeping a detailed log of competencies, a case study, and a final assessment interview with a panel of experienced RICS members. It is rigorous and the pass rate is around 65-70%, so thorough preparation is essential.</div>
+        </div>
+
+        <div class="quiz-question" data-question="13" data-type="mc" data-answer="a">
+          <div class="quiz-q-number">Question 3 of 5</div>
+          <div class="quiz-q-text">Which of the following is NOT one of the five RICS ethical standards?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Always maximise the client's financial return</button>
+            <button class="quiz-option" data-value="b">Act with integrity</button>
+            <button class="quiz-option" data-value="c">Treat others with respect</button>
+            <button class="quiz-option" data-value="d">Take responsibility</button>
+          </div>
+          <div class="quiz-explanation">"Maximise the client's financial return" is not an RICS ethical standard. While you should provide good advice that serves the client's interests, the five standards are: act with integrity, always provide a high standard of service, act in a way that promotes trust in the profession, treat others with respect, and take responsibility. A surveyor must never compromise ethics for a client's financial gain.</div>
+        </div>
+
+        <div class="quiz-question" data-question="14" data-type="mc" data-answer="d">
+          <div class="quiz-q-number">Question 4 of 5</div>
+          <div class="quiz-q-text">What is CEM?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Centre for Environmental Management, an eco-consultancy</button>
+            <button class="quiz-option" data-value="b">Chartered Estate Managers, a division of RICS</button>
+            <button class="quiz-option" data-value="c">Construction and Engineering Management, a trade qualification</button>
+            <button class="quiz-option" data-value="d">College of Estate Management, part of the University of Reading</button>
+          </div>
+          <div class="quiz-explanation">The College of Estate Management (CEM), part of the University of Reading, has been training surveyors through flexible and distance learning since 1919. It is one of the most respected providers of RICS-accredited built environment qualifications in the UK. Your apprenticeship degree will be delivered through CEM.</div>
+        </div>
+
+        <div class="quiz-question" data-question="15" data-type="mc" data-answer="b">
+          <div class="quiz-q-number">Question 5 of 5</div>
+          <div class="quiz-q-text">Which type of surveyor specialises in managing costs on construction projects?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Building surveyor</button>
+            <button class="quiz-option" data-value="b">Quantity surveyor</button>
+            <button class="quiz-option" data-value="c">Valuation surveyor</button>
+            <button class="quiz-option" data-value="d">Planning consultant</button>
+          </div>
+          <div class="quiz-explanation">A Quantity Surveyor (QS) specialises in construction cost management. They prepare budgets, manage tenders, value work in progress, handle variations and produce final accounts. A building surveyor focuses on the physical condition of buildings. A valuation surveyor values properties for specific purposes. As a commercial property surveyor, you will work alongside all these specialists.</div>
+        </div>
+
+        <div class="quiz-score-card" id="quiz-score-3">
+          <h3>Module 3 Complete</h3>
+          <div class="quiz-score-number" id="quiz-score-display-3">0/5</div>
+          <p id="quiz-score-message-3"></p>
+          <button class="reset-btn" onclick="resetModuleQuiz(3)">Reset Module 3 Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- MODULE 4: PROPERTY MANAGEMENT IN PRACTICE     -->
+    <!-- ============================================ -->
+    <section id="module-4" class="section fade-in">
+      <div class="section-header">
+        <span class="section-number">4</span>
+        <h2>Property Management in Practice</h2>
+        <span class="module-tag">Module 4</span>
+      </div>
+
+      <div class="card card-accent">
+        <h3>What is Property Management?</h3>
+        <p>Property management is the day-to-day operation of commercial real estate on behalf of the landlord. It is where the theory of Modules 1-3 meets real life. A property manager is the person who makes sure the building runs smoothly, the tenants are looked after, the income is collected, and the asset retains its value. At Hillway, property management is a core service and you will be involved from your first week.</p>
+        <p style="margin-top:12px;">Good property management is proactive, not reactive. You do not wait for problems to find you. You anticipate them, plan for them, and deal with them before they become crises.</p>
+      </div>
+
+      <div class="card">
+        <h3>Day-to-Day Property Management Tasks</h3>
+        <p>Here are the core activities that make up property management work:</p>
+        <ul>
+          <li><strong>Rent collection and credit control</strong> &mdash; Ensuring tenants pay rent on time. Chasing arrears promptly. Maintaining accurate records of all payments received.</li>
+          <li><strong>Lease compliance</strong> &mdash; Monitoring whether tenants are complying with their lease obligations (using the property correctly, maintaining it, not making unauthorised alterations).</li>
+          <li><strong>Landlord compliance</strong> &mdash; Ensuring the landlord meets their obligations too (maintaining common areas, providing services, insuring the building).</li>
+          <li><strong>Contractor management</strong> &mdash; Appointing and supervising cleaning companies, security firms, maintenance contractors and managing agents. Getting best value for money.</li>
+          <li><strong>Tenant communication</strong> &mdash; Being the point of contact for tenant queries, complaints and requests. Good tenant relationships reduce voids and disputes.</li>
+          <li><strong>Financial reporting</strong> &mdash; Preparing management accounts, service charge budgets and reconciliations, rent schedules and cash flow forecasts for the landlord.</li>
+          <li><strong>Insurance administration</strong> &mdash; Ensuring policies are renewed, premiums are recovered from tenants, and claims are processed when damage occurs.</li>
+        </ul>
+      </div>
+
+      <div class="card card-highlight">
+        <h3>Tenant Liaison and Rent Collection</h3>
+        <p>Rent is the lifeblood of a property investment. Collecting it efficiently and managing arrears professionally is fundamental.</p>
+        <div style="margin-top:16px;">
+          <h4 style="font-size:14px;font-weight:700;color:var(--primary);margin-bottom:6px;">The Rent Collection Cycle</h4>
+          <ul>
+            <li><strong>Demand</strong> &mdash; Issue rent demands to tenants before each quarter day (or monthly, depending on the lease). The demand must correctly state the amount, the period and the payment details.</li>
+            <li><strong>Collection</strong> &mdash; Monitor bank accounts for incoming payments. Match payments to invoices. Most tenants now pay by BACS transfer.</li>
+            <li><strong>Arrears management</strong> &mdash; If rent is not received within 7 days, send a formal reminder. Escalate to phone call at 14 days. Formal letter (Letter Before Action) at 21 days. Consider legal remedies (CRAR, forfeiture, statutory demand) if the tenant does not engage.</li>
+            <li><strong>Reporting</strong> &mdash; Provide the landlord with a rent collection report showing amounts due, amounts received and any arrears. Typically monthly.</li>
+          </ul>
+        </div>
+        <div style="margin-top:16px;">
+          <h4 style="font-size:14px;font-weight:700;color:var(--primary);margin-bottom:6px;">CRAR: Commercial Rent Arrears Recovery</h4>
+          <p>CRAR replaced the ancient remedy of "distress" in 2014. It allows a landlord to instruct a certified enforcement agent (bailiff) to enter the premises and seize the tenant's goods to the value of the rent owed. It can only be used for principal rent (not service charges or insurance) and requires 7 days' written notice. It is a powerful tool but must be used carefully.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Service Charge Budgeting and Reconciliation</h3>
+        <p>As you learned in Module 2, multi-let buildings recover running costs through a service charge. Managing this process is a significant part of property management work.</p>
+        <ul>
+          <li><strong>Budget preparation</strong> &mdash; Before each service charge year, prepare a detailed budget by cost category (cleaning, security, utilities, repairs, management fees, insurance). Base it on prior year actuals plus known changes.</li>
+          <li><strong>On-account collection</strong> &mdash; Collect payments from tenants (usually quarterly) based on the budget. Each tenant pays their apportioned share.</li>
+          <li><strong>Cost management</strong> &mdash; Throughout the year, review contractor invoices, challenge unreasonable costs, ensure works are completed to a satisfactory standard and authorise payments.</li>
+          <li><strong>Year-end reconciliation</strong> &mdash; After the service charge year ends, prepare a detailed reconciliation comparing actual expenditure to budget. Issue a balancing charge or credit to each tenant.</li>
+          <li><strong>Certification</strong> &mdash; The RICS Code requires service charge accounts to be certified (audited) by a qualified accountant if the total expenditure exceeds a specified threshold.</li>
+          <li><strong>Tenant queries</strong> &mdash; Tenants have the right to inspect supporting documentation. Be prepared to justify every cost. Transparency builds trust and reduces disputes.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Property Inspections and Schedules of Condition</h3>
+        <p>Regular physical inspections are essential for managing a property properly. You need to know what state the building is in at all times.</p>
+        <div style="margin-top:16px;">
+          <h4 style="font-size:14px;font-weight:700;color:var(--primary);margin-bottom:6px;">Routine Inspections</h4>
+          <p>Visit the property at regular intervals (quarterly for multi-let, at least annually for single-let). Walk the common areas, check for defects, note any unauthorised works by tenants, inspect safety equipment (fire exits, extinguishers, emergency lighting). Take photographs. Write up a formal report with action items and costs.</p>
+        </div>
+        <div style="margin-top:16px;">
+          <h4 style="font-size:14px;font-weight:700;color:var(--primary);margin-bottom:6px;">Schedules of Condition</h4>
+          <p>A Schedule of Condition is a photographic and written record of the state of a property at a specific point in time. It is most commonly prepared at the start of a lease to record what condition the property was in when the tenant took occupation. This protects the tenant from being held liable for pre-existing defects at lease end (dilapidations). A well-prepared schedule of condition is an essential piece of evidence and a core surveying skill.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Health and Safety Compliance</h3>
+        <p>The landlord (or managing agent acting on their behalf) has legal obligations to ensure the safety of everyone who uses the building. This includes tenants, their staff, visitors and contractors. Non-compliance can result in criminal prosecution.</p>
+        <ul>
+          <li><strong>Fire Risk Assessment</strong> &mdash; Required under the Regulatory Reform (Fire Safety) Order 2005. Must be carried out by a competent person and reviewed regularly. The "responsible person" (usually the landlord for common areas) must implement recommendations.</li>
+          <li><strong>Asbestos management</strong> &mdash; Buildings constructed before 2000 may contain asbestos. The landlord must maintain an asbestos management plan and ensure anyone working in the building is aware of its location. Do not disturb materials that may contain asbestos.</li>
+          <li><strong>Legionella risk assessment</strong> &mdash; Required for water systems that could harbour legionella bacteria (cooling towers, hot water systems, spa pools). Regular monitoring and testing is essential.</li>
+          <li><strong>Electrical testing</strong> &mdash; Fixed wiring inspections (EICR) should be carried out every 5 years. PAT testing for portable appliances. Ensure emergency lighting and fire alarm systems are tested regularly.</li>
+          <li><strong>Lift inspections</strong> &mdash; Passenger lifts must be inspected every 6 months by a competent engineer under the Lifting Operations and Lifting Equipment Regulations (LOLER).</li>
+          <li><strong>Risk assessments</strong> &mdash; General risk assessments for common areas covering slips, trips, falls, working at height and lone working.</li>
+        </ul>
+      </div>
+
+      <div class="card card-highlight">
+        <h3>Lease Events Diary Management</h3>
+        <p>A lease events diary is the single most important tool in property management. Missing a critical date can cost tens or hundreds of thousands of pounds.</p>
+        <table class="comparison-table" style="margin-top:16px;">
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Why It Matters</th>
+              <th>Lead Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Rent review date</strong></td>
+              <td>Must serve notice on time to trigger the review. Missing the date can mean losing the right to increase rent for years.</td>
+              <td>6-12 months before</td>
+            </tr>
+            <tr>
+              <td><strong>Break date</strong></td>
+              <td>If acting for a tenant exercising a break, notice must be served precisely on time and conditions met exactly. One day late = break is lost.</td>
+              <td>6-12 months before</td>
+            </tr>
+            <tr>
+              <td><strong>Lease expiry</strong></td>
+              <td>Plan for re-letting, rent negotiations or tenant departure. The Landlord and Tenant Act 1954 may give the tenant the right to a new lease.</td>
+              <td>12-18 months before</td>
+            </tr>
+            <tr>
+              <td><strong>Section 25 / Section 26 notices</strong></td>
+              <td>Formal notices under the 1954 Act. The landlord serves a Section 25 notice to end the tenancy. The tenant serves a Section 26 request for a new tenancy.</td>
+              <td>6-12 months before expiry</td>
+            </tr>
+            <tr>
+              <td><strong>Insurance renewal</strong></td>
+              <td>Building insurance must never lapse. Renew before expiry and update declared values.</td>
+              <td>1-2 months before</td>
+            </tr>
+            <tr>
+              <td><strong>Service charge year end</strong></td>
+              <td>Trigger reconciliation process, instruct accountant for certification, prepare next year's budget.</td>
+              <td>Immediately after year end</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:12px;font-size:13px;color:var(--gray-500);">At Hillway, we maintain a digital lease events diary with automated reminders. Every critical date has a cascade of alerts: 12 months, 6 months, 3 months and 1 month before the event. You will be responsible for maintaining this diary for your allocated properties.</p>
+      </div>
+
+      <div class="quote-block">
+        <p>Property management is not glamorous work, but it is where you learn the most. Every other area of surveying, from agency to valuation to development, benefits from understanding how a building actually runs day to day. The best surveyors I know all started in management.</p>
+        <cite>Matt Fitzgerald MRICS, Hillway</cite>
+      </div>
+    </section>
+
+    <!-- MODULE 4 KNOWLEDGE CHECK -->
+    <section id="quiz-4" class="section fade-in">
+      <div class="section-header">
+        <span class="section-number">Q</span>
+        <h2>Module 4 Knowledge Check</h2>
+      </div>
+
+      <div class="quiz-container">
+        <div class="quiz-question" data-question="16" data-type="mc" data-answer="c">
+          <div class="quiz-q-number">Question 1 of 5</div>
+          <div class="quiz-q-text">What is CRAR in the context of rent arrears?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Commercial Rent Adjustment Review, a process for reducing rent</button>
+            <button class="quiz-option" data-value="b">Contractual Rent Arrears Resolution, an informal mediation process</button>
+            <button class="quiz-option" data-value="c">Commercial Rent Arrears Recovery, a legal remedy allowing seizure of goods for unpaid principal rent</button>
+            <button class="quiz-option" data-value="d">Central Rating Authority Revaluation, a business rates appeal process</button>
+          </div>
+          <div class="quiz-explanation">CRAR (Commercial Rent Arrears Recovery) replaced the ancient remedy of "distress" under the Tribunals, Courts and Enforcement Act 2007. It allows a landlord to instruct a certified enforcement agent to seize tenant goods to the value of unpaid principal rent. Key requirements: 7 days' written notice, only for principal rent (not service charge or insurance), minimum 7 days' arrears, and only certified agents can be used.</div>
+        </div>
+
+        <div class="quiz-question" data-question="17" data-type="mc" data-answer="a">
+          <div class="quiz-q-number">Question 2 of 5</div>
+          <div class="quiz-q-text">What is a Schedule of Condition used for?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Recording the state of a property at the start of a lease to protect the tenant from pre-existing defects</button>
+            <button class="quiz-option" data-value="b">Listing all the conditions (terms) in a lease document</button>
+            <button class="quiz-option" data-value="c">A timetable of planned maintenance works over the next 5 years</button>
+            <button class="quiz-option" data-value="d">An inventory of furniture and fittings in a furnished office</button>
+          </div>
+          <div class="quiz-explanation">A Schedule of Condition is a photographic and written record of a property's state at a specific date, most commonly at lease commencement. It limits the tenant's repairing liability by documenting what condition the property was in when they took it. Without one, a tenant on an FRI lease could be liable to return the property in better condition than they found it.</div>
+        </div>
+
+        <div class="quiz-question" data-question="18" data-type="mc" data-answer="d">
+          <div class="quiz-q-number">Question 3 of 5</div>
+          <div class="quiz-q-text">Why is missing a break clause date potentially catastrophic for a tenant?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The tenant must pay a penalty fee equal to one year's rent</button>
+            <button class="quiz-option" data-value="b">The landlord can immediately increase the rent to market level</button>
+            <button class="quiz-option" data-value="c">The property is automatically sublet to a third party</button>
+            <button class="quiz-option" data-value="d">The tenant loses the right to exit the lease early and remains liable for rent until the next break or lease expiry</button>
+          </div>
+          <div class="quiz-explanation">Break clauses are strictly interpreted by the courts. If the notice is served one day late, or if a condition of the break (e.g., all rent paid, property in repair) is not precisely met, the break is invalid and the lease continues. A tenant on a 10-year lease who misses a year-5 break could be liable for 5 more years of rent. This is why the lease events diary is so critical.</div>
+        </div>
+
+        <div class="quiz-question" data-question="19" data-type="mc" data-answer="b">
+          <div class="quiz-q-number">Question 4 of 5</div>
+          <div class="quiz-q-text">Under fire safety regulations, who is typically the "responsible person" for common areas in a multi-let commercial building?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The most senior tenant in the building</button>
+            <button class="quiz-option" data-value="b">The landlord (or their managing agent)</button>
+            <button class="quiz-option" data-value="c">The local fire brigade</button>
+            <button class="quiz-option" data-value="d">The building's insurance company</button>
+          </div>
+          <div class="quiz-explanation">Under the Regulatory Reform (Fire Safety) Order 2005, the "responsible person" for common areas is the landlord or whoever has control of the premises. In practice, this responsibility is often delegated to a managing agent (like Hillway) who carries out fire risk assessments, ensures fire safety equipment is maintained and that evacuation procedures are in place. Tenants are responsible for their own demised areas.</div>
+        </div>
+
+        <div class="quiz-question" data-question="20" data-type="mc" data-answer="a">
+          <div class="quiz-q-number">Question 5 of 5</div>
+          <div class="quiz-q-text">What is the purpose of service charge reconciliation at year end?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">To compare actual expenditure against the budget and issue a balancing charge or credit to each tenant</button>
+            <button class="quiz-option" data-value="b">To determine the market rent for the following year</button>
+            <button class="quiz-option" data-value="c">To calculate the building's rateable value for business rates</button>
+            <button class="quiz-option" data-value="d">To assess the building's insurance reinstatement value</button>
+          </div>
+          <div class="quiz-explanation">During the service charge year, tenants pay on-account based on the budget. At year end, the managing agent compares what was actually spent to what was budgeted. If actual costs were higher, tenants pay a balancing charge. If lower, they receive a credit. The RICS Professional Statement requires this to be done within set timeframes and, above certain thresholds, the accounts must be independently certified by a qualified accountant.</div>
+        </div>
+
+        <div class="quiz-score-card" id="quiz-score-4">
+          <h3>Module 4 Complete</h3>
+          <div class="quiz-score-number" id="quiz-score-display-4">0/5</div>
+          <p id="quiz-score-message-4"></p>
+          <button class="reset-btn" onclick="resetModuleQuiz(4)">Reset Module 4 Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SUMMARY AND NEXT STEPS                        -->
+    <!-- ============================================ -->
+    <section id="summary" class="section fade-in">
+      <div class="section-header">
+        <span class="section-number">&#10003;</span>
+        <h2>Summary &amp; Next Steps</h2>
+      </div>
+
+      <div class="summary-card">
+        <h3>Course Complete</h3>
+        <p>You have covered the essential foundations of commercial property surveying. Here is what you now understand:</p>
+        <ul>
+          <li><span class="bullet"></span> The different types of commercial property and how they behave as investments</li>
+          <li><span class="bullet"></span> Freehold versus leasehold ownership and the property lifecycle</li>
+          <li><span class="bullet"></span> How leases work, including rent reviews, service charges and break clauses</li>
+          <li><span class="bullet"></span> The role of RICS, the pathway to becoming chartered, and professional ethics</li>
+          <li><span class="bullet"></span> The practical realities of property management, from rent collection to health and safety</li>
+          <li><span class="bullet"></span> Key terminology that you will use every day in your career</li>
+        </ul>
+      </div>
+
+      <!-- Overall Score -->
+      <div class="quiz-score-card" id="overall-score" style="display:none;margin-top:0;">
+        <h3>Overall Score</h3>
+        <div class="quiz-score-number" id="overall-score-display">0/20</div>
+        <p id="overall-score-message"></p>
+        <button class="reset-btn" onclick="resetAllQuizzes()" style="margin-top:16px;">Reset All Quizzes</button>
+      </div>
+
+      <div class="card" style="margin-top:32px;">
+        <h3>What to Study Next</h3>
+        <p>Before CEM starts on 30 March, consider reading around these topics to give yourself an advantage:</p>
+        <ul>
+          <li><strong>The Landlord and Tenant Act 1954</strong> &mdash; The most important piece of legislation in commercial property. It gives business tenants "security of tenure" (the right to a new lease when the current one expires). Understanding this Act is fundamental. Start with the RICS guidance note on the topic.</li>
+          <li><strong>RICS Valuation Standards (Red Book)</strong> &mdash; Browse the key definitions and valuation bases (Market Value, Market Rent, Fair Value). You do not need to memorise it, but knowing it exists and what it covers will help.</li>
+          <li><strong>Estates Gazette (EG)</strong> &mdash; The trade publication for commercial property. Read it weekly to stay current with market trends, transactions and developments. Available online at eg.co.uk.</li>
+          <li><strong>Property Week</strong> &mdash; Another key trade publication. Between EG and Property Week, you will have comprehensive market coverage.</li>
+          <li><strong>Measurement standards</strong> &mdash; RICS has adopted IPMS (International Property Measurement Standards) for measuring buildings. Understanding NIA (Net Internal Area), GIA (Gross Internal Area) and GEA (Gross External Area) is essential.</li>
+          <li><strong>Comparable evidence</strong> &mdash; Practice looking at property transaction data. CoStar, EGi and the VOA website are key sources. Understanding how to analyse and apply comparable evidence is a core surveying skill.</li>
+        </ul>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Recommended Reading</h3>
+        <ul>
+          <li><strong>"Introduction to Property Valuation"</strong> by William Britton, Keith Davies and Tony Johnson &mdash; The standard introductory textbook</li>
+          <li><strong>"Stapleton's Real Estate Management Practice"</strong> by Anthony Banfield &mdash; Comprehensive guide to property management</li>
+          <li><strong>"Modern Methods of Valuation"</strong> by Eric Shapiro, David Mackmin and Gary Sams &mdash; The definitive valuation textbook</li>
+          <li><strong>"Property Law"</strong> by Mark Richards &mdash; Accessible introduction to property law for non-lawyers</li>
+          <li><strong>RICS website (rics.org)</strong> &mdash; Free access to professional standards, guidance notes and market reports. Register for a student account.</li>
+        </ul>
+      </div>
+
+      <div class="card card-warning">
+        <h3>Before 30 March 2026</h3>
+        <p>Action items to complete before your CEM start date:</p>
+        <ol>
+          <li>Complete all four knowledge checks above with a score of at least 4/5 per module</li>
+          <li>Read through the RICS Rules of Conduct for Members and for Firms (available free on rics.org)</li>
+          <li>Set up your CEM student portal account when login details arrive</li>
+          <li>Subscribe to the Estates Gazette daily email newsletter (free)</li>
+          <li>Download the EGi app and explore property transaction data in Sheffield</li>
+          <li>Walk through Sheffield city centre and identify commercial properties by type (office, retail, industrial). Note which buildings are occupied, which are vacant, and who the tenants are</li>
+          <li>Read the lease for any Hillway-managed property that I send you. Mark up any terms you do not understand. We will discuss them together.</li>
+        </ol>
+      </div>
+
+      <div class="quote-block" style="margin-top:32px;">
+        <p>The best time to plant a tree was twenty years ago. The second best time is now. You are starting a career that will give you a professional qualification, commercial expertise and the ability to advise on one of the most important asset classes in the economy. Make the most of every day.</p>
+        <cite>Matt Fitzgerald MRICS, Hillway</cite>
+      </div>
+    </section>
+
+  </div><!-- end .content -->
+</div><!-- end #main -->
+
+<script>
+  // ==========================================
+  // Progress bar
+  // ==========================================
+  const progressBar = document.getElementById('progress-bar');
+
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }
+
+  // ==========================================
+  // Active sidebar link
+  // ==========================================
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+  function updateActiveLink() {
+    let current = '';
+    const offset = 100;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - offset;
+      if (window.scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('data-section') === current) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  // ==========================================
+  // Fade-in on scroll
+  // ==========================================
+  const fadeElements = document.querySelectorAll('.fade-in');
+
+  function checkFadeIn() {
+    fadeElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 60) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  // ==========================================
+  // Scroll event handler (throttled)
+  // ==========================================
+  let ticking = false;
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateProgress();
+        updateActiveLink();
+        checkFadeIn();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ==========================================
+  // Smooth scroll for sidebar links
+  // ==========================================
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ==========================================
+  // Quiz Logic
+  // ==========================================
+  const STORAGE_KEY = 'hillway-property-fundamentals-quiz';
+  const TOTAL_QUESTIONS = 20;
+  const QUESTIONS_PER_MODULE = 5;
+
+  // Track state per module
+  const moduleState = {
+    1: { answered: 0, correct: 0, questions: new Set() },
+    2: { answered: 0, correct: 0, questions: new Set() },
+    3: { answered: 0, correct: 0, questions: new Set() },
+    4: { answered: 0, correct: 0, questions: new Set() }
+  };
+
+  function getModuleForQuestion(qNum) {
+    const n = parseInt(qNum);
+    if (n <= 5) return 1;
+    if (n <= 10) return 2;
+    if (n <= 15) return 3;
+    return 4;
+  }
+
+  // Load saved state from localStorage
+  function loadQuizState() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      const state = JSON.parse(saved);
+
+      if (state.moduleState) {
+        for (const [mod, ms] of Object.entries(state.moduleState)) {
+          moduleState[mod].answered = ms.answered || 0;
+          moduleState[mod].correct = ms.correct || 0;
+          if (ms.questions) ms.questions.forEach(q => moduleState[mod].questions.add(q));
+        }
+      }
+
+      if (state.questionStates) {
+        Object.entries(state.questionStates).forEach(([qNum, qState]) => {
+          const qEl = document.querySelector('[data-question="' + qNum + '"]');
+          if (!qEl) return;
+
+          if (qState.correct) {
+            qEl.classList.add('answered-correct');
+          } else {
+            qEl.classList.add('answered-incorrect');
+          }
+          qEl.querySelector('.quiz-explanation').classList.add('visible');
+
+          const options = qEl.querySelectorAll('.quiz-option');
+          options.forEach(opt => {
+            opt.disabled = true;
+            if (opt.dataset.value === qState.selected) {
+              opt.classList.add(qState.correct ? 'selected-correct' : 'selected-incorrect');
+            }
+            if (opt.dataset.value === qState.answer && !qState.correct) {
+              opt.classList.add('show-correct');
+            }
+          });
+        });
+      }
+
+      // Update all score cards
+      for (let m = 1; m <= 4; m++) {
+        updateModuleScoreCard(m);
+      }
+      updateOverallScore();
+      updateModuleProgress();
+    } catch (e) {}
+  }
+
+  function saveQuizState(qNum, qState) {
+    try {
+      const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+      // Save module state
+      const serializedModuleState = {};
+      for (const [mod, ms] of Object.entries(moduleState)) {
+        serializedModuleState[mod] = {
+          answered: ms.answered,
+          correct: ms.correct,
+          questions: [...ms.questions]
+        };
+      }
+      existing.moduleState = serializedModuleState;
+
+      if (!existing.questionStates) existing.questionStates = {};
+      existing.questionStates[qNum] = qState;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+    } catch (e) {}
+  }
+
+  // Multiple choice click handler
+  document.querySelectorAll('.quiz-question[data-type="mc"] .quiz-option').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const questionEl = this.closest('.quiz-question');
+      const qNum = questionEl.dataset.question;
+      const mod = getModuleForQuestion(qNum);
+
+      if (moduleState[mod].questions.has(qNum)) return;
+      moduleState[mod].questions.add(qNum);
+      moduleState[mod].answered++;
+
+      const correctAnswer = questionEl.dataset.answer;
+      const selectedValue = this.dataset.value;
+      const isCorrect = selectedValue === correctAnswer;
+
+      if (isCorrect) {
+        moduleState[mod].correct++;
+        this.classList.add('selected-correct');
+        questionEl.classList.add('answered-correct');
+      } else {
+        this.classList.add('selected-incorrect');
+        questionEl.classList.add('answered-incorrect');
+        questionEl.querySelectorAll('.quiz-option').forEach(opt => {
+          if (opt.dataset.value === correctAnswer) {
+            opt.classList.add('show-correct');
+          }
+        });
+      }
+
+      questionEl.querySelectorAll('.quiz-option').forEach(opt => {
+        opt.disabled = true;
+      });
+
+      questionEl.querySelector('.quiz-explanation').classList.add('visible');
+
+      saveQuizState(qNum, {
+        selected: selectedValue,
+        answer: correctAnswer,
+        correct: isCorrect
+      });
+
+      updateModuleScoreCard(mod);
+      updateOverallScore();
+      updateModuleProgress();
+    });
+  });
+
+  function updateModuleScoreCard(mod) {
+    const ms = moduleState[mod];
+    if (ms.answered >= QUESTIONS_PER_MODULE) {
+      const scoreCard = document.getElementById('quiz-score-' + mod);
+      scoreCard.style.display = 'block';
+      document.getElementById('quiz-score-display-' + mod).textContent = ms.correct + '/' + QUESTIONS_PER_MODULE;
+      const pct = Math.round((ms.correct / QUESTIONS_PER_MODULE) * 100);
+      let msg = '';
+      if (pct === 100) {
+        msg = 'Perfect score. You have a strong grasp of this module.';
+      } else if (pct >= 80) {
+        msg = 'Strong result. Review the question you missed and move on.';
+      } else if (pct >= 60) {
+        msg = 'Good effort. Re-read the module content for the topics you missed.';
+      } else {
+        msg = 'You should review this module thoroughly before proceeding.';
+      }
+      document.getElementById('quiz-score-message-' + mod).textContent = msg;
+    }
+  }
+
+  function updateOverallScore() {
+    let totalAnswered = 0;
+    let totalCorrect = 0;
+    for (let m = 1; m <= 4; m++) {
+      totalAnswered += moduleState[m].answered;
+      totalCorrect += moduleState[m].correct;
+    }
+
+    if (totalAnswered >= TOTAL_QUESTIONS) {
+      const scoreCard = document.getElementById('overall-score');
+      scoreCard.style.display = 'block';
+      document.getElementById('overall-score-display').textContent = totalCorrect + '/' + TOTAL_QUESTIONS;
+      const pct = Math.round((totalCorrect / TOTAL_QUESTIONS) * 100);
+      let msg = '';
+      if (pct === 100) {
+        msg = 'Outstanding. You are well prepared for CEM.';
+      } else if (pct >= 80) {
+        msg = 'Excellent foundation. You are ready to start your apprenticeship.';
+      } else if (pct >= 60) {
+        msg = 'Good baseline knowledge. Revisit the modules where you dropped marks.';
+      } else {
+        msg = 'Work through the modules again before 30 March. Focus on the areas where you scored lowest.';
+      }
+      document.getElementById('overall-score-message').textContent = msg;
+    }
+  }
+
+  function updateModuleProgress() {
+    for (let m = 1; m <= 4; m++) {
+      const dot = document.getElementById('prog-' + m);
+      if (dot && moduleState[m].answered >= QUESTIONS_PER_MODULE) {
+        dot.classList.add('complete');
+      }
+    }
+  }
+
+  // ==========================================
+  // Reset Functions
+  // ==========================================
+  function resetModuleQuiz(mod) {
+    const startQ = (mod - 1) * 5 + 1;
+    const endQ = startQ + 4;
+
+    for (let q = startQ; q <= endQ; q++) {
+      const qEl = document.querySelector('[data-question="' + q + '"]');
+      if (!qEl) continue;
+      qEl.classList.remove('answered-correct', 'answered-incorrect');
+      qEl.querySelector('.quiz-explanation').classList.remove('visible');
+      qEl.querySelectorAll('.quiz-option').forEach(opt => {
+        opt.disabled = false;
+        opt.classList.remove('selected-correct', 'selected-incorrect', 'show-correct');
+      });
+    }
+
+    moduleState[mod] = { answered: 0, correct: 0, questions: new Set() };
+    document.getElementById('quiz-score-' + mod).style.display = 'none';
+
+    // Update localStorage
+    try {
+      const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      if (existing.questionStates) {
+        for (let q = startQ; q <= endQ; q++) {
+          delete existing.questionStates[String(q)];
+        }
+      }
+      if (existing.moduleState) {
+        existing.moduleState[mod] = { answered: 0, correct: 0, questions: [] };
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+    } catch (e) {}
+
+    // Update progress dots
+    const dot = document.getElementById('prog-' + mod);
+    if (dot) dot.classList.remove('complete');
+
+    // Hide overall score if showing
+    document.getElementById('overall-score').style.display = 'none';
+  }
+
+  function resetAllQuizzes() {
+    localStorage.removeItem(STORAGE_KEY);
+    for (let m = 1; m <= 4; m++) {
+      moduleState[m] = { answered: 0, correct: 0, questions: new Set() };
+      document.getElementById('quiz-score-' + m).style.display = 'none';
+      const dot = document.getElementById('prog-' + m);
+      if (dot) dot.classList.remove('complete');
+    }
+
+    document.querySelectorAll('.quiz-question').forEach(qEl => {
+      qEl.classList.remove('answered-correct', 'answered-incorrect');
+      qEl.querySelector('.quiz-explanation').classList.remove('visible');
+      qEl.querySelectorAll('.quiz-option').forEach(opt => {
+        opt.disabled = false;
+        opt.classList.remove('selected-correct', 'selected-incorrect', 'show-correct');
+      });
+    });
+
+    document.getElementById('overall-score').style.display = 'none';
+  }
+
+  // ==========================================
+  // Initial state
+  // ==========================================
+  updateProgress();
+  updateActiveLink();
+  checkFadeIn();
+  loadQuizState();
+
+  if (navLinks.length > 0 && !document.querySelector('.sidebar-nav a.active')) {
+    navLinks[0].classList.add('active');
+  }
+</script>
+
+</body>
+</html>

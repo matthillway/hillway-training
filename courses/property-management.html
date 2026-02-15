@@ -1,0 +1,2571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hillway | Property Management — A Practical Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e40af;
+      --accent: #0ea5e9;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-400: #94a3b8;
+      --gray-500: #64748b;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --sidebar-width: 280px;
+      --progress-height: 3px;
+      --green: #16a34a;
+      --red: #dc2626;
+      --amber: #d97706;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 32px; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      line-height: 1.7;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Progress bar */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: var(--progress-height);
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      z-index: 1000;
+      transition: width 0.15s ease-out;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-width);
+      height: 100vh;
+      background: var(--primary);
+      padding: 32px 0;
+      overflow-y: auto;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #sidebar::-webkit-scrollbar { width: 3px; }
+    #sidebar::-webkit-scrollbar-track { background: transparent; }
+    #sidebar::-webkit-scrollbar-thumb { background: var(--gray-600); border-radius: 3px; }
+
+    .sidebar-logo {
+      padding: 0 28px 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 24px;
+    }
+
+    .sidebar-logo img {
+      height: 32px;
+      width: auto;
+    }
+
+    .sidebar-subtitle {
+      font-size: 11px;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 0 28px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .sidebar-nav { flex: 1; }
+
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 28px;
+      color: var(--gray-400);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+      position: relative;
+    }
+
+    .sidebar-nav a:hover {
+      color: var(--gray-200);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .sidebar-nav a.active {
+      color: var(--white);
+      background: rgba(255,255,255,0.06);
+      border-left-color: var(--accent);
+    }
+
+    .sidebar-nav a .nav-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.06);
+      font-size: 11px;
+      font-weight: 600;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-nav a.active .nav-number {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    .sidebar-nav .nav-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 10px 28px;
+    }
+
+    .sidebar-nav .nav-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--gray-500);
+      padding: 8px 28px 4px;
+    }
+
+    .sidebar-progress {
+      padding: 16px 28px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: auto;
+    }
+
+    .sidebar-progress-label {
+      font-size: 11px;
+      color: var(--gray-400);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .sidebar-progress-bar {
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .sidebar-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      border-radius: 3px;
+      transition: width 0.5s ease;
+      width: 0%;
+    }
+
+    .sidebar-progress-text {
+      font-size: 11px;
+      color: var(--gray-500);
+      margin-top: 6px;
+    }
+
+    .sidebar-footer {
+      padding: 16px 28px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .sidebar-footer a {
+      font-size: 12px;
+      color: var(--gray-400);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease;
+    }
+
+    .sidebar-footer a:hover { color: var(--accent); }
+
+    /* Main content */
+    #main {
+      margin-left: var(--sidebar-width);
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a2744 50%, var(--secondary) 100%);
+      padding: 80px 60px 60px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(30,64,175,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-logo img {
+      height: 48px;
+      width: auto;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 300;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.5px;
+    }
+
+    .hero h1 strong {
+      font-weight: 700;
+    }
+
+    .hero-meta {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-meta .divider {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+    }
+
+    .hero-description {
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      margin-top: 20px;
+      max-width: 640px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Content area */
+    .content {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 60px 80px;
+    }
+
+    /* Section styling */
+    .section {
+      margin-bottom: 56px;
+      scroll-margin-top: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.3px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 20px;
+      border: 1px solid var(--gray-200);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+
+    .card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card p, .card li {
+      color: var(--gray-600);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .card ul, .card ol {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .card li { margin-bottom: 4px; }
+
+    .card-accent {
+      border-left: 4px solid var(--accent);
+    }
+
+    .card-highlight {
+      background: linear-gradient(135deg, #eff6ff, #f0f9ff);
+      border-color: #bfdbfe;
+    }
+
+    .card-warning {
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      border-color: #fde68a;
+      border-left: 4px solid var(--amber);
+    }
+
+    .card-success {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border-color: #bbf7d0;
+      border-left: 4px solid var(--green);
+    }
+
+    /* Blockquote */
+    .quote-block {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--gray-800) 100%);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 24px 0;
+      color: var(--white);
+      position: relative;
+    }
+
+    .quote-block::before {
+      content: '\201C';
+      position: absolute;
+      top: 12px;
+      left: 20px;
+      font-size: 60px;
+      color: var(--accent);
+      opacity: 0.3;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .quote-block p {
+      font-size: 16px;
+      font-style: italic;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .quote-block cite {
+      display: block;
+      margin-top: 12px;
+      font-size: 13px;
+      font-style: normal;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Two-column grids */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    /* Definition-style cards */
+    .def-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid var(--gray-200);
+      transition: all 0.2s ease;
+    }
+
+    .def-card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+    }
+
+    .def-card h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .def-card p {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    .def-card .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .tag-blue { background: #eff6ff; color: var(--secondary); }
+    .tag-cyan { background: #ecfeff; color: #0369a1; }
+    .tag-green { background: #f0fdf4; color: #166534; }
+    .tag-amber { background: #fffbeb; color: #92400e; }
+    .tag-red { background: #fef2f2; color: #991b1b; }
+
+    /* Numbered list cards */
+    .step-list {
+      counter-reset: step-counter;
+      margin: 20px 0;
+    }
+
+    .step-item {
+      counter-increment: step-counter;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px 24px 20px 60px;
+      margin-bottom: 12px;
+      border: 1px solid var(--gray-200);
+      position: relative;
+    }
+
+    .step-item::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-item h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .step-item p {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    /* Table styling */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+    }
+
+    .data-table thead th {
+      background: var(--primary);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .data-table tbody td {
+      padding: 12px 16px;
+      font-size: 14px;
+      color: var(--gray-700);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tbody tr:hover {
+      background: var(--gray-50);
+    }
+
+    /* Checklist */
+    .checklist {
+      margin: 16px 0;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 14px;
+      color: var(--gray-700);
+    }
+
+    .checklist-item:last-child { border-bottom: none; }
+
+    .checklist-item .check-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid var(--gray-300);
+      flex-shrink: 0;
+      margin-top: 1px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .checklist-item .check-box.checked {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .checklist-item .check-box.checked::after {
+      content: '';
+      width: 6px;
+      height: 10px;
+      border: solid var(--white);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      margin-top: -2px;
+    }
+
+    .checklist-item.completed {
+      text-decoration: line-through;
+      color: var(--gray-400);
+    }
+
+    /* Quiz styles */
+    .quiz-container {
+      margin: 24px 0;
+    }
+
+    .quiz-question {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      border: 1px solid var(--gray-200);
+      transition: border-color 0.3s ease;
+    }
+
+    .quiz-question.answered-correct {
+      border-color: var(--green);
+      background: #f0fdf4;
+    }
+
+    .quiz-question.answered-incorrect {
+      border-color: var(--red);
+      background: #fef2f2;
+    }
+
+    .quiz-q-number {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .quiz-q-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .quiz-option {
+      display: block;
+      padding: 10px 16px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--gray-700);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .quiz-option:hover:not(:disabled) {
+      background: #eff6ff;
+      border-color: var(--secondary);
+    }
+
+    .quiz-option:disabled {
+      cursor: default;
+    }
+
+    .quiz-option.selected-correct {
+      background: #dcfce7;
+      border-color: var(--green);
+      color: #166534;
+      font-weight: 600;
+    }
+
+    .quiz-option.selected-incorrect {
+      background: #fee2e2;
+      border-color: var(--red);
+      color: #991b1b;
+    }
+
+    .quiz-option.show-correct {
+      background: #dcfce7;
+      border-color: var(--green);
+      color: #166534;
+    }
+
+    .quiz-explanation {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 16px;
+      background: #f0f9ff;
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.6;
+      border-left: 3px solid var(--accent);
+    }
+
+    .quiz-explanation.visible {
+      display: block;
+    }
+
+    .quiz-score-card {
+      display: none;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--gray-800) 100%);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .quiz-score-card h3 {
+      color: var(--white);
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .quiz-score-number {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--accent);
+      margin: 12px 0;
+    }
+
+    .quiz-score-card p {
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+    }
+
+    .quiz-section-header {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--secondary);
+      margin: 28px 0 8px;
+      padding: 12px 16px;
+      background: var(--gray-100);
+      border-radius: 8px;
+    }
+
+    /* Module completion marker */
+    .module-complete-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease;
+      margin-top: 16px;
+    }
+
+    .module-complete-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .module-complete-btn.completed {
+      background: var(--green);
+      cursor: default;
+    }
+
+    .module-complete-btn.completed:hover {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Reset button */
+    .reset-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: transparent;
+      color: var(--gray-500);
+      border: 1px solid var(--gray-300);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease;
+      margin-left: 12px;
+    }
+
+    .reset-btn:hover { border-color: var(--red); color: var(--red); }
+
+    /* Print styles */
+    @media print {
+      #sidebar, #progress-bar { display: none !important; }
+      #main { margin-left: 0 !important; }
+      .hero { padding: 40px !important; }
+      .content { padding: 24px 40px !important; }
+      .card, .def-card, .quiz-question, .step-item {
+        break-inside: avoid;
+        box-shadow: none !important;
+      }
+      body { font-size: 12px; }
+      .module-complete-btn, .reset-btn { display: none !important; }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      #sidebar { display: none; }
+      #main { margin-left: 0; }
+      .hero { padding: 48px 32px 40px; }
+      .content { padding: 32px 24px 60px; }
+      .two-col { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 28px; }
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- Sidebar -->
+<nav id="sidebar">
+  <div class="sidebar-logo">
+    <img src="https://www.hillwayco.uk/images/logo.png" alt="Hillway" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
+    <span style="display:none;font-weight:800;font-size:18px;letter-spacing:4px;color:#fff;">HILLWAY</span>
+  </div>
+  <div class="sidebar-subtitle">Property Management</div>
+  <div class="sidebar-nav">
+    <div class="nav-label">Modules</div>
+    <a href="#module1" data-section="module1">
+      <span class="nav-number">1</span> Introduction
+    </a>
+    <a href="#module2" data-section="module2">
+      <span class="nav-number">2</span> Tenant Management
+    </a>
+    <a href="#module3" data-section="module3">
+      <span class="nav-number">3</span> Service Charges
+    </a>
+    <a href="#module4" data-section="module4">
+      <span class="nav-number">4</span> Building Management
+    </a>
+    <a href="#module5" data-section="module5">
+      <span class="nav-number">5</span> Practical Skills
+    </a>
+    <div class="nav-divider"></div>
+    <div class="nav-label">Assessments</div>
+    <a href="#quiz1" data-section="quiz1">
+      <span class="nav-number">Q</span> Module 1 Check
+    </a>
+    <a href="#quiz2" data-section="quiz2">
+      <span class="nav-number">Q</span> Module 2 Check
+    </a>
+    <a href="#quiz3" data-section="quiz3">
+      <span class="nav-number">Q</span> Module 3 Check
+    </a>
+    <a href="#quiz4" data-section="quiz4">
+      <span class="nav-number">Q</span> Module 4 Check
+    </a>
+    <a href="#quiz5" data-section="quiz5">
+      <span class="nav-number">Q</span> Final Assessment
+    </a>
+  </div>
+
+  <div class="sidebar-progress">
+    <div class="sidebar-progress-label">Course Progress</div>
+    <div class="sidebar-progress-bar">
+      <div class="sidebar-progress-fill" id="course-progress-fill"></div>
+    </div>
+    <div class="sidebar-progress-text" id="course-progress-text">0 of 5 modules complete</div>
+  </div>
+
+  <div class="sidebar-footer">
+    <a href="../induction.html">Back to Induction</a>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div id="main">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-logo">
+      <img src="https://www.hillwayco.uk/images/logo.png" alt="Hillway" onerror="this.style.display='none'">
+    </div>
+    <h1>Property Management — <strong>A Practical Guide</strong></h1>
+    <div class="hero-meta">
+      <span>Hillway Training</span>
+      <span class="divider"></span>
+      <span>5 Modules</span>
+      <span class="divider"></span>
+      <span>35 Knowledge Checks</span>
+    </div>
+    <p class="hero-description">Everything you need to understand as a new apprentice surveyor at Hillway. This course assumes no prior surveying knowledge and builds from first principles. Work through each module in order, complete the knowledge checks, and you will have a solid foundation for your role.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- ============================================ -->
+    <!-- MODULE 1: INTRODUCTION TO PROPERTY MANAGEMENT -->
+    <!-- ============================================ -->
+    <section id="module1" class="section fade-in">
+      <div class="section-header">
+        <div class="section-number">1</div>
+        <h2>Introduction to Property Management</h2>
+      </div>
+
+      <div class="card card-accent">
+        <h3>What is Property Management?</h3>
+        <p>Property management is the day-to-day oversight of commercial or residential real estate on behalf of the property owner. As a managing agent, Hillway acts as the landlord's representative, ensuring the property is well-maintained, tenants are managed effectively, income is collected, and the asset retains or increases in value.</p>
+        <p style="margin-top: 12px;">Think of it this way: the landlord owns the building, but they hire us to <strong>run</strong> it. We are the operational engine behind the investment. Our job is to protect the landlord's income stream, manage the physical condition of the asset, and deal with every stakeholder who interacts with it.</p>
+        <p style="margin-top: 12px;">Property management sits within the broader field of real estate, alongside agency (buying/selling/letting), valuation, and building consultancy. As a chartered surveying practice, Hillway provides a range of these services, but property management is a core discipline.</p>
+      </div>
+
+      <div class="card">
+        <h3>The Managing Agent's Role and Responsibilities</h3>
+        <p>As a managing agent, your day will involve a wide range of tasks. No two days are the same, which is part of what makes property management interesting. Here are the core responsibilities:</p>
+        <ul>
+          <li><strong>Rent collection</strong> — Ensuring tenants pay their rent on time and chasing arrears when they do not</li>
+          <li><strong>Lease administration</strong> — Tracking lease events such as break clauses, rent reviews, and lease expiries</li>
+          <li><strong>Service charge management</strong> — Preparing budgets, managing expenditure, and reconciling year-end accounts</li>
+          <li><strong>Building maintenance</strong> — Organising reactive repairs and planned preventive maintenance</li>
+          <li><strong>Tenant liaison</strong> — Being the first point of contact for tenant queries, complaints, and requests</li>
+          <li><strong>Compliance</strong> — Ensuring the property meets health and safety, fire safety, and environmental regulations</li>
+          <li><strong>Insurance</strong> — Arranging and managing buildings insurance and dealing with claims</li>
+          <li><strong>Reporting</strong> — Providing landlords with regular updates on the property's performance</li>
+          <li><strong>Contractor management</strong> — Appointing, supervising, and paying contractors and service providers</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Who are the Stakeholders?</h3>
+        <p>Property management involves balancing the needs and expectations of multiple parties. You will interact with all of these regularly:</p>
+      </div>
+
+      <div class="two-col">
+        <div class="def-card">
+          <span class="tag tag-blue">Landlords / Property Owners</span>
+          <h4>The Client</h4>
+          <p>The landlord pays our fees and is our primary client. They may be a private individual, a property company, a pension fund, or an institutional investor. Their main interest is maximising income and protecting the capital value of their asset. We report to them and act on their instructions.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-cyan">Tenants / Occupiers</span>
+          <h4>The Day-to-Day Relationship</h4>
+          <p>Tenants occupy the building under the terms of a lease. They pay rent and service charge. While the landlord is our client, tenants are the people we deal with most frequently. A good managing agent maintains professional, constructive relationships with tenants. Happy tenants stay longer and pay on time.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-green">Contractors / Service Providers</span>
+          <h4>The Delivery Team</h4>
+          <p>Cleaners, security guards, M&amp;E engineers, landscapers, lift maintenance companies — these are the people who physically look after the building. We appoint them, specify the work, monitor quality, and pay them (from the service charge). Managing contractors well is critical to a well-run property.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-amber">Other Professionals</span>
+          <h4>The Advisory Network</h4>
+          <p>Solicitors, accountants, insurance brokers, building surveyors, planning consultants, and letting agents. We coordinate with these professionals when specialist advice is needed. For example, a solicitor handles lease negotiations, an accountant audits service charge accounts, and a letting agent finds new tenants.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Types of Managed Property</h3>
+        <p>Hillway manages a range of commercial property types. Each has its own characteristics and management challenges:</p>
+      </div>
+
+      <div class="two-col">
+        <div class="def-card">
+          <span class="tag tag-blue">Single-Let</span>
+          <h4>One tenant, whole building</h4>
+          <p>A single occupier leases the entire property. Management is simpler — there is no service charge to manage (the tenant handles everything under a Full Repairing and Insuring lease, known as an "FRI" lease). Your focus is rent collection, lease compliance, and the landlord-tenant relationship.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-cyan">Multi-Let Office</span>
+          <h4>Multiple tenants, shared services</h4>
+          <p>Several tenants share a building, each leasing a floor or part of a floor. The landlord retains control of common areas (reception, lifts, WCs, car park) and provides shared services funded by a service charge. This is the most management-intensive property type.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-green">Retail Park / Shopping Centre</span>
+          <h4>Retail units with common areas</h4>
+          <p>Multiple retail tenants with shared car parking, landscaping, and estate roads. Management issues include car park maintenance, signage, opening hours, and managing the tenant mix. Footfall and the customer experience are important considerations.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-amber">Industrial Estate</span>
+          <h4>Warehouses and distribution units</h4>
+          <p>Industrial and logistics units, often on an estate with shared roads and drainage. Tenants tend to be more self-sufficient, but estate management (roads, landscaping, drainage, security) still requires active oversight. Yard areas and HGV access are common management issues.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Management Agreements and Fee Structures</h3>
+        <p>Before we start managing a property, we enter into a <strong>management agreement</strong> with the landlord. This is a formal contract that sets out:</p>
+        <ul>
+          <li>The scope of services we will provide</li>
+          <li>Our authority levels (e.g. the expenditure limit we can approve without further instruction)</li>
+          <li>The management fee — typically a percentage of rent collected, or a fixed annual fee</li>
+          <li>Additional fees for specific activities (e.g. letting, rent reviews, licence to alter)</li>
+          <li>The notice period for termination</li>
+          <li>Insurance and professional indemnity requirements</li>
+        </ul>
+        <p style="margin-top: 12px;">Typical management fees for commercial property range from <strong>5% to 10% of rent collected</strong>, depending on the size and complexity of the portfolio. Multi-let properties with service charges tend to command higher fees because the workload is greater.</p>
+      </div>
+
+      <div class="card card-highlight">
+        <h3>RICS Property Management Code</h3>
+        <p>As an RICS-regulated firm, Hillway is bound by the <strong>RICS Code of Practice for Service Charges in Commercial Property (3rd Edition)</strong> and the <strong>RICS Real Estate Management guidelines</strong>. These set out the professional standards we must meet, including:</p>
+        <ul>
+          <li>Acting with integrity and in the client's best interests</li>
+          <li>Maintaining proper client accounts, keeping client money separate from our own</li>
+          <li>Holding appropriate professional indemnity insurance</li>
+          <li>Managing conflicts of interest transparently</li>
+          <li>Providing a complaints handling procedure</li>
+          <li>Maintaining competence through continuing professional development (CPD)</li>
+          <li>Complying with anti-money laundering regulations</li>
+        </ul>
+        <p style="margin-top: 12px;">As an apprentice working towards your APC (Assessment of Professional Competence), understanding these standards is essential. RICS accreditation is what sets us apart from unregulated managing agents.</p>
+      </div>
+
+      <div class="quote-block">
+        <p>The best property managers are proactive, not reactive. They anticipate problems before they occur, communicate clearly with all stakeholders, and treat every building as if it were their own investment.</p>
+        <cite>RICS Real Estate Management Guidance</cite>
+      </div>
+
+      <button class="module-complete-btn" onclick="toggleModuleComplete(1)" id="module1-complete-btn">
+        Mark Module 1 Complete
+      </button>
+    </section>
+
+    <!-- MODULE 1 KNOWLEDGE CHECK -->
+    <section id="quiz1" class="section fade-in">
+      <div class="section-header">
+        <div class="section-number">Q</div>
+        <h2>Module 1 — Knowledge Check</h2>
+      </div>
+
+      <div class="quiz-container" data-quiz="quiz1">
+        <div class="quiz-question" data-type="mc" data-question="1" data-answer="c">
+          <div class="quiz-q-number">Question 1 of 5</div>
+          <div class="quiz-q-text">What is the primary role of a managing agent?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">To buy and sell properties on behalf of investors</button>
+            <button class="quiz-option" data-value="b">To design and construct new commercial buildings</button>
+            <button class="quiz-option" data-value="c">To oversee the day-to-day operation of a property on behalf of the landlord</button>
+            <button class="quiz-option" data-value="d">To provide legal advice to tenants on their lease obligations</button>
+          </div>
+          <div class="quiz-explanation">Correct. The managing agent acts as the landlord's representative, handling rent collection, maintenance, tenant management, and all operational aspects of the property. We are the operational engine behind the investment.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="2" data-answer="b">
+          <div class="quiz-q-number">Question 2 of 5</div>
+          <div class="quiz-q-text">What does "FRI lease" stand for, and what does it mean for management?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Fixed Rate Interest — the tenant pays a fixed rent with no reviews</button>
+            <button class="quiz-option" data-value="b">Full Repairing and Insuring — the tenant is responsible for all repairs and insurance</button>
+            <button class="quiz-option" data-value="c">Fully Regulated Investment — the property is managed under FCA rules</button>
+            <button class="quiz-option" data-value="d">Flexible Rent Increase — the landlord can increase rent at any time</button>
+          </div>
+          <div class="quiz-explanation">Full Repairing and Insuring means the tenant takes on responsibility for all repairs and building insurance. This is typical of single-let properties and significantly reduces the landlord's management burden. The managing agent's role on an FRI lease is mainly rent collection and lease administration.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="3" data-answer="d">
+          <div class="quiz-q-number">Question 3 of 5</div>
+          <div class="quiz-q-text">Which type of property typically requires the most intensive management?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">A single-let industrial unit on an FRI lease</button>
+            <button class="quiz-option" data-value="b">A vacant plot of development land</button>
+            <button class="quiz-option" data-value="c">A single-let office building</button>
+            <button class="quiz-option" data-value="d">A multi-let office building with shared services</button>
+          </div>
+          <div class="quiz-explanation">Multi-let offices are the most management-intensive because you have multiple tenants sharing common areas and services. The managing agent must run the service charge, manage contractors for shared services, handle multiple tenant relationships, and maintain common areas — all of which adds complexity.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="4" data-answer="a">
+          <div class="quiz-q-number">Question 4 of 5</div>
+          <div class="quiz-q-text">What is the typical range for a commercial property management fee?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">5% to 10% of rent collected</button>
+            <button class="quiz-option" data-value="b">1% to 2% of the property's capital value</button>
+            <button class="quiz-option" data-value="c">15% to 20% of rent collected</button>
+            <button class="quiz-option" data-value="d">A flat fee of exactly 10,000 per property per year</button>
+          </div>
+          <div class="quiz-explanation">Commercial management fees typically range from 5% to 10% of rent collected, depending on the size and complexity of the portfolio. Multi-let properties with service charges tend to command fees at the higher end of this range because the workload is greater.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="5" data-answer="c">
+          <div class="quiz-q-number">Question 5 of 5</div>
+          <div class="quiz-q-text">Why does RICS regulation matter for property management?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">It allows us to charge higher fees than non-RICS firms</button>
+            <button class="quiz-option" data-value="b">It is a legal requirement — you cannot manage property without RICS membership</button>
+            <button class="quiz-option" data-value="c">It ensures professional standards, client money protection, and accountability</button>
+            <button class="quiz-option" data-value="d">It provides a tax advantage for regulated surveying practices</button>
+          </div>
+          <div class="quiz-explanation">RICS regulation is not legally required but it is an important mark of professionalism. It ensures firms maintain proper client accounts, hold professional indemnity insurance, follow ethical standards, and are subject to disciplinary procedures. It protects clients and builds trust.</div>
+        </div>
+
+        <div class="quiz-score-card" id="quiz1-score">
+          <h3>Module 1 — Knowledge Check Complete</h3>
+          <div class="quiz-score-number" id="quiz1-score-display">0/5</div>
+          <p id="quiz1-score-message"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- MODULE 2: TENANT MANAGEMENT                  -->
+    <!-- ============================================ -->
+    <section id="module2" class="section fade-in">
+      <div class="section-header">
+        <div class="section-number">2</div>
+        <h2>Tenant Management</h2>
+      </div>
+
+      <div class="card card-accent">
+        <h3>The Landlord-Tenant Relationship</h3>
+        <p>The relationship between landlord and tenant is governed by the lease — a legally binding contract that sets out each party's rights and obligations. As the managing agent, you sit in the middle of this relationship. Your job is to enforce the lease terms on behalf of the landlord while maintaining a constructive, professional relationship with the tenant.</p>
+        <p style="margin-top: 12px;">This is a balancing act. You need to be firm when chasing rent arrears or dealing with lease breaches, but also approachable and responsive when tenants need help. A good tenant who pays on time and looks after the space is valuable — retaining them is almost always preferable to the cost and risk of finding a replacement.</p>
+      </div>
+
+      <div class="card">
+        <h3>Lease Administration — Key Lease Terms to Track</h3>
+        <p>The lease is the most important document in property management. Every decision you make as a managing agent should be grounded in what the lease says. Here are the critical terms you need to understand and track:</p>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Lease Term</th>
+            <th>What It Means</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Demise</strong></td>
+            <td>The exact space the tenant has leased</td>
+            <td>Defines who is responsible for which parts of the building</td>
+          </tr>
+          <tr>
+            <td><strong>Term</strong></td>
+            <td>The length of the lease (e.g. 10 years)</td>
+            <td>Determines when the lease expires and income is at risk</td>
+          </tr>
+          <tr>
+            <td><strong>Rent</strong></td>
+            <td>The annual amount payable, usually quarterly in advance</td>
+            <td>The landlord's primary income stream — must be collected on time</td>
+          </tr>
+          <tr>
+            <td><strong>Rent Review</strong></td>
+            <td>A mechanism to adjust rent (usually every 5 years)</td>
+            <td>Opportunity to increase income to market levels</td>
+          </tr>
+          <tr>
+            <td><strong>Break Clause</strong></td>
+            <td>An option for the tenant (or landlord) to end the lease early</td>
+            <td>Must be tracked carefully — missing the conditions can invalidate it</td>
+          </tr>
+          <tr>
+            <td><strong>Service Charge</strong></td>
+            <td>The tenant's contribution to shared building costs</td>
+            <td>Recovers the cost of managing common areas and shared services</td>
+          </tr>
+          <tr>
+            <td><strong>Repairing Obligations</strong></td>
+            <td>Who is responsible for maintaining and repairing the property</td>
+            <td>Determines whether the landlord or tenant pays for repairs</td>
+          </tr>
+          <tr>
+            <td><strong>Alienation</strong></td>
+            <td>Whether the tenant can assign or sublet their lease</td>
+            <td>Controls who occupies the building and the quality of the tenant</td>
+          </tr>
+          <tr>
+            <td><strong>User Clause</strong></td>
+            <td>Restrictions on what the property can be used for</td>
+            <td>Protects the landlord's investment and other tenants' interests</td>
+          </tr>
+          <tr>
+            <td><strong>Alterations</strong></td>
+            <td>Whether the tenant can make changes to the property</td>
+            <td>Usually requires landlord consent — we process "licence to alter" applications</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="card">
+        <h3>Rent Collection and Credit Control</h3>
+        <p>Rent is usually payable quarterly in advance on the English quarter days: <strong>25 March, 24 June, 29 September, and 25 December</strong>. Some modern leases use calendar quarters (1 January, 1 April, 1 July, 1 October).</p>
+        <p style="margin-top: 12px;">The rent collection process follows a clear pattern:</p>
+      </div>
+
+      <div class="step-list">
+        <div class="step-item">
+          <h4>Issue Rent Demands</h4>
+          <p>Send rent demands to all tenants at least 14 days before the quarter day. The demand must quote the correct amount, the period it covers, and the payment details. Under the Landlord and Tenant Act 1987, a valid rent demand must include the landlord's name and address.</p>
+        </div>
+        <div class="step-item">
+          <h4>Monitor Payments</h4>
+          <p>On the quarter day and in the days following, check the client bank account daily. Match incoming payments to tenants and mark them off. Most modern property management software automates this matching.</p>
+        </div>
+        <div class="step-item">
+          <h4>Chase Arrears Promptly</h4>
+          <p>If rent is not received within 7 days, send a polite but firm reminder by email and follow up with a phone call. Early contact often resolves the issue — the tenant may have simply overlooked it, or there may be a genuine cash flow problem that needs discussing.</p>
+        </div>
+        <div class="step-item">
+          <h4>Escalation</h4>
+          <p>If arrears persist beyond 14 days, issue a formal arrears letter. If no response after 21 days, report to the landlord and discuss next steps. Options include instructing solicitors to issue a statutory demand, or in serious cases, pursuing forfeiture of the lease (though this is a last resort).</p>
+        </div>
+      </div>
+
+      <div class="card card-warning">
+        <h3>Dealing with Arrears and Bad Debt</h3>
+        <p><strong>Key principle:</strong> Early intervention is everything. The longer arrears go unchallenged, the harder they are to recover. Document every communication and keep the landlord informed at every stage.</p>
+        <p style="margin-top: 12px;">Options for recovering arrears include:</p>
+        <ul>
+          <li><strong>Negotiation</strong> — Agree a payment plan if the tenant has a genuine short-term cash flow issue</li>
+          <li><strong>Interest on late payment</strong> — Most leases allow the landlord to charge interest on overdue rent</li>
+          <li><strong>Commercial Rent Arrears Recovery (CRAR)</strong> — Allows landlords to seize tenant goods to recover rent (replaced the old "distress" remedy)</li>
+          <li><strong>Statutory demand / winding up</strong> — For company tenants, a statutory demand can be served as a precursor to winding-up proceedings</li>
+          <li><strong>Forfeiture</strong> — The ultimate sanction, where the landlord re-enters and terminates the lease. Use with extreme caution — the tenant can apply to the court for relief</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Tenant Communications — Professional Standards</h3>
+        <p>Every interaction with a tenant reflects on Hillway and the landlord. Professional communication is non-negotiable.</p>
+        <ul>
+          <li><strong>Respond within 24 hours</strong> — Even if you do not have a full answer, acknowledge the enquiry and set expectations for when you will respond fully</li>
+          <li><strong>Be clear and factual</strong> — Avoid ambiguity. Reference the lease clause when making formal requests</li>
+          <li><strong>Keep a written record</strong> — Follow up phone calls with a confirmation email summarising what was discussed and agreed</li>
+          <li><strong>Be professional but human</strong> — You are dealing with people who run businesses from these properties. Treat them with respect</li>
+          <li><strong>Escalate when necessary</strong> — If a conversation becomes confrontational, do not engage in argument. Note the facts, end the conversation politely, and speak to a senior colleague</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>New Lettings Process</h3>
+        <p>When a unit becomes vacant or a new tenant is found by the letting agent, the managing agent is closely involved in the transition. The process typically follows these stages:</p>
+      </div>
+
+      <div class="step-list">
+        <div class="step-item">
+          <h4>Heads of Terms (HoTs)</h4>
+          <p>A non-binding summary of the key commercial terms agreed between landlord and tenant — rent, term, break clause, rent-free period, repairing liability. The letting agent produces these and shares them with the managing agent for input.</p>
+        </div>
+        <div class="step-item">
+          <h4>Agreement to Lease</h4>
+          <p>Solicitors on both sides draft and negotiate the formal lease. The managing agent provides input on service charge apportionments, building regulations compliance, and practical matters. This stage can take weeks or months.</p>
+        </div>
+        <div class="step-item">
+          <h4>Fit-Out and Licence to Alter</h4>
+          <p>The tenant typically needs to fit out the space to suit their business. They submit plans for the managing agent and landlord to approve. We issue a "licence to alter" setting out the conditions (e.g. reinstatement at lease end, compliance with building regulations, approved contractors).</p>
+        </div>
+        <div class="step-item">
+          <h4>Occupation and Onboarding</h4>
+          <p>Once the lease is signed, we provide the tenant with a welcome pack: building rules, emergency contacts, service charge information, key and access arrangements, and insurance requirements. First impressions matter — make the tenant feel welcome.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Lease Events: Break Clauses, Rent Reviews, Expiry Dates</h3>
+        <p>Lease events are critical dates that require action. Missing a lease event can have serious financial consequences. Here is what you need to know about each:</p>
+        <ul>
+          <li><strong>Break clauses:</strong> Typically require the tenant to give 6-12 months' written notice, with conditions such as vacant possession, no outstanding breaches, and all rent paid up to date. The managing agent must track these dates and advise the landlord well in advance. If the landlord wants to oppose the break, legal advice is needed early.</li>
+          <li style="margin-top: 8px;"><strong>Rent reviews:</strong> Most commercial leases include upward-only rent reviews every 5 years, benchmarked to open market value. The managing agent works with the landlord's surveyor (often a colleague at Hillway) to agree the reviewed rent with the tenant. If agreement cannot be reached, the matter is referred to an independent expert or arbitrator.</li>
+          <li style="margin-top: 8px;"><strong>Lease expiry:</strong> The Landlord and Tenant Act 1954 gives most commercial tenants the right to renew their lease. The landlord must serve a Section 25 notice (or the tenant a Section 26 request) to trigger the renewal process. The managing agent ensures these notices are served on time and coordinates with solicitors.</li>
+        </ul>
+      </div>
+
+      <div class="quote-block">
+        <p>A lease event diary is not a nice-to-have — it is the single most important risk management tool in property management. If you miss a break date or rent review trigger, you have failed the client. There are no second chances.</p>
+        <cite>Hillway Internal Training</cite>
+      </div>
+
+      <button class="module-complete-btn" onclick="toggleModuleComplete(2)" id="module2-complete-btn">
+        Mark Module 2 Complete
+      </button>
+    </section>
+
+    <!-- MODULE 2 KNOWLEDGE CHECK -->
+    <section id="quiz2" class="section fade-in">
+      <div class="section-header">
+        <div class="section-number">Q</div>
+        <h2>Module 2 — Knowledge Check</h2>
+      </div>
+
+      <div class="quiz-container" data-quiz="quiz2">
+        <div class="quiz-question" data-type="mc" data-question="6" data-answer="b">
+          <div class="quiz-q-number">Question 1 of 5</div>
+          <div class="quiz-q-text">What are the English quarter days for commercial rent collection?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">1 January, 1 April, 1 July, 1 October</button>
+            <button class="quiz-option" data-value="b">25 March, 24 June, 29 September, 25 December</button>
+            <button class="quiz-option" data-value="c">1 March, 1 June, 1 September, 1 December</button>
+            <button class="quiz-option" data-value="d">The first Monday of each quarter</button>
+          </div>
+          <div class="quiz-explanation">The traditional English quarter days are 25 March (Lady Day), 24 June (Midsummer Day), 29 September (Michaelmas), and 25 December (Christmas Day). Many modern leases now use calendar quarters instead, but the traditional quarter days are still very common in commercial property.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="7" data-answer="d">
+          <div class="quiz-q-number">Question 2 of 5</div>
+          <div class="quiz-q-text">What does "alienation" mean in a lease context?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The right of the landlord to increase rent without notice</button>
+            <button class="quiz-option" data-value="b">The tenant's obligation to restore the property at lease end</button>
+            <button class="quiz-option" data-value="c">A clause preventing the tenant from running a competing business</button>
+            <button class="quiz-option" data-value="d">The tenant's ability to assign or sublet the lease to another party</button>
+          </div>
+          <div class="quiz-explanation">Alienation provisions in a lease control whether and how a tenant can transfer their lease (assignment) or sublet to another party. Most leases permit alienation with the landlord's consent, which cannot be unreasonably withheld. This is an important control mechanism for the landlord.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="8" data-answer="a">
+          <div class="quiz-q-number">Question 3 of 5</div>
+          <div class="quiz-q-text">What is CRAR and when would you use it?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Commercial Rent Arrears Recovery — seizing tenant goods to recover unpaid rent</button>
+            <button class="quiz-option" data-value="b">Corporate Rental Agreement Review — an annual review of all tenant leases</button>
+            <button class="quiz-option" data-value="c">Commercial Real Asset Register — a database of managed properties</button>
+            <button class="quiz-option" data-value="d">Controlled Rent Adjustment Rate — the formula for calculating rent reviews</button>
+          </div>
+          <div class="quiz-explanation">CRAR (Commercial Rent Arrears Recovery) replaced the old common law remedy of "distress". It allows landlords of commercial properties to use certified enforcement agents to seize and sell a tenant's goods to recover unpaid rent. It can only be used for principal rent (not service charge or insurance rent) and requires at least 7 days' arrears.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="9" data-answer="c">
+          <div class="quiz-q-number">Question 4 of 5</div>
+          <div class="quiz-q-text">What is a Section 25 notice?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">A notice served by the tenant to break the lease early</button>
+            <button class="quiz-option" data-value="b">A notice from the council requiring the landlord to carry out repairs</button>
+            <button class="quiz-option" data-value="c">A notice served by the landlord to terminate or renew a commercial lease under the 1954 Act</button>
+            <button class="quiz-option" data-value="d">A notice required before a managing agent can change the service charge budget</button>
+          </div>
+          <div class="quiz-explanation">A Section 25 notice is served by the landlord under the Landlord and Tenant Act 1954. It terminates the existing lease and either proposes terms for a new lease or states the grounds on which the landlord opposes renewal. It must be served not more than 12 months and not less than 6 months before the date of termination specified in the notice.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="10" data-answer="b">
+          <div class="quiz-q-number">Question 5 of 5</div>
+          <div class="quiz-q-text">A tenant phones to say their rent will be 2 weeks late due to a cash flow issue. What do you do first?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Immediately instruct solicitors to issue a statutory demand</button>
+            <button class="quiz-option" data-value="b">Listen, note the details, confirm in writing, and inform the landlord</button>
+            <button class="quiz-option" data-value="c">Agree to waive the late payment without consulting the landlord</button>
+            <button class="quiz-option" data-value="d">Ignore it — they will pay eventually</button>
+          </div>
+          <div class="quiz-explanation">The correct first step is to listen, document the conversation, follow up in writing, and inform the landlord. You do not have authority to waive rent or agree payment plans without the landlord's instruction. Equally, immediately escalating to legal action would be disproportionate for a first-time, communicated delay. Early, clear communication protects everyone.</div>
+        </div>
+
+        <div class="quiz-score-card" id="quiz2-score">
+          <h3>Module 2 — Knowledge Check Complete</h3>
+          <div class="quiz-score-number" id="quiz2-score-display">0/5</div>
+          <p id="quiz2-score-message"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- MODULE 3: SERVICE CHARGES                    -->
+    <!-- ============================================ -->
+    <section id="module3" class="section fade-in">
+      <div class="section-header">
+        <div class="section-number">3</div>
+        <h2>Service Charges</h2>
+      </div>
+
+      <div class="card card-accent">
+        <h3>What is a Service Charge?</h3>
+        <p>A service charge is the mechanism by which the landlord recovers the cost of providing services to a multi-let property from its tenants. If the landlord pays for cleaning the common areas, maintaining the lifts, insuring the building, and managing the property, those costs are passed on to tenants through the service charge.</p>
+        <p style="margin-top: 12px;">Each tenant pays a proportion of the total service charge, usually based on the floor area they occupy relative to the total lettable area of the building. This proportion is called the <strong>apportionment</strong> and is set out in each tenant's lease.</p>
+        <p style="margin-top: 12px;">Service charges are one of the most contentious areas in property management. Tenants scrutinise them closely, and disputes are common. Getting the service charge right — transparent, well-managed, and compliant with RICS guidance — is essential.</p>
+      </div>
+
+      <div class="card card-highlight">
+        <h3>RICS Service Charge Code (Professional Statement)</h3>
+        <p>The <strong>RICS Code of Practice: Service Charges in Commercial Property (3rd Edition, 2018)</strong> is a Professional Statement, meaning it is mandatory for RICS members. Key principles include:</p>
+        <ul>
+          <li><strong>Transparency</strong> — Tenants should have clear information about what they are paying for and why</li>
+          <li><strong>Timeliness</strong> — Budgets should be issued before the start of the service charge year; accounts should be certified within 4 months of year-end</li>
+          <li><strong>Value for money</strong> — The landlord should demonstrate that services represent good value. Competitive tendering is expected for significant contracts</li>
+          <li><strong>Fair apportionment</strong> — Costs should be allocated fairly, reflecting each tenant's use of the services</li>
+          <li><strong>No hidden profit</strong> — The service charge should operate on a cost-recovery basis. The landlord should not profit from the service charge (the management fee is the exception, and this should be transparent)</li>
+        </ul>
+        <p style="margin-top: 12px;">Every service charge decision you make should be tested against these principles. If you cannot justify a cost to a reasonable tenant, it probably should not be in the service charge.</p>
+      </div>
+
+      <div class="card">
+        <h3>Budget Preparation and Apportionment</h3>
+        <p>At the start of each service charge year, the managing agent prepares a budget setting out the estimated costs for the year ahead. This involves:</p>
+        <ul>
+          <li>Reviewing the previous year's actual expenditure</li>
+          <li>Consulting with contractors on expected cost increases</li>
+          <li>Identifying any new works or services required</li>
+          <li>Factoring in inflation and known cost pressures</li>
+          <li>Presenting the budget to the landlord for approval before issuing to tenants</li>
+        </ul>
+        <p style="margin-top: 12px;"><strong>Apportionment</strong> is typically calculated as:</p>
+        <p style="margin-top: 8px; padding: 12px 16px; background: var(--gray-100); border-radius: 8px; font-family: monospace; font-size: 14px;">Tenant's floor area / Total lettable area = Apportionment %</p>
+        <p style="margin-top: 12px;">For example, if a building has 10,000 sq ft of lettable area and a tenant occupies 2,500 sq ft, their apportionment is 25%. If the total service charge budget is 100,000, that tenant pays 25,000.</p>
+        <p style="margin-top: 12px;">Some costs may be apportioned differently. For example, air conditioning costs might only be charged to tenants whose demise includes air conditioning, and car parking costs might only be charged to tenants with allocated parking spaces.</p>
+      </div>
+
+      <div class="card">
+        <h3>Common Services</h3>
+        <p>A typical multi-let office service charge includes the following cost categories:</p>
+      </div>
+
+      <div class="two-col">
+        <div class="def-card">
+          <span class="tag tag-blue">Cleaning</span>
+          <p>Common area cleaning (reception, corridors, WCs, stairwells, windows). Often the single largest service charge cost. Specify frequency and standards clearly in the cleaning contract.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-cyan">Security</span>
+          <p>Manned guarding, CCTV monitoring, access control systems, key management. The level of security depends on the property type and location. A city-centre office needs more than a suburban business park.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-green">M&amp;E (Mechanical &amp; Electrical)</span>
+          <p>Maintenance of lifts, HVAC (heating, ventilation, and air conditioning), electrical systems, fire alarms, emergency lighting. These are specialist contracts and typically the second-largest cost category.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-amber">Insurance</span>
+          <p>Buildings insurance covers the structure and common parts against damage. The landlord arranges this and recovers the premium through the service charge. Engineering insurance covers lifts and boilers.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-blue">Utilities</span>
+          <p>Gas, electricity, and water for common areas. Individual tenant consumption is usually metered separately, but common area utility costs (lighting corridors, heating the reception) are shared through the service charge.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-cyan">Management Fee</span>
+          <p>The managing agent's fee for running the service charge and managing the building. Usually expressed as a percentage of total service charge expenditure (typically 10-15%) or a fixed annual sum. This must be disclosed transparently.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-green">Landscaping &amp; External Areas</span>
+          <p>Grounds maintenance, car park repairs, drainage, signage, external lighting. More significant on estates and retail parks than in city-centre buildings where there is little external space.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-amber">Health &amp; Safety</span>
+          <p>Fire risk assessments, asbestos management, legionella monitoring, PAT testing, risk assessments. These are statutory obligations and the costs are legitimately recoverable through the service charge.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Year-End Reconciliation and Certification</h3>
+        <p>At the end of the service charge year, the managing agent reconciles actual expenditure against the budget:</p>
+        <ul>
+          <li><strong>If actual spend was less than budget</strong> — Tenants receive a credit, either as a cash refund or a reduction in their next quarter's service charge payment</li>
+          <li><strong>If actual spend exceeded the budget</strong> — Tenants owe a balancing charge. This should be minimised through accurate budgeting, but unforeseen costs do arise</li>
+        </ul>
+        <p style="margin-top: 12px;">The reconciled accounts must be <strong>certified</strong> — either by the managing agent or, for larger properties, by an independent accountant. The RICS Code requires accounts to be issued to tenants within 4 months of the service charge year-end.</p>
+        <p style="margin-top: 12px;">Tenants have the right to inspect receipts and invoices supporting the service charge. This is why meticulous record-keeping is essential.</p>
+      </div>
+
+      <div class="card">
+        <h3>Sinking Funds and Reserve Funds</h3>
+        <p>Major capital items — such as replacing a roof, lifts, or air conditioning plant — are expensive and infrequent. Rather than hitting tenants with a large one-off charge, the landlord can build up a <strong>sinking fund</strong> (also called a reserve fund) by collecting a small amount each year.</p>
+        <ul>
+          <li><strong>Sinking fund</strong> — Money set aside for a specific, anticipated future cost (e.g. lift replacement in 15 years)</li>
+          <li><strong>Reserve fund</strong> — A general contingency for unexpected costs</li>
+        </ul>
+        <p style="margin-top: 12px;">The lease must permit the collection of sinking/reserve fund contributions. Not all leases do. The fund should be held in a separate, interest-bearing bank account, and the managing agent must account for it transparently.</p>
+      </div>
+
+      <div class="card card-warning">
+        <h3>Section 20 — Tenant Consultation Requirements</h3>
+        <p><strong>Important:</strong> Section 20 of the Landlord and Tenant Act 1985 (as amended) applies primarily to <strong>residential</strong> service charges, requiring formal consultation for works exceeding 250 per leaseholder. For commercial properties, there is no statutory equivalent, but the RICS Code strongly encourages consultation and transparency as best practice.</p>
+        <p style="margin-top: 12px;">On mixed-use properties (commercial and residential in the same building), Section 20 <strong>does</strong> apply to the residential element, and managing agents must follow the formal consultation process for qualifying works.</p>
+      </div>
+
+      <div class="card">
+        <h3>Managing Contractor Relationships</h3>
+        <p>Most building services are delivered by third-party contractors. Managing these relationships effectively is crucial:</p>
+        <ul>
+          <li><strong>Procurement</strong> — For contracts above a threshold (typically 5,000-10,000), obtain at least three competitive quotes. Evaluate on quality, experience, and price — not price alone</li>
+          <li><strong>Specification</strong> — Define exactly what you expect. A clear specification avoids disputes later. Include frequency of service, performance standards, and reporting requirements</li>
+          <li><strong>Monitoring</strong> — Inspect contractor work regularly. Do not assume the cleaning is being done just because you are paying for it. Random spot checks are effective</li>
+          <li><strong>Payment</strong> — Pay contractors promptly once work is verified. Late payment damages relationships and can lead to contractors prioritising other clients</li>
+          <li><strong>Insurance and compliance</strong> — Verify that contractors hold appropriate public liability insurance, employers' liability insurance, and any necessary trade certifications (e.g. Gas Safe, NICEIC)</li>
+        </ul>
+      </div>
+
+      <button class="module-complete-btn" onclick="toggleModuleComplete(3)" id="module3-complete-btn">
+        Mark Module 3 Complete
+      </button>
+    </section>
+
+    <!-- MODULE 3 KNOWLEDGE CHECK -->
+    <section id="quiz3" class="section fade-in">
+      <div class="section-header">
+        <div class="section-number">Q</div>
+        <h2>Module 3 — Knowledge Check</h2>
+      </div>
+
+      <div class="quiz-container" data-quiz="quiz3">
+        <div class="quiz-question" data-type="mc" data-question="11" data-answer="c">
+          <div class="quiz-q-number">Question 1 of 5</div>
+          <div class="quiz-q-text">What is the primary purpose of a service charge in commercial property?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">To generate profit for the landlord</button>
+            <button class="quiz-option" data-value="b">To pay the managing agent's salary</button>
+            <button class="quiz-option" data-value="c">To recover the cost of shared services and common area maintenance from tenants</button>
+            <button class="quiz-option" data-value="d">To fund improvements that increase the building's capital value</button>
+          </div>
+          <div class="quiz-explanation">The service charge is a cost-recovery mechanism. It allows the landlord to pass on the costs of maintaining and servicing common areas to the tenants who benefit from them. The RICS Code is clear: the landlord should not profit from the service charge.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="12" data-answer="a">
+          <div class="quiz-q-number">Question 2 of 5</div>
+          <div class="quiz-q-text">A building has 20,000 sq ft of lettable area. Tenant A occupies 5,000 sq ft. The total service charge budget is 200,000. What is Tenant A's annual service charge?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">50,000</button>
+            <button class="quiz-option" data-value="b">40,000</button>
+            <button class="quiz-option" data-value="c">25,000</button>
+            <button class="quiz-option" data-value="d">100,000</button>
+          </div>
+          <div class="quiz-explanation">Tenant A's apportionment is 5,000 / 20,000 = 25%. 25% of 200,000 = 50,000. This is a straightforward area-weighted apportionment, which is the most common method in commercial property service charges.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="13" data-answer="b">
+          <div class="quiz-q-number">Question 3 of 5</div>
+          <div class="quiz-q-text">The RICS Code requires service charge accounts to be issued to tenants within what timeframe?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Within 2 months of year-end</button>
+            <button class="quiz-option" data-value="b">Within 4 months of year-end</button>
+            <button class="quiz-option" data-value="c">Within 6 months of year-end</button>
+            <button class="quiz-option" data-value="d">Within 12 months of year-end</button>
+          </div>
+          <div class="quiz-explanation">The RICS Code of Practice for Service Charges in Commercial Property requires certified accounts to be issued to tenants within 4 months of the service charge year-end. Late accounts undermine tenant confidence and can lead to disputes. It is a key performance metric for managing agents.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="14" data-answer="d">
+          <div class="quiz-q-number">Question 4 of 5</div>
+          <div class="quiz-q-text">What is the difference between a sinking fund and a reserve fund?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">There is no difference — they are the same thing</button>
+            <button class="quiz-option" data-value="b">A sinking fund is for daily expenses; a reserve fund is for annual costs</button>
+            <button class="quiz-option" data-value="c">A sinking fund is illegal in commercial leases; only reserve funds are permitted</button>
+            <button class="quiz-option" data-value="d">A sinking fund is earmarked for a specific future cost; a reserve fund is a general contingency</button>
+          </div>
+          <div class="quiz-explanation">A sinking fund is set aside for a known, anticipated future expenditure — such as lift replacement or roof renewal. A reserve fund is a more general contingency for unexpected costs. Both require a provision in the lease to permit collection, and both must be held in separate bank accounts and accounted for transparently.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="15" data-answer="a">
+          <div class="quiz-q-number">Question 5 of 5</div>
+          <div class="quiz-q-text">Why is competitive tendering important for service charge contracts?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">It demonstrates value for money and transparency, which the RICS Code requires</button>
+            <button class="quiz-option" data-value="b">It is a legal requirement under the Landlord and Tenant Act 1954</button>
+            <button class="quiz-option" data-value="c">It allows the managing agent to choose the cheapest option regardless of quality</button>
+            <button class="quiz-option" data-value="d">It is only necessary for contracts over 1 million</button>
+          </div>
+          <div class="quiz-explanation">The RICS Code requires that service charge expenditure represents value for money. Competitive tendering for significant contracts is the primary way to demonstrate this. It ensures transparency (tenants can see that alternatives were considered) and usually results in better pricing. However, the cheapest option is not always the best — quality and reliability matter too.</div>
+        </div>
+
+        <div class="quiz-score-card" id="quiz3-score">
+          <h3>Module 3 — Knowledge Check Complete</h3>
+          <div class="quiz-score-number" id="quiz3-score-display">0/5</div>
+          <p id="quiz3-score-message"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- MODULE 4: BUILDING MANAGEMENT                -->
+    <!-- ============================================ -->
+    <section id="module4" class="section fade-in">
+      <div class="section-header">
+        <div class="section-number">4</div>
+        <h2>Building Management</h2>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Property Inspections and Condition Reporting</h3>
+        <p>Regular property inspections are the foundation of good building management. They allow you to identify maintenance issues before they become serious problems, verify that contractors are performing to standard, and check that tenants are complying with their lease obligations.</p>
+        <p style="margin-top: 12px;">As a managing agent, you should aim to inspect each property at least <strong>quarterly</strong>. Some properties — particularly those with intensive public use such as retail centres — may need monthly inspections. Every inspection should be documented with a written report and photographs.</p>
+      </div>
+
+      <div class="card">
+        <h3>Schedules of Condition</h3>
+        <p>A schedule of condition is a photographic and written record of the property's condition at a specific point in time. It is typically prepared:</p>
+        <ul>
+          <li><strong>At lease commencement</strong> — To record the condition when the tenant takes occupation. This protects both parties at lease end when the landlord assesses whether the tenant has met their repairing obligations</li>
+          <li><strong>At lease end</strong> — To compare against the starting condition and identify any dilapidations (items of disrepair)</li>
+          <li><strong>Before major works</strong> — To record the existing condition before a tenant commences fit-out works</li>
+        </ul>
+        <p style="margin-top: 12px;">Schedules of condition are prepared by building surveyors (often a colleague at Hillway) and are typically attached to the lease as a formal document. They are critically important for dilapidations claims at lease end.</p>
+      </div>
+
+      <div class="card">
+        <h3>Planned Preventive Maintenance (PPM)</h3>
+        <p>PPM is a schedule of regular maintenance tasks designed to keep building systems operating efficiently and extend their lifespan. It is always cheaper and less disruptive to maintain equipment properly than to wait for it to break down.</p>
+        <p style="margin-top: 12px;">A typical PPM schedule includes:</p>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>System</th>
+            <th>Frequency</th>
+            <th>Typical Tasks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>HVAC</strong></td>
+            <td>Quarterly + annual</td>
+            <td>Filter changes, refrigerant checks, ductwork inspections, AHU servicing</td>
+          </tr>
+          <tr>
+            <td><strong>Lifts</strong></td>
+            <td>Monthly</td>
+            <td>Safety checks, door mechanism, emergency communications, annual thorough examination (LOLER)</td>
+          </tr>
+          <tr>
+            <td><strong>Fire Systems</strong></td>
+            <td>Weekly / quarterly / annual</td>
+            <td>Weekly alarm test, quarterly detector test, annual full system service, emergency lighting monthly flash test</td>
+          </tr>
+          <tr>
+            <td><strong>Electrical</strong></td>
+            <td>Annual / 5-yearly</td>
+            <td>PAT testing (annual), fixed wire testing (5-yearly), switchgear inspection</td>
+          </tr>
+          <tr>
+            <td><strong>Water Systems</strong></td>
+            <td>Monthly / annual</td>
+            <td>Legionella monitoring, tank inspections, TMV checks, water treatment</td>
+          </tr>
+          <tr>
+            <td><strong>Roof</strong></td>
+            <td>Biannual</td>
+            <td>Gutter clearance, membrane inspection, flashings check, drainage clearance</td>
+          </tr>
+          <tr>
+            <td><strong>Fabric</strong></td>
+            <td>Annual</td>
+            <td>External decoration review, cladding inspection, masonry condition, window seals</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="card">
+        <h3>Reactive Maintenance and Emergency Procedures</h3>
+        <p>Not everything can be planned. Reactive maintenance deals with unexpected breakdowns and urgent repairs. The key is to have clear procedures in place so that when things go wrong, you can respond quickly and effectively.</p>
+        <ul>
+          <li><strong>Prioritise by urgency</strong> — A burst pipe flooding a tenant's office is more urgent than a faulty door closer. Categorise repairs as emergency (respond within 2-4 hours), urgent (respond within 24 hours), or routine (respond within 5 working days)</li>
+          <li><strong>Have approved contractors on standby</strong> — Maintain a list of pre-vetted contractors for common emergency situations: plumbers, electricians, locksmiths, glaziers, drainage engineers</li>
+          <li><strong>Communicate immediately</strong> — Tell affected tenants what has happened, what you are doing about it, and when they can expect a resolution. Silence creates frustration</li>
+          <li><strong>Document everything</strong> — Photograph the issue, log the timeline of your response, and record costs. This is important for insurance claims and service charge accounting</li>
+        </ul>
+      </div>
+
+      <div class="card card-warning">
+        <h3>Health and Safety Compliance</h3>
+        <p>Health and safety is not optional. As the managing agent, you have a duty of care to everyone who enters the building. Getting this wrong can result in criminal prosecution, not just civil liability. The key compliance areas are:</p>
+      </div>
+
+      <div class="two-col">
+        <div class="def-card">
+          <span class="tag tag-red">Asbestos</span>
+          <h4>Control of Asbestos Regulations 2012</h4>
+          <p>Buildings constructed before 2000 may contain asbestos. The managing agent must maintain an <strong>asbestos management plan</strong> and an asbestos register. Before any works are carried out, check the register. Asbestos that is in good condition and undisturbed is best left in situ and managed. Damaged or deteriorating asbestos must be removed by a licensed contractor.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-red">Fire Safety</span>
+          <h4>Regulatory Reform (Fire Safety) Order 2005</h4>
+          <p>The landlord (through the managing agent) is the "Responsible Person" for fire safety in common areas. You must have a current <strong>fire risk assessment</strong>, maintain fire detection and alarm systems, ensure escape routes are clear, and provide fire safety information to tenants. The fire risk assessment must be reviewed regularly and after any significant change to the building.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-red">Legionella</span>
+          <h4>L8 Approved Code of Practice</h4>
+          <p>Legionella bacteria can grow in water systems, particularly where water is stored between 20-45 degrees Celsius. The managing agent must carry out a <strong>legionella risk assessment</strong>, implement a monitoring regime (monthly temperature checks, water treatment), and maintain records. This applies to cooling towers, hot and cold water systems, and any other water storage.</p>
+        </div>
+        <div class="def-card">
+          <span class="tag tag-red">CDM Regulations</span>
+          <h4>Construction (Design and Management) Regulations 2015</h4>
+          <p>For any construction or maintenance project with more than one contractor, or lasting more than 30 working days with more than 20 workers, CDM applies. The managing agent often acts as "Client" under CDM and must appoint a Principal Designer and Principal Contractor. Even for smaller projects, you have a duty to manage health and safety risks.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Environmental Management and Sustainability</h3>
+        <p>Sustainability is no longer a "nice to have" in property management. It affects the building's value, attractiveness to tenants, and regulatory compliance. Key areas include:</p>
+        <ul>
+          <li><strong>Energy Performance Certificates (EPCs)</strong> — Commercial properties must have a valid EPC. Since April 2018, it has been unlawful to let a property with an EPC rating below E (the Minimum Energy Efficiency Standards, or MEES). This threshold is expected to rise to C or B in the coming years</li>
+          <li><strong>Energy management</strong> — Monitor utility consumption, identify waste, and implement efficiency measures (LED lighting, smart HVAC controls, improved insulation)</li>
+          <li><strong>Waste management</strong> — Implement recycling programmes, reduce single-use materials, and ensure waste is disposed of responsibly</li>
+          <li><strong>Carbon reporting</strong> — Many institutional landlords now require carbon reporting for their portfolios. The managing agent may need to collect and report energy data</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Insurance</h3>
+        <p>The managing agent is typically responsible for arranging and managing buildings insurance on behalf of the landlord. The main types of insurance are:</p>
+        <ul>
+          <li><strong>Buildings insurance</strong> — Covers the structure and fabric of the building against damage (fire, flood, storm, impact, subsidence). The sum insured must reflect the <strong>reinstatement cost</strong> (the cost to rebuild the property from scratch), not the market value</li>
+          <li><strong>Engineering insurance</strong> — Covers lifts, boilers, pressure vessels, and other mechanical plant. Often combined with an inspection service</li>
+          <li><strong>Public liability insurance</strong> — Covers claims from third parties who are injured or suffer property damage on the landlord's premises</li>
+          <li><strong>Loss of rent insurance</strong> — Covers the landlord's rental income if the property becomes uninhabitable due to an insured event</li>
+          <li><strong>Terrorism insurance</strong> — Available through Pool Re, the government-backed reinsurance scheme. Typically an optional add-on for city-centre properties</li>
+        </ul>
+        <p style="margin-top: 12px;">Review insurance cover annually. Ensure reinstatement valuations are up to date (typically every 3-5 years). Report all potential claims promptly to the insurer — late notification can void cover.</p>
+      </div>
+
+      <button class="module-complete-btn" onclick="toggleModuleComplete(4)" id="module4-complete-btn">
+        Mark Module 4 Complete
+      </button>
+    </section>
+
+    <!-- MODULE 4 KNOWLEDGE CHECK -->
+    <section id="quiz4" class="section fade-in">
+      <div class="section-header">
+        <div class="section-number">Q</div>
+        <h2>Module 4 — Knowledge Check</h2>
+      </div>
+
+      <div class="quiz-container" data-quiz="quiz4">
+        <div class="quiz-question" data-type="mc" data-question="16" data-answer="b">
+          <div class="quiz-q-number">Question 1 of 5</div>
+          <div class="quiz-q-text">How often should a managing agent typically inspect a multi-let commercial property?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Once a year</button>
+            <button class="quiz-option" data-value="b">At least quarterly</button>
+            <button class="quiz-option" data-value="c">Only when a tenant reports a problem</button>
+            <button class="quiz-option" data-value="d">Daily</button>
+          </div>
+          <div class="quiz-explanation">Quarterly inspections are the standard for most multi-let commercial properties. This frequency allows you to catch issues early, verify contractor performance, and demonstrate active management. Higher-footfall properties may need monthly inspections.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="17" data-answer="c">
+          <div class="quiz-q-number">Question 2 of 5</div>
+          <div class="quiz-q-text">What is the current minimum EPC rating required to let a commercial property in England and Wales?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Rating A</button>
+            <button class="quiz-option" data-value="b">Rating C</button>
+            <button class="quiz-option" data-value="c">Rating E</button>
+            <button class="quiz-option" data-value="d">There is no minimum requirement</button>
+          </div>
+          <div class="quiz-explanation">Since April 2018, the Minimum Energy Efficiency Standards (MEES) require a minimum EPC rating of E to grant a new lease or renew an existing one. Properties below E cannot be let unless an exemption applies. The government has signalled that this threshold will rise to C or B in the coming years, which will require significant investment in many older buildings.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="18" data-answer="a">
+          <div class="quiz-q-number">Question 3 of 5</div>
+          <div class="quiz-q-text">Under what circumstances must you check the asbestos register before proceeding?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Before any maintenance, refurbishment, or alteration works in a pre-2000 building</button>
+            <button class="quiz-option" data-value="b">Only when carrying out major demolition works</button>
+            <button class="quiz-option" data-value="c">Only if a tenant specifically asks about asbestos</button>
+            <button class="quiz-option" data-value="d">Asbestos checks are the tenant's responsibility, not the managing agent's</button>
+          </div>
+          <div class="quiz-explanation">The asbestos register must be checked before ANY works are carried out in a building that may contain asbestos (generally any building constructed before 2000). Even minor works like drilling into a wall or replacing a ceiling tile could disturb asbestos-containing materials. The consequences of uncontrolled asbestos exposure are severe and can be fatal.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="19" data-answer="d">
+          <div class="quiz-q-number">Question 4 of 5</div>
+          <div class="quiz-q-text">What should the sum insured on a buildings insurance policy reflect?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The market value of the property</button>
+            <button class="quiz-option" data-value="b">The original purchase price plus inflation</button>
+            <button class="quiz-option" data-value="c">The amount of the outstanding mortgage</button>
+            <button class="quiz-option" data-value="d">The reinstatement cost — the cost to rebuild the property from scratch</button>
+          </div>
+          <div class="quiz-explanation">The sum insured must reflect the reinstatement cost, which is the cost to demolish, clear the site, and rebuild the property to its current specification, including professional fees. This is not the same as the market value. Reinstatement valuations should be updated every 3-5 years by a qualified building surveyor.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="20" data-answer="b">
+          <div class="quiz-q-number">Question 5 of 5</div>
+          <div class="quiz-q-text">A burst pipe is flooding a tenant's office at 6pm on a Friday. How should you prioritise this?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Log it as a routine repair and deal with it on Monday</button>
+            <button class="quiz-option" data-value="b">Treat it as an emergency — respond within 2-4 hours with an emergency plumber</button>
+            <button class="quiz-option" data-value="c">Tell the tenant to call a plumber themselves and send the invoice</button>
+            <button class="quiz-option" data-value="d">Wait for the landlord to authorise the expenditure before taking action</button>
+          </div>
+          <div class="quiz-explanation">A burst pipe causing active flooding is a clear emergency. You must act immediately to mitigate the damage, regardless of the time or day. Call your emergency plumber, isolate the water supply if possible, warn other tenants who may be affected, and photograph the damage for insurance purposes. Inform the landlord as soon as practical. Waiting for authorisation in a genuine emergency would be negligent.</div>
+        </div>
+
+        <div class="quiz-score-card" id="quiz4-score">
+          <h3>Module 4 — Knowledge Check Complete</h3>
+          <div class="quiz-score-number" id="quiz4-score-display">0/5</div>
+          <p id="quiz4-score-message"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- MODULE 5: PRACTICAL SKILLS FOR DAY ONE       -->
+    <!-- ============================================ -->
+    <section id="module5" class="section fade-in">
+      <div class="section-header">
+        <div class="section-number">5</div>
+        <h2>Practical Skills for Day One</h2>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Property Filing Systems and Databases</h3>
+        <p>Every managed property has a file. In modern practice, this is predominantly digital, but the principles are the same as they have always been. A well-organised property file means you can find any document, letter, or invoice within seconds. A disorganised file wastes time and risks losing critical information.</p>
+        <p style="margin-top: 12px;">Hillway uses <strong>Steer AI</strong> as our property management platform. Each property has a structured file containing:</p>
+        <ul>
+          <li><strong>Lease documents</strong> — The lease itself, any deeds of variation, licences to alter, licences to assign, rent review memoranda</li>
+          <li><strong>Correspondence</strong> — Organised chronologically and by tenant/subject</li>
+          <li><strong>Service charge records</strong> — Budgets, year-end accounts, contractor invoices, apportionment schedules</li>
+          <li><strong>Inspection reports</strong> — With photographs, dated and filed systematically</li>
+          <li><strong>Insurance</strong> — Policies, schedules, claims correspondence, reinstatement valuations</li>
+          <li><strong>Compliance</strong> — Fire risk assessments, asbestos registers, legionella risk assessments, EPC certificates</li>
+          <li><strong>Financial records</strong> — Rent demands, payment records, arrears correspondence</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Reading a Lease — What to Look For First</h3>
+        <p>A commercial lease can be 50 to 100+ pages long. When you first pick up a lease, do not try to read it cover to cover. Start with these key sections:</p>
+      </div>
+
+      <div class="step-list">
+        <div class="step-item">
+          <h4>The Particulars Page</h4>
+          <p>Usually the first page or two. This gives you the headline information: tenant name, demise (the space being leased), commencement date, term, rent, rent review dates, break dates. Think of this as the lease's executive summary.</p>
+        </div>
+        <div class="step-item">
+          <h4>The Plan</h4>
+          <p>The demise plan shows exactly which parts of the building the tenant has leased. It is typically shaded or outlined in red. Understanding the demise is essential for knowing who is responsible for what. Is the car park included? What about the loading bay?</p>
+        </div>
+        <div class="step-item">
+          <h4>The Repairing Covenant</h4>
+          <p>Look for the tenant's repairing obligations. Are they FRI (full repairing and insuring)? Or is the landlord responsible for the structure with the tenant maintaining the interior? This determines how maintenance responsibilities are split.</p>
+        </div>
+        <div class="step-item">
+          <h4>The Service Charge Clause</h4>
+          <p>How is the service charge calculated? What is the apportionment? Is there a cap? What services are included? Can the landlord add new services? These details are critical for service charge administration.</p>
+        </div>
+        <div class="step-item">
+          <h4>The Break Clause</h4>
+          <p>Does one exist? What are the conditions? How much notice is required? Break clauses are time-sensitive and getting the conditions wrong can invalidate the break. Always flag upcoming breaks to the landlord well in advance.</p>
+        </div>
+        <div class="step-item">
+          <h4>The Schedules</h4>
+          <p>Leases often have schedules at the back covering specific topics: permitted use, authorised alterations, insurance provisions, the landlord's services, and any special conditions. Skim these to know what is there so you can refer back when needed.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Attending a Property Inspection — What to Take, What to Look At</h3>
+        <p><strong>What to take:</strong></p>
+        <ul>
+          <li>A smartphone (for photos and notes — there is no excuse for an uninspected building in the age of phone cameras)</li>
+          <li>A high-visibility vest and safety boots (for industrial properties and construction sites)</li>
+          <li>A torch (for plant rooms, risers, and car parks)</li>
+          <li>A copy of the previous inspection report (so you can check whether previous issues have been resolved)</li>
+          <li>The PPM schedule (to verify that planned maintenance has been carried out)</li>
+          <li>A clipboard or tablet for notes</li>
+        </ul>
+        <p style="margin-top: 16px;"><strong>What to look at:</strong></p>
+        <ul>
+          <li><strong>External</strong> — Roof (from ground level), gutters and downpipes, external walls and cladding, car park surface, landscaping, signage, external lighting, boundary fences</li>
+          <li><strong>Common areas</strong> — Reception (cleanliness, lighting, first impression), corridors and stairwells, lifts (condition, cleanliness, certificates displayed), WCs, plant rooms (tidiness, leaks, labelling)</li>
+          <li><strong>Safety</strong> — Fire escape routes clear? Fire extinguishers in date? Emergency lighting working? Asbestos labels in place? Trip hazards?</li>
+          <li><strong>Tenant areas</strong> — Where access is agreed, check for lease breaches: unauthorised alterations, subletting, nuisance, damage to the demise</li>
+          <li><strong>Contractor performance</strong> — Is the cleaning up to standard? Are the grounds being maintained? Has the most recent PPM visit been completed?</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Writing a Property Inspection Report</h3>
+        <p>An inspection without a written report is a wasted inspection. Your report should be structured, concise, and actionable. Use this format:</p>
+        <ul>
+          <li><strong>Header</strong> — Property name, date, inspector name, weather conditions</li>
+          <li><strong>Summary</strong> — Overall condition and key issues (3-4 sentences)</li>
+          <li><strong>Findings by area</strong> — External, common areas, plant rooms, tenant areas. For each finding: describe the issue, attach a photograph, rate the priority (urgent / routine / monitor), and recommend the action</li>
+          <li><strong>Outstanding items from previous report</strong> — Have they been resolved? If not, escalate the priority</li>
+          <li><strong>Recommendations</strong> — Prioritised list of actions with estimated costs where possible</li>
+        </ul>
+        <p style="margin-top: 12px;">Circulate the report to the landlord within 5 working days of the inspection. Assign actions with deadlines and follow up to ensure they are completed.</p>
+      </div>
+
+      <div class="card">
+        <h3>Dealing with Tenant Phone Calls and Emails</h3>
+        <p>When a tenant contacts you with a problem or request, follow this framework:</p>
+        <ul>
+          <li><strong>Listen</strong> — Let them explain the issue fully before responding. Take notes</li>
+          <li><strong>Acknowledge</strong> — Confirm you understand the issue. Repeat it back if necessary</li>
+          <li><strong>Set expectations</strong> — Tell them what you will do next and when they can expect a response. Be realistic</li>
+          <li><strong>Act</strong> — Do what you said you would do, within the timeframe you committed to</li>
+          <li><strong>Follow up</strong> — Close the loop. Confirm the issue has been resolved</li>
+        </ul>
+        <p style="margin-top: 12px;"><strong>Common tenant requests and how to handle them:</strong></p>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Request</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"The heating has broken down"</td>
+            <td>Log it, contact the M&amp;E contractor, provide an ETA to the tenant. If out of hours, use the emergency call-out number</td>
+          </tr>
+          <tr>
+            <td>"We want to make changes to our office layout"</td>
+            <td>Explain they will need landlord consent (licence to alter). Send them the application process and a list of information you will need (plans, contractor details, method statement)</td>
+          </tr>
+          <tr>
+            <td>"Can we sublet part of our space?"</td>
+            <td>Check the alienation clause in their lease. If subletting is permitted with consent, explain the process. If prohibited, tell them clearly</td>
+          </tr>
+          <tr>
+            <td>"The cleaning is not good enough"</td>
+            <td>Take it seriously. Inspect the area, speak to the cleaning contractor, and follow up with the tenant. If the complaint is valid, address it with the contractor formally</td>
+          </tr>
+          <tr>
+            <td>"We are struggling to pay this quarter's rent"</td>
+            <td>Listen, document, follow up in writing, and report to the landlord. Do not agree to any payment plan without landlord authorisation</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="card card-highlight">
+        <h3>Using Steer AI for Property Management Tasks</h3>
+        <p>Steer AI is Hillway's internal platform that combines property management data with AI capabilities. As a new team member, you will use Steer for:</p>
+        <ul>
+          <li><strong>Document retrieval</strong> — Upload leases and key documents. Steer can answer questions about lease terms instantly, saving you from reading through a 100-page document for a single clause</li>
+          <li><strong>Board Room</strong> — Present questions or scenarios to a virtual advisory board for analysis. Useful for complex tenant situations or strategic decisions</li>
+          <li><strong>Report drafting</strong> — Use Steer to help draft inspection reports, tenant correspondence, and service charge narratives</li>
+          <li><strong>Lease event tracking</strong> — Steer extracts and tracks key dates from uploaded leases</li>
+          <li><strong>Market research</strong> — Ask Steer about comparable rents, market trends, and property data</li>
+        </ul>
+        <p style="margin-top: 12px;">Steer does not replace professional judgement. Always verify AI-generated information against the source documents. But it is an incredibly powerful tool for working faster and more accurately.</p>
+      </div>
+
+      <div class="card card-success">
+        <h3>Your First Week Checklist</h3>
+        <p>Use this checklist to track your progress during your first week. Click each item to mark it complete.</p>
+        <div class="checklist" id="first-week-checklist">
+          <div class="checklist-item" data-item="1">
+            <div class="check-box" onclick="toggleChecklist(this)"></div>
+            <span>Read the management agreements for 2-3 properties to understand our client relationships</span>
+          </div>
+          <div class="checklist-item" data-item="2">
+            <div class="check-box" onclick="toggleChecklist(this)"></div>
+            <span>Read one complete lease from start to finish, making notes on key terms</span>
+          </div>
+          <div class="checklist-item" data-item="3">
+            <div class="check-box" onclick="toggleChecklist(this)"></div>
+            <span>Attend a property inspection with a senior surveyor — observe and ask questions</span>
+          </div>
+          <div class="checklist-item" data-item="4">
+            <div class="check-box" onclick="toggleChecklist(this)"></div>
+            <span>Review a recent service charge budget and reconciliation for one property</span>
+          </div>
+          <div class="checklist-item" data-item="5">
+            <div class="check-box" onclick="toggleChecklist(this)"></div>
+            <span>Log in to Steer AI and upload a test document — familiarise yourself with the platform</span>
+          </div>
+          <div class="checklist-item" data-item="6">
+            <div class="check-box" onclick="toggleChecklist(this)"></div>
+            <span>Review the fire risk assessment and asbestos register for one property</span>
+          </div>
+          <div class="checklist-item" data-item="7">
+            <div class="check-box" onclick="toggleChecklist(this)"></div>
+            <span>Sit in on a tenant phone call or meeting with a colleague</span>
+          </div>
+          <div class="checklist-item" data-item="8">
+            <div class="check-box" onclick="toggleChecklist(this)"></div>
+            <span>Review the rent roll and identify any tenants currently in arrears</span>
+          </div>
+          <div class="checklist-item" data-item="9">
+            <div class="check-box" onclick="toggleChecklist(this)"></div>
+            <span>Read the RICS Service Charge Code executive summary</span>
+          </div>
+          <div class="checklist-item" data-item="10">
+            <div class="check-box" onclick="toggleChecklist(this)"></div>
+            <span>Complete all 5 modules and the final assessment in this training course</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="module-complete-btn" onclick="toggleModuleComplete(5)" id="module5-complete-btn">
+        Mark Module 5 Complete
+      </button>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FINAL ASSESSMENT (10 QUESTIONS)              -->
+    <!-- ============================================ -->
+    <section id="quiz5" class="section fade-in">
+      <div class="section-header">
+        <div class="section-number">Q</div>
+        <h2>Final Assessment — Comprehensive Quiz</h2>
+      </div>
+
+      <p style="color: var(--gray-600); font-size: 14px; margin-bottom: 24px; line-height: 1.7;">This final assessment covers all five modules. You need to demonstrate understanding across property management fundamentals, tenant management, service charges, building management, and practical skills. Take your time and refer back to the modules if needed.</p>
+
+      <div class="quiz-container" data-quiz="quiz5">
+        <div class="quiz-question" data-type="mc" data-question="21" data-answer="c">
+          <div class="quiz-q-number">Question 1 of 10</div>
+          <div class="quiz-q-text">A landlord asks you to prepare a management agreement for a new multi-let office. Which of these would NOT typically be included?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The management fee structure</button>
+            <button class="quiz-option" data-value="b">Authority levels for expenditure approval</button>
+            <button class="quiz-option" data-value="c">The architect's drawings for a proposed extension</button>
+            <button class="quiz-option" data-value="d">The notice period for termination</button>
+          </div>
+          <div class="quiz-explanation">A management agreement sets out the scope of the managing agent's responsibilities, fee structure, authority levels, and termination provisions. Architect's drawings for a proposed extension are a development matter and would not form part of a property management agreement.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="22" data-answer="a">
+          <div class="quiz-q-number">Question 2 of 10</div>
+          <div class="quiz-q-text">A tenant wants to exercise a break clause in 6 months. Their lease says they must give 6 months' notice, have no outstanding breaches, pay all rent up to the break date, and provide vacant possession. They currently owe 2 weeks of rent. What do you advise the landlord?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The break conditions may not be met if the arrears are not cleared — the tenant should be informed of this risk and given the chance to remedy the breach</button>
+            <button class="quiz-option" data-value="b">The break clause is automatically void because of the arrears</button>
+            <button class="quiz-option" data-value="c">Arrears have no bearing on break clauses</button>
+            <button class="quiz-option" data-value="d">The landlord should refuse to accept the break notice</button>
+          </div>
+          <div class="quiz-explanation">Break clauses typically have strict conditions. If the lease requires all rent to be paid up to date and there are arrears, the tenant risks the break being invalid. However, the correct approach is to alert the tenant to the issue and give them the opportunity to remedy the breach. Seek legal advice on the specific wording of the break clause — case law in this area is nuanced.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="23" data-answer="d">
+          <div class="quiz-q-number">Question 3 of 10</div>
+          <div class="quiz-q-text">Which of the following is the managing agent's responsibility under the Regulatory Reform (Fire Safety) Order 2005?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Designing the building's fire escape routes</button>
+            <button class="quiz-option" data-value="b">Installing fire suppression systems in every tenant's demise</button>
+            <button class="quiz-option" data-value="c">Providing fire extinguisher training to every tenant's staff</button>
+            <button class="quiz-option" data-value="d">Maintaining a current fire risk assessment and ensuring common area fire safety measures are in place</button>
+          </div>
+          <div class="quiz-explanation">As the Responsible Person for common areas, the managing agent must ensure a fire risk assessment is in place and regularly reviewed, fire detection and alarm systems are maintained, escape routes are clear, and fire safety information is provided. Training individual tenant's staff is the tenant's own responsibility within their demise.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="24" data-answer="b">
+          <div class="quiz-q-number">Question 4 of 10</div>
+          <div class="quiz-q-text">A service charge year has ended. The budget was 150,000 but actual expenditure was 165,000. What happens next?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The landlord absorbs the deficit — tenants cannot be charged more than the budget</button>
+            <button class="quiz-option" data-value="b">Tenants receive a balancing charge for their share of the 15,000 overspend, provided the expenditure was properly incurred and within the scope of the service charge clause</button>
+            <button class="quiz-option" data-value="c">The managing agent must personally cover the shortfall</button>
+            <button class="quiz-option" data-value="d">The surplus is automatically carried forward to next year's budget</button>
+          </div>
+          <div class="quiz-explanation">When actual expenditure exceeds the budget, tenants receive a balancing charge for their share of the overspend. This is normal and expected — budgets are estimates. However, the expenditure must be properly incurred, within the scope of the service charge clause, and represent value for money. Large overspends should be communicated to tenants before year-end where possible, not as a surprise on the accounts.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="25" data-answer="c">
+          <div class="quiz-q-number">Question 5 of 10</div>
+          <div class="quiz-q-text">You are inspecting a building and notice water staining on a ceiling tile in the second-floor corridor. What should you do?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Replace the ceiling tile and move on</button>
+            <button class="quiz-option" data-value="b">Ignore it — ceiling staining is cosmetic</button>
+            <button class="quiz-option" data-value="c">Photograph it, investigate the source of the water ingress, and arrange for the cause to be identified and repaired</button>
+            <button class="quiz-option" data-value="d">Report it to the tenant above and tell them to fix it</button>
+          </div>
+          <div class="quiz-explanation">Water staining is a symptom, not the problem. The cause could be a leaking pipe, a failed roof, condensation, or a plumbing issue in the floor above. Replacing the tile without finding the cause means the problem will recur — and possibly cause structural damage, mould, or electrical hazards. Always investigate the root cause.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="26" data-answer="a">
+          <div class="quiz-q-number">Question 6 of 10</div>
+          <div class="quiz-q-text">What is a "demise" in lease terminology?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The specific part of the building that the tenant has leased</button>
+            <button class="quiz-option" data-value="b">The date on which the lease comes to an end</button>
+            <button class="quiz-option" data-value="c">A formal notice of lease termination</button>
+            <button class="quiz-option" data-value="d">The tenant's obligation to surrender the property</button>
+          </div>
+          <div class="quiz-explanation">The "demise" is the precise space that is being leased to the tenant. It is typically defined by a written description and a plan attached to the lease. Understanding the demise is fundamental because it determines which parts of the building fall within the tenant's repairing obligations and which are the landlord's responsibility (and therefore funded through the service charge).</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="27" data-answer="d">
+          <div class="quiz-q-number">Question 7 of 10</div>
+          <div class="quiz-q-text">The RICS Service Charge Code requires that service charges operate on what basis?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The landlord is entitled to a 15% mark-up on all costs</button>
+            <button class="quiz-option" data-value="b">Costs should be split equally between all tenants regardless of size</button>
+            <button class="quiz-option" data-value="c">The managing agent can include any cost they consider reasonable</button>
+            <button class="quiz-option" data-value="d">Cost recovery only — the landlord should not profit from the service charge</button>
+          </div>
+          <div class="quiz-explanation">The RICS Code is clear: service charges should operate on a cost-recovery basis. The landlord should not make a profit from the service charge. The management fee (which is a legitimate cost) is the managing agent's remuneration and should be disclosed transparently. All other costs should be passed through at actual cost with no hidden mark-ups.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="28" data-answer="b">
+          <div class="quiz-q-number">Question 8 of 10</div>
+          <div class="quiz-q-text">A contractor submits an invoice for 8,000. Your management agreement gives you authority to approve expenditure up to 5,000 without further instruction. What should you do?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">Pay it — the work was done and the contractor is owed the money</button>
+            <button class="quiz-option" data-value="b">Seek the landlord's approval before paying, as the invoice exceeds your authority level</button>
+            <button class="quiz-option" data-value="c">Split the invoice into two payments of 4,000 to stay within your authority</button>
+            <button class="quiz-option" data-value="d">Deduct 3,000 and pay only 5,000</button>
+          </div>
+          <div class="quiz-explanation">The management agreement defines your authority levels for a reason. If an invoice exceeds your approval limit, you must seek the landlord's authorisation before paying. Splitting invoices to circumvent authority limits is unethical and a breach of your professional obligations. The contractor should not be left waiting unreasonably — escalate promptly and pay as soon as approval is received.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="29" data-answer="a">
+          <div class="quiz-q-number">Question 9 of 10</div>
+          <div class="quiz-q-text">Legionella bacteria are most likely to proliferate in water systems at what temperature range?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">20 to 45 degrees Celsius</button>
+            <button class="quiz-option" data-value="b">0 to 10 degrees Celsius</button>
+            <button class="quiz-option" data-value="c">60 to 80 degrees Celsius</button>
+            <button class="quiz-option" data-value="d">Below freezing point</button>
+          </div>
+          <div class="quiz-explanation">Legionella bacteria thrive in water between 20 and 45 degrees Celsius. This is why hot water should be stored at 60 degrees or above and distributed at 50 degrees or above, and cold water should be kept below 20 degrees. Stagnant water, scale, and biofilm provide ideal conditions for growth. Monthly temperature monitoring at sentinel outlets is a core part of the legionella control regime.</div>
+        </div>
+
+        <div class="quiz-question" data-type="mc" data-question="30" data-answer="c">
+          <div class="quiz-q-number">Question 10 of 10</div>
+          <div class="quiz-q-text">When reading a lease for the first time, what should you look at FIRST?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">The detailed alienation provisions</button>
+            <button class="quiz-option" data-value="b">The decorating schedule</button>
+            <button class="quiz-option" data-value="c">The particulars page — tenant name, demise, term, rent, key dates</button>
+            <button class="quiz-option" data-value="d">The boilerplate clauses at the end</button>
+          </div>
+          <div class="quiz-explanation">Always start with the particulars page. This gives you the headline information in a digestible format: who the tenant is, what space they have leased, the term, the rent, and the key dates (rent reviews, break clauses, expiry). Once you have this overview, you can then drill into the specific clauses that are relevant to the task at hand.</div>
+        </div>
+
+        <div class="quiz-score-card" id="quiz5-score">
+          <h3>Final Assessment — Complete</h3>
+          <div class="quiz-score-number" id="quiz5-score-display">0/10</div>
+          <p id="quiz5-score-message"></p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 32px; padding: 32px; background: var(--white); border-radius: 12px; border: 1px solid var(--gray-200);">
+        <h3 style="font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 8px;">Course Complete</h3>
+        <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 20px;">Well done for working through this course. Property management is a discipline you learn by doing — this training gives you the foundations, but the real learning starts when you walk into your first building, meet your first tenant, and deal with your first burst pipe.</p>
+        <button class="reset-btn" onclick="resetAllProgress()" style="margin-left: 0;">Reset All Progress</button>
+      </div>
+    </section>
+
+  </div><!-- end .content -->
+</div><!-- end #main -->
+
+<script>
+  // ==========================================
+  // Progress bar (scroll position)
+  // ==========================================
+  const progressBar = document.getElementById('progress-bar');
+
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }
+
+  // ==========================================
+  // Active sidebar link
+  // ==========================================
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+  function updateActiveLink() {
+    let current = '';
+    const offset = 100;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - offset;
+      if (window.scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('data-section') === current) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  // ==========================================
+  // Fade-in on scroll
+  // ==========================================
+  const fadeElements = document.querySelectorAll('.fade-in');
+
+  function checkFadeIn() {
+    fadeElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 60) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  // ==========================================
+  // Scroll event handler (throttled)
+  // ==========================================
+  let ticking = false;
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateProgress();
+        updateActiveLink();
+        checkFadeIn();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ==========================================
+  // Smooth scroll for sidebar links
+  // ==========================================
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ==========================================
+  // localStorage key
+  // ==========================================
+  const STORAGE_KEY = 'hillway-pm-course';
+
+  function loadState() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveState(state) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) {}
+  }
+
+  // ==========================================
+  // Module completion
+  // ==========================================
+  const moduleCount = 5;
+
+  function toggleModuleComplete(moduleNum) {
+    const state = loadState();
+    if (!state.modules) state.modules = {};
+
+    const key = 'module' + moduleNum;
+    const btn = document.getElementById(key + '-complete-btn');
+
+    if (state.modules[key]) {
+      // Un-complete
+      delete state.modules[key];
+      btn.classList.remove('completed');
+      btn.textContent = 'Mark Module ' + moduleNum + ' Complete';
+    } else {
+      // Complete
+      state.modules[key] = true;
+      btn.classList.add('completed');
+      btn.textContent = 'Module ' + moduleNum + ' Complete';
+    }
+
+    saveState(state);
+    updateCourseProgress();
+  }
+
+  function updateCourseProgress() {
+    const state = loadState();
+    const completed = state.modules ? Object.keys(state.modules).length : 0;
+    const pct = Math.round((completed / moduleCount) * 100);
+
+    document.getElementById('course-progress-fill').style.width = pct + '%';
+    document.getElementById('course-progress-text').textContent = completed + ' of ' + moduleCount + ' modules complete';
+  }
+
+  function restoreModuleState() {
+    const state = loadState();
+    if (!state.modules) return;
+
+    Object.keys(state.modules).forEach(key => {
+      const btn = document.getElementById(key + '-complete-btn');
+      if (btn) {
+        btn.classList.add('completed');
+        const num = key.replace('module', '');
+        btn.textContent = 'Module ' + num + ' Complete';
+      }
+    });
+
+    updateCourseProgress();
+  }
+
+  // ==========================================
+  // Quiz logic
+  // ==========================================
+  const quizConfig = {
+    quiz1: { questions: [1,2,3,4,5], total: 5 },
+    quiz2: { questions: [6,7,8,9,10], total: 5 },
+    quiz3: { questions: [11,12,13,14,15], total: 5 },
+    quiz4: { questions: [16,17,18,19,20], total: 5 },
+    quiz5: { questions: [21,22,23,24,25,26,27,28,29,30], total: 10 }
+  };
+
+  const answeredQuestions = new Set();
+
+  function getQuizState() {
+    const state = loadState();
+    return state.quizzes || {};
+  }
+
+  function saveQuizAnswer(qNum, qState) {
+    const state = loadState();
+    if (!state.quizzes) state.quizzes = {};
+    state.quizzes[qNum] = qState;
+    saveState(state);
+  }
+
+  function getQuizScores(quizId) {
+    const config = quizConfig[quizId];
+    const quizzes = getQuizState();
+    let answered = 0;
+    let correct = 0;
+
+    config.questions.forEach(q => {
+      if (quizzes[q]) {
+        answered++;
+        if (quizzes[q].correct) correct++;
+      }
+    });
+
+    return { answered, correct, total: config.total };
+  }
+
+  function updateQuizScoreCard(quizId) {
+    const scores = getQuizScores(quizId);
+    if (scores.answered >= scores.total) {
+      const scoreCard = document.getElementById(quizId + '-score');
+      scoreCard.style.display = 'block';
+      document.getElementById(quizId + '-score-display').textContent = scores.correct + '/' + scores.total;
+
+      const pct = Math.round((scores.correct / scores.total) * 100);
+      let msg = '';
+      if (pct === 100) {
+        msg = 'Perfect score. Excellent understanding of this module.';
+      } else if (pct >= 80) {
+        msg = 'Strong result. You have a good grasp of the key concepts.';
+      } else if (pct >= 60) {
+        msg = 'Decent effort. Review the topics you missed and revisit the module content.';
+      } else {
+        msg = 'Take another look through the module content and try to understand why the correct answers differ from your choices.';
+      }
+      document.getElementById(quizId + '-score-message').textContent = msg;
+    }
+  }
+
+  // Multiple choice click handler
+  document.querySelectorAll('.quiz-question[data-type="mc"] .quiz-option').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const questionEl = this.closest('.quiz-question');
+      const qNum = questionEl.dataset.question;
+
+      if (answeredQuestions.has(qNum)) return;
+      answeredQuestions.add(qNum);
+
+      const correctAnswer = questionEl.dataset.answer;
+      const selectedValue = this.dataset.value;
+      const isCorrect = selectedValue === correctAnswer;
+
+      if (isCorrect) {
+        this.classList.add('selected-correct');
+        questionEl.classList.add('answered-correct');
+      } else {
+        this.classList.add('selected-incorrect');
+        questionEl.classList.add('answered-incorrect');
+        questionEl.querySelectorAll('.quiz-option').forEach(opt => {
+          if (opt.dataset.value === correctAnswer) {
+            opt.classList.add('show-correct');
+          }
+        });
+      }
+
+      questionEl.querySelectorAll('.quiz-option').forEach(opt => {
+        opt.disabled = true;
+      });
+
+      questionEl.querySelector('.quiz-explanation').classList.add('visible');
+
+      saveQuizAnswer(qNum, {
+        selected: selectedValue,
+        answer: correctAnswer,
+        correct: isCorrect
+      });
+
+      // Find which quiz this question belongs to
+      const quizContainer = questionEl.closest('.quiz-container');
+      if (quizContainer) {
+        const quizId = quizContainer.dataset.quiz;
+        updateQuizScoreCard(quizId);
+      }
+    });
+  });
+
+  function restoreQuizState() {
+    const quizzes = getQuizState();
+
+    Object.entries(quizzes).forEach(([qNum, qState]) => {
+      answeredQuestions.add(qNum);
+      const qEl = document.querySelector(`[data-question="${qNum}"]`);
+      if (!qEl) return;
+
+      if (qState.correct) {
+        qEl.classList.add('answered-correct');
+      } else {
+        qEl.classList.add('answered-incorrect');
+      }
+
+      qEl.querySelector('.quiz-explanation').classList.add('visible');
+
+      const options = qEl.querySelectorAll('.quiz-option');
+      options.forEach(opt => {
+        opt.disabled = true;
+        if (opt.dataset.value === qState.selected) {
+          opt.classList.add(qState.correct ? 'selected-correct' : 'selected-incorrect');
+        }
+        if (opt.dataset.value === qState.answer && !qState.correct) {
+          opt.classList.add('show-correct');
+        }
+      });
+    });
+
+    // Update all score cards
+    Object.keys(quizConfig).forEach(quizId => {
+      updateQuizScoreCard(quizId);
+    });
+  }
+
+  // ==========================================
+  // First week checklist
+  // ==========================================
+  function toggleChecklist(el) {
+    const item = el.closest('.checklist-item');
+    const itemNum = item.dataset.item;
+    const state = loadState();
+    if (!state.checklist) state.checklist = {};
+
+    if (el.classList.contains('checked')) {
+      el.classList.remove('checked');
+      item.classList.remove('completed');
+      delete state.checklist[itemNum];
+    } else {
+      el.classList.add('checked');
+      item.classList.add('completed');
+      state.checklist[itemNum] = true;
+    }
+
+    saveState(state);
+  }
+
+  function restoreChecklistState() {
+    const state = loadState();
+    if (!state.checklist) return;
+
+    Object.keys(state.checklist).forEach(itemNum => {
+      const item = document.querySelector(`.checklist-item[data-item="${itemNum}"]`);
+      if (item) {
+        const box = item.querySelector('.check-box');
+        box.classList.add('checked');
+        item.classList.add('completed');
+      }
+    });
+  }
+
+  // ==========================================
+  // Reset all progress
+  // ==========================================
+  function resetAllProgress() {
+    if (!confirm('Are you sure you want to reset all progress? This will clear module completions, quiz answers, and the first week checklist.')) return;
+
+    localStorage.removeItem(STORAGE_KEY);
+
+    // Reset module buttons
+    for (let i = 1; i <= moduleCount; i++) {
+      const btn = document.getElementById('module' + i + '-complete-btn');
+      if (btn) {
+        btn.classList.remove('completed');
+        btn.textContent = 'Mark Module ' + i + ' Complete';
+      }
+    }
+
+    // Reset quiz questions
+    answeredQuestions.clear();
+    document.querySelectorAll('.quiz-question').forEach(qEl => {
+      qEl.classList.remove('answered-correct', 'answered-incorrect');
+      qEl.querySelector('.quiz-explanation').classList.remove('visible');
+      qEl.querySelectorAll('.quiz-option').forEach(opt => {
+        opt.disabled = false;
+        opt.classList.remove('selected-correct', 'selected-incorrect', 'show-correct');
+      });
+    });
+
+    // Reset score cards
+    Object.keys(quizConfig).forEach(quizId => {
+      document.getElementById(quizId + '-score').style.display = 'none';
+    });
+
+    // Reset checklist
+    document.querySelectorAll('.checklist-item').forEach(item => {
+      item.classList.remove('completed');
+      const box = item.querySelector('.check-box');
+      if (box) box.classList.remove('checked');
+    });
+
+    // Reset progress bar
+    updateCourseProgress();
+  }
+
+  // ==========================================
+  // Initialise
+  // ==========================================
+  updateProgress();
+  updateActiveLink();
+  checkFadeIn();
+  restoreModuleState();
+  restoreQuizState();
+  restoreChecklistState();
+
+  if (navLinks.length > 0 && !document.querySelector('.sidebar-nav a.active')) {
+    navLinks[0].classList.add('active');
+  }
+</script>
+
+</body>
+</html>
