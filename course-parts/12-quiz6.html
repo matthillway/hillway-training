@@ -1,0 +1,174 @@
+    <!-- Day 6 Quiz -->
+    <div class="section fade-in" id="quiz-6">
+      <div class="section-header">
+        <span class="section-number">&bull;</span>
+        <h2>Day 6 Knowledge Check</h2>
+      </div>
+      <p style="margin-bottom: 20px; color: var(--gray-600); font-size: 14px;">Test your understanding of advanced prompting techniques. Remember: up to 3 attempts per question with hints.</p>
+
+      <div class="quiz-container" id="quiz-6-container">
+
+        <div class="quiz-question" data-question="61" data-type="mc" data-answer="b" data-hint1="Think about what chain-of-thought prompting asks Claude to do." data-hint2="CoT asks Claude to show its working step by step, rather than jumping to an answer.">
+          <div class="quiz-q-number">Question 1 of 12</div>
+          <div class="quiz-q-text">What is the main benefit of chain-of-thought prompting?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) It makes Claude respond faster</button>
+            <button class="quiz-option" data-value="b">(b) It improves accuracy by making Claude show its reasoning step by step</button>
+            <button class="quiz-option" data-value="c">(c) It reduces the cost of API usage</button>
+            <button class="quiz-option" data-value="d">(d) It allows Claude to access more data sources</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Chain-of-thought prompting</strong> improves accuracy because when Claude "thinks out loud," it breaks complex problems into smaller steps and can catch its own errors. This is especially valuable for analytical tasks like comparable analysis and financial calculations.</div>
+        </div>
+
+        <div class="quiz-question" data-question="62" data-type="mc" data-answer="c" data-hint1="Think about what 'few-shot' means &mdash; giving a few examples." data-hint2="You show Claude 1&ndash;5 examples of the output you want, and it learns the pattern.">
+          <div class="quiz-q-number">Question 2 of 12</div>
+          <div class="quiz-q-text">What is few-shot learning in prompt engineering?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Training Claude on a small dataset</button>
+            <button class="quiz-option" data-value="b">(b) Asking Claude to give short answers</button>
+            <button class="quiz-option" data-value="c">(c) Providing 1&ndash;5 examples in your prompt so Claude learns the pattern</button>
+            <button class="quiz-option" data-value="d">(d) Using Claude for only a few minutes at a time</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Few-shot learning</strong> means providing a small number of examples (typically 1&ndash;5) in your prompt. Claude learns the pattern from your examples and applies it to new inputs. This is especially effective for matching specific writing styles or output formats.</div>
+        </div>
+
+        <div class="quiz-question" data-question="63" data-type="mc" data-answer="d" data-hint1="Think about the difference between a basic role and a detailed persona." data-hint2="A persona defines expertise, style, knowledge focus, and personality traits &mdash; not just a job title.">
+          <div class="quiz-q-number">Question 3 of 12</div>
+          <div class="quiz-q-text">What distinguishes a "persona" from a simple "role" in prompting?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) A persona uses a different AI model</button>
+            <button class="quiz-option" data-value="b">(b) A persona is always fictional</button>
+            <button class="quiz-option" data-value="c">(c) A persona requires a paid subscription</button>
+            <button class="quiz-option" data-value="d">(d) A persona includes expertise level, communication style, knowledge focus, and personality traits</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">A <strong>persona</strong> goes beyond a job title to define specific expertise (25 years in South Yorkshire industrial), communication style (precise, data-driven), knowledge focus (rent reviews, lease renewals), and context awareness (ESG trends, logistics growth). This produces much richer, more relevant output.</div>
+        </div>
+
+        <div class="quiz-question" data-question="64" data-type="mc" data-answer="a" data-hint1="Think about which tasks benefit from step-by-step reasoning." data-hint2="CoT is best for analysis and calculations, not simple formatting tasks.">
+          <div class="quiz-q-number">Question 4 of 12</div>
+          <div class="quiz-q-text">Which task would benefit MOST from chain-of-thought prompting?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Analysing comparable evidence to recommend an ERV</button>
+            <button class="quiz-option" data-value="b">(b) Reformatting a table from rows to columns</button>
+            <button class="quiz-option" data-value="c">(c) Creating a meeting agenda</button>
+            <button class="quiz-option" data-value="d">(d) Summarising an email</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Comparable analysis</strong> involves multiple steps: assessing relevance, adjusting rents, weighting evidence, and forming a recommendation. Chain-of-thought prompting ensures each step is handled carefully. Simple tasks like reformatting or summarising don't need step-by-step reasoning.</div>
+        </div>
+
+        <div class="quiz-question" data-question="65" data-type="mc" data-answer="b" data-hint1="Think about the three levels: zero-shot, one-shot, few-shot." data-hint2="Zero-shot means no examples &mdash; just a description of what you want.">
+          <div class="quiz-q-number">Question 5 of 12</div>
+          <div class="quiz-q-text">What is a "zero-shot" prompt?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) A prompt that Claude refuses to answer</button>
+            <button class="quiz-option" data-value="b">(b) A prompt with no examples &mdash; just a description of the task</button>
+            <button class="quiz-option" data-value="c">(c) A prompt that produces no output</button>
+            <button class="quiz-option" data-value="d">(d) A prompt sent to zero agents</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Zero-shot</strong> means providing no examples &mdash; you describe what you want and Claude figures it out. This works well for simple, well-understood tasks. For complex or specialised tasks, one-shot or few-shot prompts (with examples) produce better results.</div>
+        </div>
+
+        <div class="quiz-question" data-question="66" data-type="mc" data-answer="c" data-hint1="Think about how many prompts you should aim for." data-hint2="The advice is quality over quantity &mdash; a focused set of well-refined prompts.">
+          <div class="quiz-q-number">Question 6 of 12</div>
+          <div class="quiz-q-text">What is the recommended approach to building a prompt library?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Save every prompt you ever use</button>
+            <button class="quiz-option" data-value="b">(b) Only use prompts written by others</button>
+            <button class="quiz-option" data-value="c">(c) Focus on 10&ndash;15 well-refined prompts for your most common tasks</button>
+            <button class="quiz-option" data-value="d">(d) Write one universal prompt that works for everything</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Quality over quantity.</strong> Focus on 10&ndash;15 well-refined prompts covering your most common tasks. These are more valuable than 100 untested prompts because you know they produce good results and you can find them quickly.</div>
+        </div>
+
+        <div class="quiz-question" data-question="67" data-type="mc" data-answer="a" data-hint1="Think about how to use a library prompt with Claude Code." data-hint2="Claude Code can read files from your filesystem &mdash; including prompt templates.">
+          <div class="quiz-q-number">Question 7 of 12</div>
+          <div class="quiz-q-text">How can you use a saved prompt template with Claude Code?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Ask Claude to read the template file and then provide your specific data</button>
+            <button class="quiz-option" data-value="b">(b) Paste it into a web form</button>
+            <button class="quiz-option" data-value="c">(c) Email it to Claude</button>
+            <button class="quiz-option" data-value="d">(d) Print it and scan it</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Claude Code can <strong>read files directly from your filesystem</strong>. Tell it to read your template file, then provide the specific data for this particular use. Claude will apply the template structure to your data and produce the output.</div>
+        </div>
+
+        <div class="quiz-question" data-question="68" data-type="mc" data-answer="d" data-hint1="Think about which element defines the lease provisions to examine." data-hint2="The lease summary prompt has 12 specific sections covering all key lease terms.">
+          <div class="quiz-q-number">Question 8 of 12</div>
+          <div class="quiz-q-text">In the lease summary prompt template, which section covers who can end the lease early?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) PARTIES</button>
+            <button class="quiz-option" data-value="b">(b) TERM</button>
+            <button class="quiz-option" data-value="c">(c) RENT REVIEWS</button>
+            <button class="quiz-option" data-value="d">(d) BREAK CLAUSES</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>BREAK CLAUSES</strong> cover who can end the lease early (landlord, tenant, or mutual), when they can exercise the break, what conditions must be met, and the required notice period. This is one of the most commercially important provisions in a lease.</div>
+        </div>
+
+        <div class="quiz-question" data-question="69" data-type="mc" data-answer="b" data-hint1="Think about how to improve a prompt that produces poor results." data-hint2="You should identify whether the problem is with the prompt or the data, then adjust.">
+          <div class="quiz-q-number">Question 9 of 12</div>
+          <div class="quiz-q-text">When a prompt consistently produces poor output, what should you do?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Abandon AI for that task</button>
+            <button class="quiz-option" data-value="b">(b) Identify whether the prompt or data is the problem, then adjust</button>
+            <button class="quiz-option" data-value="c">(c) Use the same prompt but with ultrathink</button>
+            <button class="quiz-option" data-value="d">(d) Switch to a different AI tool</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Diagnose before changing.</strong> Poor output may be caused by insufficient context (prompt problem) or incorrect/incomplete data (data problem). Identify the root cause, make targeted adjustments, and compare the new output with the old. This systematic approach builds better prompts over time.</div>
+        </div>
+
+        <div class="quiz-question" data-question="70" data-type="mc" data-answer="c" data-hint1="Think about the most effective combination of techniques." data-hint2="The best results come from combining persona + examples + step-by-step reasoning.">
+          <div class="quiz-q-number">Question 10 of 12</div>
+          <div class="quiz-q-text">Which combination of techniques produces the highest quality analytical output?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Zero-shot prompt with no constraints</button>
+            <button class="quiz-option" data-value="b">(b) Basic role with a single example</button>
+            <button class="quiz-option" data-value="c">(c) Detailed persona + few-shot examples + chain-of-thought steps</button>
+            <button class="quiz-option" data-value="d">(d) Very long prompt with every detail you can think of</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Combining <strong>persona</strong> (for expertise and tone), <strong>few-shot examples</strong> (for style and format), and <strong>chain-of-thought</strong> (for methodical reasoning) produces the highest quality output. Each technique addresses a different dimension of quality.</div>
+        </div>
+
+        <div class="quiz-question" data-question="71" data-type="mc" data-answer="a" data-hint1="Think about what the rent review analysis prompt structure starts with." data-hint2="The first step is always assessing whether each comparable is relevant to the subject property.">
+          <div class="quiz-q-number">Question 11 of 12</div>
+          <div class="quiz-q-text">In the rent review analysis prompt template, what is the first step in the method?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Assess the relevance of each comparable</button>
+            <button class="quiz-option" data-value="b">(b) Calculate the average rent</button>
+            <button class="quiz-option" data-value="c">(c) Write the executive summary</button>
+            <button class="quiz-option" data-value="d">(d) Contact the tenant</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The first step is to <strong>assess the relevance of each comparable</strong> &mdash; considering location, size, quality, and timing. Not all comparables are equally relevant, and this initial assessment determines how much weight each should carry in the analysis.</div>
+        </div>
+
+        <div class="quiz-question" data-question="72" data-type="mc" data-answer="d" data-hint1="Think about the advice on sharing prompts." data-hint2="Good prompts should benefit the whole team, not just one person.">
+          <div class="quiz-q-number">Question 12 of 12</div>
+          <div class="quiz-q-text">Why should effective prompts be shared with colleagues?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) To reduce the number of Claude Code licences needed</button>
+            <button class="quiz-option" data-value="b">(b) To prove that you use AI tools</button>
+            <button class="quiz-option" data-value="c">(c) Because RICS requires it</button>
+            <button class="quiz-option" data-value="d">(d) To build firm-wide consistency and raise the quality of everyone's output</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Sharing effective prompts <strong>builds firm-wide consistency</strong>. When everyone uses tested templates, the overall quality of AI-assisted work improves, clients get a consistent experience, and the firm develops institutional knowledge about what works.</div>
+        </div>
+
+      </div>
+
+      <div class="quiz-score-card" id="quiz-6-score">
+        <h3>Day 6 Complete</h3>
+        <div class="quiz-score-number" id="quiz-6-score-display">0/12</div>
+        <p id="quiz-6-score-message"></p>
+      </div>
+    </div>

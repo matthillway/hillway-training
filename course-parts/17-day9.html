@@ -1,0 +1,437 @@
+    <!-- ============================================ -->
+    <!-- DAY 9: AUTOMATION & WORKFLOWS                  -->
+    <!-- ============================================ -->
+    <div class="day-divider fade-in">
+      <div class="day-number">Day 9</div>
+      <h2 class="day-title">Automation &amp; Workflows</h2>
+      <p class="day-subtitle">Build repeatable workflows, integrate APIs and services, use version control, and troubleshoot common issues.</p>
+      <div class="est-time">Estimated time: 90&ndash;120 minutes</div>
+    </div>
+
+    <div class="learning-objectives fade-in">
+      <h3>Day 9 Learning Objectives</h3>
+      <ul>
+        <li>Design and implement repeatable workflows for common property tasks</li>
+        <li>Understand how APIs and integrations extend Claude Code's capabilities</li>
+        <li>Use Git for version control and professional accountability</li>
+        <li>Troubleshoot common Claude Code issues and work around limitations</li>
+      </ul>
+    </div>
+
+    <!-- Section 35: Workflows -->
+    <div class="section fade-in" id="day9-s1">
+      <div class="section-header">
+        <span class="section-number">35</span>
+        <h2>Repeatable Workflows</h2>
+      </div>
+
+      <p>A workflow is a sequence of steps that you follow regularly for a specific type of task. By designing workflows around Claude Code, you can dramatically reduce the time and effort required for routine property work while maintaining consistency and quality.</p>
+
+      <h3>Workflow Design Principles</h3>
+
+      <div class="card card-highlight">
+        <h4>Good Workflow Design</h4>
+        <ul>
+          <li><strong>Consistent inputs</strong> &mdash; define exactly what data is needed at the start</li>
+          <li><strong>Clear steps</strong> &mdash; each step should have a specific purpose and expected output</li>
+          <li><strong>Review checkpoints</strong> &mdash; build in points where a human reviews before proceeding</li>
+          <li><strong>Defined output</strong> &mdash; specify what the final deliverable looks like</li>
+          <li><strong>Error handling</strong> &mdash; plan for what happens when data is missing or steps fail</li>
+        </ul>
+      </div>
+
+      <h3>Workflow Example: New Instruction Setup</h3>
+
+      <p>When Hillway receives a new client instruction, a standardised workflow ensures nothing is missed:</p>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Property intelligence gathering</strong>
+            <p>"Run /property-lookup for [address]. Save the results to [client folder]."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Client and tenant research</strong>
+            <p>"Search for [client/tenant name] on Companies House. Check financial health."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Document setup</strong>
+            <p>"Create a Google Doc called '[Client] - [Property] - Instruction Notes' with the property data we gathered."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Fee proposal draft</strong>
+            <p>"Using the /proposal skill, draft a fee proposal for [service type]."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <strong>Client confirmation</strong>
+            <p>"Draft an email to [client] confirming the instruction and enclosing the fee proposal."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">6</div>
+          <div class="step-content">
+            <strong>Internal notification</strong>
+            <p>"Post to the #new-instructions Slack channel: 'New instruction from [client] for [service] at [property].'"</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Workflow Example: Monthly Rent Collection Review</h3>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Rent Collection Workflow</div>
+        <div class="prompt-text">Run the monthly rent collection review:
+
+1. Query Xero for all invoices due in the current month
+2. Identify any that are overdue by more than 14 days
+3. For each overdue invoice, draft a polite reminder email to the tenant
+4. Create a summary table for Matt showing: tenant name, property, amount due, days overdue, action taken
+5. Post a summary to the #accounts Slack channel
+
+Present the summary before sending any emails &mdash; I want to review first.</div>
+      </div>
+
+      <h3>Building Your Own Workflows</h3>
+
+      <p>Identify tasks you do repeatedly and design a workflow:</p>
+
+      <ol>
+        <li><strong>Map the current process</strong> &mdash; write down every step you currently take</li>
+        <li><strong>Identify AI-automatable steps</strong> &mdash; which steps can Claude handle?</li>
+        <li><strong>Design review checkpoints</strong> &mdash; where should humans review before proceeding?</li>
+        <li><strong>Write the workflow prompt</strong> &mdash; create a reusable prompt that executes the workflow</li>
+        <li><strong>Test and refine</strong> &mdash; run the workflow with real data and improve it</li>
+      </ol>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Think about a task you do at least once a month. Map out the current process (even if informal). Then design a Claude Code workflow for it, including at least one human review checkpoint. Save the workflow prompt as a template.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Workflows transform ad-hoc AI use into systematic, repeatable processes. Design them with consistent inputs, clear steps, review checkpoints, and defined outputs. Start with your most frequent tasks and build a library of tested workflows.</p>
+      </div>
+    </div>
+
+    <!-- Section 36: APIs & Integrations -->
+    <div class="section fade-in" id="day9-s2">
+      <div class="section-header">
+        <span class="section-number">36</span>
+        <h2>APIs &amp; Integrations</h2>
+      </div>
+
+      <p>Claude Code's power comes partly from its ability to connect to external services through MCP servers and APIs. Understanding how these connections work helps you use them more effectively.</p>
+
+      <div class="key-concept">
+        <h4>What is an API?</h4>
+        <p>An <strong>API (Application Programming Interface)</strong> is a way for software systems to talk to each other. When Claude Code queries the VOA for a rateable value, it is making an API call to the VOA's system. Think of it like a waiter in a restaurant: you (Claude) give an order (the request), the waiter (the API) takes it to the kitchen (the external system), and brings back your food (the data).</p>
+      </div>
+
+      <h3>How MCP Servers Work</h3>
+
+      <p>MCP servers act as bridges between Claude Code and external services:</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>What It Does</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Claude Code</strong></td>
+              <td>Understands your request and decides which tool to use</td>
+              <td>"Check outstanding invoices" &rarr; uses Xero MCP</td>
+            </tr>
+            <tr>
+              <td><strong>MCP Server</strong></td>
+              <td>Translates Claude's request into the format the service expects</td>
+              <td>Formats a Xero API call with correct authentication</td>
+            </tr>
+            <tr>
+              <td><strong>External Service</strong></td>
+              <td>Processes the request and returns data</td>
+              <td>Xero returns a list of outstanding invoices</td>
+            </tr>
+            <tr>
+              <td><strong>MCP Server</strong></td>
+              <td>Translates the response back for Claude</td>
+              <td>Formats invoice data for Claude to read</td>
+            </tr>
+            <tr>
+              <td><strong>Claude Code</strong></td>
+              <td>Interprets the data and presents it to you</td>
+              <td>Shows a formatted table of overdue invoices</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Hillway's Active Integrations</h3>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>What Hillway Uses It For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Google Workspace</strong></td>
+              <td>Email (Gmail), documents (Docs), spreadsheets (Sheets), calendar, file storage (Drive)</td>
+            </tr>
+            <tr>
+              <td><strong>Xero</strong></td>
+              <td>Accounting, invoicing, financial reporting</td>
+            </tr>
+            <tr>
+              <td><strong>Slack</strong></td>
+              <td>Internal team communication and notifications</td>
+            </tr>
+            <tr>
+              <td><strong>GitHub</strong></td>
+              <td>Code and document version control</td>
+            </tr>
+            <tr>
+              <td><strong>Playwright</strong></td>
+              <td>Browser automation for web portals and data extraction</td>
+            </tr>
+            <tr>
+              <td><strong>Supabase</strong></td>
+              <td>Database hosting for SaaS products</td>
+            </tr>
+            <tr>
+              <td><strong>Memory</strong></td>
+              <td>Persistent context storage across sessions</td>
+            </tr>
+            <tr>
+              <td><strong>Sentry</strong></td>
+              <td>Error monitoring for software products</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Multi-Service Workflows</h3>
+
+      <p>The most powerful workflows combine multiple services in a single operation:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Multi-Service Example</div>
+        <div class="prompt-text">Run the quarterly client report workflow for ABC Property Fund:
+
+1. Read the tenant schedule from Google Sheets ("ABC Fund - Tenant Schedule")
+2. Check Xero for any outstanding service charge invoices for the portfolio
+3. Use /voa to verify rateable values for all 8 units
+4. Search the web for any relevant planning applications near the portfolio properties
+5. Create a Google Doc report combining all findings
+6. Draft an email to James Wright at ABC Fund with the report attached
+7. Post a summary to #client-reports on Slack
+
+Present the draft report for my review before sending the email.</div>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>APIs and MCP servers connect Claude Code to external services. Understanding this architecture helps you design more effective workflows. Hillway's integrations span accounting, communications, file management, and data sources &mdash; enabling comprehensive, multi-service workflows.</p>
+      </div>
+    </div>
+
+    <!-- Section 37: Scripts & Git -->
+    <div class="section fade-in" id="day9-s3">
+      <div class="section-header">
+        <span class="section-number">37</span>
+        <h2>Scripts &amp; Version Control</h2>
+      </div>
+
+      <p>While you may not write code as part of your surveying role, understanding scripts and version control helps you work more effectively with Claude Code and maintain professional accountability.</p>
+
+      <h3>Understanding Scripts</h3>
+
+      <div class="key-concept">
+        <h4>What is a Script?</h4>
+        <p>A script is a file containing a sequence of commands that the computer executes automatically. Think of it like a recipe: instead of doing each step manually, you run the script and it follows the recipe for you. Claude Code can create and run scripts to automate repetitive tasks.</p>
+      </div>
+
+      <p>You do not need to write scripts yourself &mdash; Claude Code can create them for you. But understanding what they do helps you verify that Claude is doing the right thing:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Asking Claude to Automate a Task</div>
+        <div class="prompt-text">I have a folder of 50 PDF documents at /Users/alex/Documents/portfolio-leases/. I want to:
+1. Read each PDF
+2. Extract the tenant name and lease expiry date
+3. Save the results as a CSV file called "lease-expiry-schedule.csv"
+
+Create a script to do this automatically, then run it. Show me the results.</div>
+      </div>
+
+      <h3>Git Basics for Non-Developers</h3>
+
+      <p>Git is the version control system that tracks all changes to files over time. At Hillway, Claude Code uses Git to manage projects. You should understand the basics:</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Git Concept</th>
+              <th>Plain English</th>
+              <th>Property Analogy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Repository</strong></td>
+              <td>A project folder tracked by Git</td>
+              <td>Like a client file on the shared drive</td>
+            </tr>
+            <tr>
+              <td><strong>Commit</strong></td>
+              <td>A saved snapshot of all changes</td>
+              <td>Like dating and initialling a report draft</td>
+            </tr>
+            <tr>
+              <td><strong>Branch</strong></td>
+              <td>A separate copy to work on without affecting the main version</td>
+              <td>Like creating a "working draft" folder while the final version stays safe</td>
+            </tr>
+            <tr>
+              <td><strong>Push</strong></td>
+              <td>Upload changes to a shared location</td>
+              <td>Like saving your file back to the shared drive</td>
+            </tr>
+            <tr>
+              <td><strong>Pull</strong></td>
+              <td>Download the latest version from the shared location</td>
+              <td>Like checking the shared drive for updated files</td>
+            </tr>
+            <tr>
+              <td><strong>History</strong></td>
+              <td>The complete record of all changes</td>
+              <td>Like a file note showing every version and who changed what</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>You do not need to run Git commands yourself. Claude Code handles version control automatically. But understanding the concepts helps you appreciate the audit trail that Git provides &mdash; which is valuable for professional accountability.</p>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Scripts automate repetitive tasks &mdash; Claude Code can create and run them for you. Git provides version control and an audit trail of all changes. Both tools support professional efficiency and accountability.</p>
+      </div>
+    </div>
+
+    <!-- Section 38: Troubleshooting -->
+    <div class="section fade-in" id="day9-s4">
+      <div class="section-header">
+        <span class="section-number">38</span>
+        <h2>Troubleshooting</h2>
+      </div>
+
+      <p>Things do not always go smoothly with AI tools. This section covers the most common issues and how to resolve them.</p>
+
+      <h3>Common Issues and Solutions</h3>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Issue</th>
+              <th>Likely Cause</th>
+              <th>Solution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Claude gives a generic, unhelpful response</td>
+              <td>Prompt is too vague</td>
+              <td>Add more context, specifics, and format requirements</td>
+            </tr>
+            <tr>
+              <td>Claude says it cannot access a file</td>
+              <td>Wrong file path or permissions issue</td>
+              <td>Check the file path is correct and the file exists</td>
+            </tr>
+            <tr>
+              <td>MCP tool returns an error</td>
+              <td>Service connection issue</td>
+              <td>Try again in a few minutes. If persistent, ask Matt</td>
+            </tr>
+            <tr>
+              <td>Claude's response gets cut off</td>
+              <td>Context window is full</td>
+              <td>Use /checkpoint, then /compact or start a new session</td>
+            </tr>
+            <tr>
+              <td>Claude repeats information you already told it</td>
+              <td>Context may be confused</td>
+              <td>Start a fresh session with a clear, concise prompt</td>
+            </tr>
+            <tr>
+              <td>Calculations seem wrong</td>
+              <td>AI arithmetic error or misunderstood inputs</td>
+              <td>Provide data more clearly and ask Claude to show working</td>
+            </tr>
+            <tr>
+              <td>Claude applies Scottish or US law</td>
+              <td>Context confusion</td>
+              <td>Explicitly state "English and Welsh law only" in your prompt</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>When to Escalate</h3>
+
+      <p>Most issues can be resolved by adjusting your prompt or restarting the session. Escalate to Matt when:</p>
+
+      <ul>
+        <li>An MCP server consistently fails to connect (may need authentication refresh)</li>
+        <li>Claude Code itself will not start or crashes</li>
+        <li>You discover a security concern (data appearing where it should not)</li>
+        <li>You need access to a new service or tool that is not currently configured</li>
+      </ul>
+
+      <h3>Maximising Performance</h3>
+
+      <div class="card card-highlight">
+        <h4>Tips for Getting the Best from Claude Code</h4>
+        <ul>
+          <li><strong>Start fresh for new topics</strong> &mdash; a clean context avoids confusion from previous conversations</li>
+          <li><strong>Be specific about outputs</strong> &mdash; "Create a table with these columns..." beats "Analyse this data"</li>
+          <li><strong>Use checkpoints for long sessions</strong> &mdash; save progress before the context window fills up</li>
+          <li><strong>Correct errors immediately</strong> &mdash; do not let wrong assumptions carry forward through the conversation</li>
+          <li><strong>Use the right thinking level</strong> &mdash; ultrathink for complex analysis, standard for simple tasks</li>
+          <li><strong>Break big tasks into steps</strong> &mdash; five focused prompts beat one enormous prompt</li>
+        </ul>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Deliberately cause a common issue: give Claude a vague prompt like "Tell me about the property" (with no context). See the generic response. Then rewrite the prompt with full context, specific requirements, and format instructions. Compare the two responses to understand the impact of prompt quality on output quality.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Day 9 Summary</h4>
+        <p>Today covered workflow design, API integrations, version control basics, and troubleshooting. The key takeaway: systematic workflows with built-in review checkpoints produce the most reliable results. When things go wrong, most issues can be resolved by improving your prompt, restarting the session, or asking Claude to show its working.</p>
+      </div>
+    </div>

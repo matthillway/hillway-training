@@ -1,0 +1,448 @@
+    <!-- ============================================ -->
+    <!-- DAY 6: ADVANCED PROMPTING                      -->
+    <!-- ============================================ -->
+    <div class="day-divider fade-in">
+      <div class="day-number">Day 6</div>
+      <h2 class="day-title">Advanced Prompting Techniques</h2>
+      <p class="day-subtitle">Master chain-of-thought reasoning, few-shot learning, persona engineering, and build a property prompt library.</p>
+      <div class="est-time">Estimated time: 90&ndash;120 minutes</div>
+    </div>
+
+    <div class="learning-objectives fade-in">
+      <h3>Day 6 Learning Objectives</h3>
+      <ul>
+        <li>Use chain-of-thought prompting to improve analytical accuracy</li>
+        <li>Apply few-shot learning by providing examples in prompts</li>
+        <li>Create effective personas for different property contexts</li>
+        <li>Build and maintain a personal prompt library for common tasks</li>
+      </ul>
+    </div>
+
+    <!-- Section 23: Chain-of-Thought -->
+    <div class="section fade-in" id="day6-s1">
+      <div class="section-header">
+        <span class="section-number">23</span>
+        <h2>Chain-of-Thought Prompting</h2>
+      </div>
+
+      <p>Chain-of-thought (CoT) prompting is a technique that dramatically improves Claude's accuracy on analytical tasks by asking it to show its reasoning step by step, rather than jumping directly to an answer.</p>
+
+      <div class="key-concept">
+        <h4>Why Chain-of-Thought Works</h4>
+        <p>When Claude "thinks out loud," it breaks complex problems into smaller steps, catches its own errors, and produces more accurate results. This mirrors how professionals work &mdash; a surveyor does not jump from raw data to a final valuation. They work through comparables, adjustments, weighting, and methodology step by step.</p>
+      </div>
+
+      <h3>Basic Chain-of-Thought</h3>
+
+      <p>The simplest way to invoke chain-of-thought is to add "Think step by step" or "Show your working" to your prompt:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Without CoT (Less Accurate)</div>
+        <div class="prompt-text">What ERV would you recommend for a 5,000 sq ft office at 22 Division Street, Sheffield, based on these comparables? [data]</div>
+      </div>
+
+      <div class="prompt-example">
+        <div class="prompt-label">With CoT (More Accurate)</div>
+        <div class="prompt-text">Based on these comparables, what ERV would you recommend for a 5,000 sq ft office at 22 Division Street, Sheffield? Think step by step:
+
+1. First, assess each comparable for relevance (location, size, quality, timing)
+2. Adjust each to an effective rent basis
+3. Weight the comparables based on relevance
+4. Apply any necessary adjustments for the subject property
+5. State your recommended ERV range with justification
+
+[data]</div>
+      </div>
+
+      <h3>Structured Chain-of-Thought for Property Analysis</h3>
+
+      <p>For property-specific analysis, structure the chain of thought to match professional methodology:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Rent Review CoT</div>
+        <div class="prompt-text">Analyse this rent review position step by step:
+
+Step 1: LEASE TERMS - Summarise the relevant lease provisions (review clause, basis, assumptions)
+Step 2: MARKET CONTEXT - Assess the current market for this property type and location
+Step 3: COMPARABLE EVIDENCE - Analyse each comparable, noting strengths and weaknesses
+Step 4: ADJUSTMENTS - Apply time, size, quality, and location adjustments
+Step 5: WEIGHTING - Weight the adjusted comparables and explain your reasoning
+Step 6: ERV RECOMMENDATION - State a recommended range and preferred figure
+Step 7: RISKS - Identify risks to this position and potential counter-arguments
+
+Property: [details]
+Comparables: [data]</div>
+      </div>
+
+      <h3>When to Use Chain-of-Thought</h3>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th style="color: var(--green);">Good for CoT</th>
+              <th style="color: var(--red);">Not Needed for CoT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Comparative analysis (rent reviews, valuations)</td>
+              <td>Simple email drafting</td>
+            </tr>
+            <tr>
+              <td>Financial calculations (yields, DCF)</td>
+              <td>Formatting or restructuring text</td>
+            </tr>
+            <tr>
+              <td>Strategic decisions (negotiation approach)</td>
+              <td>Summarising a document</td>
+            </tr>
+            <tr>
+              <td>Risk assessment</td>
+              <td>Translating between formats (table to list)</td>
+            </tr>
+            <tr>
+              <td>Legal clause interpretation</td>
+              <td>Creating meeting agendas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Take a comparable evidence analysis task. First, ask Claude for a straight answer without chain-of-thought. Then ask the same question with structured CoT steps. Compare the two outputs &mdash; the CoT version should be more thorough, better reasoned, and more useful for professional work.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Chain-of-thought prompting improves accuracy by making Claude show its reasoning. Use it for analytical tasks, calculations, and strategic analysis. Structure the steps to match professional methodology for the best results.</p>
+      </div>
+    </div>
+
+    <!-- Section 24: Few-Shot & Personas -->
+    <div class="section fade-in" id="day6-s2">
+      <div class="section-header">
+        <span class="section-number">24</span>
+        <h2>Few-Shot Learning &amp; Personas</h2>
+      </div>
+
+      <p>Two powerful techniques that work together: <strong>few-shot learning</strong> (showing Claude examples of what you want) and <strong>persona engineering</strong> (defining who Claude should be for a specific task).</p>
+
+      <h3>Few-Shot Learning</h3>
+
+      <div class="key-concept">
+        <h4>What is Few-Shot Learning?</h4>
+        <p>Instead of describing what you want, you <strong>show</strong> Claude by providing examples. Claude learns the pattern from your examples and applies it to new inputs. "Few-shot" means providing a small number (1&ndash;5) of examples.</p>
+      </div>
+
+      <h4>Zero-Shot vs One-Shot vs Few-Shot</h4>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Approach</th>
+              <th>Examples Given</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Zero-shot</strong></td>
+              <td>None &mdash; just describe what you want</td>
+              <td>Simple, well-understood tasks</td>
+            </tr>
+            <tr>
+              <td><strong>One-shot</strong></td>
+              <td>One example</td>
+              <td>Style matching, format consistency</td>
+            </tr>
+            <tr>
+              <td><strong>Few-shot</strong></td>
+              <td>2&ndash;5 examples</td>
+              <td>Complex patterns, professional tone matching, specialised formats</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Few-Shot Example: Property Descriptions</div>
+        <div class="prompt-text">Here are three examples of how I write property descriptions for our client reports:
+
+Example 1: "The property comprises a modern, detached industrial unit of steel portal frame construction with profiled metal cladding to walls and roof. The unit provides clear span warehouse accommodation with an eaves height of 8 metres."
+
+Example 2: "The premises consist of a ground floor retail unit within a Victorian mid-terrace building of traditional brick construction under a pitched slate roof. The unit provides open-plan sales accommodation with an ancillary storage area to the rear."
+
+Example 3: "The subject property is a self-contained first floor office suite within a 1990s purpose-built office building. The accommodation provides open-plan workspace with perimeter cellular offices and a central meeting room."
+
+Now write a property description for: a 1970s semi-detached light industrial unit, single-storey, with blockwork walls, corrugated roof, one roller shutter door, small office at the front, approximately 3,000 sq ft total.</div>
+      </div>
+
+      <h3>Persona Engineering</h3>
+
+      <p>A persona goes beyond a simple role assignment. It defines Claude's expertise, communication style, knowledge focus, and even personality traits:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Basic Role vs Detailed Persona</div>
+        <div class="prompt-text"><strong>Basic role:</strong> "You are a surveyor."
+
+<strong>Detailed persona:</strong> "You are a senior RICS-chartered commercial property surveyor with 25 years of experience in the South Yorkshire industrial and logistics market. You specialise in rent reviews and lease renewals for institutional landlord clients. Your communication style is precise, data-driven, and confident. You always qualify opinions with reference to evidence. You are aware of current market trends including the growth of last-mile logistics and the impact of ESG requirements on industrial rents."</div>
+      </div>
+
+      <h3>Combining Techniques</h3>
+
+      <p>The most effective prompts often combine multiple techniques. Here is an example combining persona, few-shot, and chain-of-thought:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Combined Technique</div>
+        <div class="prompt-text"><strong>[Persona]</strong> You are a senior RICS-qualified investment surveyor advising institutional clients on commercial property acquisitions in Sheffield.
+
+<strong>[Few-shot]</strong> Here is how I typically structure investment analysis for my clients:
+
+"Property: [address]. The subject property is currently let to [tenant] at a passing rent of &pound;X pa, reflecting a capital value of &pound;Y at a NIY of Z%. The reversionary position, based on an ERV of &pound;A pa, suggests upside/downside of B%..."
+
+<strong>[Chain-of-thought]</strong> Now analyse this investment opportunity step by step:
+1. Summarise the investment characteristics
+2. Calculate the NIY and reversionary yield
+3. Assess tenant covenant strength
+4. Identify risks and opportunities
+5. Provide an investment recommendation
+
+Property data: [details]</div>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Create a detailed persona for Claude that matches your own professional context at Hillway. Include your level of experience (apprentice surveyor), your focus areas, the types of clients you work with, and the market you operate in. Then use this persona to generate a market commentary on Sheffield industrial property. Compare the output with a generic "you are a surveyor" prompt.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Few-shot learning teaches Claude by example &mdash; show it what you want rather than describing it. Persona engineering defines Claude's expertise, style, and focus for a specific task. Combining these with chain-of-thought produces the highest quality output.</p>
+      </div>
+    </div>
+
+    <!-- Section 25: Property Prompts -->
+    <div class="section fade-in" id="day6-s3">
+      <div class="section-header">
+        <span class="section-number">25</span>
+        <h2>Property-Specific Prompts</h2>
+      </div>
+
+      <p>This section provides tested prompt structures for the most common property tasks at Hillway. Each has been refined through real use and produces consistently good results.</p>
+
+      <h3>Rent Review Analysis Prompt</h3>
+
+      <div class="code-block">
+<pre>PERSONA: Senior RICS commercial surveyor, 20+ years experience,
+specialising in [office/industrial/retail] rent reviews.
+
+CONTEXT:
+- Property: [address], [size] sq ft, [property type]
+- Current rent: &pound;[amount] pa (&pound;[psf] psf)
+- Review date: [date]
+- Review basis: [upward only / open market]
+- We act for: [landlord / tenant]
+
+COMPARABLE EVIDENCE:
+1. [address], [size] sq ft, [rent] psf, [date], [term], [incentives]
+2. [repeat for each comparable]
+
+TASK: Analyse these comparables and recommend an ERV position.
+
+METHOD:
+1. Assess relevance of each comparable
+2. Adjust to effective rents
+3. Weight by relevance
+4. Apply adjustments for subject property
+5. Recommend ERV range and preferred figure
+6. Identify risks to our position
+
+FORMAT: Structured report section with clear headings.
+Do not include legal advice.</pre>
+      </div>
+
+      <h3>Lease Summary Prompt</h3>
+
+      <div class="code-block">
+<pre>Read the lease document at [file path].
+
+Produce a structured summary covering:
+1. PARTIES - Landlord, tenant, guarantor (if any)
+2. PROPERTY - Description and demise
+3. TERM - Commencement, expiry, any options to extend
+4. RENT - Current rent, payment frequency, VAT position
+5. RENT REVIEWS - Frequency, basis, assumptions/disregards
+6. BREAK CLAUSES - Who can break, when, conditions, notice period
+7. REPAIR - Landlord vs tenant obligations (FRI or internal only?)
+8. ALTERATIONS - What requires consent?
+9. ALIENATION - Assignment and subletting restrictions
+10. USER CLAUSE - Permitted use, any restrictions
+11. SERVICE CHARGE - Applicable? Cap? Sinking fund?
+12. INSURANCE - Who insures? How are premiums recovered?
+
+Flag any unusual or particularly important clauses.
+Use plain English suitable for a non-lawyer client.</pre>
+      </div>
+
+      <h3>Fee Proposal Prompt</h3>
+
+      <div class="code-block">
+<pre>Draft a fee proposal for [client name].
+
+SERVICE: [rent review advice / property management / valuation / etc.]
+PROPERTY: [details]
+SCOPE: [what is included and excluded]
+FEES: [fee structure - fixed / percentage / hourly]
+TIMELINE: [expected duration]
+TEAM: [who will be involved]
+
+Follow Hillway's standard fee proposal format:
+1. Introduction and understanding of instruction
+2. Scope of services
+3. Our approach and methodology
+4. Team and qualifications
+5. Fee schedule and payment terms
+6. Terms and conditions
+7. Contact details
+
+Tone: Professional, confident, but not arrogant.
+Emphasise Hillway's local market knowledge and RICS credentials.</pre>
+      </div>
+
+      <h3>Market Commentary Prompt</h3>
+
+      <div class="code-block">
+<pre>Write a market commentary on [property type] property in [location].
+
+PERIOD: [quarter/year]
+AUDIENCE: [institutional client / private investor / general]
+LENGTH: [word count]
+
+Cover:
+1. Market overview and key trends
+2. Supply and demand dynamics
+3. Rental growth/movement
+4. Investment yields
+5. Development pipeline
+6. Outlook and risks
+
+Do NOT include specific rental or yield figures unless I provide them.
+Do NOT make specific predictions about future values.
+Use British English throughout.</pre>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Choose one of the prompt templates above and use it with fictional data. Assess the output: is it the quality you would expect from a first draft in a professional practice? What would you change? Adapt the template to better suit your specific needs.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Property-specific prompt structures produce consistently high-quality output because they mirror professional methodology. Use these as starting points and adapt them to your specific situations. Over time, build your own library of tested prompts.</p>
+      </div>
+    </div>
+
+    <!-- Section 26: Prompt Library -->
+    <div class="section fade-in" id="day6-s4">
+      <div class="section-header">
+        <span class="section-number">26</span>
+        <h2>Building Your Prompt Library</h2>
+      </div>
+
+      <p>Professional efficiency with AI comes from having a curated library of prompts that you refine over time. This section guides you through creating and maintaining your personal prompt library.</p>
+
+      <h3>What to Include in Your Library</h3>
+
+      <p>Start with the tasks you do most frequently:</p>
+
+      <ul>
+        <li><strong>Daily tasks</strong> &mdash; email drafts, meeting notes, quick calculations</li>
+        <li><strong>Weekly tasks</strong> &mdash; client reports, market updates, comparable analysis</li>
+        <li><strong>Monthly tasks</strong> &mdash; management reports, fee proposals, portfolio reviews</li>
+        <li><strong>Occasional tasks</strong> &mdash; valuation reports, expert witness prep, lease negotiations</li>
+      </ul>
+
+      <h3>Organising Your Library</h3>
+
+      <p>Store prompts as text files in a dedicated folder. Claude Code can read these files directly:</p>
+
+      <div class="code-block">
+<pre>/Users/alex/prompts/
+  /emails/
+    client-update.txt
+    rent-review-opening.txt
+    meeting-confirmation.txt
+  /reports/
+    rent-review-analysis.txt
+    lease-summary.txt
+    market-commentary.txt
+  /proposals/
+    fee-proposal.txt
+    terms-of-engagement.txt
+  /analysis/
+    comparable-analysis.txt
+    yield-calculation.txt
+    dcf-template.txt</pre>
+      </div>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Using a Library Prompt</div>
+        <div class="prompt-text">Read my rent review analysis template at /Users/alex/prompts/reports/rent-review-analysis.txt and use it for the following:
+
+Property: Unit 12, Parkway Business Park, S9 4WA
+Current rent: &pound;38,000 pa
+Review date: 24 June 2026
+We act for: Landlord
+
+Comparables:
+1. Unit 8, Parkway BP - 4,500 sq ft, &pound;9.50 psf, Feb 2026, 10yr, 6m RF
+2. Unit 3, Valley Business Park - 5,200 sq ft, &pound;8.75 psf, Nov 2025, 5yr, 3m RF
+3. Unit 22, Riverside - 3,800 sq ft, &pound;10.00 psf, Jan 2026, 10yr, 9m RF</div>
+      </div>
+
+      <h3>Refining Prompts Over Time</h3>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Track what works</strong>
+            <p>When a prompt produces great output, note why. Was it the structure, the persona, the examples?</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Track what fails</strong>
+            <p>When output is poor, identify whether the prompt or the data was the problem. Adjust accordingly.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Version your prompts</strong>
+            <p>Keep previous versions so you can compare performance. Use a simple v1, v2, v3 naming convention.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Share with colleagues</strong>
+            <p>Prompts that work well should be shared across the team. This builds firm-wide consistency.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pitfall">
+        <h4>Common Pitfall: Prompt Hoarding</h4>
+        <p>Some people save dozens of prompts but never use them because they cannot find the right one. Keep your library focused &mdash; 10&ndash;15 well-refined prompts that cover your most common tasks are more valuable than 100 untested ones. Quality over quantity.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Day 6 Summary</h4>
+        <p>Today you learned four advanced techniques: <strong>chain-of-thought</strong> reasoning for analytical accuracy, <strong>few-shot learning</strong> for style and format matching, <strong>persona engineering</strong> for context-appropriate output, and building a <strong>prompt library</strong> for consistent, efficient professional work. These techniques compound over time &mdash; the more you use and refine them, the better your results become.</p>
+      </div>
+    </div>

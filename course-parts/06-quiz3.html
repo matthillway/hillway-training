@@ -1,0 +1,174 @@
+    <!-- Day 3 Quiz -->
+    <div class="section fade-in" id="quiz-3">
+      <div class="section-header">
+        <span class="section-number">&bull;</span>
+        <h2>Day 3 Knowledge Check</h2>
+      </div>
+      <p style="margin-bottom: 20px; color: var(--gray-600); font-size: 14px;">Test your understanding of practical property tasks with Claude Code. Remember: up to 3 attempts per question with hints.</p>
+
+      <div class="quiz-container" id="quiz-3-container">
+
+        <div class="quiz-question" data-question="25" data-type="mc" data-answer="c" data-hint1="Think about the workflow: draft, review, then what?" data-hint2="The workflow is always: describe &rarr; Claude drafts &rarr; you review &rarr; you approve sending.">
+          <div class="quiz-q-number">Question 1 of 12</div>
+          <div class="quiz-q-text">What is the correct workflow when using Claude Code to send an email?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Claude writes and sends it automatically</button>
+            <button class="quiz-option" data-value="b">(b) You write the email and Claude sends it</button>
+            <button class="quiz-option" data-value="c">(c) You describe what you need, Claude drafts it, you review, then approve sending</button>
+            <button class="quiz-option" data-value="d">(d) Claude sends a template email without any customisation</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The correct workflow is: <strong>describe &rarr; draft &rarr; review &rarr; approve</strong>. Claude always asks for your permission before sending anything. You maintain full control.</div>
+        </div>
+
+        <div class="quiz-question" data-question="26" data-type="mc" data-answer="a" data-hint1="Think about which MCP server handles Gmail." data-hint2="Google Workspace MCP handles email, docs, sheets, calendar, and Drive.">
+          <div class="quiz-q-number">Question 2 of 12</div>
+          <div class="quiz-q-text">Which MCP server does Claude Code use to send emails via Gmail?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Google Workspace</button>
+            <button class="quiz-option" data-value="b">(b) Slack</button>
+            <button class="quiz-option" data-value="c">(c) Xero</button>
+            <button class="quiz-option" data-value="d">(d) GitHub</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Google Workspace</strong> MCP handles Gmail, Google Docs, Sheets, Calendar, and Drive &mdash; all Google services in one connection.</div>
+        </div>
+
+        <div class="quiz-question" data-question="27" data-type="mc" data-answer="d" data-hint1="Think about what Claude cannot access online." data-hint2="Subscription-only databases like EGi and CoStar require paid logins that Claude does not have.">
+          <div class="quiz-q-number">Question 3 of 12</div>
+          <div class="quiz-q-text">Why might Claude Code be unable to find recent comparable evidence from EGi or CoStar?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Those websites do not exist</button>
+            <button class="quiz-option" data-value="b">(b) Claude refuses to look at property data</button>
+            <button class="quiz-option" data-value="c">(c) Claude only works with residential property</button>
+            <button class="quiz-option" data-value="d">(d) Those are subscription/paywalled databases that Claude cannot access</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>EGi and CoStar are subscription databases</strong> behind paywalls. Claude Code cannot log into paid services. You need to extract data from these sources yourself and provide it to Claude for analysis.</div>
+        </div>
+
+        <div class="quiz-question" data-question="28" data-type="mc" data-answer="b" data-hint1="Think about what &lsquo;effective&rsquo; means &mdash; what the tenant actually pays over the term." data-hint2="Effective rent adjusts for incentives like rent-free periods. Headline rent is the stated figure in the lease.">
+          <div class="quiz-q-number">Question 4 of 12</div>
+          <div class="quiz-q-text">What is the difference between headline rent and effective rent?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Headline rent is lower; effective rent is higher</button>
+            <button class="quiz-option" data-value="b">(b) Headline rent is the stated rent; effective rent accounts for incentives like rent-free periods</button>
+            <button class="quiz-option" data-value="c">(c) They are the same thing with different names</button>
+            <button class="quiz-option" data-value="d">(d) Headline rent includes service charge; effective rent does not</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Headline rent</strong> is the stated rent in the lease. <strong>Effective rent</strong> accounts for incentives (rent-free periods, stepped rents, capital contributions) and reflects what the tenant actually pays over the lease term. When comparing evidence, you must adjust to a consistent basis.</div>
+        </div>
+
+        <div class="quiz-question" data-question="29" data-type="mc" data-answer="c" data-hint1="Think about the three elements: background, instruction, output structure." data-hint2="CTF stands for Context, Task, Format &mdash; the three parts of a well-structured prompt.">
+          <div class="quiz-q-number">Question 5 of 12</div>
+          <div class="quiz-q-text">What does the CTF prompt pattern stand for?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Copy, Transform, Finish</button>
+            <button class="quiz-option" data-value="b">(b) Claude Task Framework</button>
+            <button class="quiz-option" data-value="c">(c) Context, Task, Format</button>
+            <button class="quiz-option" data-value="d">(d) Check, Test, Finalise</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Context, Task, Format</strong> &mdash; the three essential elements of an effective prompt. Context provides background, Task is the instruction, and Format specifies how you want the output structured.</div>
+        </div>
+
+        <div class="quiz-question" data-question="30" data-type="mc" data-answer="a" data-hint1="Think about what you should always do with Claude's calculations." data-hint2="AI can make arithmetic errors. The answer involves manual checking.">
+          <div class="quiz-q-number">Question 6 of 12</div>
+          <div class="quiz-q-text">When Claude Code calculates an effective rent from comparable evidence, what should you always do?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Verify the arithmetic manually or with a calculator</button>
+            <button class="quiz-option" data-value="b">(b) Trust the result because AI does not make maths errors</button>
+            <button class="quiz-option" data-value="c">(c) Ask Claude to recalculate three times and average the results</button>
+            <button class="quiz-option" data-value="d">(d) Ignore the calculations and use your own estimate</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Always verify arithmetic manually.</strong> AI can make errors in multi-step calculations. A wrong figure in a rent review report can damage professional reputation and client outcomes.</div>
+        </div>
+
+        <div class="quiz-question" data-question="31" data-type="mc" data-answer="d" data-hint1="Think about what produces better results for a long document." data-hint2="Rather than asking for the whole report at once, you should break it into manageable pieces.">
+          <div class="quiz-q-number">Question 7 of 12</div>
+          <div class="quiz-q-text">What is the recommended approach when using Claude Code to draft a lengthy report?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Ask for the entire report in one prompt</button>
+            <button class="quiz-option" data-value="b">(b) Let Claude decide the structure</button>
+            <button class="quiz-option" data-value="c">(c) Only use Claude for the introduction</button>
+            <button class="quiz-option" data-value="d">(d) Work section-by-section, reviewing each part as you go</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Section-by-section</strong> is the recommended approach. It gives each section focused attention, lets you provide section-specific data, and allows you to catch errors early rather than reviewing a massive document at the end.</div>
+        </div>
+
+        <div class="quiz-question" data-question="32" data-type="mc" data-answer="b" data-hint1="Think about what the ROLE pattern does." data-hint2="It involves telling Claude to adopt a specific professional identity when responding.">
+          <div class="quiz-q-number">Question 8 of 12</div>
+          <div class="quiz-q-text">What is the purpose of the ROLE prompt pattern?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) To restrict Claude from answering certain questions</button>
+            <button class="quiz-option" data-value="b">(b) To have Claude adopt a specific professional perspective for better output</button>
+            <button class="quiz-option" data-value="c">(c) To assign Claude a permanent job title</button>
+            <button class="quiz-option" data-value="d">(d) To change Claude's programming language</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The <strong>ROLE pattern</strong> tells Claude to adopt a specific professional perspective (e.g., "You are an experienced RICS-qualified surveyor"). This changes the style, depth, and vocabulary of the response to match that professional context.</div>
+        </div>
+
+        <div class="quiz-question" data-question="33" data-type="mc" data-answer="a" data-hint1="Think about a tool that searches the internet for current information." data-hint2="This tool performs a web search and returns results, similar to using a search engine.">
+          <div class="quiz-q-number">Question 9 of 12</div>
+          <div class="quiz-q-text">Which Claude Code tool would you use to search for recent property market news?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) WebSearch</button>
+            <button class="quiz-option" data-value="b">(b) Grep</button>
+            <button class="quiz-option" data-value="c">(c) Glob</button>
+            <button class="quiz-option" data-value="d">(d) Read</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>WebSearch</strong> searches the internet for current information. Grep and Glob work on local files, while Read opens a specific file. Only WebSearch can access live internet content.</div>
+        </div>
+
+        <div class="quiz-question" data-question="34" data-type="mc" data-answer="c" data-hint1="Think about how context works in a Claude Code session." data-hint2="Within a session, Claude remembers everything discussed. You do not need to repeat yourself.">
+          <div class="quiz-q-number">Question 10 of 12</div>
+          <div class="quiz-q-text">In the ITERATION prompt pattern, why can you say "Make it shorter" without repeating context?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Claude automatically searches the internet for context</button>
+            <button class="quiz-option" data-value="b">(b) "Make it shorter" is a special command that Claude always understands</button>
+            <button class="quiz-option" data-value="c">(c) Claude remembers everything discussed within the current session</button>
+            <button class="quiz-option" data-value="d">(d) Claude reads your mind and knows what you mean</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Context carries forward</strong> within a Claude Code session. Claude remembers everything you have discussed, so follow-up instructions like "Make it shorter" are understood in the context of the previous exchange. This is what makes iterative refinement so efficient.</div>
+        </div>
+
+        <div class="quiz-question" data-question="35" data-type="mc" data-answer="b" data-hint1="Think about what makes a prompt produce better results." data-hint2="The more specific detail you provide, the more relevant Claude's output will be.">
+          <div class="quiz-q-number">Question 11 of 12</div>
+          <div class="quiz-q-text">Which of these prompts would produce the best property description?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) "Write about the building"</button>
+            <button class="quiz-option" data-value="b">(b) "Write a property description for a 5,000 sq ft retail unit at 22 Division Street, Sheffield, built 1985, refurbished 2020, A1 use class"</button>
+            <button class="quiz-option" data-value="c">(c) "Describe a property"</button>
+            <button class="quiz-option" data-value="d">(d) "Do a property report"</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Specificity is the key to quality.</strong> The more detail you provide (size, location, age, use class, features), the more relevant and usable Claude's output will be. Vague prompts produce vague results.</div>
+        </div>
+
+        <div class="quiz-question" data-question="36" data-type="mc" data-answer="d" data-hint1="Think about what you should always check in emails before sending." data-hint2="There are five things to verify: names, facts, tone, accuracy, and RICS compliance.">
+          <div class="quiz-q-number">Question 12 of 12</div>
+          <div class="quiz-q-text">Before sending a Claude-drafted email to a client, which of these checks is NOT part of the email review checklist?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Are all names, addresses, and figures correct?</button>
+            <button class="quiz-option" data-value="b">(b) Is the tone appropriate for this recipient?</button>
+            <button class="quiz-option" data-value="c">(c) Is it compliant with RICS professional standards?</button>
+            <button class="quiz-option" data-value="d">(d) Does it match the formatting of emails from competing firms?</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The email review checklist covers: accuracy of facts, appropriate tone, checking for hallucinations, representing Hillway's position correctly, and RICS compliance. <strong>Matching competitors' formatting is not a review criterion</strong> &mdash; Hillway has its own professional standards.</div>
+        </div>
+
+      </div>
+
+      <div class="quiz-score-card" id="quiz-3-score">
+        <h3>Day 3 Complete</h3>
+        <div class="quiz-score-number" id="quiz-3-score-display">0/12</div>
+        <p id="quiz-3-score-message"></p>
+      </div>
+    </div>

@@ -1,0 +1,408 @@
+    <!-- ============================================================ -->
+    <!-- DAY 1: UNDERSTANDING AI ASSISTANTS                            -->
+    <!-- ============================================================ -->
+
+    <div class="day-divider section" id="day1-s1">
+      <div class="day-number">1</div>
+      <div class="day-info">
+        <h2>Day 1: Understanding AI Assistants</h2>
+        <p>What AI is, how it works, and why Claude is our tool of choice <span class="est-time">~90 minutes</span></p>
+      </div>
+    </div>
+
+    <!-- Day 1 Section 1: What is AI? -->
+    <div class="section fade-in" id="day1-s1-content">
+      <div class="section-header">
+        <span class="section-number">1</span>
+        <h2>What is AI? A Practical Introduction</h2>
+      </div>
+
+      <div class="learning-objectives">
+        <h4>Learning Objectives</h4>
+        <ul>
+          <li>Understand what artificial intelligence means in a practical business context</li>
+          <li>Identify AI tools you already use in daily life</li>
+          <li>Explain why AI matters specifically for property professionals</li>
+          <li>Distinguish between general AI hype and practical AI utility</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Forget the science fiction</h3>
+        <p>When people hear "artificial intelligence", they often think of robots or sentient computers from films. The reality is far more practical. AI, in the way we use it at Hillway, is software that can understand and generate human language, analyse documents, and help with tasks that would normally require significant human time and effort.</p>
+        <p style="margin-top: 12px;">Think of it this way: a calculator helps you do maths faster. AI helps you do <em>thinking tasks</em> faster &mdash; reading, writing, summarising, analysing, and communicating.</p>
+        <p style="margin-top: 12px;">The term "Artificial Intelligence" was coined in 1956 at a conference at Dartmouth College. Since then, AI has gone through several waves of excitement and disappointment (known as "AI winters"). What makes the current wave different is the breakthrough of <span class="key-term">Large Language Models</span> (LLMs) &mdash; a type of AI that is genuinely useful for everyday professional work.</p>
+      </div>
+
+      <div class="card card-highlight">
+        <h3>Types of AI you already use</h3>
+        <p>You interact with AI every day without realising it:</p>
+        <ul>
+          <li><strong>Predictive text</strong> on your phone &mdash; suggests the next word as you type</li>
+          <li><strong>Spam filters</strong> in your email &mdash; learn what is junk and what is important</li>
+          <li><strong>Sat nav routing</strong> &mdash; analyses traffic patterns to find the best route</li>
+          <li><strong>Netflix/Spotify recommendations</strong> &mdash; learns what you like and suggests more</li>
+          <li><strong>Voice assistants</strong> (Siri, Alexa) &mdash; understand spoken language</li>
+          <li><strong>Photo tagging</strong> on social media &mdash; recognises faces in images</li>
+          <li><strong>Fraud detection</strong> on your bank account &mdash; spots unusual transactions</li>
+          <li><strong>Grammar checkers</strong> (Grammarly, Word) &mdash; suggest corrections to your writing</li>
+        </ul>
+        <p style="margin-top: 12px;">The AI we use at Hillway is a more advanced version of these ideas, specifically a <span class="key-term">Large Language Model</span> (LLM). It specialises in understanding and generating text.</p>
+      </div>
+
+      <div class="card">
+        <h3>Why this matters for property</h3>
+        <p>As a surveyor, a huge part of your job involves text: reading leases, writing reports, drafting emails, analysing comparable evidence, preparing fee proposals, and communicating with clients. AI is exceptionally good at all of these tasks. It does not replace your professional judgement &mdash; it amplifies it.</p>
+        <p style="margin-top: 12px;">Consider these numbers: a typical rent review file might include a 200-page lease, 50 pages of comparable evidence, correspondence, and financial schedules. Reading and extracting key information from these documents manually might take 3-4 hours. With AI assistance, the initial data extraction and summarisation can be done in minutes, freeing you to focus on the analysis and professional judgement that only a qualified surveyor can provide.</p>
+        <p style="margin-top: 12px;">The RICS Future of the Profession report identified technology adoption as one of the key drivers of change in surveying. Firms that embrace AI tools effectively will deliver faster, more thorough work &mdash; and that is exactly where Hillway is positioning itself.</p>
+      </div>
+
+      <div class="key-concept">
+        <h4>Key Concept: Narrow AI vs General AI</h4>
+        <p><strong>Narrow AI</strong> (also called "weak AI") is designed to perform specific tasks well. Every AI system you interact with today is narrow AI &mdash; including Claude. It excels at language tasks but cannot drive a car or perform surgery.</p>
+        <p style="margin-top: 8px;"><strong>General AI</strong> (also called "strong AI" or AGI) would be a system that can perform any intellectual task a human can. This does not exist yet and is a topic of active research and debate. When you hear headlines about AI "taking over", they are usually conflating narrow AI with general AI.</p>
+        <p style="margin-top: 8px;">At Hillway, we use narrow AI for what it is good at: language processing, document analysis, and information structuring. We pair it with what humans are good at: professional judgement, relationship management, and physical observation.</p>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Open your phone and start typing a text message. Notice how it predicts the next word? That is a tiny language model at work. Now think about how much more useful a model that has read millions of documents, legal texts, and property reports could be for your work. That is the leap from predictive text to Claude.</p>
+      </div>
+    </div>
+
+    <!-- Day 1 Section 2: How LLMs Work -->
+    <div class="section fade-in" id="day1-s2">
+      <div class="section-header">
+        <span class="section-number">2</span>
+        <h2>How Large Language Models Work</h2>
+      </div>
+
+      <div class="card">
+        <h3>The autocomplete analogy</h3>
+        <p>Start with something you already know. When you type a message on your phone and it suggests the next word, that is a simple language model. It has learned from billions of text messages that after "See you" the next word is often "later" or "tomorrow".</p>
+        <p style="margin-top: 12px;">A Large Language Model like Claude works on exactly the same principle, but at an enormously larger scale. Instead of predicting one word from a short message, it has been trained on a vast amount of text (books, articles, websites, code) and can generate entire paragraphs, analyses, and documents &mdash; all by predicting what comes next, one piece at a time.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Key Concept: Tokens</h4>
+        <h3>What are tokens?</h3>
+        <p>AI models do not read words the way you do. They break text into smaller pieces called <span class="key-term">tokens</span>. A token is roughly three-quarters of a word. So "property management" is about 3 tokens, and a full page of text is roughly 400 tokens.</p>
+        <p style="margin-top: 12px;">Why does this matter? Because there is a limit to how many tokens the model can process at once &mdash; this is called the <span class="key-term">context window</span>. Think of it as the model's "working memory". Claude can handle approximately 200,000 tokens at once, which is roughly 500 pages of text. That is enough to read an entire lease and all supporting documents in one go.</p>
+        <p style="margin-top: 12px;">Here are some examples of token counts for common property documents:</p>
+        <ul>
+          <li>A short email: ~100 tokens (less than a paragraph)</li>
+          <li>A one-page letter: ~400 tokens</li>
+          <li>A 10-page report: ~4,000 tokens</li>
+          <li>A 50-page lease: ~20,000 tokens</li>
+          <li>A 200-page full repairing lease with schedules: ~80,000 tokens</li>
+        </ul>
+        <p style="margin-top: 12px;">Even with a large lease, Claude still has over half its context window available for your instructions and its response.</p>
+      </div>
+
+      <div class="card">
+        <h4>Key Concept: Training</h4>
+        <h3>How was Claude trained?</h3>
+        <p>Training an LLM is a massive, expensive process. It involves feeding the model enormous amounts of text and teaching it to predict the next token. Through this process, the model learns grammar, facts, reasoning patterns, and even writing styles.</p>
+        <p style="margin-top: 12px;">Think of it like an apprentice who has read the entire library. They have not experienced anything directly, but they have read about almost everything. They can produce impressive work based on patterns they have absorbed, but they lack the practical wisdom that comes from real-world experience. That is why your professional experience and judgement remain essential.</p>
+        <p style="margin-top: 12px;">The training process has several stages:</p>
+        <ol>
+          <li><strong>Pre-training</strong> &mdash; The model reads vast amounts of text and learns patterns in language</li>
+          <li><strong>Fine-tuning</strong> &mdash; The model is refined on curated examples to improve quality and helpfulness</li>
+          <li><strong>RLHF / Constitutional AI</strong> &mdash; The model is further aligned with human values and safety principles</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h4>Key Concept: Inference</h4>
+        <h3>What happens when you ask Claude a question?</h3>
+        <p>When you send a message to Claude, a process called <span class="key-term">inference</span> takes place. The model takes your input (the prompt), processes it against everything it learned during training, and generates a response token by token. This is why responses appear to stream in word by word &mdash; the model is literally generating each piece sequentially.</p>
+        <p style="margin-top: 12px;">This is not a search engine looking up answers in a database. Claude is generating its response fresh each time based on the patterns it learned during training. This is both its strength (it can be creative and flexible) and its weakness (it can sometimes generate plausible-sounding but incorrect information).</p>
+      </div>
+
+      <div class="card card-warning">
+        <h3>Important limitation: the knowledge cutoff</h3>
+        <p>Claude's training data has a cutoff date. It does not know about events, legislation changes, or market data after that date unless you provide the information in your prompt. For property work, this means you should always provide current market evidence, recent case law, or updated regulations rather than asking Claude to recall them from memory.</p>
+        <p style="margin-top: 12px;">For example, if there was a significant court ruling on service charge disputes last month, Claude will not know about it. But if you paste the ruling into the conversation, Claude can analyse it brilliantly. Always supply current data for current analysis.</p>
+      </div>
+
+      <div class="key-concept">
+        <h4>Key Concept: Hallucination</h4>
+        <p>A <span class="key-term">hallucination</span> is when an AI model generates information that sounds plausible and confident but is actually incorrect or entirely fabricated. This happens because the model is predicting what text "should" come next based on patterns, not consulting a verified database of facts.</p>
+        <p style="margin-top: 8px;">Common hallucination examples in property work include: fabricated case law citations (e.g., "Smith v Jones [2024] EWHC 1234" that does not exist), invented statistics ("the Sheffield industrial market vacancy rate is 4.2%" when this figure was made up), and incorrect legislative references.</p>
+        <p style="margin-top: 8px;">This is why verification is not optional &mdash; it is a professional requirement.</p>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Go to claude.ai and ask: "What is the current market rent for a 5,000 sq ft industrial unit in Sheffield S9?" Notice how Claude will either give a general range based on training data or explain that it does not have current market data. This demonstrates the knowledge cutoff in action. Now try pasting in some actual comparable evidence and asking the same question &mdash; the response will be much more useful.</p>
+      </div>
+    </div>
+
+    <!-- Day 1 Section 3: Claude by Anthropic -->
+    <div class="section fade-in" id="day1-s3">
+      <div class="section-header">
+        <span class="section-number">3</span>
+        <h2>Claude by Anthropic</h2>
+      </div>
+
+      <div class="card">
+        <h3>Who makes Claude?</h3>
+        <p><strong>Anthropic</strong> is an AI safety company founded in 2021 by former members of OpenAI, including Dario and Daniela Amodei. Their core mission is to build AI systems that are safe, beneficial, and understandable. This safety-first approach is what sets Claude apart from competitors.</p>
+        <p style="margin-top: 12px;">Anthropic has raised significant funding (over $7 billion) and is backed by major investors including Google and Salesforce. The company employs some of the world's leading AI researchers and is based in San Francisco. Unlike some AI companies that prioritise speed-to-market, Anthropic takes a measured approach to releasing capabilities, which is why Claude tends to be more careful and less likely to produce harmful content.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Constitutional AI: why Claude behaves differently</h3>
+        <p>Claude is trained using a method called <span class="key-term">Constitutional AI</span>. Rather than relying solely on human reviewers to judge every response, Claude is given a set of principles (a "constitution") that guide its behaviour. These principles include:</p>
+        <ul>
+          <li>Be helpful, harmless, and honest</li>
+          <li>Do not assist with illegal or harmful activities</li>
+          <li>Acknowledge uncertainty rather than guess</li>
+          <li>Respect privacy and confidentiality</li>
+          <li>Be transparent about being an AI</li>
+        </ul>
+        <p style="margin-top: 12px;">In practice, this means Claude is less likely to make up information, more willing to say "I do not know", and more careful about sensitive topics. For professional work, this reliability is essential. When Claude is unsure, it will tell you &mdash; rather than confidently making something up.</p>
+      </div>
+
+      <div class="card">
+        <h3>Claude vs ChatGPT vs Gemini &mdash; honest comparison</h3>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Claude (Anthropic)</th>
+              <th>ChatGPT (OpenAI)</th>
+              <th>Gemini (Google)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Strengths</strong></td>
+              <td>Long documents, careful reasoning, safety, coding, professional writing</td>
+              <td>General knowledge, plugins ecosystem, image generation (DALL-E)</td>
+              <td>Google integration, multimodal (images, video), real-time search</td>
+            </tr>
+            <tr>
+              <td><strong>Weaknesses</strong></td>
+              <td>No built-in image generation, no real-time internet access without tools</td>
+              <td>Can be overly confident, shorter context window on some tiers</td>
+              <td>Newer, less consistent, sometimes less detailed responses</td>
+            </tr>
+            <tr>
+              <td><strong>Context window</strong></td>
+              <td>200K tokens (~500 pages)</td>
+              <td>128K tokens (~320 pages)</td>
+              <td>1M+ tokens (~2,500 pages)</td>
+            </tr>
+            <tr>
+              <td><strong>Best for</strong></td>
+              <td>Professional documents, analysis, coding, careful reasoning</td>
+              <td>General tasks, creative content, quick answers</td>
+              <td>Research with real-time search, Google Workspace users</td>
+            </tr>
+            <tr>
+              <td><strong>Why Hillway chose it</strong></td>
+              <td>Best at professional writing, lease analysis, careful reasoning &mdash; critical for RICS-standard work</td>
+              <td>&mdash;</td>
+              <td>&mdash;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pitfall">
+        <h4>Common Pitfall</h4>
+        <p><strong>Assuming all AI tools are the same.</strong> A common mistake is thinking "I tried ChatGPT and it was not very good, so AI is not useful for property work." Different models have different strengths. Claude's ability to handle long documents and produce careful, nuanced analysis makes it particularly well-suited to surveying work. Always evaluate the right tool for the task.</p>
+      </div>
+    </div>
+
+    <!-- Day 1 Section 4: Model Tiers & Access -->
+    <div class="section fade-in" id="day1-s4">
+      <div class="section-header">
+        <span class="section-number">4</span>
+        <h2>Claude Model Tiers &amp; How to Access Claude</h2>
+      </div>
+
+      <div class="card">
+        <h3>Three tiers, three use cases</h3>
+        <p>Anthropic offers Claude in three tiers. Think of them like car models &mdash; a city car, a family saloon, and a performance car. Each has its place.</p>
+      </div>
+
+      <div class="tier-grid">
+        <div class="tier-card">
+          <div class="tier-name">Haiku</div>
+          <div class="tier-desc">Fast &amp; affordable</div>
+          <ul class="tier-traits">
+            <li>Fastest response times</li>
+            <li>Lowest cost per token</li>
+            <li>Good for simple tasks</li>
+            <li>Email classification, quick summaries</li>
+            <li>Like a city car &mdash; quick for short trips</li>
+          </ul>
+        </div>
+        <div class="tier-card featured">
+          <div class="tier-name">Sonnet</div>
+          <div class="tier-desc">Balanced &mdash; our daily driver</div>
+          <ul class="tier-traits">
+            <li>Best balance of speed and quality</li>
+            <li>Strong reasoning and analysis</li>
+            <li>Hillway's default for most tasks</li>
+            <li>Reports, analysis, client comms</li>
+            <li>Like a saloon &mdash; reliable all-rounder</li>
+          </ul>
+        </div>
+        <div class="tier-card">
+          <div class="tier-name">Opus</div>
+          <div class="tier-desc">Most capable</div>
+          <ul class="tier-traits">
+            <li>Highest quality reasoning</li>
+            <li>Best at complex analysis</li>
+            <li>Most expensive per token</li>
+            <li>Strategic decisions, complex code</li>
+            <li>Like a performance car &mdash; for when it matters most</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card card-highlight">
+        <h3>How to access Claude</h3>
+        <p>There are four main ways to interact with Claude:</p>
+        <ul>
+          <li><strong>claude.ai</strong> &mdash; The web interface. Open a browser, go to claude.ai, and start chatting. This is the simplest way and good for one-off tasks.</li>
+          <li><strong>Claude mobile app</strong> &mdash; Available on iOS and Android. Useful when you are on site or travelling.</li>
+          <li><strong>Claude API</strong> &mdash; For developers building applications that use Claude. Not something you will use directly.</li>
+          <li><strong>Claude Code</strong> &mdash; A command-line tool that lets Claude read and write files, run commands, and connect to other services. This is what we will focus on from Day 2 onwards.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Your first conversation with Claude</h3>
+        <p>Go to <strong>claude.ai</strong> and try these starter prompts:</p>
+        <div class="prompt-example">
+          <div class="prompt-label">Try this</div>
+          <div class="prompt-text">"I am a graduate surveyor at a commercial property consultancy. Explain what a rent review is as if you were training me on my first day."</div>
+        </div>
+        <div class="prompt-example">
+          <div class="prompt-label">Try this</div>
+          <div class="prompt-text">"Summarise the key differences between a full repairing and insuring lease and an internal repairing lease. Present this as a comparison table."</div>
+        </div>
+        <div class="prompt-example">
+          <div class="prompt-label">Try this</div>
+          <div class="prompt-text">"Draft a professional email to a client confirming the date and time of an inspection at their property next Tuesday at 10am. Keep it concise and friendly."</div>
+        </div>
+        <p style="margin-top: 12px;">Notice how Claude adapts to your request. It can be formal or informal, detailed or concise, depending on what you ask for.</p>
+      </div>
+
+      <div class="card">
+        <h3>Understanding context windows and conversation memory</h3>
+        <p>Within a single conversation, Claude remembers everything you have said. You can reference earlier messages, build on previous answers, and refine outputs iteratively. However:</p>
+        <ul>
+          <li><strong>Each conversation is separate</strong> &mdash; Claude does not remember your last chat when you start a new one (on claude.ai).</li>
+          <li><strong>The context window is finite</strong> &mdash; Very long conversations may lose early context. For critical work, keep conversations focused on one topic.</li>
+          <li><strong>You can paste documents</strong> &mdash; Copy and paste lease clauses, reports, or data directly into the chat. Claude processes them immediately.</li>
+        </ul>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <ol>
+          <li>Go to claude.ai and start a conversation</li>
+          <li>Ask Claude to explain what "yield" means in property investment</li>
+          <li>Then in the same conversation, ask "Now explain that to someone who has never invested in property"</li>
+          <li>Notice how Claude adapts its language because it remembers your earlier message</li>
+          <li>Start a NEW conversation and ask "Can you give me a simpler version?" &mdash; Claude will not know what you are referring to, because each conversation starts fresh</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Day 1 Section 5: Safety & Ethics -->
+    <div class="section fade-in" id="day1-s5">
+      <div class="section-header">
+        <span class="section-number">5</span>
+        <h2>Safety, Ethics &amp; Responsible AI Use</h2>
+      </div>
+
+      <div class="card card-warning">
+        <h3>The golden rule of AI at Hillway</h3>
+        <p><strong>AI is a tool, not a colleague.</strong> It produces drafts, not final products. Every piece of AI-generated content must be reviewed by a qualified human before it leaves the firm. This is not optional &mdash; it is a professional and regulatory requirement.</p>
+      </div>
+
+      <div class="card">
+        <h3>What AI does well</h3>
+        <ul>
+          <li>Drafting text that you then review and refine</li>
+          <li>Analysing large documents quickly (finding key clauses in a 200-page lease)</li>
+          <li>Summarising complex information into plain English</li>
+          <li>Generating first drafts of emails, reports, and proposals</li>
+          <li>Structuring your thoughts and organising research</li>
+          <li>Converting rough notes into professional formats</li>
+          <li>Comparing documents and identifying differences</li>
+          <li>Processing spreadsheet data and performing calculations</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>What AI does NOT do well</h3>
+        <ul>
+          <li>Professional judgement &mdash; it cannot value a property or give a professional opinion</li>
+          <li>Guaranteeing accuracy of facts, figures, or legal citations</li>
+          <li>Understanding nuance that requires local market knowledge</li>
+          <li>Replacing the need for site inspections and physical observation</li>
+          <li>Confidential reasoning that accounts for relationships and politics</li>
+          <li>Making decisions that require a RICS qualification to sign off</li>
+          <li>Knowing about events after its training data cutoff</li>
+          <li>Understanding client relationships and the history behind a negotiation</li>
+        </ul>
+      </div>
+
+      <div class="quote-block">
+        <p>AI will not replace surveyors. But surveyors who use AI will replace those who do not.</p>
+        <cite>&mdash; A useful way to think about it</cite>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Ethical use at Hillway</h3>
+        <ul>
+          <li><strong>Transparency</strong> &mdash; If a client asks whether AI was used in preparing work, always be honest</li>
+          <li><strong>Verification</strong> &mdash; Never send AI output directly to a client without human review</li>
+          <li><strong>Confidentiality</strong> &mdash; We will cover data security in detail on Day 10, but for now: never paste sensitive client data into public AI tools</li>
+          <li><strong>Fairness</strong> &mdash; Be aware that AI can reflect biases from its training data. Question assumptions in its output</li>
+          <li><strong>Accountability</strong> &mdash; You are responsible for the work, not the AI. Your name goes on the report, not Claude's</li>
+          <li><strong>Proportionality</strong> &mdash; Use the right level of AI assistance for the task. Not everything needs AI, and not everything should bypass it</li>
+        </ul>
+      </div>
+
+      <div class="card card-highlight">
+        <h3>The human-AI partnership model</h3>
+        <p>The most effective way to think about AI at Hillway is as a partnership:</p>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>AI does the...</th>
+              <th>Human does the...</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>First draft</td><td>Review and refinement</td></tr>
+            <tr><td>Data extraction</td><td>Data verification</td></tr>
+            <tr><td>Research compilation</td><td>Professional analysis</td></tr>
+            <tr><td>Document formatting</td><td>Quality assurance</td></tr>
+            <tr><td>Calculation processing</td><td>Methodology validation</td></tr>
+            <tr><td>Pattern identification</td><td>Contextual interpretation</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Day 1 Summary</h3>
+        <ul>
+          <li>AI is software that processes language &mdash; not science fiction, not magic</li>
+          <li>LLMs like Claude work by predicting the next token based on learned patterns</li>
+          <li>Claude is made by Anthropic and uses Constitutional AI for safety</li>
+          <li>Three model tiers: Haiku (fast), Sonnet (balanced, our default), Opus (most capable)</li>
+          <li>Context windows allow Claude to process ~500 pages at once</li>
+          <li>Hallucinations are a real risk &mdash; always verify AI output</li>
+          <li>AI is a tool, not a colleague &mdash; you remain professionally responsible</li>
+        </ul>
+      </div>
+    </div>

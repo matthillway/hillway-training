@@ -1,0 +1,174 @@
+    <!-- Day 5 Quiz -->
+    <div class="section fade-in" id="quiz-5">
+      <div class="section-header">
+        <span class="section-number">&bull;</span>
+        <h2>Day 5 Knowledge Check</h2>
+      </div>
+      <p style="margin-bottom: 20px; color: var(--gray-600); font-size: 14px;">Test your understanding of best practices, RICS compliance, and advanced features. Remember: up to 3 attempts per question with hints.</p>
+
+      <div class="quiz-container" id="quiz-5-container">
+
+        <div class="quiz-question" data-question="49" data-type="mc" data-answer="c" data-hint1="Think about the five advanced prompt principles covered today." data-hint2="This principle involves telling Claude what NOT to do, not just what to do.">
+          <div class="quiz-q-number">Question 1 of 12</div>
+          <div class="quiz-q-text">What does "defining the negative space" mean in prompt engineering?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Asking Claude to focus on negative market trends</button>
+            <button class="quiz-option" data-value="b">(b) Using pessimistic language in your prompts</button>
+            <button class="quiz-option" data-value="c">(c) Telling Claude what NOT to include or do in its response</button>
+            <button class="quiz-option" data-value="d">(d) Asking Claude to criticise its own output</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Defining the negative space</strong> means explicitly telling Claude what to exclude &mdash; what not to include, what topics to avoid, what format not to use. This prevents common AI tendencies like including irrelevant information or overstepping professional boundaries.</div>
+        </div>
+
+        <div class="quiz-question" data-question="50" data-type="mc" data-answer="a" data-hint1="Think about who bears professional responsibility under RICS." data-hint2="RICS members are personally responsible for all advice, regardless of how it was produced.">
+          <div class="quiz-q-number">Question 2 of 12</div>
+          <div class="quiz-q-text">Under RICS standards, who is responsible for professional advice produced with AI assistance?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) The RICS member who signs and approves the work</button>
+            <button class="quiz-option" data-value="b">(b) Anthropic, the AI company</button>
+            <button class="quiz-option" data-value="c">(c) The client who requested the work</button>
+            <button class="quiz-option" data-value="d">(d) Nobody &mdash; AI-produced work has no professional liability</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>The RICS member</strong> remains personally responsible for all professional advice, regardless of whether AI tools were used. AI assists with research and drafting, but the professional judgement, opinion, and signature must come from a qualified human.</div>
+        </div>
+
+        <div class="quiz-question" data-question="51" data-type="mc" data-answer="d" data-hint1="Think about what should never be shared with any external tool." data-hint2="Some types of personal data should never be processed through AI.">
+          <div class="quiz-q-number">Question 3 of 12</div>
+          <div class="quiz-q-text">Which of the following should you NEVER input into Claude Code?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Property addresses</button>
+            <button class="quiz-option" data-value="b">(b) Publicly available market data</button>
+            <button class="quiz-option" data-value="c">(c) RICS professional standards text</button>
+            <button class="quiz-option" data-value="d">(d) Personal passwords or bank account details</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Never input personal passwords, bank account details, National Insurance numbers, or credit card numbers</strong> into Claude Code or any AI tool. Property addresses, market data, and professional standards are safe to use.</div>
+        </div>
+
+        <div class="quiz-question" data-question="52" data-type="mc" data-answer="b" data-hint1="Think about the approach that reduces errors and gives checkpoints." data-hint2="Large tasks should be broken into smaller steps for review at each stage.">
+          <div class="quiz-q-number">Question 4 of 12</div>
+          <div class="quiz-q-text">What is the "decompose complex tasks" principle?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Asking Claude to delete and rewrite everything</button>
+            <button class="quiz-option" data-value="b">(b) Breaking large tasks into smaller, manageable steps with review checkpoints</button>
+            <button class="quiz-option" data-value="c">(c) Using multiple Claude sessions simultaneously</button>
+            <button class="quiz-option" data-value="d">(d) Separating personal and professional tasks</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Decomposing complex tasks</strong> means breaking them into smaller steps &mdash; outline first, then section by section, with review at each stage. This reduces errors, gives you checkpoints, and keeps Claude's output focused.</div>
+        </div>
+
+        <div class="quiz-question" data-question="53" data-type="mc" data-answer="c" data-hint1="Think about what a prompt template contains." data-hint2="Templates have fixed parts that stay the same and variable parts that change each time.">
+          <div class="quiz-q-number">Question 5 of 12</div>
+          <div class="quiz-q-text">What is the key characteristic of a good prompt template?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) It is extremely long and detailed</button>
+            <button class="quiz-option" data-value="b">(b) It works without any customisation</button>
+            <button class="quiz-option" data-value="c">(c) It has fixed structure with variable fields that change per use</button>
+            <button class="quiz-option" data-value="d">(d) It uses only one-word commands</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">A good template has <strong>fixed structure</strong> (the prompt pattern, format requirements, constraints) with <strong>variable fields</strong> (property address, client name, figures) that change each time. This gives consistency while allowing customisation.</div>
+        </div>
+
+        <div class="quiz-question" data-question="54" data-type="mc" data-answer="a" data-hint1="Think about the type of AI error where it invents facts." data-hint2="This is when Claude confidently states something that is not true &mdash; like inventing a transaction.">
+          <div class="quiz-q-number">Question 6 of 12</div>
+          <div class="quiz-q-text">Claude Code cites a comparable transaction at "14 Market Street, let at &pound;18 psf in March 2025" but you cannot find any record of this. What type of AI failure is this?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Hallucination &mdash; Claude has fabricated a transaction</button>
+            <button class="quiz-option" data-value="b">(b) Outdated information &mdash; the data has been removed</button>
+            <button class="quiz-option" data-value="c">(c) Context misunderstanding &mdash; it confused two properties</button>
+            <button class="quiz-option" data-value="d">(d) Arithmetic error &mdash; the figures are wrong</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">This is a <strong>hallucination</strong> &mdash; Claude has confidently presented a transaction that never happened. This is one of the most dangerous AI failures in property work because fabricated comparables could lead to incorrect valuations. Always verify comparables against primary sources.</div>
+        </div>
+
+        <div class="quiz-question" data-question="55" data-type="mc" data-answer="d" data-hint1="Think about what the thinking triggers do." data-hint2="'Ultrathink' is the deepest level of reasoning, used for critical decisions.">
+          <div class="quiz-q-number">Question 7 of 12</div>
+          <div class="quiz-q-text">When should you use the "ultrathink" thinking trigger?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) For every prompt to get the best results</button>
+            <button class="quiz-option" data-value="b">(b) Only for emails and letters</button>
+            <button class="quiz-option" data-value="c">(c) When Claude is running slowly</button>
+            <button class="quiz-option" data-value="d">(d) For critical decisions, complex financial models, or security analysis</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Ultrathink</strong> triggers the deepest level of reasoning. Use it for critical decisions, complex financial modelling, and situations requiring maximum analytical depth. For simple tasks, standard thinking is sufficient &mdash; ultrathink uses more tokens and takes longer.</div>
+        </div>
+
+        <div class="quiz-question" data-question="56" data-type="mc" data-answer="b" data-hint1="Think about the steps in the human oversight framework." data-hint2="The five steps are: generation, fact-check, professional review, RICS compliance check, approval.">
+          <div class="quiz-q-number">Question 8 of 12</div>
+          <div class="quiz-q-text">In the human oversight framework, what comes after "fact-check"?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Send to client</button>
+            <button class="quiz-option" data-value="b">(b) Professional review</button>
+            <button class="quiz-option" data-value="c">(c) Regenerate with a new prompt</button>
+            <button class="quiz-option" data-value="d">(d) Archive the document</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The framework is: Generation &rarr; Fact-check &rarr; <strong>Professional review</strong> &rarr; RICS compliance check &rarr; Approval. Professional review is where you apply your judgement to assess whether the analysis is sound and conclusions are reasonable.</div>
+        </div>
+
+        <div class="quiz-question" data-question="57" data-type="mc" data-answer="c" data-hint1="Think about which tool controls a web browser." data-hint2="This tool is named after a popular browser automation framework.">
+          <div class="quiz-q-number">Question 9 of 12</div>
+          <div class="quiz-q-text">Which MCP tool would you use to automatically check a planning portal website?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) WebSearch</button>
+            <button class="quiz-option" data-value="b">(b) Google Workspace</button>
+            <button class="quiz-option" data-value="c">(c) Playwright</button>
+            <button class="quiz-option" data-value="d">(d) Xero</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Playwright</strong> is the browser automation MCP tool. It can navigate to websites, fill in forms, click buttons, and take screenshots &mdash; perfect for checking planning portals, extracting data from websites, or automating any web-based task.</div>
+        </div>
+
+        <div class="quiz-question" data-question="58" data-type="mc" data-answer="a" data-hint1="Think about what Git does with files." data-hint2="Git records every change, who made it, and when &mdash; providing a complete history.">
+          <div class="quiz-q-number">Question 10 of 12</div>
+          <div class="quiz-q-text">Why is Git useful for property document management?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) It provides an audit trail of all changes, who made them, and when</button>
+            <button class="quiz-option" data-value="b">(b) It automatically formats documents to RICS standards</button>
+            <button class="quiz-option" data-value="c">(c) It sends documents to clients automatically</button>
+            <button class="quiz-option" data-value="d">(d) It translates documents into other languages</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Git provides a complete audit trail</strong> &mdash; every change, who made it, and when. You can always go back to a previous version. For property work, this supports professional accountability and provides evidence of how reports and analyses evolved.</div>
+        </div>
+
+        <div class="quiz-question" data-question="59" data-type="mc" data-answer="d" data-hint1="Think about what makes the explicit approach better." data-hint2="The key difference is providing specific facts and clear instructions rather than vague requests.">
+          <div class="quiz-q-number">Question 11 of 12</div>
+          <div class="quiz-q-text">According to the "be explicit, not implicit" principle, which prompt is better?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) "Analyse the comparables"</button>
+            <button class="quiz-option" data-value="b">(b) "Do a good analysis"</button>
+            <button class="quiz-option" data-value="c">(c) "Make it professional"</button>
+            <button class="quiz-option" data-value="d">(d) "Analyse these 5 comparable transactions, adjusting headline to effective rents over 10 years, as a table with address, size, headline psf, incentives, and effective psf"</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The explicit prompt provides <strong>specific data, clear methodology, and exact format requirements</strong>. Claude cannot read your mind &mdash; stating assumptions, data, and desired output format explicitly always produces better results than vague instructions.</div>
+        </div>
+
+        <div class="quiz-question" data-question="60" data-type="mc" data-answer="b" data-hint1="Think about Hillway's position on transparency with clients." data-hint2="If a client asks directly, Hillway's policy is to be honest but reassuring.">
+          <div class="quiz-q-number">Question 12 of 12</div>
+          <div class="quiz-q-text">If a client directly asks whether Hillway uses AI in its work, what is the correct response?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Deny any AI use</button>
+            <button class="quiz-option" data-value="b">(b) Be honest: explain AI assists with research and drafting, but all advice is reviewed by qualified professionals</button>
+            <button class="quiz-option" data-value="c">(c) Refuse to answer</button>
+            <button class="quiz-option" data-value="d">(d) Tell them to read the privacy policy</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Hillway's policy is <strong>honesty and transparency</strong>. If asked directly: "We use AI tools to assist with research and drafting, but all professional advice is reviewed and approved by a qualified surveyor." This builds trust while reassuring clients that human expertise underpins all advice.</div>
+        </div>
+
+      </div>
+
+      <div class="quiz-score-card" id="quiz-5-score">
+        <h3>Day 5 Complete</h3>
+        <div class="quiz-score-number" id="quiz-5-score-display">0/12</div>
+        <p id="quiz-5-score-message"></p>
+      </div>
+    </div>

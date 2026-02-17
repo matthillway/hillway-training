@@ -1,0 +1,174 @@
+    <!-- Day 7 Quiz -->
+    <div class="section fade-in" id="quiz-7">
+      <div class="section-header">
+        <span class="section-number">&bull;</span>
+        <h2>Day 7 Knowledge Check</h2>
+      </div>
+      <p style="margin-bottom: 20px; color: var(--gray-600); font-size: 14px;">Test your understanding of document processing and analysis. Remember: up to 3 attempts per question with hints.</p>
+
+      <div class="quiz-container" id="quiz-7-container">
+
+        <div class="quiz-question" data-question="73" data-type="mc" data-answer="c" data-hint1="Think about how Claude handles large PDF files." data-hint2="For large PDFs, you should specify which pages to read rather than loading the entire document.">
+          <div class="quiz-q-number">Question 1 of 12</div>
+          <div class="quiz-q-text">What is the recommended approach for reading a 200-page lease PDF with Claude Code?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Ask Claude to read the entire document at once</button>
+            <button class="quiz-option" data-value="b">(b) Convert it to a Word document first</button>
+            <button class="quiz-option" data-value="c">(c) Read in page-range sections, starting with the cover and contents</button>
+            <button class="quiz-option" data-value="d">(d) Copy and paste the text into the terminal</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Read in page-range sections</strong> (e.g., pages 1&ndash;5, then pages 6&ndash;15). Start with the cover page and contents to understand the structure, then target specific clauses. Reading the entire document at once can exceed Claude's context window.</div>
+        </div>
+
+        <div class="quiz-question" data-question="74" data-type="mc" data-answer="a" data-hint1="Think about what should happen when Claude cannot find data in a lease." data-hint2="Rather than guessing, Claude should flag the missing data for manual review.">
+          <div class="quiz-q-number">Question 2 of 12</div>
+          <div class="quiz-q-text">When extracting lease data, what should Claude do if it cannot find a specific field?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Write "NOT FOUND &ndash; manual check required" rather than guessing</button>
+            <button class="quiz-option" data-value="b">(b) Make a reasonable assumption based on market standards</button>
+            <button class="quiz-option" data-value="c">(c) Leave the field blank without comment</button>
+            <button class="quiz-option" data-value="d">(d) Search the internet for the missing information</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Claude should <strong>flag missing data rather than guess</strong>. Writing "NOT FOUND &mdash; manual check required" alerts you to check the original document. A guessed lease term or break date could lead to serious professional errors.</div>
+        </div>
+
+        <div class="quiz-question" data-question="75" data-type="mc" data-answer="d" data-hint1="Think about the most commercially important lease provisions." data-hint2="Break clauses determine whether a tenant can leave early &mdash; missing a deadline could be very costly.">
+          <div class="quiz-q-number">Question 3 of 12</div>
+          <div class="quiz-q-text">Why is it particularly important to verify break clause data extracted by Claude Code?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Break clauses are always in a foreign language</button>
+            <button class="quiz-option" data-value="b">(b) Break clauses are the easiest part of a lease</button>
+            <button class="quiz-option" data-value="c">(c) Break clauses are rarely included in modern leases</button>
+            <button class="quiz-option" data-value="d">(d) A missed break date or misunderstood condition could have serious financial consequences</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Break clauses are commercially critical.</strong> Missing a break deadline means the tenant is locked in for the remainder of the term. Misunderstanding conditions (vacant possession, no arrears, decoration requirements) can invalidate a break notice. Always verify break clause details manually.</div>
+        </div>
+
+        <div class="quiz-question" data-question="76" data-type="mc" data-answer="b" data-hint1="Think about the first step in a batch processing workflow." data-hint2="Before processing a full batch, you should test on a small sample first.">
+          <div class="quiz-q-number">Question 4 of 12</div>
+          <div class="quiz-q-text">What should you do before running a batch operation on 20 lease documents?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Process all 20 at once to save time</button>
+            <button class="quiz-option" data-value="b">(b) Test the operation on 1&ndash;2 documents first to verify the output format</button>
+            <button class="quiz-option" data-value="c">(c) Convert all documents to images</button>
+            <button class="quiz-option" data-value="d">(d) Print all documents for manual backup</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Always test on 1&ndash;2 items first.</strong> This lets you verify the output format is correct, catch any issues with the prompt, and adjust before investing time in the full batch. It is much easier to fix a problem with 2 results than 20.</div>
+        </div>
+
+        <div class="quiz-question" data-question="77" data-type="mc" data-answer="c" data-hint1="Think about what FRI stands for." data-hint2="FRI describes who is responsible for building maintenance in a lease.">
+          <div class="quiz-q-number">Question 5 of 12</div>
+          <div class="quiz-q-text">In lease extraction, what does "FRI" mean under the Repair category?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Financial Risk Index</button>
+            <button class="quiz-option" data-value="b">(b) First Right of Information</button>
+            <button class="quiz-option" data-value="c">(c) Full Repairing and Insuring &mdash; the tenant is responsible for all repairs and insurance</button>
+            <button class="quiz-option" data-value="d">(d) Fixed Rental Increase</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Full Repairing and Insuring (FRI)</strong> means the tenant is responsible for all repairs to the property and pays the insurance costs. This is the most common basis for single-let commercial properties. The alternative (internal repairing only) is more common in multi-let buildings.</div>
+        </div>
+
+        <div class="quiz-question" data-question="78" data-type="mc" data-answer="a" data-hint1="Think about what percentage of batch results you should verify." data-hint2="The recommendation is to manually check a significant sample of the results.">
+          <div class="quiz-q-number">Question 6 of 12</div>
+          <div class="quiz-q-text">For a batch operation processing 20 documents, what percentage of results should you manually verify?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) 20&ndash;30% of results</button>
+            <button class="quiz-option" data-value="b">(b) Just the first result</button>
+            <button class="quiz-option" data-value="c">(c) 0% &mdash; if the test was fine, the batch will be fine</button>
+            <button class="quiz-option" data-value="d">(d) 100% of results</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The recommended sample check is <strong>20&ndash;30% of results</strong>. This balances thoroughness with efficiency. If you find errors in the sample, check more results and consider adjusting the prompt.</div>
+        </div>
+
+        <div class="quiz-question" data-question="79" data-type="mc" data-answer="d" data-hint1="Think about the staged approach to report generation." data-hint2="The four stages are: define structure, generate sections, review and refine, compile.">
+          <div class="quiz-q-number">Question 7 of 12</div>
+          <div class="quiz-q-text">What is the first step in the multi-section report generation approach?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Write the executive summary</button>
+            <button class="quiz-option" data-value="b">(b) Choose the font and formatting</button>
+            <button class="quiz-option" data-value="c">(c) Send the report to the client</button>
+            <button class="quiz-option" data-value="d">(d) Define the report structure and outline</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The first step is to <strong>define the report structure</strong> &mdash; create an outline with section headings before generating any content. This ensures logical flow, prevents duplication, and gives you a framework to review before investing time in detailed writing.</div>
+        </div>
+
+        <div class="quiz-question" data-question="80" data-type="mc" data-answer="b" data-hint1="Think about which document formats Claude Code can read." data-hint2="Claude Code can read PDFs, Word docs, Excel files, text files, images, and Google Workspace files.">
+          <div class="quiz-q-number">Question 8 of 12</div>
+          <div class="quiz-q-text">Which of these can Claude Code NOT read directly?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) PDF documents</button>
+            <button class="quiz-option" data-value="b">(b) Physical paper documents on your desk</button>
+            <button class="quiz-option" data-value="c">(c) Excel spreadsheets</button>
+            <button class="quiz-option" data-value="d">(d) JPEG photographs</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Claude Code can read digital files (PDFs, Word, Excel, text, images) but <strong>cannot read physical paper documents</strong>. You would need to scan or photograph a paper document to make it readable by Claude Code.</div>
+        </div>
+
+        <div class="quiz-question" data-question="81" data-type="mc" data-answer="c" data-hint1="Think about what MEES stands for and when it matters." data-hint2="MEES requires minimum EPC ratings for commercial lettings &mdash; ratings below the threshold need improvement.">
+          <div class="quiz-q-number">Question 9 of 12</div>
+          <div class="quiz-q-text">In the batch EPC lookup example, why are properties with EPC ratings below C flagged?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) They have lower rental values</button>
+            <button class="quiz-option" data-value="b">(b) They are listed buildings</button>
+            <button class="quiz-option" data-value="c">(c) They may need improvement under Minimum Energy Efficiency Standards (MEES) regulations</button>
+            <button class="quiz-option" data-value="d">(d) They qualify for a government grant</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>MEES regulations</strong> set minimum energy efficiency standards for commercial lettings. Properties below the minimum rating may be unlawful to let, so identifying them in a portfolio review is essential for compliance and risk management.</div>
+        </div>
+
+        <div class="quiz-question" data-question="82" data-type="mc" data-answer="a" data-hint1="Think about the reading strategy for spreadsheets." data-hint2="Start by understanding the structure before diving into specific data.">
+          <div class="quiz-q-number">Question 10 of 12</div>
+          <div class="quiz-q-text">What is the recommended first step when Claude Code reads a complex spreadsheet?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Ask for an overview of tabs, data types, and row counts</button>
+            <button class="quiz-option" data-value="b">(b) Ask Claude to reformat the entire spreadsheet</button>
+            <button class="quiz-option" data-value="c">(c) Delete empty cells first</button>
+            <button class="quiz-option" data-value="d">(d) Convert it to PDF before reading</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Start with an overview</strong> &mdash; ask what tabs exist, what data is in each, and how many rows. This helps you understand the structure before asking for specific analysis, and prevents Claude from processing more data than necessary.</div>
+        </div>
+
+        <div class="quiz-question" data-question="83" data-type="mc" data-answer="d" data-hint1="Think about the Google Workspace tools available." data-hint2="Claude Code can create Google Docs directly via the MCP server.">
+          <div class="quiz-q-number">Question 11 of 12</div>
+          <div class="quiz-q-text">How can you save a completed report directly to Google Drive using Claude Code?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Email it to yourself and upload manually</button>
+            <button class="quiz-option" data-value="b">(b) Use the Xero MCP server</button>
+            <button class="quiz-option" data-value="c">(c) Print it and scan to Google Drive</button>
+            <button class="quiz-option" data-value="d">(d) Use the Google Workspace MCP to create a Google Doc directly</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The <strong>Google Workspace MCP</strong> can create Google Docs directly in Drive. Ask Claude to "Create a Google Doc called [name] with this content" and it will be saved to your Google Drive, accessible from any device.</div>
+        </div>
+
+        <div class="quiz-question" data-question="84" data-type="mc" data-answer="b" data-hint1="Think about what 'assumptions and disregards' means in a rent review." data-hint2="These are specific lease clauses that define how the hypothetical letting should be considered at review.">
+          <div class="quiz-q-number">Question 12 of 12</div>
+          <div class="quiz-q-text">In a lease extraction, what are "assumptions and disregards" under rent reviews?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Things the AI should ignore when reading the lease</button>
+            <button class="quiz-option" data-value="b">(b) Lease clauses defining how the hypothetical letting is assessed at rent review</button>
+            <button class="quiz-option" data-value="c">(c) Standard accounting terms for financial reporting</button>
+            <button class="quiz-option" data-value="d">(d) Items excluded from the service charge</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Assumptions and disregards</strong> are lease clauses that define the terms of the hypothetical letting at rent review. Assumptions might include that the property is in good repair; disregards typically include tenant's improvements and goodwill. These fundamentally affect the reviewed rent.</div>
+        </div>
+
+      </div>
+
+      <div class="quiz-score-card" id="quiz-7-score">
+        <h3>Day 7 Complete</h3>
+        <div class="quiz-score-number" id="quiz-7-score-display">0/12</div>
+        <p id="quiz-7-score-message"></p>
+      </div>
+    </div>

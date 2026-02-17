@@ -1,0 +1,174 @@
+    <!-- Day 2 Quiz -->
+    <div class="section fade-in" id="quiz-2">
+      <div class="section-header">
+        <span class="section-number">&bull;</span>
+        <h2>Day 2 Knowledge Check</h2>
+      </div>
+      <p style="margin-bottom: 20px; color: var(--gray-600); font-size: 14px;">Test your understanding of Claude Code basics. Remember: up to 3 attempts per question with hints.</p>
+
+      <div class="quiz-container" id="quiz-2-container">
+
+        <div class="quiz-question" data-question="13" data-type="mc" data-answer="b" data-hint1="Think about where Claude Code runs &mdash; it is not in a browser." data-hint2="Claude Code runs in the terminal/command line, not a web browser.">
+          <div class="quiz-q-number">Question 1 of 12</div>
+          <div class="quiz-q-text">Where does Claude Code run?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) In a web browser at claude.ai</button>
+            <button class="quiz-option" data-value="b">(b) In the terminal / command line</button>
+            <button class="quiz-option" data-value="c">(c) As a mobile app</button>
+            <button class="quiz-option" data-value="d">(d) In Microsoft Word</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Claude Code runs in the terminal</strong> (command line). This gives it the ability to read and write files, run commands, and connect to external services &mdash; things the web chat interface cannot do.</div>
+        </div>
+
+        <div class="quiz-question" data-question="14" data-type="mc" data-answer="d" data-hint1="Think about the name &mdash; it is a Protocol for providing Context to a Model." data-hint2="MCP = Model Context Protocol. It lets Claude connect to services like Xero, Google, Slack.">
+          <div class="quiz-q-number">Question 2 of 12</div>
+          <div class="quiz-q-text">What does MCP stand for?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Multiple Claude Processes</button>
+            <button class="quiz-option" data-value="b">(b) Machine Communication Platform</button>
+            <button class="quiz-option" data-value="c">(c) Managed Cloud Provider</button>
+            <button class="quiz-option" data-value="d">(d) Model Context Protocol</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Model Context Protocol (MCP)</strong> is the system that allows Claude Code to connect to external services. Each MCP server acts like a bridge between Claude and a specific service such as Xero, Google Workspace, or Slack.</div>
+        </div>
+
+        <div class="quiz-question" data-question="15" data-type="mc" data-answer="a" data-hint1="Think about what the terminal command 'pwd' is short for." data-hint2="'pwd' stands for 'Print Working Directory' &mdash; it shows your current location.">
+          <div class="quiz-q-number">Question 3 of 12</div>
+          <div class="quiz-q-text">What does the terminal command <code class="inline">pwd</code> do?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Shows your current folder location</button>
+            <button class="quiz-option" data-value="b">(b) Changes your password</button>
+            <button class="quiz-option" data-value="c">(c) Prints a document</button>
+            <button class="quiz-option" data-value="d">(d) Opens a new window</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><code class="inline">pwd</code> stands for <strong>"Print Working Directory"</strong>. It shows the full path of the folder you are currently in.</div>
+        </div>
+
+        <div class="quiz-question" data-question="16" data-type="mc" data-answer="c" data-hint1="This is a safety feature of Claude Code." data-hint2="Claude Code asks you before reading, writing, or executing &mdash; you must approve or deny.">
+          <div class="quiz-q-number">Question 4 of 12</div>
+          <div class="quiz-q-text">What happens when Claude Code wants to read or write a file on your computer?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) It does it silently without telling you</button>
+            <button class="quiz-option" data-value="b">(b) It sends an email to your manager for approval</button>
+            <button class="quiz-option" data-value="c">(c) It asks for your permission before proceeding</button>
+            <button class="quiz-option" data-value="d">(d) It is not able to read or write files</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Claude Code uses a <strong>permission model</strong>. Before reading a file, writing a file, or running a command, it asks for your approval.</div>
+        </div>
+
+        <div class="quiz-question" data-question="17" data-type="mc" data-answer="b" data-hint1="Think about which Claude Code tool searches for text content inside files." data-hint2="It is named after a classic Unix command used to search text patterns.">
+          <div class="quiz-q-number">Question 5 of 12</div>
+          <div class="quiz-q-text">Which Claude Code tool would search for every mention of "rent review" across a folder of documents?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Read</button>
+            <button class="quiz-option" data-value="b">(b) Grep</button>
+            <button class="quiz-option" data-value="c">(c) Write</button>
+            <button class="quiz-option" data-value="d">(d) Glob</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Grep</strong> is the tool that searches for text content across multiple files. Glob finds files by name pattern rather than content.</div>
+        </div>
+
+        <div class="quiz-question" data-question="18" data-type="mc" data-answer="a" data-hint1="Think about which service handles accounting and invoices." data-hint2="This is the cloud accounting software Hillway uses.">
+          <div class="quiz-q-number">Question 6 of 12</div>
+          <div class="quiz-q-text">Which MCP server would Claude Code use to check outstanding invoices?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Xero</button>
+            <button class="quiz-option" data-value="b">(b) GitHub</button>
+            <button class="quiz-option" data-value="c">(c) Playwright</button>
+            <button class="quiz-option" data-value="d">(d) Sentry</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Xero</strong> is the MCP server for accounting and financial data.</div>
+        </div>
+
+        <div class="quiz-question" data-question="19" data-type="mc" data-answer="d" data-hint1="Think about the biggest difference: what can Claude Code do that the web chat cannot?" data-hint2="The key advantage is direct interaction with files and services on your computer.">
+          <div class="quiz-q-number">Question 7 of 12</div>
+          <div class="quiz-q-text">What is the main advantage of Claude Code over the claude.ai web interface?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) It is faster at generating text</button>
+            <button class="quiz-option" data-value="b">(b) It uses a more powerful AI model</button>
+            <button class="quiz-option" data-value="c">(c) It has a nicer user interface</button>
+            <button class="quiz-option" data-value="d">(d) It can read/write files and connect to external services directly</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The main advantage of Claude Code is that it can <strong>directly read and write files, run commands, and connect to external services</strong> via MCP.</div>
+        </div>
+
+        <div class="quiz-question" data-question="20" data-type="mc" data-answer="c" data-hint1="Think about what 'ls' is short for." data-hint2="'ls' stands for 'list' &mdash; it shows folder contents.">
+          <div class="quiz-q-number">Question 8 of 12</div>
+          <div class="quiz-q-text">What does the terminal command <code class="inline">ls</code> do?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Launches a new session of Claude Code</button>
+            <button class="quiz-option" data-value="b">(b) Logs you out of the terminal</button>
+            <button class="quiz-option" data-value="c">(c) Lists the files in the current folder</button>
+            <button class="quiz-option" data-value="d">(d) Opens the last saved file</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><code class="inline">ls</code> stands for <strong>"list"</strong>. It displays all the files and folders in your current directory.</div>
+        </div>
+
+        <div class="quiz-question" data-question="21" data-type="mc" data-answer="b" data-hint1="This is about the type of AI system Claude Code represents." data-hint2="Unlike a chatbot, Claude Code can take actions autonomously &mdash; plan steps, execute them, and adjust.">
+          <div class="quiz-q-number">Question 9 of 12</div>
+          <div class="quiz-q-text">What type of AI system is Claude Code described as?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) A search engine</button>
+            <button class="quiz-option" data-value="b">(b) An agentic AI system</button>
+            <button class="quiz-option" data-value="c">(c) A database</button>
+            <button class="quiz-option" data-value="d">(d) A spreadsheet processor</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Claude Code is an <strong>agentic AI system</strong> &mdash; it can plan sequences of steps, execute them, handle errors, and adjust its approach. This is different from a simple chatbot.</div>
+        </div>
+
+        <div class="quiz-question" data-question="22" data-type="mc" data-answer="a" data-hint1="Think about which tool finds files by their name or extension." data-hint2="This tool uses patterns like '*.pdf' to find files, not search inside them.">
+          <div class="quiz-q-number">Question 10 of 12</div>
+          <div class="quiz-q-text">Which Claude Code tool would you use to find all PDF files in a folder?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Glob</button>
+            <button class="quiz-option" data-value="b">(b) Grep</button>
+            <button class="quiz-option" data-value="c">(c) Bash</button>
+            <button class="quiz-option" data-value="d">(d) Edit</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Glob</strong> finds files by name pattern (e.g., *.pdf). Grep searches for text content within files, which is a different purpose.</div>
+        </div>
+
+        <div class="quiz-question" data-question="23" data-type="mc" data-answer="c" data-hint1="Think about which Google service handles email." data-hint2="Claude can send emails through the Google Workspace MCP server's Gmail integration.">
+          <div class="quiz-q-number">Question 11 of 12</div>
+          <div class="quiz-q-text">You want Claude Code to send an email. Which MCP server handles this?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Slack</button>
+            <button class="quiz-option" data-value="b">(b) Xero</button>
+            <button class="quiz-option" data-value="c">(c) Google Workspace</button>
+            <button class="quiz-option" data-value="d">(d) Sentry</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Google Workspace</strong> MCP handles email (Gmail), documents (Docs), spreadsheets (Sheets), calendar, and Drive.</div>
+        </div>
+
+        <div class="quiz-question" data-question="24" data-type="mc" data-answer="d" data-hint1="Think about the command that starts Claude Code." data-hint2="It is simply the name of the product, typed at the terminal prompt.">
+          <div class="quiz-q-number">Question 12 of 12</div>
+          <div class="quiz-q-text">What command do you type in the terminal to start Claude Code?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) start-claude</button>
+            <button class="quiz-option" data-value="b">(b) ai</button>
+            <button class="quiz-option" data-value="c">(c) open-claude</button>
+            <button class="quiz-option" data-value="d">(d) claude</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Simply type <code class="inline">claude</code> at the terminal prompt to start Claude Code.</div>
+        </div>
+
+      </div>
+
+      <div class="quiz-score-card" id="quiz-2-score">
+        <h3>Day 2 Complete</h3>
+        <div class="quiz-score-number" id="quiz-2-score-display">0/12</div>
+        <p id="quiz-2-score-message"></p>
+      </div>
+    </div>

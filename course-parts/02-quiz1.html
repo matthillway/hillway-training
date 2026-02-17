@@ -1,0 +1,174 @@
+    <!-- Day 1 Quiz -->
+    <div class="section fade-in" id="quiz-1">
+      <div class="section-header">
+        <span class="section-number">&bull;</span>
+        <h2>Day 1 Knowledge Check</h2>
+      </div>
+      <p style="margin-bottom: 20px; color: var(--gray-600); font-size: 14px;">Test your understanding of AI fundamentals. You get up to 3 attempts per question &mdash; hints will guide you if you get it wrong.</p>
+
+      <div class="quiz-container" id="quiz-1-container">
+
+        <div class="quiz-question" data-question="1" data-type="mc" data-answer="b" data-hint1="Think about the name of the company, not the product." data-hint2="The company was founded by former OpenAI researchers. It starts with 'A'.">
+          <div class="quiz-q-number">Question 1 of 12</div>
+          <div class="quiz-q-text">Who created Claude?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) OpenAI</button>
+            <button class="quiz-option" data-value="b">(b) Anthropic</button>
+            <button class="quiz-option" data-value="c">(c) Google DeepMind</button>
+            <button class="quiz-option" data-value="d">(d) Microsoft</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Claude is made by <strong>Anthropic</strong>, a company founded in 2021 by former members of OpenAI, including Dario and Daniela Amodei. Their focus is on building safe, reliable AI systems.</div>
+        </div>
+
+        <div class="quiz-question" data-question="2" data-type="mc" data-answer="c" data-hint1="Think about what 'token' means in the context of how AI reads text." data-hint2="A token is smaller than a word &mdash; roughly 3/4 of a word.">
+          <div class="quiz-q-number">Question 2 of 12</div>
+          <div class="quiz-q-text">What is a "token" in the context of AI language models?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) A security credential used to log into Claude</button>
+            <button class="quiz-option" data-value="b">(b) A unit of currency used to pay for AI usage</button>
+            <button class="quiz-option" data-value="c">(c) A small piece of text (roughly 3/4 of a word) that the model processes</button>
+            <button class="quiz-option" data-value="d">(d) A type of AI model</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Tokens</strong> are the small pieces of text that AI models break language into for processing. One token is roughly three-quarters of a word. Claude's context window of ~200,000 tokens means it can process about 500 pages of text at once.</div>
+        </div>
+
+        <div class="quiz-question" data-question="3" data-type="mc" data-answer="d" data-hint1="Think about a specific type of error AI makes with confidence." data-hint2="The word comes from seeing things that are not there &mdash; like a mirage.">
+          <div class="quiz-q-number">Question 3 of 12</div>
+          <div class="quiz-q-text">What is a "hallucination" in AI?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) When the AI refuses to answer a question</button>
+            <button class="quiz-option" data-value="b">(b) When the AI runs too slowly to respond</button>
+            <button class="quiz-option" data-value="c">(c) When the AI asks for clarification before answering</button>
+            <button class="quiz-option" data-value="d">(d) When the AI confidently presents incorrect or fabricated information</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">A <strong>hallucination</strong> is when an AI model generates information that sounds plausible and confident but is actually incorrect or entirely made up. This is why human review of all AI output is essential, especially in professional work.</div>
+        </div>
+
+        <div class="quiz-question" data-question="4" data-type="mc" data-answer="a" data-hint1="Claude's context window is approximately 200,000 tokens. How many pages is that?" data-hint2="One page is roughly 400 tokens. Do the maths: 200,000 / 400 = ?">
+          <div class="quiz-q-number">Question 4 of 12</div>
+          <div class="quiz-q-text">Approximately how many pages of text can Claude process at once in its context window?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) 500 pages</button>
+            <button class="quiz-option" data-value="b">(b) 50 pages</button>
+            <button class="quiz-option" data-value="c">(c) 5,000 pages</button>
+            <button class="quiz-option" data-value="d">(d) 10 pages</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Claude's context window of approximately 200,000 tokens translates to roughly <strong>500 pages</strong> of text. This is what makes it excellent for analysing long leases, reports, and other property documents.</div>
+        </div>
+
+        <div class="quiz-question" data-question="5" data-type="mc" data-answer="b" data-hint1="Think about the three-tier naming convention: small, medium, large." data-hint2="This model is described as our 'daily driver' &mdash; the balanced middle option.">
+          <div class="quiz-q-number">Question 5 of 12</div>
+          <div class="quiz-q-text">Which Claude model tier does Hillway use as the default for most everyday tasks?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Haiku</button>
+            <button class="quiz-option" data-value="b">(b) Sonnet</button>
+            <button class="quiz-option" data-value="c">(c) Opus</button>
+            <button class="quiz-option" data-value="d">(d) GPT-4</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Sonnet</strong> is Hillway's default model &mdash; the best balance of speed, quality, and cost. Haiku is used for quick, simple tasks, and Opus is reserved for complex analysis and strategic decisions.</div>
+        </div>
+
+        <div class="quiz-question" data-question="6" data-type="mc" data-answer="c" data-hint1="This is about a training method unique to Anthropic." data-hint2="The method involves a set of principles or rules that guide the AI's behaviour &mdash; like a written 'code of conduct'.">
+          <div class="quiz-q-number">Question 6 of 12</div>
+          <div class="quiz-q-text">What training approach does Anthropic use that sets Claude apart from competitors?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Reinforcement Learning from Human Feedback only</button>
+            <button class="quiz-option" data-value="b">(b) Training exclusively on property industry data</button>
+            <button class="quiz-option" data-value="c">(c) Constitutional AI &mdash; a set of guiding principles</button>
+            <button class="quiz-option" data-value="d">(d) Training with no safety guidelines at all</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Constitutional AI</strong> is Anthropic's approach where Claude is given a set of principles (a "constitution") that guide its behaviour &mdash; including being helpful, harmless, and honest. This makes Claude more reliable and less likely to produce harmful content.</div>
+        </div>
+
+        <div class="quiz-question" data-question="7" data-type="mc" data-answer="d" data-hint1="Think about what requires human experience, physical presence, and professional qualification." data-hint2="Which of these requires a RICS-qualified surveyor's professional opinion?">
+          <div class="quiz-q-number">Question 7 of 12</div>
+          <div class="quiz-q-text">Which of the following should you NOT rely on AI to do?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Drafting a first version of an email to a client</button>
+            <button class="quiz-option" data-value="b">(b) Summarising key clauses from a lease document</button>
+            <button class="quiz-option" data-value="c">(c) Creating a comparison table of comparable evidence</button>
+            <button class="quiz-option" data-value="d">(d) Providing a formal property valuation</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">A formal <strong>property valuation</strong> requires professional judgement, local market knowledge, site inspection, and a qualified surveyor's signature. AI can help with research and drafting, but the professional opinion must always come from a qualified human.</div>
+        </div>
+
+        <div class="quiz-question" data-question="8" data-type="mc" data-answer="a" data-hint1="Think about the process of generating a response &mdash; it is not searching a database." data-hint2="The model generates text piece by piece, predicting what comes next. What is this process called?">
+          <div class="quiz-q-number">Question 8 of 12</div>
+          <div class="quiz-q-text">What is the name of the process when Claude generates a response to your prompt?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Inference</button>
+            <button class="quiz-option" data-value="b">(b) Indexing</button>
+            <button class="quiz-option" data-value="c">(c) Compiling</button>
+            <button class="quiz-option" data-value="d">(d) Caching</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Inference</strong> is the process of generating a response. The model takes your input, processes it against its trained knowledge, and generates output token by token. This is different from searching a database &mdash; the response is generated fresh each time.</div>
+        </div>
+
+        <div class="quiz-question" data-question="9" data-type="mc" data-answer="b" data-hint1="Think about what AI that can only do specific tasks is called, versus hypothetical AI that can do anything." data-hint2="The current type of AI &mdash; including Claude &mdash; is described as 'narrow' because it focuses on specific capabilities.">
+          <div class="quiz-q-number">Question 9 of 12</div>
+          <div class="quiz-q-text">What type of AI is Claude classified as?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) General AI (AGI) that can do anything a human can</button>
+            <button class="quiz-option" data-value="b">(b) Narrow AI that excels at specific language tasks</button>
+            <button class="quiz-option" data-value="c">(c) Sentient AI that is self-aware</button>
+            <button class="quiz-option" data-value="d">(d) Robotic AI designed for physical tasks</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Claude is <strong>narrow AI</strong> &mdash; it excels at language tasks (reading, writing, analysing, summarising) but cannot perform physical tasks, drive a car, or do anything outside its language capabilities. General AI (AGI) does not exist yet.</div>
+        </div>
+
+        <div class="quiz-question" data-question="10" data-type="mc" data-answer="c" data-hint1="This is about what you should always do, regardless of how good the AI output looks." data-hint2="The golden rule at Hillway is: AI produces drafts, not final products.">
+          <div class="quiz-q-number">Question 10 of 12</div>
+          <div class="quiz-q-text">What is the golden rule of AI use at Hillway?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Use AI for everything to save time</button>
+            <button class="quiz-option" data-value="b">(b) Never use AI for client work</button>
+            <button class="quiz-option" data-value="c">(c) AI is a tool, not a colleague &mdash; every output must be reviewed by a human</button>
+            <button class="quiz-option" data-value="d">(d) Only use AI for internal documents</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The golden rule: <strong>AI is a tool, not a colleague.</strong> It produces drafts, not final products. Every piece of AI-generated content must be reviewed by a qualified human before it leaves the firm.</div>
+        </div>
+
+        <div class="quiz-question" data-question="11" data-type="mc" data-answer="d" data-hint1="Think about what happens when you ask Claude about last week's news." data-hint2="Claude's training data only goes up to a certain date &mdash; it does not know about recent events unless you tell it.">
+          <div class="quiz-q-number">Question 11 of 12</div>
+          <div class="quiz-q-text">Why might Claude give outdated information about current market rents?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Claude deliberately hides market data</button>
+            <button class="quiz-option" data-value="b">(b) Claude only knows about residential property</button>
+            <button class="quiz-option" data-value="c">(c) Claude charges extra for current data</button>
+            <button class="quiz-option" data-value="d">(d) Claude's training data has a cutoff date and may not include recent transactions</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">Claude has a <strong>knowledge cutoff date</strong>. Its training data only extends to a certain point in time, so it may not know about recent market transactions, new legislation, or current events. Always provide current data for accurate analysis.</div>
+        </div>
+
+        <div class="quiz-question" data-question="12" data-type="mc" data-answer="a" data-hint1="Think about the three stages of training an LLM." data-hint2="The stages are: pre-training (reading text), fine-tuning (refining quality), and alignment (safety principles).">
+          <div class="quiz-q-number">Question 12 of 12</div>
+          <div class="quiz-q-text">What is the first stage of training a Large Language Model?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Pre-training &mdash; reading vast amounts of text to learn language patterns</button>
+            <button class="quiz-option" data-value="b">(b) Fine-tuning &mdash; refining responses on curated examples</button>
+            <button class="quiz-option" data-value="c">(c) RLHF &mdash; aligning with human values</button>
+            <button class="quiz-option" data-value="d">(d) Deployment &mdash; releasing the model to users</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The first stage is <strong>pre-training</strong>, where the model reads enormous amounts of text and learns patterns in language. This is followed by fine-tuning (improving quality on curated examples) and then alignment with safety principles (Constitutional AI / RLHF).</div>
+        </div>
+
+      </div>
+
+      <div class="quiz-score-card" id="quiz-1-score">
+        <h3>Day 1 Complete</h3>
+        <div class="quiz-score-number" id="quiz-1-score-display">0/12</div>
+        <p id="quiz-1-score-message"></p>
+      </div>
+    </div>

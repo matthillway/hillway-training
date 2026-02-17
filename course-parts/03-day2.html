@@ -1,0 +1,320 @@
+    <!-- ============================================================ -->
+    <!-- DAY 2: CLAUDE CODE - GETTING STARTED                          -->
+    <!-- ============================================================ -->
+
+    <div class="day-divider section" id="day2-s1">
+      <div class="day-number">2</div>
+      <div class="day-info">
+        <h2>Day 2: Claude Code &mdash; Getting Started</h2>
+        <p>The AI coding assistant that runs in your terminal <span class="est-time">~90 minutes</span></p>
+      </div>
+    </div>
+
+    <!-- Day 2 Section 1: What is Claude Code? -->
+    <div class="section fade-in" id="day2-s1-content">
+      <div class="section-header">
+        <span class="section-number">6</span>
+        <h2>What is Claude Code?</h2>
+      </div>
+
+      <div class="learning-objectives">
+        <h4>Learning Objectives</h4>
+        <ul>
+          <li>Understand the difference between claude.ai and Claude Code</li>
+          <li>Navigate the terminal with basic commands</li>
+          <li>Understand the tool and permission model in Claude Code</li>
+          <li>Know what MCP servers are and which ones Hillway uses</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>More than a chatbot</h3>
+        <p>On Day 1 you used claude.ai &mdash; a web chat interface. Claude Code takes things much further. It is a <span class="key-term">command-line tool</span> that runs in your terminal (the black screen with text that developers use). Unlike the web chat, Claude Code can:</p>
+        <ul>
+          <li><strong>Read files</strong> on your computer &mdash; leases, spreadsheets, reports, code</li>
+          <li><strong>Write and edit files</strong> &mdash; create documents, modify spreadsheets, generate reports</li>
+          <li><strong>Run commands</strong> &mdash; execute programs, process data, automate repetitive tasks</li>
+          <li><strong>Connect to external services</strong> &mdash; Google Workspace, Xero, GitHub, Slack, and more</li>
+        </ul>
+        <p style="margin-top: 12px;">Think of it this way: claude.ai is like having a knowledgeable colleague on the phone. Claude Code is like having that colleague sitting at your desk, able to open files, send emails, and operate your computer directly &mdash; with your permission, of course.</p>
+      </div>
+
+      <div class="card card-highlight">
+        <h3>Claude Code vs claude.ai &mdash; key differences</h3>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>claude.ai (Web Chat)</th>
+              <th>Claude Code (Terminal)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Interface</strong></td><td>Browser-based chat window</td><td>Terminal / command line</td></tr>
+            <tr><td><strong>File access</strong></td><td>Upload files manually (drag and drop)</td><td>Reads files directly from your computer</td></tr>
+            <tr><td><strong>File creation</strong></td><td>Cannot create or save files</td><td>Creates, edits, and saves files directly</td></tr>
+            <tr><td><strong>External tools</strong></td><td>Limited integrations</td><td>Connects to 15+ services via MCP</td></tr>
+            <tr><td><strong>Multi-step tasks</strong></td><td>One response at a time</td><td>Can chain multiple steps automatically</td></tr>
+            <tr><td><strong>Best for</strong></td><td>Quick questions, one-off tasks</td><td>Complex projects, file processing, automation</td></tr>
+            <tr><td><strong>Learning curve</strong></td><td>Very easy &mdash; just type and chat</td><td>Moderate &mdash; need basic terminal comfort</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Why Hillway uses Claude Code</h3>
+        <p>At Hillway, Claude Code is the primary way we interact with AI because it can do things the web chat cannot:</p>
+        <ul>
+          <li>Read a lease PDF, extract key terms, and create a summary document &mdash; all in one command</li>
+          <li>Query our Xero accounting system for outstanding invoices and create a report</li>
+          <li>Draft a fee proposal in Google Docs using our template and client data</li>
+          <li>Search our entire document library for relevant comparable evidence</li>
+          <li>Process a spreadsheet of property data and generate formatted tables</li>
+          <li>Send an email to a client with a covering letter and attachment</li>
+          <li>Schedule a calendar event for a site inspection</li>
+        </ul>
+        <p style="margin-top: 12px;">The key advantage is <strong>automation of multi-step workflows</strong>. Instead of copying data between applications, Claude Code handles the entire workflow end-to-end.</p>
+      </div>
+
+      <div class="key-concept">
+        <h4>Key Concept: Agentic AI</h4>
+        <p>Claude Code is what is known as an <span class="key-term">agentic AI</span> system. This means it can take actions autonomously (with your permission) rather than just generating text. It can plan a sequence of steps, execute them, handle errors, and adjust its approach if something does not work. This is fundamentally different from a chatbot that just responds to messages.</p>
+      </div>
+    </div>
+
+    <!-- Day 2 Section 2: The Terminal -->
+    <div class="section fade-in" id="day2-s2">
+      <div class="section-header">
+        <span class="section-number">7</span>
+        <h2>The Terminal: A Gentle Introduction</h2>
+      </div>
+
+      <div class="card">
+        <h3>What is a terminal?</h3>
+        <p>A terminal (also called the "command line" or "shell") is a text-based interface for your computer. Instead of clicking icons and menus, you type commands. It looks like this:</p>
+        <div class="code-block">
+          <span class="code-label">Terminal</span>
+          <code><span class="prompt">$</span> <span class="output">_</span></code>
+        </div>
+        <p>That <code class="inline">$</code> symbol is called the <span class="key-term">prompt</span> &mdash; it is waiting for you to type a command. Do not be intimidated by it. You only need a handful of commands to use Claude Code effectively.</p>
+        <p style="margin-top: 12px;">On a Mac, the terminal application is called "Terminal" and you can find it in Applications &gt; Utilities, or by pressing Cmd+Space and typing "Terminal". On Windows, it is called "Command Prompt" or "PowerShell".</p>
+      </div>
+
+      <div class="card card-highlight">
+        <h3>Essential terminal commands (just 8 to start)</h3>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What it does</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code class="inline">pwd</code></td><td>"Print working directory" &mdash; shows where you are</td><td><code class="inline">pwd</code> &rarr; /Users/alex/Projects</td></tr>
+            <tr><td><code class="inline">ls</code></td><td>"List" &mdash; shows files in the current folder</td><td><code class="inline">ls</code> &rarr; lease.pdf report.docx</td></tr>
+            <tr><td><code class="inline">cd</code></td><td>"Change directory" &mdash; moves to a different folder</td><td><code class="inline">cd Documents</code></td></tr>
+            <tr><td><code class="inline">cd ..</code></td><td>Go up one folder level</td><td><code class="inline">cd ..</code></td></tr>
+            <tr><td><code class="inline">cd ~</code></td><td>Go to your home folder</td><td><code class="inline">cd ~</code></td></tr>
+            <tr><td><code class="inline">clear</code></td><td>Clears the screen (cosmetic only)</td><td><code class="inline">clear</code></td></tr>
+            <tr><td><code class="inline">mkdir</code></td><td>"Make directory" &mdash; creates a new folder</td><td><code class="inline">mkdir new-project</code></td></tr>
+            <tr><td><code class="inline">claude</code></td><td>Starts Claude Code!</td><td><code class="inline">claude</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Your first Claude Code session</h3>
+        <p>Here is what a typical first session looks like:</p>
+        <div class="code-block">
+          <span class="code-label">Terminal Session</span>
+          <code><span class="comment"># Open your terminal (Cmd+Space, type "Terminal", press Enter)</span>
+
+<span class="comment"># Navigate to your project folder</span>
+<span class="prompt">$</span> cd ~/Projects/hillway-training
+
+<span class="comment"># Start Claude Code</span>
+<span class="prompt">$</span> claude
+
+<span class="output">Claude Code v1.0</span>
+<span class="output">Type your message or use /help for commands.</span>
+
+<span class="prompt">></span> <span class="string">What files are in this directory?</span>
+
+<span class="output">I can see the following files:</span>
+<span class="output">  - courses/</span>
+<span class="output">  - js/</span>
+<span class="output">  - admin.html</span>
+<span class="output">  - induction.html</span>
+<span class="output">  ...</span></code>
+        </div>
+        <p style="margin-top: 12px;">Once Claude Code is running, you simply type in natural English. No special syntax required. Ask it to read a file, summarise a document, or create a new file &mdash; just as you would ask a colleague.</p>
+      </div>
+
+      <div class="card card-warning">
+        <h3>Installation (already done for you)</h3>
+        <p>Claude Code has already been installed on your work machine. If you ever need to install it on a new computer, the command is:</p>
+        <div class="code-block">
+          <code><span class="prompt">$</span> npm install -g @anthropic-ai/claude-code</code>
+        </div>
+        <p style="margin-top: 12px;">You do not need to do this now. Just know that it exists.</p>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <ol>
+          <li>Open Terminal on your Mac (Cmd+Space, type "Terminal")</li>
+          <li>Type <code class="inline">pwd</code> and press Enter &mdash; note your current location</li>
+          <li>Type <code class="inline">ls</code> &mdash; see what files are in this folder</li>
+          <li>Type <code class="inline">cd ~/Projects</code> &mdash; navigate to the Projects folder</li>
+          <li>Type <code class="inline">claude</code> to start Claude Code</li>
+          <li>Type "Hello, I am Alex and I am learning to use Claude Code" &mdash; see how Claude responds</li>
+          <li>Type <code class="inline">/help</code> to see available commands</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Day 2 Section 3: Tools & Permissions -->
+    <div class="section fade-in" id="day2-s3">
+      <div class="section-header">
+        <span class="section-number">8</span>
+        <h2>Tools, Permissions &amp; How Claude Code Works</h2>
+      </div>
+
+      <div class="card">
+        <h3>The permission model</h3>
+        <p>Claude Code needs your permission before it does certain things. This is a safety feature. When Claude wants to read a file, write a file, or run a command, it will ask you first. You will see something like:</p>
+        <div class="code-block">
+          <code><span class="output">Claude wants to read the file: leases/tenant-abc-lease.pdf</span>
+<span class="output">Allow? (y/n)</span></code>
+        </div>
+        <p style="margin-top: 12px;">You can approve or deny each action. Over time, you can set up automatic approvals for common, safe actions. The permission system exists to ensure you always know what Claude is doing with your files and data.</p>
+        <p style="margin-top: 12px;">There are three permission levels:</p>
+        <ul>
+          <li><strong>Ask every time</strong> &mdash; Claude prompts you before every action (most secure, default for new users)</li>
+          <li><strong>Allow for session</strong> &mdash; Approve a type of action once and Claude can repeat it during this session</li>
+          <li><strong>Always allow</strong> &mdash; Permanently approve certain safe actions (like reading files in your project folder)</li>
+        </ul>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Understanding tool use</h3>
+        <p>Claude Code interacts with your computer using <span class="key-term">tools</span>. Each tool does something specific:</p>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>What it does</th>
+              <th>Example use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Read</strong></td><td>Reads a file from your computer</td><td>Reading a lease, a spreadsheet, or a report</td></tr>
+            <tr><td><strong>Write</strong></td><td>Creates a new file</td><td>Creating a summary document or a new report</td></tr>
+            <tr><td><strong>Edit</strong></td><td>Modifies an existing file</td><td>Updating figures in a report, fixing a typo</td></tr>
+            <tr><td><strong>Bash</strong></td><td>Runs a terminal command</td><td>Processing data, running a script, checking file sizes</td></tr>
+            <tr><td><strong>Grep</strong></td><td>Searches for text across files</td><td>Finding every mention of "rent review" in a folder of leases</td></tr>
+            <tr><td><strong>Glob</strong></td><td>Finds files by name pattern</td><td>Finding all PDF files in a directory</td></tr>
+            <tr><td><strong>WebSearch</strong></td><td>Searches the internet</td><td>Finding current market data or property listings</td></tr>
+            <tr><td><strong>WebFetch</strong></td><td>Reads a webpage</td><td>Extracting data from a property listing</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top: 12px;">You do not need to know these tool names. Just ask Claude what you want in plain English, and it will choose the right tools automatically.</p>
+      </div>
+
+      <div class="card">
+        <h3>What Claude Code can and cannot access</h3>
+        <div class="two-col">
+          <div class="card card-success" style="margin-bottom:0;">
+            <h4>Can access</h4>
+            <ul>
+              <li>Files in your current project folder</li>
+              <li>Connected MCP services (Google, Xero, etc.)</li>
+              <li>The internet (for web searches, API calls)</li>
+              <li>Terminal commands on your machine</li>
+            </ul>
+          </div>
+          <div class="card card-warning" style="margin-bottom:0;">
+            <h4>Cannot access</h4>
+            <ul>
+              <li>Files you have not given permission for</li>
+              <li>Other people's computers</li>
+              <li>Encrypted or password-protected files (without keys)</li>
+              <li>Actions blocked by your organisation's IT policy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pitfall">
+        <h4>Common Pitfall</h4>
+        <p><strong>Denying all permissions out of caution.</strong> New users sometimes deny every permission request, which makes Claude Code essentially useless. The whole point of Claude Code is that it can interact with your files and services. If you are uncomfortable, start by allowing read-only access to files and work up from there.</p>
+      </div>
+    </div>
+
+    <!-- Day 2 Section 4: MCP Servers -->
+    <div class="section fade-in" id="day2-s4">
+      <div class="section-header">
+        <span class="section-number">9</span>
+        <h2>MCP: How Claude Connects to External Services</h2>
+      </div>
+
+      <div class="card">
+        <h3>What is MCP?</h3>
+        <p><span class="key-term">MCP</span> stands for <strong>Model Context Protocol</strong>. It is the system that allows Claude Code to connect to external services like Google Workspace, Xero, Slack, and GitHub. Think of MCP as a set of power adapters &mdash; each one lets Claude plug into a different service.</p>
+        <p style="margin-top: 12px;">Without MCP, Claude could only read files on your computer and chat with you. With MCP, Claude becomes a hub that can coordinate across all the tools your business uses.</p>
+        <p style="margin-top: 12px;">MCP is an open standard developed by Anthropic. It works like a universal translator between Claude and external services. Each service has an MCP "server" that understands the service's API and translates Claude's requests into the right format.</p>
+      </div>
+
+      <div class="card card-highlight">
+        <h3>MCP servers at Hillway</h3>
+        <p>Here are the services Claude Code can connect to at Hillway:</p>
+        <div class="cap-grid">
+          <div class="cap-item"><span class="icon"></span> <strong>GitHub</strong> &mdash; Code repositories, issues</div>
+          <div class="cap-item"><span class="icon"></span> <strong>Supabase</strong> &mdash; Database, authentication</div>
+          <div class="cap-item"><span class="icon"></span> <strong>Google Workspace</strong> &mdash; Docs, Sheets, Gmail, Calendar</div>
+          <div class="cap-item"><span class="icon"></span> <strong>Slack</strong> &mdash; Team messaging</div>
+          <div class="cap-item"><span class="icon"></span> <strong>Xero</strong> &mdash; Accounting, invoices</div>
+          <div class="cap-item"><span class="icon"></span> <strong>Playwright</strong> &mdash; Browser automation</div>
+          <div class="cap-item"><span class="icon"></span> <strong>Memory</strong> &mdash; Persistent knowledge</div>
+          <div class="cap-item"><span class="icon"></span> <strong>Sentry</strong> &mdash; Error monitoring</div>
+          <div class="cap-item"><span class="icon"></span> <strong>Gemini/Imagen</strong> &mdash; Image generation</div>
+          <div class="cap-item"><span class="icon"></span> <strong>Filesystem</strong> &mdash; File management</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>MCP in action: a real example</h3>
+        <p>Imagine you need to check outstanding invoices. Without MCP, you would open Xero in your browser, navigate to invoices, filter, and export. With Claude Code and MCP:</p>
+        <div class="prompt-example">
+          <div class="prompt-label">You type</div>
+          <div class="prompt-text">"Show me all outstanding invoices in Xero over 30 days old."</div>
+          <div class="prompt-output">Claude uses the Xero MCP server to query your invoices, filters for those over 30 days outstanding, and presents a formatted table with client names, amounts, and dates &mdash; all without you leaving the terminal.</div>
+        </div>
+      </div>
+
+      <div class="card card-accent">
+        <h3>You do not need to configure MCP</h3>
+        <p>All MCP servers have been set up on your work machine already. You simply use Claude Code in natural English, and it will automatically use the right MCP server when needed. For example:</p>
+        <ul>
+          <li>"Send an email to john@acme.com" &rarr; Uses Google Workspace MCP</li>
+          <li>"Create a new invoice for ABC Ltd" &rarr; Uses Xero MCP</li>
+          <li>"Search our Drive for the Smith property report" &rarr; Uses Google Workspace MCP</li>
+          <li>"Post an update in the #general Slack channel" &rarr; Uses Slack MCP</li>
+          <li>"Remember that Client X prefers bullet-point reports" &rarr; Uses Memory MCP</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Day 2 Summary</h3>
+        <ul>
+          <li>Claude Code is a terminal-based AI tool that can read/write files and connect to services</li>
+          <li>The terminal is a text-based interface &mdash; you only need ~8 basic commands</li>
+          <li>Claude Code uses a permission model to keep you in control</li>
+          <li>Tools (Read, Write, Edit, Bash, Grep, Glob) let Claude interact with your computer</li>
+          <li>MCP (Model Context Protocol) connects Claude to external services like Xero, Google, and Slack</li>
+          <li>All MCP servers are pre-configured on your work machine</li>
+          <li>You interact with Claude Code in natural English &mdash; it chooses the right tools automatically</li>
+        </ul>
+      </div>
+    </div>

@@ -1,0 +1,424 @@
+    <!-- ============================================ -->
+    <!-- DAY 8: RESEARCH & ANALYSIS                     -->
+    <!-- ============================================ -->
+    <div class="day-divider fade-in">
+      <div class="day-number">Day 8</div>
+      <h2 class="day-title">Research &amp; Analysis</h2>
+      <p class="day-subtitle">Conduct thorough market research, analyse data from multiple sources, and verify AI-generated findings.</p>
+      <div class="est-time">Estimated time: 90&ndash;120 minutes</div>
+    </div>
+
+    <div class="learning-objectives fade-in">
+      <h3>Day 8 Learning Objectives</h3>
+      <ul>
+        <li>Conduct structured web research for property market intelligence</li>
+        <li>Analyse market data and identify trends using Claude Code</li>
+        <li>Integrate multiple data sources into coherent analysis</li>
+        <li>Fact-check AI-generated research and recognise unreliable sources</li>
+      </ul>
+    </div>
+
+    <!-- Section 31: Web Research -->
+    <div class="section fade-in" id="day8-s1">
+      <div class="section-header">
+        <span class="section-number">31</span>
+        <h2>Web Research</h2>
+      </div>
+
+      <p>Effective property research combines multiple sources: web searches, local files, databases, and professional knowledge. Claude Code brings these together in a structured way, but you need to guide the research strategy.</p>
+
+      <h3>Research Strategy Framework</h3>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Define the research question</strong>
+            <p>Be specific about what you need to know and why. "What is the current ERV for Grade A office space in Sheffield city centre?" is better than "Research Sheffield offices."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Identify the best sources</strong>
+            <p>Consider which sources are most reliable for your question: VOA data, EPC registers, planning portals, market reports, news articles, company filings.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Gather data systematically</strong>
+            <p>Use Claude Code's web search, file reading, and MCP tools to gather data from each source.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Cross-reference and verify</strong>
+            <p>Check findings against multiple sources. If only one source reports something, treat it with caution.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <strong>Synthesise into conclusions</strong>
+            <p>Ask Claude to compile verified findings into a structured analysis with clear conclusions.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Types of Property Research</h3>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Research Type</th>
+              <th>Key Sources</th>
+              <th>Claude Code Approach</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Market rents</strong></td>
+              <td>VOA, recent lettings, market reports</td>
+              <td>/voa + WebSearch + local comparable files</td>
+            </tr>
+            <tr>
+              <td><strong>Tenant covenant</strong></td>
+              <td>Companies House, credit reports</td>
+              <td>WebSearch + /company-financial-health</td>
+            </tr>
+            <tr>
+              <td><strong>Planning status</strong></td>
+              <td>Local authority planning portals</td>
+              <td>/planning + Playwright for portal searches</td>
+            </tr>
+            <tr>
+              <td><strong>Ownership</strong></td>
+              <td>Land Registry, CCOD</td>
+              <td>/ownership + Land Registry price paid data</td>
+            </tr>
+            <tr>
+              <td><strong>Environmental</strong></td>
+              <td>EA flood maps, contamination registers</td>
+              <td>/flood-check + WebSearch</td>
+            </tr>
+            <tr>
+              <td><strong>Market intelligence</strong></td>
+              <td>Trade press, agent reports, RICS data</td>
+              <td>WebSearch + WebFetch for specific articles</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Structured Research Prompt</div>
+        <div class="prompt-text">I need to prepare a property briefing note for a potential acquisition at 45 Meadowhall Road, Sheffield S9 1HD. Research the following:
+
+1. PROPERTY DATA: Use /voa for rateable value and floor area. Use /epc for energy rating.
+2. OWNERSHIP: Use /ownership to find the current owner.
+3. FLOOD RISK: Use /flood-check for Environment Agency flood risk data.
+4. PLANNING: Use /planning to check for recent or pending applications nearby.
+5. MARKET CONTEXT: Search the web for recent industrial transactions in Sheffield S9.
+
+Compile all findings into a briefing note with clear headings. Flag any data you could not find or are uncertain about.</div>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Choose a property you know (perhaps one you have visited on a site inspection) and run a structured research exercise using the framework above. Compare what Claude finds with what you already know about the property. Where are the gaps?</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Effective research follows a structured framework: define the question, identify sources, gather data, cross-reference, and synthesise. Claude Code combines web search, file analysis, and specialist skills to gather data from multiple sources efficiently.</p>
+      </div>
+    </div>
+
+    <!-- Section 32: Market Analysis -->
+    <div class="section fade-in" id="day8-s2">
+      <div class="section-header">
+        <span class="section-number">32</span>
+        <h2>Market Analysis</h2>
+      </div>
+
+      <p>Market analysis goes beyond data gathering. It requires interpreting trends, understanding context, and forming professional opinions. Claude Code is excellent at structuring analysis; you provide the professional interpretation.</p>
+
+      <h3>Rental Market Analysis</h3>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Market Trend Analysis</div>
+        <div class="prompt-text">I have the following data on Sheffield industrial rents over the past 3 years:
+
+Q1 2024: Average &pound;7.50 psf, 12 transactions
+Q2 2024: Average &pound;7.75 psf, 15 transactions
+Q3 2024: Average &pound;8.00 psf, 10 transactions
+Q4 2024: Average &pound;8.25 psf, 14 transactions
+Q1 2025: Average &pound;8.50 psf, 11 transactions
+Q2 2025: Average &pound;8.75 psf, 16 transactions
+Q3 2025: Average &pound;9.00 psf, 13 transactions
+Q4 2025: Average &pound;9.25 psf, 18 transactions
+Q1 2026: Average &pound;9.50 psf, 9 transactions
+
+Analyse this data:
+1. Calculate the quarterly and annual growth rate
+2. Identify the trend (accelerating, steady, decelerating)
+3. Compare transaction volumes to assess market depth
+4. Note any seasonal patterns
+5. Provide a professional market commentary suitable for a client report</div>
+      </div>
+
+      <h3>Investment Yield Analysis</h3>
+
+      <p>Claude Code can calculate and compare investment yields, but the interpretation requires professional judgement:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Yield Comparison</div>
+        <div class="prompt-text">Compare these investment transactions:
+
+1. Meadowhall Road warehouse, &pound;1.2m at NIY 6.5%, let to national occupier
+2. Parkway retail unit, &pound;450k at NIY 8.0%, let to local independent
+3. City centre office, &pound;2.8m at NIY 5.25%, multi-let to professional services
+
+For each, calculate the passing rent. Then analyse: what does the yield spread tell us about investor risk perception for different property types and tenant covenants in Sheffield?</div>
+      </div>
+
+      <div class="key-concept">
+        <h4>Yield Reflects Risk</h4>
+        <p>Lower yields indicate lower perceived risk (and higher prices). The yield spread between property types, locations, and tenant qualities reveals market sentiment. Claude can calculate the numbers, but interpreting <em>why</em> yields are what they are requires market knowledge that comes from professional experience.</p>
+      </div>
+
+      <h3>Comparative Analysis</h3>
+
+      <p>One of the most powerful uses of Claude Code is comparing data across multiple dimensions:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Multi-Dimensional Comparison</div>
+        <div class="prompt-text">Here are 10 comparable industrial lettings. Create a comprehensive comparison matrix:
+
+[data for 10 comparables]
+
+For each comparable, show:
+- Location quality score (1&ndash;5, with 5 being prime)
+- Size adjustment vs subject (% larger/smaller)
+- Age/quality adjustment (newer = premium, older = discount)
+- Time adjustment (annualised growth to bring to current date)
+- Final adjusted rent psf
+
+Then weight the comparables: give me your recommended weights based on relevance, and calculate a weighted average ERV for the subject property (6,000 sq ft modern industrial unit in S9).</div>
+      </div>
+
+      <div class="pitfall">
+        <h4>Common Pitfall: Confusing Correlation with Causation</h4>
+        <p>When Claude identifies trends or correlations in data, remember that correlation does not imply causation. "Industrial rents rose 25% while new construction increased" does not mean construction caused rent increases &mdash; both might be driven by strong occupier demand. Apply your market knowledge to interpret the "why" behind the numbers.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Market analysis requires both data (which Claude Code can structure) and professional interpretation (which you provide). Use Claude for calculations, trend identification, and comparison matrices. Apply your market knowledge to explain why trends exist and what they mean for clients.</p>
+      </div>
+    </div>
+
+    <!-- Section 33: Data Sources -->
+    <div class="section fade-in" id="day8-s3">
+      <div class="section-header">
+        <span class="section-number">33</span>
+        <h2>Data Sources &amp; Integration</h2>
+      </div>
+
+      <p>Claude Code can access a wide range of data sources. Understanding what each provides and how reliable it is helps you build comprehensive, accurate analysis.</p>
+
+      <h3>Hillway's Data Toolkit</h3>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Accessed Via</th>
+              <th>What It Provides</th>
+              <th>Reliability</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>VOA</strong></td>
+              <td>/voa skill</td>
+              <td>Rateable values, floor areas, property descriptions</td>
+              <td>High (official data)</td>
+            </tr>
+            <tr>
+              <td><strong>EPC Register</strong></td>
+              <td>/epc skill</td>
+              <td>Energy ratings, floor area estimates, recommendations</td>
+              <td>High (regulated assessors)</td>
+            </tr>
+            <tr>
+              <td><strong>Land Registry</strong></td>
+              <td>/land-registry, /ownership</td>
+              <td>Ownership, transaction prices, title details</td>
+              <td>High (official register)</td>
+            </tr>
+            <tr>
+              <td><strong>Environment Agency</strong></td>
+              <td>/flood-check</td>
+              <td>Flood zones, flood risk assessment</td>
+              <td>High (government data)</td>
+            </tr>
+            <tr>
+              <td><strong>Planning Portals</strong></td>
+              <td>/planning, Playwright</td>
+              <td>Applications, decisions, enforcement</td>
+              <td>High (public records)</td>
+            </tr>
+            <tr>
+              <td><strong>Companies House</strong></td>
+              <td>/company-financial-health</td>
+              <td>Company accounts, directors, filings</td>
+              <td>High (statutory filings)</td>
+            </tr>
+            <tr>
+              <td><strong>Web Search</strong></td>
+              <td>WebSearch tool</td>
+              <td>News, market reports, agent commentary</td>
+              <td>Variable (check source)</td>
+            </tr>
+            <tr>
+              <td><strong>Xero</strong></td>
+              <td>Xero MCP</td>
+              <td>Hillway financial data, invoices, accounts</td>
+              <td>High (our own data)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Integrating Multiple Sources</h3>
+
+      <p>The real power comes from combining data sources into a single, comprehensive view:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Integrated Property Report</div>
+        <div class="prompt-text">Create a comprehensive due diligence report for 45 Meadowhall Road, S9 1HD by combining data from multiple sources:
+
+1. /voa &mdash; get floor area and rateable value
+2. /epc &mdash; get energy rating and certificate details
+3. /ownership &mdash; identify current owner
+4. /flood-check &mdash; assess flood risk
+5. /planning &mdash; check for relevant planning applications
+6. WebSearch &mdash; find any market intelligence about this area
+
+Present as a professional due diligence summary with a RAG (Red/Amber/Green) status for each category.</div>
+      </div>
+
+      <div class="key-concept">
+        <h4>RAG Status for Due Diligence</h4>
+        <p><strong>Red</strong> = significant issue requiring further investigation. <strong>Amber</strong> = moderate concern, manageable with appropriate action. <strong>Green</strong> = no issues identified. This simple framework helps clients and colleagues quickly understand the risk profile of a property.</p>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Run the integrated property report prompt for a Sheffield postcode you are familiar with. Review the RAG status assessments Claude produces. Do they match your professional assessment? Where might you disagree?</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Claude Code integrates data from 8+ sources into comprehensive analysis. Understand the reliability of each source and always cross-reference important findings. The RAG status framework provides a clear, professional way to communicate risk assessments.</p>
+      </div>
+    </div>
+
+    <!-- Section 34: Fact-Checking -->
+    <div class="section fade-in" id="day8-s4">
+      <div class="section-header">
+        <span class="section-number">34</span>
+        <h2>Fact-Checking &amp; Verification</h2>
+      </div>
+
+      <p>The ability to fact-check AI-generated research is the skill that separates effective AI users from dangerous ones. This section provides a systematic approach to verification.</p>
+
+      <h3>The Verification Framework</h3>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Check the source</strong>
+            <p>Where did Claude get this information? Official databases (VOA, Land Registry) are more reliable than web articles. If no source is cited, be suspicious.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Verify key facts</strong>
+            <p>Check the most important facts (figures, dates, names) against primary sources. Even one wrong date can invalidate an analysis.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Check arithmetic</strong>
+            <p>Recalculate any key figures manually or with a calculator. Pay special attention to multi-step calculations.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Apply the smell test</strong>
+            <p>Does the conclusion make sense given your knowledge of the market? If Claude says Sheffield prime industrial rents are &pound;50 psf, your experience should tell you that is implausible.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <strong>Check for freshness</strong>
+            <p>Is the data current? Claude may cite older information. For market analysis, check that transaction dates and statistics are recent.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Red Flags in AI-Generated Research</h3>
+
+      <div class="card card-warning">
+        <h4>Watch For These Warning Signs</h4>
+        <ul>
+          <li><strong>Suspiciously precise numbers</strong> &mdash; "The vacancy rate is exactly 4.27%" without a cited source</li>
+          <li><strong>Fabricated transactions</strong> &mdash; comparable evidence you cannot verify through any known source</li>
+          <li><strong>Outdated market commentary</strong> &mdash; analysis that does not reflect recent events you know about</li>
+          <li><strong>Wrong jurisdiction</strong> &mdash; references to laws or regulations that apply in Scotland, the US, or other jurisdictions</li>
+          <li><strong>Implausible figures</strong> &mdash; yields, rents, or values that are clearly outside market parameters</li>
+          <li><strong>Circular reasoning</strong> &mdash; using AI-generated data to validate other AI-generated conclusions</li>
+        </ul>
+      </div>
+
+      <h3>Asking Claude to Self-Check</h3>
+
+      <p>You can ask Claude to review its own output for potential errors:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Self-Check Prompt</div>
+        <div class="prompt-text">Review the analysis you just produced and flag:
+1. Any facts you are less than 90% confident about
+2. Any figures that might be outdated (from your training data rather than current sources)
+3. Any conclusions that depend on assumptions I should verify
+4. Any areas where you might be wrong or uncertain
+
+Be honest about your confidence levels.</div>
+      </div>
+
+      <div class="key-concept">
+        <h4>The Trust Gradient</h4>
+        <p>Not all AI output deserves the same level of trust. <strong>High trust</strong>: data extracted directly from official APIs (VOA, Land Registry). <strong>Medium trust</strong>: analysis and calculations based on data you provided. <strong>Low trust</strong>: general market commentary, statistics without sources, and any claim about specific transactions. Adjust your verification effort accordingly.</p>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Ask Claude Code to produce a market analysis of Sheffield industrial property. Then use the self-check prompt above. Notice how Claude identifies its own uncertainties. Now fact-check three specific claims from the analysis against other sources. How accurate was Claude's self-assessment?</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Day 8 Summary</h4>
+        <p>Today covered the complete research lifecycle: structured web research, market analysis and trend interpretation, integrating multiple data sources, and systematic fact-checking. The critical skill is <strong>verification</strong> &mdash; knowing what to trust, what to check, and how to spot AI-generated errors. Apply the trust gradient: official API data gets high trust; unsourced market commentary gets low trust.</p>
+      </div>
+    </div>

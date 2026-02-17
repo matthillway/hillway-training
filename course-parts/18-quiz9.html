@@ -1,0 +1,174 @@
+    <!-- Day 9 Quiz -->
+    <div class="section fade-in" id="quiz-9">
+      <div class="section-header">
+        <span class="section-number">&bull;</span>
+        <h2>Day 9 Knowledge Check</h2>
+      </div>
+      <p style="margin-bottom: 20px; color: var(--gray-600); font-size: 14px;">Test your understanding of automation, workflows, and troubleshooting. Remember: up to 3 attempts per question with hints.</p>
+
+      <div class="quiz-container" id="quiz-9-container">
+
+        <div class="quiz-question" data-question="97" data-type="mc" data-answer="c" data-hint1="Think about the key principles of good workflow design." data-hint2="A workflow should include points where a human checks the output before the next step.">
+          <div class="quiz-q-number">Question 1 of 12</div>
+          <div class="quiz-q-text">What is a critical component of any AI workflow at Hillway?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Running everything as fast as possible</button>
+            <button class="quiz-option" data-value="b">(b) Avoiding human involvement entirely</button>
+            <button class="quiz-option" data-value="c">(c) Human review checkpoints where output is verified before proceeding</button>
+            <button class="quiz-option" data-value="d">(d) Using the most expensive AI model available</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Human review checkpoints</strong> are essential in any AI workflow. These are built-in points where a professional reviews the output before the workflow proceeds. This catches errors early and maintains professional accountability.</div>
+        </div>
+
+        <div class="quiz-question" data-question="98" data-type="mc" data-answer="a" data-hint1="Think about what API stands for." data-hint2="It is an interface that allows different software systems to communicate with each other.">
+          <div class="quiz-q-number">Question 2 of 12</div>
+          <div class="quiz-q-text">In simple terms, what is an API?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) A way for software systems to communicate with each other</button>
+            <button class="quiz-option" data-value="b">(b) A type of artificial intelligence</button>
+            <button class="quiz-option" data-value="c">(c) A programming language used by Claude</button>
+            <button class="quiz-option" data-value="d">(d) An alternative to the internet</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">An <strong>API (Application Programming Interface)</strong> is a way for software systems to talk to each other. When Claude Code queries the VOA for a rateable value, it makes an API call &mdash; like a waiter (API) taking your order to the kitchen (external service) and bringing back the result.</div>
+        </div>
+
+        <div class="quiz-question" data-question="99" data-type="mc" data-answer="d" data-hint1="Think about the role MCP servers play between Claude and external services." data-hint2="MCP servers translate requests and responses between Claude Code and the external service.">
+          <div class="quiz-q-number">Question 3 of 12</div>
+          <div class="quiz-q-text">What is the role of an MCP server in Claude Code's architecture?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) It stores all of Claude's training data</button>
+            <button class="quiz-option" data-value="b">(b) It replaces the need for internet access</button>
+            <button class="quiz-option" data-value="c">(c) It provides additional computing power</button>
+            <button class="quiz-option" data-value="d">(d) It acts as a bridge, translating requests between Claude and external services</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">An MCP server <strong>acts as a bridge</strong> between Claude Code and external services. It translates Claude's request into the format the service expects, sends it, receives the response, and translates it back for Claude. Each service (Xero, Google, Slack) has its own MCP server.</div>
+        </div>
+
+        <div class="quiz-question" data-question="100" data-type="mc" data-answer="b" data-hint1="Think about what a Git commit is in plain English." data-hint2="It is like saving and labelling a snapshot of your work at a specific point in time.">
+          <div class="quiz-q-number">Question 4 of 12</div>
+          <div class="quiz-q-text">In Git version control, what is a "commit"?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) A promise to finish the project</button>
+            <button class="quiz-option" data-value="b">(b) A saved snapshot of all changes at a specific point in time</button>
+            <button class="quiz-option" data-value="c">(c) A command to delete old files</button>
+            <button class="quiz-option" data-value="d">(d) A message sent to the team</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">A Git <strong>commit</strong> is a saved snapshot of all changes at a specific point in time, like dating and initialling a report draft. The complete history of commits provides an audit trail showing every version and who changed what.</div>
+        </div>
+
+        <div class="quiz-question" data-question="101" data-type="mc" data-answer="a" data-hint1="Think about the first step in designing a workflow." data-hint2="Before automating anything, you need to understand the current manual process.">
+          <div class="quiz-q-number">Question 5 of 12</div>
+          <div class="quiz-q-text">What is the first step in building a Claude Code workflow for a task?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Map the current manual process step by step</button>
+            <button class="quiz-option" data-value="b">(b) Write the automation script immediately</button>
+            <button class="quiz-option" data-value="c">(c) Ask Claude to figure out the best approach</button>
+            <button class="quiz-option" data-value="d">(d) Delete all existing files and start from scratch</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">The first step is to <strong>map the current manual process</strong>. Write down every step you currently take. Then identify which steps can be automated, where review checkpoints should go, and design the workflow prompt. You cannot automate what you do not understand.</div>
+        </div>
+
+        <div class="quiz-question" data-question="102" data-type="mc" data-answer="c" data-hint1="Think about the most common reason for poor Claude Code output." data-hint2="The issue is usually with the input (prompt), not with Claude itself.">
+          <div class="quiz-q-number">Question 6 of 12</div>
+          <div class="quiz-q-text">Claude Code gives a generic, unhelpful response. What is the most likely cause?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Claude Code is broken and needs reinstalling</button>
+            <button class="quiz-option" data-value="b">(b) The internet connection is too slow</button>
+            <button class="quiz-option" data-value="c">(c) The prompt is too vague and lacks context</button>
+            <button class="quiz-option" data-value="d">(d) You need to upgrade to a more expensive plan</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>A vague prompt</strong> is the most common cause of poor output. Adding context, specific details, and clear format requirements almost always improves the response. The quality of the output is directly proportional to the quality of the input.</div>
+        </div>
+
+        <div class="quiz-question" data-question="103" data-type="mc" data-answer="d" data-hint1="Think about what you should do when Claude runs out of context space." data-hint2="There are specific commands for saving progress and managing context.">
+          <div class="quiz-q-number">Question 7 of 12</div>
+          <div class="quiz-q-text">Claude Code's response gets cut off mid-sentence. What should you do?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Close the terminal and give up</button>
+            <button class="quiz-option" data-value="b">(b) Restart your computer</button>
+            <button class="quiz-option" data-value="c">(c) Send the same prompt again</button>
+            <button class="quiz-option" data-value="d">(d) Use /checkpoint to save progress, then /compact or start a new session</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">When responses get cut off, the <strong>context window is likely full</strong>. Use /checkpoint to save your progress, then /compact to free up space, or start a new session. Use /resume to pick up where you left off. This is normal for long sessions with many file reads.</div>
+        </div>
+
+        <div class="quiz-question" data-question="104" data-type="mc" data-answer="b" data-hint1="Think about what a script does in computing terms." data-hint2="A script is like a recipe &mdash; a sequence of steps the computer follows automatically.">
+          <div class="quiz-q-number">Question 8 of 12</div>
+          <div class="quiz-q-text">What is a script in the context of Claude Code?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) A document written for a presentation</button>
+            <button class="quiz-option" data-value="b">(b) A file containing commands that the computer executes automatically</button>
+            <button class="quiz-option" data-value="c">(c) A conversation template for phone calls</button>
+            <button class="quiz-option" data-value="d">(d) A list of passwords</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">A script is a <strong>file containing a sequence of commands</strong> that the computer executes automatically. Claude Code can create and run scripts to automate repetitive tasks like processing multiple files, extracting data, or generating reports. You do not need to write them yourself.</div>
+        </div>
+
+        <div class="quiz-question" data-question="105" data-type="mc" data-answer="a" data-hint1="Think about what the multi-service workflow example combined." data-hint2="It used Google Sheets, Xero, VOA, web search, Google Docs, email, and Slack in one workflow.">
+          <div class="quiz-q-number">Question 9 of 12</div>
+          <div class="quiz-q-text">What makes multi-service workflows particularly powerful?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) They combine data from multiple sources into a comprehensive output in a single operation</button>
+            <button class="quiz-option" data-value="b">(b) They cost less than single-service operations</button>
+            <button class="quiz-option" data-value="c">(c) They do not require any human review</button>
+            <button class="quiz-option" data-value="d">(d) They work without an internet connection</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Multi-service workflows combine data from multiple sources</strong> (accounting, documents, databases, communications) into comprehensive outputs. A single workflow can gather data from Xero, Google Sheets, and the VOA, compile a report in Google Docs, draft an email, and notify Slack &mdash; all in one operation.</div>
+        </div>
+
+        <div class="quiz-question" data-question="106" data-type="mc" data-answer="c" data-hint1="Think about the Git concept that is like a separate working copy." data-hint2="This lets you work on changes without affecting the main version of the project.">
+          <div class="quiz-q-number">Question 10 of 12</div>
+          <div class="quiz-q-text">What is a Git "branch"?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) A folder on your desktop</button>
+            <button class="quiz-option" data-value="b">(b) A type of file format</button>
+            <button class="quiz-option" data-value="c">(c) A separate copy to work on without affecting the main version</button>
+            <button class="quiz-option" data-value="d">(d) A connection to a remote server</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation">A Git <strong>branch</strong> is a separate copy of the project where you can make changes without affecting the main version. It is like creating a "working draft" folder while the final version stays safe. When changes are ready, the branch can be merged back into the main version.</div>
+        </div>
+
+        <div class="quiz-question" data-question="107" data-type="mc" data-answer="d" data-hint1="Think about when you should ask Matt for help." data-hint2="Some issues require technical intervention, like refreshing authentication tokens.">
+          <div class="quiz-q-number">Question 11 of 12</div>
+          <div class="quiz-q-text">Which situation should you escalate to Matt rather than trying to fix yourself?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Claude gives a vague response</button>
+            <button class="quiz-option" data-value="b">(b) A calculation seems wrong</button>
+            <button class="quiz-option" data-value="c">(c) Claude applies US law instead of English law</button>
+            <button class="quiz-option" data-value="d">(d) An MCP server consistently fails to connect</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Consistent MCP server failures</strong> may need authentication refresh or technical configuration changes that require admin access. Vague responses, wrong calculations, and jurisdiction errors can all be fixed by improving your prompt or restarting the session.</div>
+        </div>
+
+        <div class="quiz-question" data-question="108" data-type="mc" data-answer="b" data-hint1="Think about the troubleshooting tip for when Claude seems confused." data-hint2="Sometimes the best fix is the simplest one &mdash; clearing the slate.">
+          <div class="quiz-q-number">Question 12 of 12</div>
+          <div class="quiz-q-text">What is the quickest fix when Claude Code seems confused by previous conversation context?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="a">(a) Add more detail to the existing conversation</button>
+            <button class="quiz-option" data-value="b">(b) Start a fresh session with a clear, concise prompt</button>
+            <button class="quiz-option" data-value="c">(c) Wait 24 hours for the context to reset</button>
+            <button class="quiz-option" data-value="d">(d) Switch to a different computer</button>
+          </div>
+          <div class="quiz-hint"></div>
+          <div class="quiz-explanation"><strong>Starting a fresh session</strong> clears all previous context, giving Claude a clean slate. Write a clear, concise prompt that includes all necessary context. This is often faster and more effective than trying to untangle a confused conversation thread.</div>
+        </div>
+
+      </div>
+
+      <div class="quiz-score-card" id="quiz-9-score">
+        <h3>Day 9 Complete</h3>
+        <div class="quiz-score-number" id="quiz-9-score-display">0/12</div>
+        <p id="quiz-9-score-message"></p>
+      </div>
+    </div>

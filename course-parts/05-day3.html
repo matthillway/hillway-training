@@ -1,0 +1,589 @@
+    <!-- ============================================ -->
+    <!-- DAY 3: PRACTICAL PROPERTY TASKS               -->
+    <!-- ============================================ -->
+    <div class="day-divider fade-in">
+      <div class="day-number">Day 3</div>
+      <h2 class="day-title">Practical Property Tasks with Claude Code</h2>
+      <p class="day-subtitle">Put your new skills to work on real Hillway tasks &mdash; emails, research, reports, and prompt patterns.</p>
+      <div class="est-time">Estimated time: 90&ndash;120 minutes</div>
+    </div>
+
+    <div class="learning-objectives fade-in">
+      <h3>Day 3 Learning Objectives</h3>
+      <ul>
+        <li>Draft professional property emails using Claude Code and Google Workspace MCP</li>
+        <li>Conduct market research and comparable analysis with real data sources</li>
+        <li>Generate structured reports and workspace documents</li>
+        <li>Apply effective prompt patterns for repeatable, high-quality results</li>
+      </ul>
+    </div>
+
+    <!-- Section 10: Emails & Documents -->
+    <div class="section fade-in" id="day3-s1">
+      <div class="section-header">
+        <span class="section-number">10</span>
+        <h2>Emails &amp; Documents</h2>
+      </div>
+
+      <p>One of the most immediate ways Claude Code saves time at Hillway is drafting professional emails and documents. Rather than starting from a blank page, you describe what you need, Claude produces a polished draft, and you review and send. Over a week, this can save hours of writing time.</p>
+
+      <div class="key-concept">
+        <h4>The Draft-Review-Send Workflow</h4>
+        <p>Claude Code never sends anything without your approval. The workflow is always: <strong>(1) You describe what you need</strong> &rarr; <strong>(2) Claude drafts it</strong> &rarr; <strong>(3) You review and edit</strong> &rarr; <strong>(4) You approve sending</strong>. This keeps you in full control of every communication leaving the firm.</p>
+      </div>
+
+      <h3>Drafting Property Emails</h3>
+
+      <p>When asking Claude Code to draft an email, always provide:</p>
+
+      <ul>
+        <li><strong>Recipient and context</strong> &mdash; who are they, what is the relationship?</li>
+        <li><strong>Purpose</strong> &mdash; what do you need to communicate?</li>
+        <li><strong>Tone</strong> &mdash; formal/informal, urgent/routine?</li>
+        <li><strong>Key facts</strong> &mdash; dates, figures, property addresses, reference numbers</li>
+        <li><strong>Any attachments to mention</strong> &mdash; documents you will attach manually</li>
+      </ul>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example Prompt</div>
+        <div class="prompt-text">Draft an email to Sarah Chen at Knight Frank regarding the rent review at Unit 4, Riverside Business Park, Sheffield S2 4SL. The current passing rent is &pound;45,000 pa and the review date is 25 March 2026. We are acting for the landlord. Tone should be professional but collaborative. Mention that we have prepared comparable evidence and would welcome a meeting to discuss.</div>
+      </div>
+
+      <p>Claude will produce a complete, properly formatted email. Before sending, always check:</p>
+
+      <div class="card card-warning">
+        <h4>Email Review Checklist</h4>
+        <ul>
+          <li>Are all names, addresses, and figures correct?</li>
+          <li>Is the tone appropriate for this recipient?</li>
+          <li>Have any facts been fabricated (hallucinated)?</li>
+          <li>Does it accurately represent Hillway's position?</li>
+          <li>Is it compliant with RICS professional standards?</li>
+        </ul>
+      </div>
+
+      <h3>Sending Emails via Google Workspace MCP</h3>
+
+      <p>Claude Code can send emails directly through Gmail using the Google Workspace MCP server. This means you can draft and send without leaving the terminal.</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example Prompt</div>
+        <div class="prompt-text">Send an email to sarah.chen@knightfrank.co.uk with the subject "Rent Review - Unit 4, Riverside Business Park, S2 4SL" and the body we just drafted.</div>
+      </div>
+
+      <p>Claude will ask for your confirmation before actually sending. You will see a permission request like:</p>
+
+      <div class="code-block">
+<pre>Claude wants to use: Google Workspace &gt; Send Gmail Message
+To: sarah.chen@knightfrank.co.uk
+Subject: Rent Review - Unit 4, Riverside Business Park, S2 4SL
+
+Allow? (y/n)</pre>
+      </div>
+
+      <p>Only type <code class="inline">y</code> when you have verified everything is correct.</p>
+
+      <h3>Creating Google Docs and Sheets</h3>
+
+      <p>Beyond email, Claude Code can create documents directly in Google Drive:</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>MCP Tool</th>
+              <th>Example Prompt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Create a document</td>
+              <td>Google Workspace &gt; Create Doc</td>
+              <td>"Create a Google Doc called 'Q1 2026 Property Report' with the analysis we discussed"</td>
+            </tr>
+            <tr>
+              <td>Create a spreadsheet</td>
+              <td>Google Workspace &gt; Create Spreadsheet</td>
+              <td>"Create a Google Sheet with columns for property address, tenant, rent, review date, and notes"</td>
+            </tr>
+            <tr>
+              <td>Edit an existing doc</td>
+              <td>Google Workspace &gt; Modify Doc Text</td>
+              <td>"Open the Riverside report and add a section on market comparables"</td>
+            </tr>
+            <tr>
+              <td>Read spreadsheet data</td>
+              <td>Google Workspace &gt; Read Sheet Values</td>
+              <td>"Read all data from the tenant schedule spreadsheet"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Ask Claude Code to draft a professional email to a fictional tenant, confirming a lease renewal meeting. Include:</p>
+        <ul>
+          <li>The property address: 15 High Street, Sheffield S1 2GE</li>
+          <li>Meeting date: Thursday 20 March 2026 at 2:00pm</li>
+          <li>Location: Hillway offices, 86 Psalter Lane</li>
+          <li>Ask them to bring their current lease and any relevant correspondence</li>
+        </ul>
+        <p>Review what Claude produces. Would you send it as-is, or would you make changes?</p>
+      </div>
+
+      <h3>Managing Slack Messages</h3>
+
+      <p>Claude Code can also send messages to Slack channels, which is useful for internal team updates:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example Prompt</div>
+        <div class="prompt-text">Post a message to the #property-updates Slack channel: "Rent review at Unit 4 Riverside Business Park now scheduled for meeting on 20 March. Comparable evidence pack ready for review in the shared drive."</div>
+      </div>
+
+      <div class="pitfall">
+        <h4>Common Pitfall: Sending Without Review</h4>
+        <p>Never rush through permission prompts. Claude Code will always ask before sending any email or message, but it is easy to type "y" out of habit. Take the time to read the full content before approving. One incorrect figure or wrong recipient can cause real professional embarrassment.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Claude Code can draft emails, create Google Docs and Sheets, and post Slack messages &mdash; all from the terminal. The critical rule is: <strong>always review before approving</strong>. AI drafts are starting points, not final products.</p>
+      </div>
+    </div>
+
+    <!-- Section 11: Research & Data -->
+    <div class="section fade-in" id="day3-s2">
+      <div class="section-header">
+        <span class="section-number">11</span>
+        <h2>Research &amp; Data</h2>
+      </div>
+
+      <p>Property work relies on accurate, current data. Claude Code can help you gather, structure, and analyse information from multiple sources &mdash; but you must understand where the data comes from and how to verify it.</p>
+
+      <h3>Web Research with Claude Code</h3>
+
+      <p>Claude Code has two tools for accessing the web:</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>What It Does</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>WebSearch</strong></td>
+              <td>Searches the internet and returns results</td>
+              <td>Finding current market data, news, company information</td>
+            </tr>
+            <tr>
+              <td><strong>WebFetch</strong></td>
+              <td>Fetches and reads a specific web page</td>
+              <td>Reading articles, extracting data from known URLs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example: Market Research</div>
+        <div class="prompt-text">Search for recent office rental transactions in Sheffield city centre from the last 6 months. I need comparable evidence for a rent review of Grade A office space. Look at EGi, CoStar news, and local property press.</div>
+      </div>
+
+      <p>Claude will search the web and compile findings. However, remember these limitations:</p>
+
+      <div class="card card-warning">
+        <h4>Web Research Limitations</h4>
+        <ul>
+          <li><strong>Paywalled content</strong> &mdash; Claude cannot access EGi, CoStar, or other subscription databases directly</li>
+          <li><strong>Accuracy</strong> &mdash; Web data may be outdated, incomplete, or incorrect. Always verify against primary sources</li>
+          <li><strong>Confidential data</strong> &mdash; Claude cannot access Hillway's own internal databases or files unless you point it to them</li>
+          <li><strong>Not RICS-compliant evidence</strong> &mdash; Web research is a starting point for comparable evidence, not a substitute for properly sourced and verified comparables</li>
+        </ul>
+      </div>
+
+      <h3>Working with Property Data Files</h3>
+
+      <p>Much of the most valuable research involves analysing files already on your computer or in shared drives. Claude Code excels at this:</p>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Point Claude to the data</strong>
+            <p>"Read the tenant schedule at /Users/alex/Documents/riverside-tenants.xlsx"</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Ask for analysis</strong>
+            <p>"Which tenants have lease expiries in the next 12 months? What is the total rent at risk?"</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Request a structured output</strong>
+            <p>"Create a table showing tenant name, unit, current rent, lease expiry, and break date, sorted by expiry date."</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Comparable Evidence Analysis</h3>
+
+      <p>A core property skill is gathering and analysing comparable evidence for rent reviews and valuations. Claude Code can help structure this work:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example: Comparable Analysis</div>
+        <div class="prompt-text">I have the following comparable transactions for Grade A office space in Sheffield city centre. Analyse them and suggest an ERV range:
+
+1. 25 Church Street, S1 - 3,500 sq ft let at &pound;22.50 psf, Jan 2026, 10-year term, 6-month rent-free
+2. Victoria House, S1 - 5,000 sq ft let at &pound;21.00 psf, Oct 2025, 5-year term, 3-month rent-free
+3. Steel Works, S1 - 2,800 sq ft let at &pound;24.00 psf, Nov 2025, 10-year term, 12-month rent-free
+
+Adjust to headline and effective rents. Our subject property is 4,200 sq ft.</div>
+      </div>
+
+      <div class="key-concept">
+        <h4>Headline Rent vs Effective Rent</h4>
+        <p><strong>Headline rent</strong> is the stated rent in the lease. <strong>Effective rent</strong> accounts for incentives like rent-free periods, stepped rents, and capital contributions. When comparing evidence, you must adjust to a consistent basis. Claude can calculate this, but you must verify the methodology.</p>
+      </div>
+
+      <h3>Xero Financial Data</h3>
+
+      <p>Claude Code connects to Xero via MCP to access Hillway's financial data. This is useful for checking invoices, tracking payments, and financial reporting:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example: Financial Query</div>
+        <div class="prompt-text">Check Xero for any outstanding invoices from Hillway Holdings Ltd. Show the invoice number, client name, amount, and due date for anything overdue.</div>
+      </div>
+
+      <div class="pitfall">
+        <h4>Common Pitfall: Trusting AI Numbers Without Verification</h4>
+        <p>When Claude Code calculates figures &mdash; whether rental values, yields, or financial summaries &mdash; always check the arithmetic manually or with a calculator. AI is excellent at structuring calculations but can make errors, especially with complex multi-step arithmetic. A wrong figure in a rent review report can damage Hillway's professional reputation.</p>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Give Claude Code three fictional comparable transactions and ask it to:</p>
+        <ul>
+          <li>Calculate the headline rent per square foot for each</li>
+          <li>Adjust for rent-free periods to show effective rents</li>
+          <li>Suggest an ERV range for a 5,000 sq ft subject property</li>
+        </ul>
+        <p>Check its arithmetic with a calculator. Did it get everything right?</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Claude Code can search the web, analyse local files, work with comparable evidence, and query Xero financial data. The key discipline is <strong>always verifying data and arithmetic</strong> against primary sources. AI research is a starting point, not a final answer.</p>
+      </div>
+    </div>
+
+    <!-- Section 12: Reports & Workspace -->
+    <div class="section fade-in" id="day3-s3">
+      <div class="section-header">
+        <span class="section-number">12</span>
+        <h2>Reports &amp; Workspace</h2>
+      </div>
+
+      <p>Property consultants spend a significant amount of time producing reports &mdash; from brief client letters to full valuation reports. Claude Code can dramatically speed up this process by generating structured first drafts that you then refine with your professional expertise.</p>
+
+      <h3>Report Types at Hillway</h3>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Report Type</th>
+              <th>Typical Length</th>
+              <th>How Claude Helps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Client letter</td>
+              <td>1&ndash;2 pages</td>
+              <td>Full draft from brief instructions</td>
+            </tr>
+            <tr>
+              <td>Head of Terms</td>
+              <td>2&ndash;3 pages</td>
+              <td>Structured from key deal points</td>
+            </tr>
+            <tr>
+              <td>Market update</td>
+              <td>3&ndash;5 pages</td>
+              <td>Research gathering + first draft</td>
+            </tr>
+            <tr>
+              <td>Rent review report</td>
+              <td>5&ndash;15 pages</td>
+              <td>Comparable analysis + first draft sections</td>
+            </tr>
+            <tr>
+              <td>Valuation report</td>
+              <td>15&ndash;40 pages</td>
+              <td>Section drafts, but requires significant human review</td>
+            </tr>
+            <tr>
+              <td>Fee proposal</td>
+              <td>3&ndash;5 pages</td>
+              <td>Full draft from brief and fee schedule</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Structuring Report Prompts</h3>
+
+      <p>For longer reports, break the work into sections rather than asking for everything at once. This gives better results because:</p>
+
+      <ul>
+        <li>Each section gets focused attention</li>
+        <li>You can provide section-specific data and instructions</li>
+        <li>You can review as you go, catching errors early</li>
+        <li>Claude's context stays focused and relevant</li>
+      </ul>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example: Section-by-Section Report</div>
+        <div class="prompt-text">I am writing a rent review report for Unit 4, Riverside Business Park, S2 4SL. Let's start with the Property Description section. Here are the key facts:
+
+- Industrial/warehouse unit with ancillary offices
+- GIA: 8,500 sq ft (warehouse 7,200 sq ft, offices 1,300 sq ft)
+- Built 2005, refurbished 2019
+- Eaves height 6m
+- 4 loading doors
+- 15 car parking spaces
+- EPC rating: B
+
+Write the property description in a professional surveyor's tone, suitable for a rent review report.</div>
+      </div>
+
+      <h3>Working with Google Drive</h3>
+
+      <p>Claude Code can interact with your Google Drive to find, read, and create documents:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example: Finding Documents</div>
+        <div class="prompt-text">Search Google Drive for any documents related to "Riverside Business Park" from the last year. Show me the file names, types, and last modified dates.</div>
+      </div>
+
+      <p>This is particularly useful when you need to find a previous report, check what has been sent to a client, or locate comparable evidence files.</p>
+
+      <h3>Template-Based Documents</h3>
+
+      <p>Hillway has standard templates for common documents. Claude Code can use these as starting points:</p>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Read the template</strong>
+            <p>"Read the fee proposal template from the Hillway templates folder"</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Provide specific details</strong>
+            <p>"Fill in this template for a rent review instruction from ABC Property Fund for their portfolio of 12 industrial units in Sheffield"</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Create the document</strong>
+            <p>"Save this as a Google Doc in the client folder"</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Ask Claude Code to write a Heads of Terms document for a fictional lease:</p>
+        <ul>
+          <li>Property: Ground Floor, 22 West Street, Sheffield S1 4EQ</li>
+          <li>Tenant: Fresh Grind Coffee Ltd</li>
+          <li>Landlord: Sheffield Properties Ltd</li>
+          <li>Term: 10 years</li>
+          <li>Rent: &pound;35,000 per annum</li>
+          <li>Rent reviews: 5-yearly, upward only</li>
+          <li>Break clause: tenant only at year 5 with 6 months notice</li>
+          <li>Rent-free period: 3 months for fitting out</li>
+        </ul>
+        <p>Review the output. Does it include all the standard HoT sections a chartered surveyor would expect?</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Claude Code accelerates report writing by generating structured first drafts. For best results, work section-by-section on longer reports, provide specific data, and always apply your professional judgement to the output before it leaves the firm.</p>
+      </div>
+    </div>
+
+    <!-- Section 13: Prompt Patterns -->
+    <div class="section fade-in" id="day3-s4">
+      <div class="section-header">
+        <span class="section-number">13</span>
+        <h2>Prompt Patterns</h2>
+      </div>
+
+      <p>By now you have used Claude Code for several practical tasks. This section introduces <strong>prompt patterns</strong> &mdash; reusable structures that consistently produce high-quality results. Learning these patterns is like learning keyboard shortcuts: a small upfront investment that saves time every day.</p>
+
+      <h3>The CONTEXT-TASK-FORMAT Pattern</h3>
+
+      <p>The single most useful prompt pattern. Every good prompt contains three elements:</p>
+
+      <div class="card card-highlight">
+        <h4>CTF: Context &rarr; Task &rarr; Format</h4>
+        <ul>
+          <li><strong>Context</strong> &mdash; Background information Claude needs (who you are, what the situation is, relevant facts)</li>
+          <li><strong>Task</strong> &mdash; What you want Claude to do (the specific instruction)</li>
+          <li><strong>Format</strong> &mdash; How you want the output structured (bullet points, table, formal letter, etc.)</li>
+        </ul>
+      </div>
+
+      <div class="prompt-example">
+        <div class="prompt-label">CTF Example</div>
+        <div class="prompt-text"><strong>[Context]</strong> I am a chartered surveyor preparing for a rent review meeting tomorrow. The property is a 5,000 sq ft retail unit on Division Street, Sheffield. Current passing rent is &pound;65,000 pa. The lease has upward-only rent reviews every 5 years. The tenant is a national coffee chain.
+
+<strong>[Task]</strong> Prepare a briefing note summarising the key negotiation points I should raise, potential arguments for increasing the rent, and risks to be aware of.
+
+<strong>[Format]</strong> Structure as: (1) Key Facts, (2) Arguments for Increase, (3) Tenant Counter-Arguments to Anticipate, (4) Recommended Strategy. Keep each section to 3&ndash;5 bullet points.</div>
+      </div>
+
+      <h3>The ROLE Pattern</h3>
+
+      <p>Telling Claude to adopt a specific role changes the style and depth of its response:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Role Pattern Example</div>
+        <div class="prompt-text">You are an experienced RICS-qualified commercial property surveyor with 20 years of experience in the Sheffield market. A junior colleague has asked you to explain the difference between a Section 25 notice and a Section 26 request under the Landlord and Tenant Act 1954. Explain it clearly, with practical examples relevant to retail and office properties.</div>
+      </div>
+
+      <p>By assigning a role, Claude draws on more relevant knowledge and uses appropriate professional language.</p>
+
+      <h3>The CONSTRAINTS Pattern</h3>
+
+      <p>Adding constraints focuses Claude's output and prevents common problems:</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Constraint Type</th>
+              <th>Example</th>
+              <th>Why It Helps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Length</td>
+              <td>"Keep this under 200 words"</td>
+              <td>Prevents rambling, keeps output focused</td>
+            </tr>
+            <tr>
+              <td>Tone</td>
+              <td>"Write formally, suitable for a RICS report"</td>
+              <td>Ensures professional language</td>
+            </tr>
+            <tr>
+              <td>Exclusion</td>
+              <td>"Do not include legal advice or recommendations"</td>
+              <td>Keeps within professional boundaries</td>
+            </tr>
+            <tr>
+              <td>Audience</td>
+              <td>"Write for a client with no property background"</td>
+              <td>Adjusts complexity and jargon level</td>
+            </tr>
+            <tr>
+              <td>Jurisdiction</td>
+              <td>"Focus on English and Welsh law only"</td>
+              <td>Prevents irrelevant Scottish/international references</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>The ITERATION Pattern</h3>
+
+      <p>Complex outputs rarely come out perfect first time. The iteration pattern uses follow-up prompts to refine:</p>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>First draft</strong>
+            <p>"Draft a market update for Sheffield industrial property"</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Refine content</strong>
+            <p>"Good start. Add more detail on supply pipeline and development activity in the Lower Don Valley"</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Adjust tone</strong>
+            <p>"Make it slightly less formal &mdash; this is for a quarterly client newsletter, not a formal report"</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Final polish</strong>
+            <p>"Shorten to 500 words and add a brief outlook section at the end"</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="key-concept">
+        <h4>Context Carries Forward</h4>
+        <p>Within a single Claude Code session, Claude remembers everything you have discussed. You do not need to repeat context in follow-up messages. Simply say "Make it shorter" or "Add a section on..." and Claude understands what you mean. This is what makes the iteration pattern so powerful.</p>
+      </div>
+
+      <h3>The EXAMPLE Pattern</h3>
+
+      <p>Showing Claude an example of what you want is often more effective than describing it:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example Pattern</div>
+        <div class="prompt-text">Here is an example of how I write property descriptions in reports:
+
+"The subject property comprises a modern, detached industrial/warehouse unit of steel portal frame construction with insulated metal cladding under a pitched roof. The unit provides clear span accommodation with an eaves height of approximately 8 metres, served by two roller shutter loading doors to the front elevation."
+
+Now write a similar description for: a 1960s mid-terrace retail unit, ground floor only, brick construction, flat roof, single-glazed timber shopfront, approximately 1,200 sq ft sales area with 400 sq ft stockroom at the rear.</div>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Practice the CTF pattern. Pick one of these tasks and write a prompt using Context, Task, Format:</p>
+        <ul>
+          <li>A client briefing note for a dilapidations claim</li>
+          <li>A market commentary for a property management report</li>
+          <li>An internal memo summarising a site inspection</li>
+        </ul>
+        <p>Compare the output you get with a basic prompt ("Write a briefing note about dilapidations") versus a well-structured CTF prompt. Notice the difference in quality and relevance.</p>
+      </div>
+
+      <div class="pitfall">
+        <h4>Common Pitfall: Vague Prompts</h4>
+        <p>The most common mistake is giving Claude too little context. "Write a report about the property" will give a generic, unhelpful response. "Write the property description section of a rent review report for a 5,000 sq ft retail unit at 22 Division Street, Sheffield, built 1985, refurbished 2020, with an A1 use class" will give you something genuinely useful. <strong>Specificity is the key to quality.</strong></p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Day 3 Summary</h4>
+        <p>Today you learned to use Claude Code for practical property tasks: drafting emails, conducting research, generating reports, and applying reusable prompt patterns. The four key patterns &mdash; <strong>CTF</strong> (Context-Task-Format), <strong>ROLE</strong>, <strong>CONSTRAINTS</strong>, and <strong>ITERATION</strong> &mdash; will serve you well across every type of property work. Remember: Claude produces drafts, you produce the finished product.</p>
+      </div>
+    </div>

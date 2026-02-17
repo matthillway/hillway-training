@@ -1,0 +1,430 @@
+    <!-- ============================================ -->
+    <!-- DAY 7: DOCUMENT PROCESSING                     -->
+    <!-- ============================================ -->
+    <div class="day-divider fade-in">
+      <div class="day-number">Day 7</div>
+      <h2 class="day-title">Document Processing &amp; Analysis</h2>
+      <p class="day-subtitle">Read, analyse, extract, and generate professional property documents at scale.</p>
+      <div class="est-time">Estimated time: 90&ndash;120 minutes</div>
+    </div>
+
+    <div class="learning-objectives fade-in">
+      <h3>Day 7 Learning Objectives</h3>
+      <ul>
+        <li>Use Claude Code to read and analyse PDFs, leases, and multi-page documents</li>
+        <li>Extract structured data from lease documents</li>
+        <li>Generate professional reports and client letters from templates</li>
+        <li>Process multiple documents in batch operations</li>
+      </ul>
+    </div>
+
+    <!-- Section 27: Reading Documents -->
+    <div class="section fade-in" id="day7-s1">
+      <div class="section-header">
+        <span class="section-number">27</span>
+        <h2>Reading Documents</h2>
+      </div>
+
+      <p>Property consultancy involves vast amounts of document work &mdash; leases, licences, reports, correspondence, schedules, and plans. Claude Code can read and analyse these documents directly, saving hours of manual review.</p>
+
+      <h3>What Claude Code Can Read</h3>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Format</th>
+              <th>How Claude Reads It</th>
+              <th>Typical Property Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>PDF</strong></td>
+              <td>Read tool with page ranges</td>
+              <td>Leases, reports, title documents</td>
+            </tr>
+            <tr>
+              <td><strong>Word (.docx)</strong></td>
+              <td>Read tool (extracts text)</td>
+              <td>Draft reports, letters, memos</td>
+            </tr>
+            <tr>
+              <td><strong>Excel (.xlsx)</strong></td>
+              <td>Read tool (extracts data)</td>
+              <td>Rent rolls, tenant schedules, budgets</td>
+            </tr>
+            <tr>
+              <td><strong>Text (.txt, .csv)</strong></td>
+              <td>Read tool (direct text)</td>
+              <td>Data exports, logs, notes</td>
+            </tr>
+            <tr>
+              <td><strong>Images (.png, .jpg)</strong></td>
+              <td>Read tool (visual analysis)</td>
+              <td>Site photos, plans, maps</td>
+            </tr>
+            <tr>
+              <td><strong>Google Docs/Sheets</strong></td>
+              <td>Google Workspace MCP</td>
+              <td>Shared documents, collaborative files</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Reading Large Documents</h3>
+
+      <p>Large documents like leases can be hundreds of pages. Claude Code handles these efficiently by reading in sections:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Reading a Lease PDF</div>
+        <div class="prompt-text">Read the lease at /Users/alex/Documents/leases/riverside-unit4-lease.pdf, pages 1&ndash;10. Give me a summary of the key terms on these pages.</div>
+      </div>
+
+      <div class="key-concept">
+        <h4>Page-Range Reading</h4>
+        <p>For large PDFs, always specify page ranges (e.g., pages 1&ndash;5, pages 10&ndash;20). Reading the entire document at once can exceed Claude's context window. Work through the document in sections, building up your analysis as you go.</p>
+      </div>
+
+      <h3>Reading Strategies for Different Document Types</h3>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Leases: Start with the cover page and contents</strong>
+            <p>Read pages 1&ndash;3 first to understand the structure, parties, and key dates. Then target specific clauses.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Reports: Read the executive summary first</strong>
+            <p>Most professional reports front-load key findings. Read the summary, then dive into specific sections.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Spreadsheets: Ask for an overview first</strong>
+            <p>"Read this spreadsheet and tell me what tabs it has, what data is in each, and how many rows."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Correspondence: Read chronologically</strong>
+            <p>For chains of letters or emails, read in date order to understand how a matter has progressed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Find a PDF document on your computer (it could be a property report, a lease, or any professional document). Ask Claude Code to read the first 5 pages and provide a structured summary. Assess how accurate the summary is compared to your own reading of the document.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Claude Code can read PDFs, Word documents, spreadsheets, and images. For large documents, use page-range reading and work through sections. Always verify Claude's interpretation of important documents against your own professional reading.</p>
+      </div>
+    </div>
+
+    <!-- Section 28: Lease Extraction -->
+    <div class="section fade-in" id="day7-s2">
+      <div class="section-header">
+        <span class="section-number">28</span>
+        <h2>Lease Data Extraction</h2>
+      </div>
+
+      <p>Extracting structured data from leases is one of the highest-value applications of Claude Code in property. A task that might take 30&ndash;60 minutes manually can be done in 2&ndash;3 minutes, with you reviewing the output for accuracy.</p>
+
+      <h3>Standard Lease Extraction Fields</h3>
+
+      <p>The core data points to extract from any commercial lease:</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Fields</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Parties</strong></td>
+              <td>Landlord, tenant, guarantor, original parties (if assigned)</td>
+            </tr>
+            <tr>
+              <td><strong>Dates</strong></td>
+              <td>Lease date, term commencement, term expiry, rent commencement</td>
+            </tr>
+            <tr>
+              <td><strong>Term</strong></td>
+              <td>Length, contractual term, any option to extend</td>
+            </tr>
+            <tr>
+              <td><strong>Rent</strong></td>
+              <td>Initial rent, current rent, payment frequency, VAT</td>
+            </tr>
+            <tr>
+              <td><strong>Reviews</strong></td>
+              <td>Frequency, basis (upward only/open market), review dates, assumptions and disregards</td>
+            </tr>
+            <tr>
+              <td><strong>Breaks</strong></td>
+              <td>Who can exercise, break date(s), notice period, conditions (vacant possession, no arrears, etc.)</td>
+            </tr>
+            <tr>
+              <td><strong>Repair</strong></td>
+              <td>FRI or internal only, schedule of condition, dilapidations provisions</td>
+            </tr>
+            <tr>
+              <td><strong>Use</strong></td>
+              <td>Permitted use class, any specific restrictions, keep-open obligations</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Structured Extraction Prompt</h3>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Lease Extraction</div>
+        <div class="prompt-text">Read the lease at [file path]. Extract the following data into a structured format:
+
+PARTIES:
+- Landlord: [name and registered address]
+- Tenant: [name and registered address]
+- Guarantor: [if any]
+
+TERM:
+- Lease date: [date]
+- Term: [years]
+- Commencement: [date]
+- Expiry: [date]
+
+RENT:
+- Initial rent: &pound;[amount] per annum
+- Current rent: &pound;[amount] per annum (if different)
+- Payment: [quarterly/monthly] in [advance/arrear]
+- VAT: [applicable/exempt]
+
+RENT REVIEWS:
+- Frequency: [every X years]
+- Next review: [date]
+- Basis: [upward only / open market]
+
+BREAKS:
+- Type: [tenant only / landlord only / mutual]
+- Date(s): [date]
+- Notice: [period]
+- Conditions: [list]
+
+REPAIR:
+- Obligation: [FRI / internal repairing / other]
+- Schedule of condition: [yes/no]
+
+USE:
+- Permitted: [use class and description]
+- Restrictions: [any]
+
+For any field where the information is ambiguous or not found, write "NOT FOUND - manual check required" rather than guessing.</div>
+      </div>
+
+      <div class="pitfall">
+        <h4>Critical: Never Trust AI Lease Interpretation Without Verification</h4>
+        <p>Lease extraction is where AI errors can have the most serious consequences. A misread break date could mean missing a deadline. A wrong rent figure could affect a valuation. <strong>Always verify extracted data against the original document, especially for dates, figures, and conditions.</strong> If Claude flags something as "NOT FOUND," check manually &mdash; the clause may exist in a different section than expected.</p>
+      </div>
+
+      <h3>Comparing Multiple Leases</h3>
+
+      <p>When working with a portfolio, Claude Code can extract data from multiple leases and compile it into a comparison table:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Multi-Lease Comparison</div>
+        <div class="prompt-text">I have 5 lease PDFs in /Users/alex/Documents/portfolio/. Read each one and create a comparison table with columns:
+- Property address
+- Tenant
+- Term (start &ndash; end)
+- Current rent
+- Next rent review
+- Next break date
+- Repair basis
+
+Sort by next rent review date (earliest first).</div>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>If you have access to a lease document (even a sample or template), ask Claude Code to extract the key terms using the structured extraction prompt above. Compare Claude's extraction with your own reading. Note any discrepancies &mdash; these tell you where to focus your verification effort.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Lease data extraction is one of Claude Code's most valuable property applications. Use structured extraction prompts to ensure consistency. <strong>Always verify extracted data against the original document</strong>, especially dates, figures, and conditions. Instruct Claude to flag uncertainty rather than guess.</p>
+      </div>
+    </div>
+
+    <!-- Section 29: Reports & Letters -->
+    <div class="section fade-in" id="day7-s3">
+      <div class="section-header">
+        <span class="section-number">29</span>
+        <h2>Generating Reports &amp; Letters</h2>
+      </div>
+
+      <p>Building on the document skills from Day 3, this section covers more advanced report and letter generation, including multi-section reports, formatted output, and integration with Google Docs.</p>
+
+      <h3>Multi-Section Report Generation</h3>
+
+      <p>For full-length property reports, use a staged approach:</p>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Define the report structure</strong>
+            <p>"Create an outline for a rent review report following RICS guidance. Include sections for: executive summary, property description, lease analysis, comparable evidence, ERV analysis, and recommendation."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Generate each section with specific data</strong>
+            <p>Provide section-specific data and instructions for each part.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Review and refine</strong>
+            <p>Check each section for accuracy, tone, and compliance before moving to the next.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Compile into final document</strong>
+            <p>"Create a Google Doc called 'Rent Review Report - Unit 4, Riverside BP' with all sections combined. Add Hillway's standard header and footer."</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Professional Letter Generation</h3>
+
+      <p>Letters at Hillway follow a standard format. Claude Code can produce them quickly with the right template:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Client Letter</div>
+        <div class="prompt-text">Draft a formal letter from Hillway Property Consultants to Mr James Wright, Director, ABC Property Fund Ltd, 45 Park Lane, London W1K 1PN.
+
+Subject: Rent Review Advice &ndash; Riverside Business Park, Sheffield S2 4SL
+
+Purpose: Confirming our instruction to act on the landlord's behalf for rent reviews across 8 industrial units. Outline our approach, proposed timeline, and fee basis (as agreed, 15% of any increase achieved, subject to a minimum fee of &pound;2,500 per unit).
+
+Include:
+- Reference to our meeting on 12 February 2026
+- Confirmation of the portfolio (8 units, addresses to follow)
+- Proposed timeline (comp evidence gathering in March, initial recommendations by end of April)
+- Request for access to current lease documents and recent service charge accounts
+- Standard terms of engagement reference
+
+Sign off as Matt Fitzgerald MRICS, Director.</div>
+      </div>
+
+      <h3>Document Formatting and Output</h3>
+
+      <p>Claude Code can output documents in several formats:</p>
+
+      <ul>
+        <li><strong>Google Docs</strong> &mdash; created directly via Google Workspace MCP</li>
+        <li><strong>Local text files</strong> &mdash; saved to your computer using the Write tool</li>
+        <li><strong>Markdown</strong> &mdash; useful for structured content that can be converted to other formats</li>
+        <li><strong>HTML</strong> &mdash; for web-based reports or email content</li>
+      </ul>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Advanced report generation uses a staged approach: define structure, generate sections with specific data, review and refine, then compile into the final document. Professional letters follow standard templates with specific details. Always review thoroughly before sending.</p>
+      </div>
+    </div>
+
+    <!-- Section 30: Batch Processing -->
+    <div class="section fade-in" id="day7-s4">
+      <div class="section-header">
+        <span class="section-number">30</span>
+        <h2>Batch Processing</h2>
+      </div>
+
+      <p>One of Claude Code's most powerful capabilities is processing multiple documents or data items in a single operation. This is especially valuable for portfolio management, where the same analysis needs to be applied across many properties.</p>
+
+      <h3>When to Use Batch Processing</h3>
+
+      <ul>
+        <li><strong>Portfolio rent reviews</strong> &mdash; extracting key dates from 20+ leases</li>
+        <li><strong>EPC checks</strong> &mdash; looking up energy ratings for all properties in a portfolio</li>
+        <li><strong>Tenant covenant checks</strong> &mdash; researching multiple tenants' financial health</li>
+        <li><strong>Comparable analysis</strong> &mdash; processing multiple sources of comparable data</li>
+        <li><strong>Correspondence review</strong> &mdash; summarising a chain of letters on a dispute</li>
+      </ul>
+
+      <h3>Batch Processing Examples</h3>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Batch: Portfolio Lease Summary</div>
+        <div class="prompt-text">In the folder /Users/alex/Documents/abc-portfolio/, there are 8 lease PDFs. For each one, extract:
+- Property address
+- Tenant name
+- Lease expiry date
+- Next rent review date
+- Current rent
+- Break dates (if any)
+
+Compile all results into a single table, sorted by next rent review date. Flag any leases with reviews in the next 6 months as URGENT.</div>
+      </div>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Batch: EPC Lookups</div>
+        <div class="prompt-text">Here are 12 property postcodes from our management portfolio. Look up the EPC rating for each using the /epc skill:
+
+1. S1 4GF
+2. S2 4SL
+3. S9 1EP
+4. S9 4WA
+[... etc.]
+
+Create a table showing address, current EPC rating, and expiry date. Flag any with ratings below C (which may need improvement under MEES regulations).</div>
+      </div>
+
+      <h3>Best Practices for Batch Operations</h3>
+
+      <div class="card card-highlight">
+        <h4>Batch Processing Tips</h4>
+        <ul>
+          <li><strong>Start with a test</strong> &mdash; run the operation on 1&ndash;2 items first to verify the output format before processing the full batch</li>
+          <li><strong>Set clear output format</strong> &mdash; define exactly what columns, structure, or format you want before starting</li>
+          <li><strong>Include error handling</strong> &mdash; tell Claude what to do when data is missing: "If any field cannot be found, write 'N/A' and flag for manual review"</li>
+          <li><strong>Review a sample</strong> &mdash; for large batches, manually verify 20&ndash;30% of the results against source documents</li>
+          <li><strong>Save intermediate results</strong> &mdash; for long-running batches, ask Claude to save progress after each item in case of interruption</li>
+        </ul>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Create a batch task for Claude Code. Even with fictional data, practice the workflow:</p>
+        <ol>
+          <li>Define the batch operation (what data, what analysis, what output)</li>
+          <li>Test on one item</li>
+          <li>Verify the output</li>
+          <li>Run the full batch</li>
+          <li>Sample-check the results</li>
+        </ol>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Day 7 Summary</h4>
+        <p>Today covered the full document processing workflow: reading documents (PDFs, Word, Excel, images), extracting structured data from leases, generating professional reports and letters, and batch processing multiple documents. The consistent theme: Claude Code does the heavy lifting, but <strong>you verify the output</strong>. For lease data especially, always check extracted dates, figures, and conditions against the original document.</p>
+      </div>
+    </div>

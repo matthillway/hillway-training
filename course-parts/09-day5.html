@@ -1,0 +1,566 @@
+    <!-- ============================================ -->
+    <!-- DAY 5: BEST PRACTICES & PROFESSIONAL USE       -->
+    <!-- ============================================ -->
+    <div class="day-divider fade-in">
+      <div class="day-number">Day 5</div>
+      <h2 class="day-title">Best Practices &amp; Professional Use</h2>
+      <p class="day-subtitle">Master prompt principles, RICS compliance, security practices, and advanced Claude Code features.</p>
+      <div class="est-time">Estimated time: 90&ndash;120 minutes</div>
+    </div>
+
+    <div class="learning-objectives fade-in">
+      <h3>Day 5 Learning Objectives</h3>
+      <ul>
+        <li>Apply advanced prompt engineering principles for consistent, high-quality output</li>
+        <li>Build and use reusable prompt templates for common property tasks</li>
+        <li>Understand RICS implications of AI-assisted professional work</li>
+        <li>Implement security best practices and handle AI failures gracefully</li>
+      </ul>
+    </div>
+
+    <!-- Section 18: Prompt Principles -->
+    <div class="section fade-in" id="day5-s1">
+      <div class="section-header">
+        <span class="section-number">18</span>
+        <h2>Prompt Principles</h2>
+      </div>
+
+      <p>You have already learned the basic prompt patterns (CTF, ROLE, CONSTRAINTS, ITERATION). Now we go deeper into the principles that separate average prompts from excellent ones. These principles apply to every interaction with Claude Code.</p>
+
+      <h3>Principle 1: Be Explicit, Not Implicit</h3>
+
+      <p>Claude cannot read your mind. Information that seems obvious to you may not be obvious to an AI. Always state assumptions explicitly.</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th style="color: var(--red);">Implicit (Poor)</th>
+              <th style="color: var(--green);">Explicit (Good)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>"Write about the rent review"</td>
+              <td>"Write the landlord's opening position for a rent review at Unit 4, Riverside BP, S2 4SL. Current rent &pound;45,000 pa, review date 25/03/2026, upward only, 5-yearly."</td>
+            </tr>
+            <tr>
+              <td>"Analyse the comparables"</td>
+              <td>"Analyse these 5 comparable transactions, adjusting headline rents to effective rents over a 10-year term. Present as a table with columns for address, size, headline rent psf, incentives, and effective rent psf."</td>
+            </tr>
+            <tr>
+              <td>"Make it professional"</td>
+              <td>"Rewrite in a formal tone suitable for a RICS-compliant rent review report. Use third person. Avoid colloquialisms."</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Principle 2: Provide Reference Material</h3>
+
+      <p>When you want Claude to match a specific style or standard, show it an example rather than describing it abstractly:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Providing Reference Material</div>
+        <div class="prompt-text">Read the Hillway fee proposal template at /Users/matt/Projects/hillway-training/templates/fee-proposal.docx. Now draft a fee proposal for ABC Property Fund using the same structure, tone, and formatting. The instruction is for rent review advice on 8 industrial units across Sheffield.</div>
+      </div>
+
+      <h3>Principle 3: Decompose Complex Tasks</h3>
+
+      <p>Large tasks should be broken into smaller, manageable steps. This reduces errors and gives you checkpoints for review:</p>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Outline first</strong>
+            <p>"Create an outline for a market update report covering Sheffield industrial property"</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Review the outline</strong>
+            <p>"Good outline. Move the supply pipeline section before the demand analysis. Remove the retail section &mdash; this is industrial only."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Write section by section</strong>
+            <p>"Now write the Executive Summary section. Keep it under 200 words."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Review and iterate each section</strong>
+            <p>"Tighten the language in paragraph 2. Add a specific statistic about vacancy rates."</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Principle 4: Define the Negative Space</h3>
+
+      <p>Telling Claude what NOT to do is often as important as telling it what to do:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Defining Negative Space</div>
+        <div class="prompt-text">Write a market commentary on Sheffield office property. Do NOT:
+- Include any specific rental figures unless I provide them
+- Give legal advice or opinions on legislation
+- Make predictions about future market movements
+- Use American English spellings or terminology
+- Include any information about residential property</div>
+      </div>
+
+      <h3>Principle 5: Request Reasoning</h3>
+
+      <p>When you want Claude to show its working (not just give an answer), ask it to explain its reasoning:</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Requesting Reasoning</div>
+        <div class="prompt-text">Based on these 6 comparable transactions, what ERV would you recommend for the subject property? Show your reasoning step by step: explain which comparables you weighted most heavily and why, what adjustments you made, and how you arrived at your final figure.</div>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Take a task you have already done with Claude Code this week and rewrite your original prompt using all five principles. Compare the output quality. You should see a noticeable improvement in relevance, accuracy, and usefulness.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Five advanced prompt principles: <strong>be explicit</strong>, <strong>provide reference material</strong>, <strong>decompose complex tasks</strong>, <strong>define negative space</strong>, and <strong>request reasoning</strong>. Applying these consistently will dramatically improve the quality of Claude's output.</p>
+      </div>
+    </div>
+
+    <!-- Section 19: Templates -->
+    <div class="section fade-in" id="day5-s2">
+      <div class="section-header">
+        <span class="section-number">19</span>
+        <h2>Templates</h2>
+      </div>
+
+      <p>Reusable prompt templates save time and ensure consistency across similar tasks. At Hillway, we maintain a library of templates for common property work.</p>
+
+      <h3>Building a Prompt Template</h3>
+
+      <p>A good template has fixed structure with variable fields that change per use:</p>
+
+      <div class="code-block">
+<pre>TEMPLATE: Rent Review Opening Letter
+
+CONTEXT:
+- Property: [ADDRESS]
+- Tenant: [TENANT NAME]
+- Landlord: [LANDLORD NAME]
+- Current rent: [AMOUNT] per annum
+- Review date: [DATE]
+- Review basis: [UPWARD ONLY / OPEN MARKET]
+- We act for: [LANDLORD / TENANT]
+
+TASK:
+Draft a formal opening letter for the rent review.
+Include reference to the lease review clause.
+State our initial position on ERV.
+Propose a meeting to discuss.
+
+FORMAT:
+- Formal letter format (Hillway letterhead style)
+- Maximum 1 page
+- Professional but collaborative tone</pre>
+      </div>
+
+      <h3>Common Hillway Templates</h3>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Template</th>
+              <th>Variables to Fill In</th>
+              <th>Typical Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Rent review opening letter</td>
+              <td>Property, parties, rent, date, basis</td>
+              <td>1-page formal letter</td>
+            </tr>
+            <tr>
+              <td>Fee proposal</td>
+              <td>Client, service, property, fees, timeline</td>
+              <td>3&ndash;5 page proposal document</td>
+            </tr>
+            <tr>
+              <td>Site inspection notes</td>
+              <td>Property, date, attendees, observations</td>
+              <td>Structured inspection record</td>
+            </tr>
+            <tr>
+              <td>Comparable evidence schedule</td>
+              <td>Subject property, comparables data</td>
+              <td>Formatted comparison table</td>
+            </tr>
+            <tr>
+              <td>Client update email</td>
+              <td>Client name, project, progress, next steps</td>
+              <td>Professional email draft</td>
+            </tr>
+            <tr>
+              <td>Lease summary</td>
+              <td>Full lease document or key terms</td>
+              <td>Structured summary of key provisions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Using Templates Effectively</h3>
+
+      <p>Templates work best when you:</p>
+
+      <ul>
+        <li><strong>Fill in all variables</strong> &mdash; empty fields lead to hallucinated content</li>
+        <li><strong>Customise for the situation</strong> &mdash; templates are starting points, not rigid forms</li>
+        <li><strong>Review the output critically</strong> &mdash; template-generated content still needs human review</li>
+        <li><strong>Update templates over time</strong> &mdash; improve them based on what works and what does not</li>
+      </ul>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Create your own prompt template for a task you do regularly. Think about:</p>
+        <ul>
+          <li>What context does Claude always need for this task?</li>
+          <li>What variables change each time?</li>
+          <li>What format should the output take?</li>
+          <li>What constraints or exclusions are important?</li>
+        </ul>
+        <p>Test the template with fictional data. Refine it until the output consistently meets your standards.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Prompt templates provide reusable structures for common tasks. Build them with fixed structure and variable fields. Always fill in all variables, customise for the situation, and review the output critically.</p>
+      </div>
+    </div>
+
+    <!-- Section 20: RICS & Judgement -->
+    <div class="section fade-in" id="day5-s3">
+      <div class="section-header">
+        <span class="section-number">20</span>
+        <h2>RICS &amp; Professional Judgement</h2>
+      </div>
+
+      <p>As a RICS-regulated firm, Hillway has specific obligations around how AI is used in professional work. This section covers the intersection of AI tools and professional standards.</p>
+
+      <div class="key-concept">
+        <h4>RICS and AI: The Core Principle</h4>
+        <p>RICS members remain <strong>personally responsible</strong> for all professional advice and work product, regardless of whether AI tools were used to assist. AI can help with research, drafting, and analysis, but the professional judgement, opinion, and signature must come from a qualified human.</p>
+      </div>
+
+      <h3>What AI Can and Cannot Do Under RICS Standards</h3>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th style="color: var(--green);">AI Can Assist With</th>
+              <th style="color: var(--red);">AI Must NOT Provide</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Research and data gathering</td>
+              <td>Formal valuations or professional opinions</td>
+            </tr>
+            <tr>
+              <td>Drafting reports and letters</td>
+              <td>Legal advice</td>
+            </tr>
+            <tr>
+              <td>Analysing comparable evidence</td>
+              <td>Expert witness opinions</td>
+            </tr>
+            <tr>
+              <td>Calculating yields and rent adjustments</td>
+              <td>Final figures without human verification</td>
+            </tr>
+            <tr>
+              <td>Summarising lease documents</td>
+              <td>Interpretation of lease terms for clients</td>
+            </tr>
+            <tr>
+              <td>Preparing meeting notes and agendas</td>
+              <td>Negotiation strategy without professional review</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Disclosure and Transparency</h3>
+
+      <p>Hillway's position on AI disclosure:</p>
+
+      <ul>
+        <li><strong>Internal work</strong> &mdash; no disclosure required for AI-assisted drafts, research, or analysis used internally</li>
+        <li><strong>Client communications</strong> &mdash; AI-assisted drafts are reviewed and approved by a professional before sending. The professional takes responsibility for the content</li>
+        <li><strong>Formal reports</strong> &mdash; the signing surveyor is responsible for all content, regardless of how initial drafts were produced</li>
+        <li><strong>If asked directly</strong> &mdash; be honest about AI use. "We use AI tools to assist with research and drafting, but all professional advice is reviewed and approved by a qualified surveyor"</li>
+      </ul>
+
+      <h3>The Human Oversight Framework</h3>
+
+      <p>Every piece of AI-generated work at Hillway goes through a human oversight process:</p>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Generation</strong>
+            <p>Claude Code produces a draft or analysis</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Fact-check</strong>
+            <p>Verify all facts, figures, dates, and names against primary sources</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Professional review</strong>
+            <p>Apply professional judgement &mdash; is the analysis sound? Are conclusions reasonable?</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>RICS compliance check</strong>
+            <p>Does the output meet relevant RICS standards and guidance?</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <strong>Approval</strong>
+            <p>A qualified professional approves the final output before it leaves the firm</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pitfall">
+        <h4>Common Pitfall: Over-Reliance on AI Analysis</h4>
+        <p>It is tempting to accept Claude's analysis at face value, especially when it looks thorough and well-structured. But AI can miss nuances that an experienced surveyor would catch &mdash; unusual lease provisions, local market factors, or physical property issues that affect value. <strong>Your professional training and experience are irreplaceable.</strong></p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>RICS members remain personally responsible for all professional advice, regardless of AI involvement. AI assists with research and drafting; humans provide judgement and sign-off. Follow the human oversight framework for every piece of work.</p>
+      </div>
+    </div>
+
+    <!-- Section 21: Security & Failures -->
+    <div class="section fade-in" id="day5-s4">
+      <div class="section-header">
+        <span class="section-number">21</span>
+        <h2>Security &amp; Handling Failures</h2>
+      </div>
+
+      <p>Using AI tools involves data security responsibilities and the need to handle situations when AI gets things wrong. This section covers both.</p>
+
+      <h3>Data Security with Claude Code</h3>
+
+      <div class="key-concept">
+        <h4>What Data is Safe to Use with Claude Code?</h4>
+        <p>Claude Code processes data through Anthropic's API. Hillway's arrangement means that data sent to Claude is not used for training. However, you should still exercise caution with highly sensitive information and follow Hillway's data handling policies.</p>
+      </div>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th style="color: var(--green);">Safe to Use</th>
+              <th style="color: var(--amber);">Use with Caution</th>
+              <th style="color: var(--red);">Do Not Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Property addresses and descriptions</td>
+              <td>Client financial information (for analysis only)</td>
+              <td>Personal passwords or API keys</td>
+            </tr>
+            <tr>
+              <td>Publicly available market data</td>
+              <td>Lease terms and rental figures</td>
+              <td>Bank account details</td>
+            </tr>
+            <tr>
+              <td>Hillway internal procedures</td>
+              <td>Client contact details (for drafting communications)</td>
+              <td>National Insurance or passport numbers</td>
+            </tr>
+            <tr>
+              <td>Professional standards references</td>
+              <td>Draft reports (before client approval)</td>
+              <td>Credit card numbers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>When Claude Gets It Wrong</h3>
+
+      <p>AI failures happen. Knowing how to identify and handle them is an essential skill:</p>
+
+      <h4>Types of AI Failure</h4>
+
+      <ul>
+        <li><strong>Hallucination</strong> &mdash; Claude confidently states something incorrect. Example: inventing a comparable transaction that never happened</li>
+        <li><strong>Outdated information</strong> &mdash; Claude's training data has a cutoff. It may not know about recent legislation or market changes</li>
+        <li><strong>Misunderstanding context</strong> &mdash; Claude may apply the wrong jurisdiction (Scottish law instead of English) or wrong property type (residential instead of commercial)</li>
+        <li><strong>Arithmetic errors</strong> &mdash; Multi-step calculations can go wrong, especially with complex adjustments</li>
+        <li><strong>Tone misjudgement</strong> &mdash; An email may be too casual or too formal for the recipient</li>
+      </ul>
+
+      <h4>Handling Failures</h4>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Identify the error</strong>
+            <p>Check facts against primary sources. Verify arithmetic. Read critically, not passively.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Correct Claude directly</strong>
+            <p>"That comparable at 25 Church Street &mdash; the rent was &pound;22.50 psf, not &pound;25.00. Please recalculate."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Provide correct information</strong>
+            <p>Give Claude the right data and ask it to redo the work.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Learn the pattern</strong>
+            <p>If Claude consistently makes the same type of error, adjust your prompts to prevent it.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Deliberately test Claude Code's accuracy. Ask it a question about a specific property transaction you know the details of, or a specific RICS standard you have studied. Does it get everything right? Where does it go wrong? Understanding Claude's failure modes makes you a more effective user.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Security means knowing what data is safe to use with Claude and what is not. Handling failures means actively checking AI output, correcting errors, and learning from patterns. Both skills are essential for professional AI use.</p>
+      </div>
+    </div>
+
+    <!-- Section 22: Advanced Tools -->
+    <div class="section fade-in" id="day5-s5">
+      <div class="section-header">
+        <span class="section-number">22</span>
+        <h2>Advanced Tools</h2>
+      </div>
+
+      <p>This section introduces advanced Claude Code features that will become more useful as your confidence grows.</p>
+
+      <h3>Playwright: Browser Automation</h3>
+
+      <p>Claude Code can control a web browser via the Playwright MCP server. This enables automation of tasks that normally require manual web interaction:</p>
+
+      <ul>
+        <li>Navigating to a website and extracting data</li>
+        <li>Filling in forms and submitting applications</li>
+        <li>Taking screenshots of web pages for reports</li>
+        <li>Checking the status of online planning applications</li>
+      </ul>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example: Browser Automation</div>
+        <div class="prompt-text">Use Playwright to navigate to the Sheffield City Council planning portal. Search for planning applications within 500m of S1 4GF submitted in the last 3 months. Take a screenshot of the results.</div>
+      </div>
+
+      <h3>Bash: Running Commands</h3>
+
+      <p>The Bash tool lets Claude run command-line operations. For property work, this is useful for:</p>
+
+      <ul>
+        <li>Processing multiple files at once (e.g., renaming, converting)</li>
+        <li>Running scripts that connect to external APIs</li>
+        <li>Managing Git repositories for version control of documents</li>
+        <li>Installing or updating tools</li>
+      </ul>
+
+      <h3>Git: Version Control for Documents</h3>
+
+      <p>Git is a system for tracking changes to files over time. At Hillway, we use it primarily for code projects, but it can also track changes to important documents:</p>
+
+      <div class="key-concept">
+        <h4>Why Git Matters</h4>
+        <p>Git records every change ever made to a file, who made it, and when. This means you can always go back to a previous version. For property work, this provides an audit trail of how reports and analyses evolved &mdash; useful for professional accountability.</p>
+      </div>
+
+      <h3>Thinking Triggers</h3>
+
+      <p>For complex analytical tasks, you can tell Claude to think more deeply by using specific triggers:</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Trigger</th>
+              <th>Thinking Depth</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code class="inline">think</code></td>
+              <td>Standard</td>
+              <td>Single-file changes, simple analysis</td>
+            </tr>
+            <tr>
+              <td><code class="inline">think hard</code></td>
+              <td>Deeper</td>
+              <td>Multi-document coordination, complex reports</td>
+            </tr>
+            <tr>
+              <td><code class="inline">think harder</code></td>
+              <td>Extended</td>
+              <td>Strategic analysis, complex valuation methodology</td>
+            </tr>
+            <tr>
+              <td><code class="inline">ultrathink</code></td>
+              <td>Maximum</td>
+              <td>Critical decisions, complex financial models, security analysis</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example: Using Thinking Triggers</div>
+        <div class="prompt-text">Ultrathink about this: We have been instructed to advise on the rent review for a 50,000 sq ft distribution warehouse in Rotherham. The lease was granted in 2010 with 5-yearly upward-only reviews. The tenant is a national retailer. The current passing rent is &pound;275,000 pa. Comparable evidence is limited. What methodology should we adopt, and what risks should we flag to the client?</div>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Day 5 Summary</h4>
+        <p>Today covered advanced prompt principles, reusable templates, RICS professional standards with AI, data security, handling AI failures, and advanced tools including browser automation, Git, and thinking triggers. You now have a comprehensive understanding of Claude Code for professional property work. The remaining days will deepen specific areas.</p>
+      </div>
+    </div>

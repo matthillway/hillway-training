@@ -1,0 +1,525 @@
+    <!-- ============================================ -->
+    <!-- DAY 4: CO-WORK & TEAMS                        -->
+    <!-- ============================================ -->
+    <div class="day-divider fade-in">
+      <div class="day-number">Day 4</div>
+      <h2 class="day-title">Co-work Mode &amp; Agent Teams</h2>
+      <p class="day-subtitle">Learn how to work alongside Claude in real time, use agent teams for complex tasks, and leverage Hillway&rsquo;s custom workflows.</p>
+      <div class="est-time">Estimated time: 90&ndash;120 minutes</div>
+    </div>
+
+    <div class="learning-objectives fade-in">
+      <h3>Day 4 Learning Objectives</h3>
+      <ul>
+        <li>Understand co-work mode and how to collaborate with Claude Code in real time</li>
+        <li>Explain what agent teams are and when to use them</li>
+        <li>Know which custom Hillway agents and skills are available</li>
+        <li>Use Memory MCP and workflows to maintain context across sessions</li>
+      </ul>
+    </div>
+
+    <!-- Section 14: Co-work Basics -->
+    <div class="section fade-in" id="day4-s1">
+      <div class="section-header">
+        <span class="section-number">14</span>
+        <h2>Co-work Basics</h2>
+      </div>
+
+      <p>Up until now, you have been working with Claude Code in a request-response pattern: you ask something, Claude does it, you ask the next thing. <strong>Co-work mode</strong> changes this dynamic. Instead of sequential requests, you and Claude work on the same task simultaneously &mdash; like having a colleague sitting next to you.</p>
+
+      <div class="key-concept">
+        <h4>What is Co-work Mode?</h4>
+        <p>Co-work mode is a way of using Claude Code where you maintain an ongoing conversation while Claude works on tasks in the background. You can continue giving instructions, ask questions, and refine direction while Claude is actively working. Think of it as pair-working with an AI colleague.</p>
+      </div>
+
+      <h3>When to Use Co-work Mode</h3>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Use Co-work Mode</th>
+              <th>Use Standard Mode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Complex, multi-step tasks (e.g., writing a full report)</td>
+              <td>Quick, one-off questions</td>
+            </tr>
+            <tr>
+              <td>Tasks where you want to guide direction as you go</td>
+              <td>Tasks with clear, complete instructions upfront</td>
+            </tr>
+            <tr>
+              <td>Exploratory work (researching a topic, exploring options)</td>
+              <td>Repetitive tasks with fixed patterns</td>
+            </tr>
+            <tr>
+              <td>Learning/training (working through a problem together)</td>
+              <td>Simple file operations or calculations</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Effective Co-work Techniques</h3>
+
+      <p>To get the most from co-work mode:</p>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Start with the big picture</strong>
+            <p>Explain the overall goal before diving into details. "I need to prepare for a rent review meeting tomorrow. The property is..."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Guide as Claude works</strong>
+            <p>If Claude starts down a path you don't want, redirect immediately. "Actually, focus on the industrial comparables, not office."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Ask clarifying questions</strong>
+            <p>"Why did you choose that comparable? Is there anything more recent?" Treat Claude as a colleague you are checking in with.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Use checkpoints</strong>
+            <p>For long tasks, periodically confirm you are on the right track. "Good so far. Before we continue to the valuation section, let me review what we have."</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Co-work Session Example</div>
+        <div class="prompt-text"><strong>You:</strong> I need to put together a fee proposal for ABC Property Fund. They want us to manage 8 industrial units across Sheffield and Rotherham. Let's start by listing what services we'd typically include.
+
+<strong>Claude:</strong> [Lists property management services]
+
+<strong>You:</strong> Good. Add building surveying services too &mdash; they mentioned some units need condition surveys. Now let's work on pricing. Our standard PM fee is 8% of rent collected for portfolios under 10 units.
+
+<strong>Claude:</strong> [Calculates fees based on rent schedule]
+
+<strong>You:</strong> That total looks right but round the building surveying fees to the nearest &pound;50. Also, add a 10% discount for the first year as we discussed.
+
+<strong>Claude:</strong> [Refines the proposal]</div>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Start a co-work session with Claude Code. Tell it you need to prepare for a site inspection of a fictional commercial property. Work through:</p>
+        <ul>
+          <li>What items should be on the inspection checklist?</li>
+          <li>What equipment do you need?</li>
+          <li>What photographs should you take?</li>
+          <li>What measurements are needed?</li>
+        </ul>
+        <p>Guide Claude as it works, adding your own property knowledge to refine the output.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Co-work mode transforms Claude from a request-response tool into a collaborative working partner. Use it for complex, multi-step tasks where you want to guide direction as you go. Start with the big picture, guide as Claude works, and use checkpoints to stay on track.</p>
+      </div>
+    </div>
+
+    <!-- Section 15: Agent Teams -->
+    <div class="section fade-in" id="day4-s2">
+      <div class="section-header">
+        <span class="section-number">15</span>
+        <h2>Agent Teams</h2>
+      </div>
+
+      <p>One of Claude Code's most powerful features is <strong>agent teams</strong> &mdash; the ability to spin up multiple AI agents that work together on a task. Instead of one Claude doing everything sequentially, several specialised agents can work in parallel, each focusing on their area of expertise.</p>
+
+      <div class="key-concept">
+        <h4>What is an Agent Team?</h4>
+        <p>An agent team is a group of specialised AI agents coordinated by a lead agent. Each team member has a specific role (researcher, analyst, writer, reviewer) and they communicate with each other to complete complex tasks faster and more thoroughly than a single agent could. Think of it like delegating work to a team of specialists.</p>
+      </div>
+
+      <h3>How Agent Teams Work</h3>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>You give a command</strong>
+            <p>You invoke a team skill (like <code class="inline">/team</code> or <code class="inline">/audit</code>)</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>The lead agent plans the work</strong>
+            <p>A team lead agent breaks the task into sub-tasks and assigns them to specialist agents</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Agents work in parallel</strong>
+            <p>Multiple agents work simultaneously &mdash; one researching, one analysing, one drafting</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Results are combined</strong>
+            <p>The lead agent compiles the results into a coherent output and presents it to you</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>When Agent Teams Add Value</h3>
+
+      <p>Agent teams are most valuable for tasks that benefit from multiple perspectives or parallel processing:</p>
+
+      <ul>
+        <li><strong>Property research</strong> &mdash; One agent checks VOA data, another searches the web, another analyses local files</li>
+        <li><strong>Project audits</strong> &mdash; Multiple agents examine different aspects (code quality, security, documentation, performance)</li>
+        <li><strong>Fee proposals</strong> &mdash; Research agent gathers market rates, writer agent drafts the proposal, reviewer checks quality</li>
+        <li><strong>Board discussions</strong> &mdash; Multiple AI &ldquo;directors&rdquo; debate a strategic question from different perspectives</li>
+      </ul>
+
+      <div class="card card-warning">
+        <h4>Agent Team Considerations</h4>
+        <ul>
+          <li><strong>Cost</strong> &mdash; Each agent in a team uses API tokens, so teams cost more than single-agent tasks</li>
+          <li><strong>Complexity</strong> &mdash; For simple tasks, a single agent is faster and more efficient</li>
+          <li><strong>Coordination</strong> &mdash; Agents may occasionally produce conflicting outputs that the lead must reconcile</li>
+          <li><strong>Review still required</strong> &mdash; More agents does not mean less human review. You must still verify everything</li>
+        </ul>
+      </div>
+
+      <h3>Available Team Commands at Hillway</h3>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>Team Size</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code class="inline">/team</code> or <code class="inline">/surveyor</code></td>
+              <td>Variable</td>
+              <td>Property work &mdash; research, proposals, reports, letters</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/board-v2</code></td>
+              <td>6 directors</td>
+              <td>Strategic decisions &mdash; board debate from multiple perspectives</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/audit</code></td>
+              <td>8 specialists</td>
+              <td>Project audit &mdash; comprehensive quality review</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/pitch</code></td>
+              <td>7 + Devil&rsquo;s Advocate</td>
+              <td>Product evaluation &mdash; assess a business idea</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/growth-swarm</code></td>
+              <td>6 specialists</td>
+              <td>Marketing strategy &mdash; campaigns and growth planning</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/security-swarm</code></td>
+              <td>8 specialists</td>
+              <td>Security assessment &mdash; vulnerability and compliance audit</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example: Using the Property Team</div>
+        <div class="prompt-text">/team Prepare a comprehensive rent review report for Unit 4, Riverside Business Park, S2 4SL. The current passing rent is &pound;45,000 pa and the review is effective 25 March 2026. We act for the landlord. Include comparable evidence analysis, ERV assessment, and negotiation strategy.</div>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Agent teams multiply Claude's capabilities by assigning specialised agents to work in parallel. Use them for complex, multi-faceted tasks. For simple tasks, stick with a single agent. Always review the combined output &mdash; more agents does not replace human judgement.</p>
+      </div>
+    </div>
+
+    <!-- Section 16: Hillway Agents -->
+    <div class="section fade-in" id="day4-s3">
+      <div class="section-header">
+        <span class="section-number">16</span>
+        <h2>Hillway Agents</h2>
+      </div>
+
+      <p>Hillway has configured a library of custom <strong>skills</strong> (also called slash commands) that are tailored to our specific business needs. These are pre-built prompt patterns and workflows that you can invoke with a single command.</p>
+
+      <h3>Property Skills</h3>
+
+      <p>These are the skills most relevant to your daily work as an apprentice surveyor:</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Skill</th>
+              <th>What It Does</th>
+              <th>Example Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code class="inline">/rent-review-analysis</code></td>
+              <td>Calculates rent review positions using comparables</td>
+              <td>Preparing for a rent review negotiation</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/comparables</code></td>
+              <td>Fetches VOA comparable evidence</td>
+              <td>Finding comparable rents by postcode</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/lease-advisory</code></td>
+              <td>Lease analysis (reviews, renewals, breaks)</td>
+              <td>Advising on a tenant's break clause options</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/property-lookup</code></td>
+              <td>Full property intelligence from 10 UK data sources</td>
+              <td>Quick property research for a new instruction</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/investment-yield</code></td>
+              <td>Calculates NIY, EY, reversionary yield</td>
+              <td>Pricing an investment property</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/dcf-property</code></td>
+              <td>Discounted cash flow analysis</td>
+              <td>Investment appraisal for a client</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/epc</code></td>
+              <td>EPC rating lookup for any UK property</td>
+              <td>Checking energy performance before a letting</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/flood-check</code></td>
+              <td>Environment Agency flood risk assessment</td>
+              <td>Due diligence on a property acquisition</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/voa</code></td>
+              <td>VOA data &mdash; floor area, rateable value, market rent</td>
+              <td>Checking rateable values for business rates advice</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Business &amp; Communication Skills</h3>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Skill</th>
+              <th>What It Does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code class="inline">/proposal</code></td>
+              <td>Generates fee proposals for clients</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/letter</code></td>
+              <td>Drafts formal client letters</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/email</code></td>
+              <td>Drafts professional emails</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/report</code></td>
+              <td>Drafts formal property reports</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/brief</code></td>
+              <td>Generates client briefing notes</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/linkedin</code></td>
+              <td>Creates LinkedIn content for Hillway</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Using Skills in Practice</h3>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example: Property Lookup</div>
+        <div class="prompt-text">/property-lookup 22 Division Street, Sheffield S1 4GF</div>
+      </div>
+
+      <p>This single command triggers a comprehensive property intelligence report that checks up to 10 data sources: VOA ratings, EPC certificates, Land Registry ownership, flood risk, planning applications, and more. What would take you 30 minutes of manual research happens in seconds.</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example: Rent Review Analysis</div>
+        <div class="prompt-text">/rent-review-analysis
+
+Property: Unit 7, Meadowhall Business Park, S9 1EP
+Current rent: &pound;55,000 pa
+Review date: 29 September 2026
+Lease terms: upward only, 5-yearly reviews
+We act for: Landlord</div>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Try the <code class="inline">/voa</code> skill with a Sheffield postcode you know well (perhaps the postcode of a property you have visited on a site inspection). See what data comes back. Then try <code class="inline">/epc</code> with the same postcode. Compare what each skill provides.</p>
+      </div>
+
+      <div class="pitfall">
+        <h4>Common Pitfall: Using Skills Without Understanding Them</h4>
+        <p>Skills are powerful shortcuts, but you should understand what they do before relying on their output. A <code class="inline">/rent-review-analysis</code> output is a starting point for professional analysis, not a finished product. Always apply your surveying knowledge and judgement to the results.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Section Summary</h4>
+        <p>Hillway has a library of custom skills that automate common property and business tasks. Learn which skills are available and what they produce. Use them as starting points and time-savers, but always apply your professional judgement to the output.</p>
+      </div>
+    </div>
+
+    <!-- Section 17: Memory & Workflows -->
+    <div class="section fade-in" id="day4-s4">
+      <div class="section-header">
+        <span class="section-number">17</span>
+        <h2>Memory &amp; Workflows</h2>
+      </div>
+
+      <p>A significant limitation of AI chat is that each new session starts from scratch &mdash; Claude does not remember what you discussed yesterday. Hillway solves this with <strong>Memory MCP</strong> and <strong>CLAUDE.md files</strong>, which give Claude persistent context across sessions.</p>
+
+      <h3>How Memory Works</h3>
+
+      <div class="key-concept">
+        <h4>Memory MCP</h4>
+        <p>The Memory MCP server stores important information as &ldquo;entities&rdquo; &mdash; structured pieces of knowledge that Claude can query at the start of any session. This means Claude can remember client preferences, project decisions, and important context without you having to repeat it every time.</p>
+      </div>
+
+      <p>Types of information stored in Memory:</p>
+
+      <ul>
+        <li><strong>Client information</strong> &mdash; preferences, history, contact details</li>
+        <li><strong>Project decisions</strong> &mdash; architecture choices, approach decisions with rationale</li>
+        <li><strong>Milestones</strong> &mdash; what has been completed, what is next</li>
+        <li><strong>Risk registers</strong> &mdash; identified risks and mitigations</li>
+      </ul>
+
+      <h3>CLAUDE.md Files</h3>
+
+      <p>Every project at Hillway has a <code class="inline">CLAUDE.md</code> file that gives Claude essential context about the project. When you start Claude Code in a project directory, it automatically reads this file.</p>
+
+      <div class="prompt-example">
+        <div class="prompt-label">Example CLAUDE.md Structure</div>
+        <div class="prompt-text"># Project: Riverside Business Park Rent Reviews
+
+## Status
+In progress &mdash; 3 of 8 units reviewed
+
+## Client
+ABC Property Fund (main contact: James Wright)
+
+## Key Decisions
+- Using 5-year average growth for industrial rents (decided 12 Jan 2026)
+- Excluding Unit 3 from review (tenant exercised break clause)
+
+## Last Working State
+Comparable evidence pack complete for Units 1, 2, and 4.
+Next: analyse comparables for Units 5-8.</div>
+      </div>
+
+      <h3>Session Workflows</h3>
+
+      <p>Hillway uses structured workflows to maintain continuity across sessions:</p>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Start of session</strong>
+            <p>Claude reads CLAUDE.md and queries Memory MCP for relevant context. You pick up where you left off.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>During the session</strong>
+            <p>Important decisions are stored in Memory. Files are saved regularly. Progress is tracked.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>End of session</strong>
+            <p>CLAUDE.md is updated with current status. Work is committed to Git. Memory is updated with any new decisions.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Checkpoints and Handoffs</h3>
+
+      <p>For long tasks that might span multiple sessions, Hillway uses checkpoints:</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What It Does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code class="inline">/checkpoint</code></td>
+              <td>Saves current task state to a checkpoint file + Memory. Safe to clear context after this.</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/resume</code></td>
+              <td>Reads the checkpoint and continues where you left off after a context clear.</td>
+            </tr>
+            <tr>
+              <td><code class="inline">/compact</code></td>
+              <td>Compresses the current conversation to free up context space without losing important information.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="key-concept">
+        <h4>Context Window Management</h4>
+        <p>Claude has a limited context window (how much information it can hold in &ldquo;working memory&rdquo;). For long sessions with many files and extensive conversation, the context can fill up. Using <code class="inline">/checkpoint</code> before clearing context ensures nothing is lost. Think of it like saving your work before closing a document.</p>
+      </div>
+
+      <div class="try-this">
+        <h4>Try This Now</h4>
+        <p>Ask Claude Code what it knows about you and Hillway by saying: "What context do you have about me and about Hillway?" Notice how Claude can access information from Memory MCP and CLAUDE.md files without you providing it. This is persistent context in action.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h4>Day 4 Summary</h4>
+        <p>Today you learned about co-work mode for collaborative working, agent teams for complex parallel tasks, Hillway's library of custom skills, and how Memory MCP provides persistent context across sessions. These tools transform Claude Code from a simple Q&amp;A tool into an integrated working environment for property professionals.</p>
+      </div>
+    </div>
