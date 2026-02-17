@@ -2385,6 +2385,7 @@
   </div><!-- /content -->
 </div><!-- /main -->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
   // ==========================================
   // Progress bar
@@ -2691,6 +2692,155 @@
   }
 
   // ==========================================
+  // Sign-Off PDF Generation
+  // ==========================================
+  function generateSignoffPDF(name, date) {
+    var jsPDF = window.jspdf.jsPDF;
+    var doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    var W = 210, H = 297;
+    var navy = [15, 30, 61];
+    var gold = [200, 170, 80];
+    var gray = [120, 120, 120];
+
+    // Border
+    doc.setDrawColor(navy[0], navy[1], navy[2]);
+    doc.setLineWidth(1.5);
+    doc.rect(10, 10, W - 20, H - 20);
+    doc.setDrawColor(gold[0], gold[1], gold[2]);
+    doc.setLineWidth(0.5);
+    doc.rect(13, 13, W - 26, H - 26);
+
+    // L-bracket corners (Hillway motif)
+    var bLen = 12, bW = 2.5;
+    doc.setFillColor(navy[0], navy[1], navy[2]);
+    doc.rect(16, 16, bLen, bW, 'F');
+    doc.rect(16, 16, bW, bLen, 'F');
+    doc.rect(W - 16 - bLen, H - 16 - bW, bLen, bW, 'F');
+    doc.rect(W - 16 - bW, H - 16 - bLen, bW, bLen, 'F');
+
+    // Logo text
+    var y = 35;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(18);
+    doc.setTextColor(navy[0], navy[1], navy[2]);
+    doc.setCharSpace(4);
+    doc.text('HILLWAY', W / 2, y, { align: 'center' });
+    doc.setCharSpace(0);
+
+    // Title
+    y += 14;
+    doc.setFontSize(22);
+    doc.setTextColor(navy[0], navy[1], navy[2]);
+    doc.text('Induction Sign-Off Record', W / 2, y, { align: 'center' });
+
+    // Divider
+    y += 6;
+    doc.setDrawColor(gold[0], gold[1], gold[2]);
+    doc.setLineWidth(0.8);
+    doc.line(60, y, W - 60, y);
+
+    // Employee details
+    y += 14;
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(navy[0], navy[1], navy[2]);
+    doc.text('Employee:', 25, y);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(40, 40, 40);
+    doc.text(name, 60, y);
+
+    y += 8;
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(navy[0], navy[1], navy[2]);
+    doc.text('Date:', 25, y);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(40, 40, 40);
+    var formattedDate = new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    doc.text(formattedDate, 60, y);
+
+    // Declaration
+    y += 14;
+    doc.setDrawColor(220, 220, 220);
+    doc.setLineWidth(0.3);
+    doc.line(25, y, W - 25, y);
+    y += 10;
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(navy[0], navy[1], navy[2]);
+    doc.text('Declaration', 25, y);
+    y += 7;
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(40, 40, 40);
+    doc.setFontSize(10);
+    var declText = 'I confirm that I have read, understood, and agree to comply with all of the policies and documents listed below, and the Hillway Staff Handbook. I understand that failure to comply may result in disciplinary action.';
+    var declLines = doc.splitTextToSize(declText, W - 50);
+    doc.text(declLines, 25, y);
+    y += declLines.length * 5 + 6;
+
+    // Documents confirmed
+    doc.setDrawColor(220, 220, 220);
+    doc.line(25, y, W - 25, y);
+    y += 10;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.setTextColor(navy[0], navy[1], navy[2]);
+    doc.text('Documents Confirmed', 25, y);
+    y += 8;
+
+    var documents = [
+      'Hillway Staff Handbook v1.0',
+      'RICS Compliance Policy',
+      'Anti-Money Laundering Policy',
+      'Conflicts of Interest Policy',
+      'Professional Indemnity Insurance Policy',
+      'IP and AI Usage Policy',
+      'Information Security Policy',
+      'Remote and Hybrid Working Policy',
+      'Anti-Bribery and Corruption Policy'
+    ];
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    doc.setTextColor(40, 40, 40);
+    documents.forEach(function(docName) {
+      doc.setFillColor(34, 139, 34);
+      doc.circle(29, y - 1.2, 1.5, 'F');
+      doc.text(docName, 34, y);
+      y += 6;
+    });
+
+    // Signature line
+    y += 10;
+    doc.setDrawColor(220, 220, 220);
+    doc.line(25, y, W - 25, y);
+    y += 12;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.setTextColor(navy[0], navy[1], navy[2]);
+    doc.text('Signed:', 25, y);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(40, 40, 40);
+    doc.text(name, 50, y);
+
+    y += 10;
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(navy[0], navy[1], navy[2]);
+    doc.text('Date:', 25, y);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(40, 40, 40);
+    doc.text(formattedDate, 50, y);
+
+    // Footer
+    doc.setFontSize(8);
+    doc.setTextColor(gray[0], gray[1], gray[2]);
+    doc.text('Hillway Holdings Ltd | Regulated by RICS (Firm Reg. No. 900798) | www.hillwayco.uk', W / 2, H - 18, { align: 'center' });
+    doc.text('Sheffield: Cubo, 38 Carver Street, S1 4FS | Doncaster: First Floor, David House, 30 South Parade, Bawtry, DN10 6JH', W / 2, H - 14, { align: 'center' });
+
+    var filename = 'Hillway-Induction-SignOff-' + name.replace(/\s+/g, '-') + '.pdf';
+    doc.save(filename);
+  }
+
+  // ==========================================
   // Sign-Off Submission
   // ==========================================
   function submitSignoff() {
@@ -2757,26 +2907,19 @@
         ]
       })
     }).then(function(res) {
-      if (res.ok) {
-        successDiv.style.display = 'block';
-        document.getElementById('signoff-submit').disabled = true;
-        document.getElementById('signoff-submit').textContent = 'Signed Off';
-        document.getElementById('signoff-submit').style.background = 'var(--gray-400)';
-        localStorage.setItem('hillway-induction-signoff', JSON.stringify({ name: name, date: date }));
-      } else {
-        // Still show success even if Supabase fails (record locally)
-        successDiv.style.display = 'block';
-        document.getElementById('signoff-submit').disabled = true;
-        document.getElementById('signoff-submit').textContent = 'Signed Off';
-        document.getElementById('signoff-submit').style.background = 'var(--gray-400)';
-        localStorage.setItem('hillway-induction-signoff', JSON.stringify({ name: name, date: date }));
-      }
+      successDiv.style.display = 'block';
+      document.getElementById('signoff-submit').disabled = true;
+      document.getElementById('signoff-submit').textContent = 'Signed Off';
+      document.getElementById('signoff-submit').style.background = 'var(--gray-400)';
+      localStorage.setItem('hillway-induction-signoff', JSON.stringify({ name: name, date: date }));
+      generateSignoffPDF(name, date);
     }).catch(function() {
       successDiv.style.display = 'block';
       document.getElementById('signoff-submit').disabled = true;
       document.getElementById('signoff-submit').textContent = 'Signed Off';
       document.getElementById('signoff-submit').style.background = 'var(--gray-400)';
       localStorage.setItem('hillway-induction-signoff', JSON.stringify({ name: name, date: date }));
+      generateSignoffPDF(name, date);
     });
   }
 
