@@ -1659,6 +1659,19 @@
     </div>
 
 
+    <div class="card" style="margin: 32px 0; padding: 0; overflow: hidden; border-radius: 12px; border: 1px solid var(--gray-200);">
+      <div style="padding: 16px 20px; background: var(--primary); color: white;">
+        <h4 style="margin: 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Video: Generative AI in a Nutshell</h4>
+        <p style="margin: 4px 0 0; font-size: 12px; opacity: 0.7;">Henrik Kniberg &middot; 18 minutes</p>
+      </div>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/2IK3DFHRFfw" title="Generative AI in a Nutshell" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+      </div>
+      <div style="padding: 12px 20px; background: var(--gray-50); font-size: 13px; color: var(--gray-600);">
+        Watch this excellent visual overview of generative AI before tackling the quiz. It reinforces the key concepts from today's reading.
+      </div>
+    </div>
+
     <!-- Day 1 Quiz -->
     <div class="section fade-in" id="quiz-1">
       <div class="section-header">
@@ -2924,6 +2937,21 @@ Now write a similar description for: a 1960s mid-terrace retail unit, ground flo
     </div>
 
 
+    <div class="card" style="margin: 32px 0; padding: 0; overflow: hidden; border-radius: 12px; border: 1px solid var(--gray-200);">
+      <div style="padding: 16px 20px; background: var(--primary); color: white;">
+        <h4 style="margin: 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Video: The Perfect Prompt Formula</h4>
+        <p style="margin: 4px 0 0; font-size: 12px; opacity: 0.7;">Jeff Su &middot; 8 minutes</p>
+      </div>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/jC4v5AS4RIM" title="Master the Perfect ChatGPT Prompt Formula" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+      </div>
+      <div style="padding: 12px 20px; background: var(--gray-50); font-size: 13px; color: var(--gray-600);">
+        Learn the 6-component prompt formula (Task, Context, Exemplars, Persona, Format, Tone) — then practise it in the interactive playground below.
+      </div>
+    </div>
+
+    <div class="prompt-playground" data-scenario="cc-email-draft"></div>
+
     <!-- Day 3 Quiz -->
     <div class="section fade-in" id="quiz-3">
       <div class="section-header">
@@ -3626,6 +3654,8 @@ Next: analyse comparables for Units 5-8.</div>
       </div>
     </div>
 
+
+    <div class="scenario-sim" data-scenario="scenario-client-meeting"></div>
 
     <!-- Day 4 Quiz -->
     <div class="section fade-in" id="quiz-4">
@@ -4370,6 +4400,21 @@ FORMAT:
       </div>
     </div>
 
+
+    <div class="card" style="margin: 32px 0; padding: 0; overflow: hidden; border-radius: 12px; border: 1px solid var(--gray-200);">
+      <div style="padding: 16px 20px; background: var(--primary); color: white;">
+        <h4 style="margin: 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Video: Prompt Engineering Deep Dive</h4>
+        <p style="margin: 4px 0 0; font-size: 12px; opacity: 0.7;">Anthropic &middot; Selected segment</p>
+      </div>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/T9aRN5JkmL8" title="AI Prompt Engineering: A Deep Dive" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+      </div>
+      <div style="padding: 12px 20px; background: var(--gray-50); font-size: 13px; color: var(--gray-600);">
+        Direct from Anthropic's prompt engineering team — the definitive guide to getting the best results from Claude. Focus on the first 20 minutes for the most relevant techniques.
+      </div>
+    </div>
+
+    <div class="prompt-playground" data-scenario="cc-lease-summary"></div>
 
     <!-- Day 5 Quiz -->
     <div class="section fade-in" id="quiz-5">
@@ -5605,6 +5650,8 @@ Create a table showing address, current EPC rating, and expiry date. Flag any wi
     </div>
 
 
+    <div class="scenario-sim" data-scenario="scenario-document-crisis"></div>
+
     <!-- Day 7 Quiz -->
     <div class="section fade-in" id="quiz-7">
       <div class="section-header">
@@ -6206,6 +6253,8 @@ Be honest about your confidence levels.</div>
       </div>
     </div>
 
+
+    <div class="prompt-playground" data-scenario="cc-portfolio-report"></div>
 
     <!-- Day 8 Quiz -->
     <div class="section fade-in" id="quiz-8">
@@ -7724,6 +7773,8 @@ Create a script to do this automatically, then run it. Show me the results.</div
 <script src="../js/reading-gates.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="../js/certificate.js"></script>
+<script src="../js/prompt-playground.js"></script>
+<script src="../js/scenario-engine.js"></script>
 <script>
   // ==========================================
   // Initialise learner on page load
