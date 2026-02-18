@@ -693,12 +693,15 @@
   <!-- Learner Bar -->
   <div class="learner-bar">
     <div class="learner-info">
-      <div class="learner-avatar" id="learner-avatar">AB</div>
+      <div class="learner-avatar" id="learner-avatar">--</div>
       <div>
-        <div class="learner-name" id="learner-name">Alex Brazier</div>
-        <div class="learner-email" id="learner-email">Loading...</div>
+        <div class="learner-name" id="learner-name">Select a learner</div>
+        <div class="learner-email" id="learner-email"></div>
       </div>
     </div>
+    <select class="filter-select" id="learner-select" onchange="onLearnerChange()" style="min-width:200px;">
+      <option value="all">All Learners</option>
+    </select>
   </div>
 
   <!-- Overview Cards -->
@@ -796,12 +799,14 @@ const COURSE_SECTIONS = {
   'property-fundamentals': 10,
   'property-management': 10,
   'ai-digital-transformation': 10,
-  'claude-code-training': 8
+  'claude-code-training': 10
 };
 
 let quizData = [];
 let progressData = [];
 let learnerData = null;
+let allLearners = [];
+let selectedLearnerId = 'all';
 let refreshInterval = null;
 
 // --- AUTH ---
@@ -925,9 +930,23 @@ async function refreshData() {
       supabaseGet('training_course_progress', 'select=*&order=completed_at.desc')
     ]);
 
-    learnerData = results[0].length > 0 ? results[0][0] : null;
-    quizData = results[1];
-    progressData = results[2];
+    allLearners = results[0] || [];
+    var allQuizData = results[1] || [];
+    var allProgressData = results[2] || [];
+
+    // Populate learner dropdown (only once or when learners change)
+    populateLearnerDropdown();
+
+    // Filter data by selected learner
+    if (selectedLearnerId === 'all') {
+      learnerData = allLearners.length > 0 ? allLearners[0] : null;
+      quizData = allQuizData;
+      progressData = allProgressData;
+    } else {
+      learnerData = allLearners.find(function(l) { return l.id === selectedLearnerId; }) || null;
+      quizData = allQuizData.filter(function(q) { return q.learner_id === selectedLearnerId; });
+      progressData = allProgressData.filter(function(p) { return p.learner_id === selectedLearnerId; });
+    }
 
     renderLearnerInfo();
     renderOverview();
@@ -942,12 +961,40 @@ async function refreshData() {
   setTimeout(function() { btn.classList.remove('spinning'); }, 600);
 }
 
+// --- LEARNER SELECTOR ---
+function populateLearnerDropdown() {
+  var select = document.getElementById('learner-select');
+  var currentVal = select.value;
+  select.innerHTML = '<option value="all">All Learners (' + allLearners.length + ')</option>';
+  allLearners.forEach(function(l) {
+    var opt = document.createElement('option');
+    opt.value = l.id;
+    opt.textContent = l.name || l.email || 'Unknown';
+    select.appendChild(opt);
+  });
+  select.value = currentVal || 'all';
+}
+
+function onLearnerChange() {
+  selectedLearnerId = document.getElementById('learner-select').value;
+  refreshData();
+}
+
+function getSelectedLearnerName() {
+  if (learnerData && selectedLearnerId !== 'all') return learnerData.name || 'Learner';
+  return 'Learner';
+}
+
 // --- RENDER: Learner Info ---
 function renderLearnerInfo() {
-  if (learnerData) {
-    document.getElementById('learner-name').textContent = learnerData.name || 'Alex Brazier';
+  if (selectedLearnerId === 'all') {
+    document.getElementById('learner-name').textContent = allLearners.length + ' Learners';
+    document.getElementById('learner-email').textContent = allLearners.map(function(l) { return l.name; }).join(', ');
+    document.getElementById('learner-avatar').textContent = allLearners.length;
+  } else if (learnerData) {
+    document.getElementById('learner-name').textContent = learnerData.name || 'Unknown';
     document.getElementById('learner-email').textContent = learnerData.email || '';
-    var initials = (learnerData.name || 'AB').split(' ').map(function(n) { return n[0]; }).join('').toUpperCase();
+    var initials = (learnerData.name || '??').split(' ').map(function(n) { return n[0]; }).join('').toUpperCase();
     document.getElementById('learner-avatar').textContent = initials;
   }
 }
@@ -1076,7 +1123,7 @@ function renderActivity() {
     svg.appendChild(polyline);
     empty.appendChild(svg);
     empty.appendChild(el('p', {}, 'No activity yet'));
-    empty.appendChild(el('p', { className: 'sub' }, "Quiz answers will appear here as Alex completes them."));
+    empty.appendChild(el('p', { className: 'sub' }, "Quiz answers will appear here as learners complete them."));
     feed.appendChild(empty);
     return;
   }
@@ -1146,7 +1193,8 @@ function renderQuizTable() {
     svg.appendChild(path1);
     empty.appendChild(svg);
     empty.appendChild(el('p', {}, 'No quiz results yet'));
-    var subText = filter !== 'all' ? 'No results for this course.' : 'Results will appear as Alex takes quizzes.';
+    var learnerName = getSelectedLearnerName();
+    var subText = filter !== 'all' ? 'No results for this course.' : 'Results will appear as ' + learnerName + ' takes quizzes.';
     empty.appendChild(el('p', { className: 'sub' }, subText));
     wrap.appendChild(empty);
     return;
@@ -1158,11 +1206,12 @@ function renderQuizTable() {
   // thead
   var thead = document.createElement('thead');
   var headRow = document.createElement('tr');
-  ['Course', 'Question', "Alex's Answer", 'Correct Answer', 'Result', 'Attempt', 'Date'].forEach(function(text) {
+  var answerColName = selectedLearnerId === 'all' ? 'Answer Given' : getSelectedLearnerName() + "'s Answer";
+  ['Course', 'Question', answerColName, 'Correct Answer', 'Result', 'Attempt', 'Date'].forEach(function(text) {
     var th = document.createElement('th');
     th.textContent = text;
     if (text === 'Question') th.className = 'col-question';
-    if (text === "Alex's Answer" || text === 'Correct Answer') th.className = 'col-answer';
+    if (text === answerColName || text === 'Correct Answer') th.className = 'col-answer';
     headRow.appendChild(th);
   });
   thead.appendChild(headRow);
@@ -1190,7 +1239,7 @@ function renderQuizTable() {
     var td2 = el('td', { className: 'col-question' }, item.question_text || item.question_id);
     tr.appendChild(td2);
 
-    // Alex's Answer
+    // Learner's Answer
     var td3 = el('td', { className: 'col-answer' }, item.answer_given);
     tr.appendChild(td3);
 
