@@ -470,7 +470,7 @@
 
     for (var i = 0; i < questions.length; i++) {
       var q = questions[i];
-      if (!q.classList.contains('answered-correct') && !q.classList.contains('answered-exhausted')) {
+      if (!q.classList.contains('answered-correct') && !q.classList.contains('answered-exhausted') && !q.classList.contains('answered-locked')) {
         return false;
       }
     }
@@ -836,7 +836,7 @@
       mutations.forEach(function(mutation) {
         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
           var target = mutation.target;
-          if (target.classList.contains('answered-correct') || target.classList.contains('answered-exhausted')) {
+          if (target.classList.contains('answered-correct') || target.classList.contains('answered-exhausted') || target.classList.contains('answered-locked')) {
             shouldCheck = true;
           }
         }
