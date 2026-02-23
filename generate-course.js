@@ -75,6 +75,13 @@ if (scriptStart !== -1 && scriptEnd !== -1) {
   console.log('Used placeholder script replacement');
 }
 
+// Ensure audio player is included before </body>
+const audioBlock = `\n<link rel="stylesheet" href="../css/training-audio.css">\n<script src="../js/training-audio-internal.js"></script>\n<script>\n  trainingAudioInternalInit('claude-code-training');\n</script>\n`;
+if (output.indexOf('training-audio-internal.js') === -1) {
+  output = output.replace('</body>', audioBlock + '\n</body>');
+  console.log('Injected audio player block');
+}
+
 fs.writeFileSync(OUTPUT, output, 'utf8');
 
 const lines = output.split('\n').length;
